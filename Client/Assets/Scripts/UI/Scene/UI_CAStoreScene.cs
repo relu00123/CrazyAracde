@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
@@ -14,6 +15,12 @@ public class UI_CAStoreScene : UI_Scene
     [SerializeField]
     public GameObject mainCategoryPanel; // MainCategory 패널
 
+    //public List<GameObject> subCategoryPanels = new List<GameObject>();
+
+    public Dictionary<string, GameObject> subCategoryPanels = new Dictionary<string, GameObject>();
+
+
+
     [SerializeField]
     public GameObject itemListPanel;
 
@@ -26,76 +33,68 @@ public class UI_CAStoreScene : UI_Scene
 
         //mainCategoryPanel = Instantiate(mainCategoryPanel, transform);
 
+        InitializeSubCategory();
         SetupMainCategoryHoverEvents();
 
         AdjustGridCellSize();
         PopulateItems();
     }
 
+    void InitializeSubCategory()
+    {
+        foreach (Transform child in transform.Find("SubCategoryPanels"))
+        {
+            GameObject obj = child.gameObject;
+            subCategoryPanels.Add(obj.name, obj);
+        }
+    }
+
+
     private void AdjustGridCellSize()
     {
-        //float viewportHeight = ItemPanelViewport.rect.height;
+        // GPT Traial2 
+        RectTransform rectTransform = GetComponent<RectTransform>();
+        RectTransform itemListPanelRectTransform = itemListPanel.GetComponent<RectTransform>();
 
-        //// 아이템의 세로 길이를 ViewPort 세로 길이의 절반으로 설정
-        //float cellHeight = viewportHeight / 4;
-        //float cellWidth = ItemPanelViewport.rect.width / 2;
+        // 부모의 절대 크기 계산
+        float parentWidth = itemListPanelRectTransform.rect.width;
+        float parentHeight = itemListPanelRectTransform.rect.height;
 
-        //ItemPanelGridLayout.cellSize = new Vector2(cellWidth, cellHeight);
+        // Spacing 값을 고려
+        float spacingX = ItemPanelGridLayout.spacing.x;
+        float spacingY = ItemPanelGridLayout.spacing.y;
+
+        // GridLayoutGroup의 Padding 값을 고려
+        float paddingLeft = ItemPanelGridLayout.padding.left;
+        float paddingRight = ItemPanelGridLayout.padding.right;
+        float paddingTop = ItemPanelGridLayout.padding.top;
+        float paddingBottom = ItemPanelGridLayout.padding.bottom;
+
+        // Scrollbar 크기 고려
+        float verticalScrollbarWidth = 0;
+        float horizontalScrollbarHeight = 0;
+
+        Scrollbar verticalScrollbar = itemListPanel.GetComponentsInChildren<Scrollbar>()
+                                          .FirstOrDefault(sb => sb.name == "Scrollbar Vertical");
+        Scrollbar horizontalScrollbar = itemListPanel.GetComponentsInChildren<Scrollbar>()
+                                                     .FirstOrDefault(sb => sb.name == "Scrollbar Horizontal");
+
+        if (verticalScrollbar != null && verticalScrollbar.direction == Scrollbar.Direction.BottomToTop)
+        {
+            verticalScrollbarWidth = verticalScrollbar.GetComponent<RectTransform>().rect.width;
+        }
+        if (horizontalScrollbar != null && horizontalScrollbar.direction == Scrollbar.Direction.LeftToRight)
+        {
+            horizontalScrollbarHeight = horizontalScrollbar.GetComponent<RectTransform>().rect.height;
+        }
+
+        // 아이템의 세로 길이를 ViewPort 세로 길이의 1/4로 설정
+        float cellHeight = (parentHeight - paddingTop - paddingBottom - spacingY * 3 - horizontalScrollbarHeight) / 4; // 4행
+        float cellWidth = (parentWidth - paddingLeft - paddingRight - spacingX * 1 - verticalScrollbarWidth) / 2; // 2열
+
+        ItemPanelGridLayout.cellSize = new Vector2(cellWidth, cellHeight);
 
 
-        // 내코드
-        //var AnchorDiff = itemListPanel.GetComponent<RectTransform>().anchorMax - itemListPanel.GetComponent<RectTransform>().anchorMin;
-        //float width = GetComponent<RectTransform>().rect.width;
-        //float height = GetComponent<RectTransform>().rect.height;
-
-        //width = width * AnchorDiff.x;
-        //height = height * AnchorDiff.y;
-
-        //float cellHeight = height / 4;
-        //float cellWidth = width / 2;
-
-        //ItemPanelGridLayout.cellSize = new Vector2(cellWidth, cellHeight);
-
-
-        // GPT가 작성해준 코드
-        //RectTransform rectTransform = GetComponent<RectTransform>();
-        //RectTransform itemListPanelRectTransform = itemListPanel.GetComponent<RectTransform>();
-
-        //// Anchor 차이를 계산
-        //Vector2 anchorDiff = itemListPanelRectTransform.anchorMax - itemListPanelRectTransform.anchorMin;
-
-        //// 부모의 크기를 기준으로 실제 크기 계산
-        //float parentWidth = rectTransform.rect.width;
-        //float parentHeight = rectTransform.rect.height;
-
-        //float width = parentWidth * anchorDiff.x;
-        //float height = parentHeight * anchorDiff.y;
-
-        //// Spacing 값을 고려
-        //float spacingX = ItemPanelGridLayout.spacing.x;
-        //float spacingY = ItemPanelGridLayout.spacing.y;
-
-        //// Scrollbar 크기 고려
-        //float verticalScrollbarWidth = 0;
-        //float horizontalScrollbarHeight = 0;
-
-        //Scrollbar verticalScrollbar = itemListPanel.GetComponentInChildren<Scrollbar>();
-        //Scrollbar horizontalScrollbar = itemListPanel.GetComponentInChildren<Scrollbar>();
-
-        //if (verticalScrollbar != null && verticalScrollbar.direction == Scrollbar.Direction.BottomToTop)
-        //{
-        //    verticalScrollbarWidth = verticalScrollbar.GetComponent<RectTransform>().rect.width;
-        //}
-        //if (horizontalScrollbar != null && horizontalScrollbar.direction == Scrollbar.Direction.LeftToRight)
-        //{
-        //    horizontalScrollbarHeight = horizontalScrollbar.GetComponent<RectTransform>().rect.height;
-        //}
-
-        //// 아이템의 세로 길이를 ViewPort 세로 길이의 1/4로 설정
-        //float cellHeight = (height - spacingY * 3 - horizontalScrollbarHeight) / 4; // 4행
-        //float cellWidth = (width - spacingX * 1 - verticalScrollbarWidth) / 2; // 2열
-
-        //ItemPanelGridLayout.cellSize = new Vector2(cellWidth, cellHeight);
     }
 
     // 임시로 사용할 함수
@@ -124,22 +123,62 @@ public class UI_CAStoreScene : UI_Scene
 
     private void SetupMainCategoryHoverEvents()
     {
-        foreach (Transform mainCategory in mainCategoryPanel.transform)
+        foreach (Transform button in transform.Find("MainCategoryPanel"))
         {
-            EventTrigger trigger = mainCategory.gameObject.AddComponent<EventTrigger>();
+            EventTrigger trigger = button.gameObject.AddComponent<EventTrigger>();
 
             EventTrigger.Entry entryEnter = new EventTrigger.Entry();
             entryEnter.eventID = EventTriggerType.PointerEnter;
-            entryEnter.callback.AddListener((eventData) => OnMainCategoryHover(mainCategory));
-
-            EventTrigger.Entry entryExit = new EventTrigger.Entry();
-            entryExit.eventID = EventTriggerType.PointerExit;
-            entryExit.callback.AddListener((eventData) => OnMainCategoryExit(mainCategory));
+            entryEnter.callback.AddListener((data) => { OnMainCatHover((button.gameObject)); });
 
             trigger.triggers.Add(entryEnter);
-            trigger.triggers.Add(entryExit);
+
+
+            EventTrigger.Entry ClickTrigger = new EventTrigger.Entry();
+            ClickTrigger.eventID = EventTriggerType.PointerClick;
+            ClickTrigger.callback.AddListener((data) => {  OnClickMainCat(button.gameObject); });
+
+            trigger.triggers.Add(ClickTrigger);
         }
     }
+
+    private void OnClickMainCat(GameObject gameObject)
+    {
+        Debug.Log($"{gameObject.name} Clicked!");
+
+        foreach (Transform button in transform.Find("MainCategoryPanel"))
+        {
+            RectTransform buttonRect = button.gameObject.GetComponent<RectTransform>();
+            Vector2 anchorMax = buttonRect.anchorMax;
+            buttonRect.anchorMax = new Vector2(anchorMax.x, 0.8f);
+        }
+
+        RectTransform clickedButtonRect = gameObject.GetComponent<RectTransform>();
+        Vector2 clickedAnchorMax = clickedButtonRect.anchorMax;
+        clickedButtonRect.anchorMax = new Vector2(clickedAnchorMax.x, 1);
+    }
+
+    private void OnMainCatHover(GameObject button)
+    {
+        // 모든 SubCategoryPanels 비활성화
+        foreach (KeyValuePair<string, GameObject> kvp in subCategoryPanels)
+        {
+            kvp.Value.SetActive(false);
+        }
+
+        string PanelName = button.name + "SubPanel";
+
+        if (subCategoryPanels.TryGetValue(PanelName, out GameObject panel))
+        {
+            panel.SetActive(true);
+        }
+
+        else
+        {
+            Debug.Log($"{PanelName} Panel Does not exist");
+        }
+    }
+
 
     private void OnMainCategoryHover(Transform mainCategory)
     {
