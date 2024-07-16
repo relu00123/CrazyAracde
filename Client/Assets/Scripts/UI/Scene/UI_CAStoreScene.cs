@@ -4,6 +4,9 @@ using System.Linq;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
+using UnityEngine.UIElements;
+
+ 
 
 public class UI_CAStoreScene : UI_Scene
 {
@@ -20,11 +23,21 @@ public class UI_CAStoreScene : UI_Scene
     public Dictionary<string, GameObject> subCategoryPanels = new Dictionary<string, GameObject>();
 
 
+    public GameObject FocusedSubCategoryPanel;
+
+    public GameObject FocusedSubCategoryButton;
+
+
 
     [SerializeField]
     public GameObject itemListPanel;
 
     //public GameObject[] subCategoryPanels; // 각 대분류 패널 (예: 아이템, 캐릭터 등)
+
+
+    Color NormalSubCatButton = new Color(255f / 255f, 255f / 255f, 255f / 255f, 0f / 255f);
+    Color HoverSubCatButton = new Color(3f / 255f, 12f / 255f, 77f / 255f, 92f / 255f);
+    Color ClickedSubCatButton = new Color(226f / 255f, 23f / 255f, 255f / 255f, 119f / 255f);
 
 
     public override void Init()
@@ -35,6 +48,8 @@ public class UI_CAStoreScene : UI_Scene
 
         InitializeSubCategory();
         SetupMainCategoryHoverEvents();
+        SetupMainCategoryExitEvents();
+        SetupSubCategoryButtonEvents();
 
         AdjustGridCellSize();
         PopulateItems();
@@ -46,6 +61,9 @@ public class UI_CAStoreScene : UI_Scene
         {
             GameObject obj = child.gameObject;
             subCategoryPanels.Add(obj.name, obj);
+
+            if (child.gameObject.name == "MainSubPanel")
+                FocusedSubCategoryPanel = child.gameObject;
         }
     }
 
@@ -142,6 +160,75 @@ public class UI_CAStoreScene : UI_Scene
         }
     }
 
+    private void SetupMainCategoryExitEvents()
+    {
+        GameObject MainPanel = transform.Find("MainCategoryPanel").gameObject;
+        EventTrigger trigger = MainPanel.GetComponent<EventTrigger>();
+
+        EventTrigger.Entry LeaveTrigger = new EventTrigger.Entry();
+        LeaveTrigger.eventID = EventTriggerType.PointerExit;
+        LeaveTrigger.callback.AddListener((eventData) => 
+        {
+            if (FocusedSubCategoryPanel != null)
+            {
+                foreach (KeyValuePair<string, GameObject> kvp in subCategoryPanels)
+                {
+                    kvp.Value.SetActive(false);
+                }
+
+                FocusedSubCategoryPanel.SetActive(true);
+            }
+        });
+
+        trigger.triggers.Add(LeaveTrigger);
+    }
+
+    private void SetupSubCategoryButtonEvents()
+    {
+        // 모든 소분류 패널들의 Button들에 대해서 Event Trigger를 달아 줄 것임. 
+        foreach (KeyValuePair<string, GameObject> kvp in subCategoryPanels)
+        {
+            foreach(Transform item in kvp.Value.transform)
+            {
+                EventTrigger trigger = item.gameObject.AddComponent<EventTrigger>();
+
+                EventTrigger.Entry Hover = new EventTrigger.Entry();
+                Hover.eventID = EventTriggerType.PointerEnter; 
+                Hover.callback.AddListener((eventData) => {
+                    GameObject HoveredObject = ((PointerEventData)eventData).pointerEnter;
+                    if (HoveredObject != FocusedSubCategoryButton)
+                        item.gameObject.GetComponent<UnityEngine.UI.Image>().color = HoverSubCatButton;
+                });
+
+                EventTrigger.Entry Click = new EventTrigger.Entry();
+                Click.eventID = EventTriggerType.PointerClick;
+                Click.callback.AddListener((eventData) => {
+                    GameObject ClickedObject = ((PointerEventData)eventData).pointerPress;
+                    if (FocusedSubCategoryButton != null)
+                        FocusedSubCategoryButton.GetComponent<UnityEngine.UI.Image>().color = NormalSubCatButton;
+                    ClickedObject.GetComponent<UnityEngine.UI.Image>().color = ClickedSubCatButton;
+                    FocusedSubCategoryButton = ClickedObject;
+
+                    // Click 한 소분류에 해당하는 아이템들을 로드해와야 한다. 
+
+                });
+
+                EventTrigger.Entry Leave = new EventTrigger.Entry();
+                Leave.eventID = EventTriggerType.PointerExit;
+                Leave.callback.AddListener((eventData) => {
+                    GameObject exitedObject = ((PointerEventData)eventData).pointerEnter;
+                    if (exitedObject != FocusedSubCategoryButton)
+                        exitedObject.GetComponent<UnityEngine.UI.Image>().color = NormalSubCatButton;
+                });
+
+                trigger.triggers.Add(Hover);
+                trigger.triggers.Add(Click);
+                trigger.triggers.Add(Leave);
+            }
+        }
+    }
+
+
     private void OnClickMainCat(GameObject gameObject)
     {
         Debug.Log($"{gameObject.name} Clicked!");
@@ -156,6 +243,13 @@ public class UI_CAStoreScene : UI_Scene
         RectTransform clickedButtonRect = gameObject.GetComponent<RectTransform>();
         Vector2 clickedAnchorMax = clickedButtonRect.anchorMax;
         clickedButtonRect.anchorMax = new Vector2(clickedAnchorMax.x, 1);
+
+        // 클릭시 지금 Focused된 SubCategory를 설정
+        string PanelName = gameObject.name + "SubPanel";
+        if (subCategoryPanels.TryGetValue(PanelName, out GameObject panel))
+        {
+            FocusedSubCategoryPanel = panel;
+        }
     }
 
     private void OnMainCatHover(GameObject button)
@@ -178,7 +272,6 @@ public class UI_CAStoreScene : UI_Scene
             Debug.Log($"{PanelName} Panel Does not exist");
         }
     }
-
 
     private void OnMainCategoryHover(Transform mainCategory)
     {
