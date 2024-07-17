@@ -5,14 +5,16 @@ using UnityEngine.UI;
 
 public class SevenSegment : UI_Base
 {
-    [SerializeField] private List<Sprite> DigitImages; // 0 ~ 9 까지의 숫자 이미지를 저장할 리스트
-     
-    [SerializeField] private Sprite commaSprite; // 콤마 이미지
+    [SerializeField] public int digitCount; // 자릿수
+    public Sprite emptyZero; // 빈 공간을 0으로 채울 0 사진
+    public Sprite commaSprite; // 콤마 사진
+    public Sprite emptyCommaSprite; // 빈 콤마 사진
+    public List<Sprite> numberSprites; // 각 숫자에 대한 사진들 ( 0 - 9 )
 
-    [SerializeField] private RectTransform DigitPanel;
+    private List<Image> digitImages; // 자릿수를 표시할 Image 리스트
 
-    private List<Image> digitImages = new List<Image>();
 
+    [SerializeField] private GameObject numberPanel; // NumberPanel;
      
 
     public override void Init()
@@ -20,34 +22,37 @@ public class SevenSegment : UI_Base
         InitializeDisplay();
     }
 
-    private void InitializeDisplay()
+    void InitializeDisplay()
     {
-        for (int i = 0; i < 10; i++)
-        {
-            GameObject digitObject = new GameObject($"Digit_{i}");
-            Image digitImage = digitObject.AddComponent<Image>();
-            digitImage.transform.SetParent(DigitPanel, false);
-            digitImages.Add(digitImage);
+        digitImages = new List<Image>();
 
-            if (i < 9 && (i + 1) % 3 == 0)
+        for (int i = 0; i < digitCount; i++)
+        {
+            GameObject digitObj = new GameObject("Digit" + i);
+            Image DigitImage = digitObj.AddComponent<Image>();
+            DigitImage.sprite = emptyZero;
+            digitImages.Add(DigitImage);
+            digitObj.transform.SetParent(numberPanel.transform, false); // 여기 코드 살짝 이해가 안됨.
+
+            // 3칸마다 콤마를 넣는다.  이게 돈을 표시하는 거라서 뒤에서 부터 세야할 듯?
+            if (i % 3 == 2 && i != digitCount - 1)
             {
-                GameObject commaObject = new GameObject($"Comma_{i}");
-                Image commaImage = commaObject.AddComponent<Image>();
-                commaImage.sprite = commaSprite;
-                commaImage.transform.SetParent(DigitPanel, false);
+                GameObject commaObj = new GameObject("Comma" + i);
+                Image commaImage = commaObj.AddComponent<Image>();
+                commaImage.sprite = emptyCommaSprite;
+                commaObj.transform.SetParent(numberPanel.transform, false);
             }
         }
     }
 
-    // 숫자를 설정하는 함수
-    public void SetNumber(int number)
+    public void UpdateDisplay(int number)
     {
-        string numberStr = number.ToString().PadLeft(10, '0');
+        string numberStr = number.ToString().PadLeft(digitCount, '0');
 
-        for (int i = 0; i < 10; i++)
+        for (int i = 0; i < digitCount; i++)
         {
             int digit = int.Parse(numberStr[i].ToString());
-            //digitImages[i].sprite = digitSprites[digit];
+            digitImages[i].sprite = numberSprites[digit];
         }
     }
 }
