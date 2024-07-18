@@ -1,3 +1,4 @@
+using Data;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -52,7 +53,7 @@ public class UI_CAStoreScene : UI_Scene
         SetupSubCategoryButtonEvents();
 
         AdjustGridCellSize();
-        PopulateItems();
+        //PopulateItems();
     }
 
     void InitializeSubCategory()
@@ -210,7 +211,16 @@ public class UI_CAStoreScene : UI_Scene
                     FocusedSubCategoryButton = ClickedObject;
 
                     // Click 한 소분류에 해당하는 아이템들을 로드해와야 한다. 
+                    string mainname = FocusedSubCategoryPanel.name;
+                    mainname = mainname.Replace("SubPanel", "");
+                    string subname = FocusedSubCategoryButton.gameObject.name;
 
+                    Debug.Log($"main name : {mainname}");
+                    Debug.Log($"Sub  name : {subname}");
+
+                    ShowCertainCategoryItems(mainname, subname);
+
+                
                 });
 
                 EventTrigger.Entry Leave = new EventTrigger.Entry();
@@ -224,6 +234,23 @@ public class UI_CAStoreScene : UI_Scene
                 trigger.triggers.Add(Hover);
                 trigger.triggers.Add(Click);
                 trigger.triggers.Add(Leave);
+            }
+        }
+    }
+
+    public void ShowCertainCategoryItems(string mainPanelName, string subPanelName)
+    {
+        if (Managers.Data.CAItemCategoryDict.TryGetValue(mainPanelName, out Dictionary<string, List<int>> subCategoryDict))
+        {
+            if (subCategoryDict.TryGetValue(subPanelName, out List<int> itemList))
+            {
+                foreach (int itemId in itemList)
+                {
+                    if (Managers.Data.CAItemDict.TryGetValue(itemId, out CAItemData itemData))
+                    {
+                        Debug.Log($"item id : {itemData.id} , item Name : {itemData.itemName}");
+                    }
+                }
             }
         }
     }

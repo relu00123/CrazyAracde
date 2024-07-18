@@ -41,8 +41,75 @@ namespace Data
 	}
 	#endregion
 
-	#region Item
+	#region CAItem
+
 	[Serializable]
+	public struct CAStoreItemInfo
+	{
+		public Dictionary<string, string> categories;
+	}
+
+
+	[Serializable]
+	public class CAItemData
+	{
+		public int id;
+		public string itemName;
+		public CAStoreItemInfo storItemInfo;
+		// 나중에 Item Image Path도 추가하자. 
+	}
+
+	[Serializable]
+	public class CAItemLoader : ILoader<int, CAItemData>
+	{
+		public List<CAItemData> items = new List<CAItemData>();
+
+		public Dictionary<int, CAItemData> MakeDict()
+		{
+			Dictionary<int, CAItemData> dict = new Dictionary<int, CAItemData>();
+			foreach (CAItemData item in items)
+			{
+				dict.Add(item.id, item);
+			}
+			return dict;
+		}
+
+		public Dictionary<string, Dictionary<string, List<int>>> MakeCategoryDict()
+		{
+			Debug.Log("이부분에서 상점UI 전용 대분류 - 소분류 Dictioanry를 추가할 것임");
+
+			Dictionary<string, Dictionary<string, List<int>>> categoryDict = new Dictionary<string, Dictionary<string, List<int>>>();
+
+			foreach (CAItemData item in items)
+			{
+				foreach (var category in item.storItemInfo.categories)
+				{
+					string mainCategory = category.Key;
+					string subCategory = category.Value;
+
+					if (! categoryDict.ContainsKey(mainCategory))
+					{
+                        categoryDict[mainCategory] = new Dictionary<string, List<int>>();
+					}
+
+					if (!categoryDict[mainCategory].ContainsKey(subCategory))
+					{
+						categoryDict[mainCategory][subCategory] = new List<int>();
+					}
+
+					categoryDict[mainCategory][subCategory].Add(item.id);
+				}
+			}
+
+			return categoryDict;
+		}
+	}
+
+    #endregion
+
+
+    #region Item
+    [Serializable]
 	public class ItemData
 	{
 		public int id;

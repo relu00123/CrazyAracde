@@ -1,0 +1,24 @@
+{
+    "items" : [
+        {
+            "id": 1,
+            "itemName": "테스트1",
+            "storItemInfo": {
+                "categories": {
+                    "Main": "Main",
+                    "대분류2": "소분류2"
+                }
+            }
+        },
+        {
+            "id": 2,
+            "itemName": "테스트2",
+            "storItemInfo": {
+                "categories": {
+                    "Main": "Main",
+                    "대분류2": "소분류1"
+                }
+            }
+        }
+    ]
+}

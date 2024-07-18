@@ -14,11 +14,19 @@ public class DataManager
     public Dictionary<int, Data.ItemData> ItemDict { get; private set; } = new Dictionary<int, Data.ItemData>();
     public Dictionary<int, Data.MonsterData> MonsterDict { get; private set; } = new Dictionary<int, Data.MonsterData>();
 
-	public void Init()
+    public Dictionary<int, Data.CAItemData> CAItemDict { get; private set; } = new Dictionary<int, Data.CAItemData>();
+
+    public Dictionary<string, Dictionary<string, List<int>>> CAItemCategoryDict { get; private set; } = new Dictionary<string, Dictionary<string, List<int>>>();
+
+    public void Init()
     {
         SkillDict = LoadJson<Data.SkillData, int, Data.Skill>("SkillData").MakeDict();
         ItemDict = LoadJson<Data.ItemLoader, int, Data.ItemData>("ItemData").MakeDict();
         MonsterDict = LoadJson<Data.MonsterLoader, int, Data.MonsterData>("MonsterData").MakeDict();
+
+        Data.CAItemLoader CA_ItemLoader = LoadJson<Data.CAItemLoader, int, Data.CAItemData>("CAItemData");
+        CAItemDict = CA_ItemLoader.MakeDict();
+        CAItemCategoryDict = CA_ItemLoader.MakeCategoryDict();
 	}
 
     Loader LoadJson<Loader, Key, Value>(string path) where Loader : ILoader<Key, Value>
