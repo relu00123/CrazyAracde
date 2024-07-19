@@ -134,8 +134,8 @@ public class UI_CAStoreScene : UI_Scene
             rectTransform.anchoredPosition3D = Vector3.zero;  // 초기 위치를 (0,0,0)으로 설정
 
 
-            Debug.Log($"Item {i} Position: {newItem.GetComponent<RectTransform>().anchoredPosition}");
-            Debug.Log($"Item {i} Size: {newItem.GetComponent<RectTransform>().sizeDelta}");
+            //Debug.Log($"Item {i} Position: {newItem.GetComponent<RectTransform>().anchoredPosition}");
+            //Debug.Log($"Item {i} Size: {newItem.GetComponent<RectTransform>().sizeDelta}");
         }
     }
 
@@ -218,6 +218,7 @@ public class UI_CAStoreScene : UI_Scene
                     Debug.Log($"main name : {mainname}");
                     Debug.Log($"Sub  name : {subname}");
 
+                    DeleteShownItems();
                     ShowCertainCategoryItems(mainname, subname);
 
                 
@@ -238,6 +239,14 @@ public class UI_CAStoreScene : UI_Scene
         }
     }
 
+    public void DeleteShownItems()
+    {
+        foreach (Transform child in ItemPanelContent)
+        {
+            Destroy(child.gameObject);
+        }
+    }
+
     public void ShowCertainCategoryItems(string mainPanelName, string subPanelName)
     {
         if (Managers.Data.CAItemCategoryDict.TryGetValue(mainPanelName, out Dictionary<string, List<int>> subCategoryDict))
@@ -248,7 +257,25 @@ public class UI_CAStoreScene : UI_Scene
                 {
                     if (Managers.Data.CAItemDict.TryGetValue(itemId, out CAItemData itemData))
                     {
+
+                        GameObject newItem = Instantiate(ItemPrefab, ItemPanelContent);
+
+                        UI_StoreItem ItemScript = newItem.GetComponent<UI_StoreItem>();
+                        
+                        if (ItemScript != null)
+                        {
+                            ItemScript.SetInfo(itemData);
+                        }
+                       
+                        newItem.SetActive(true);
+                        RectTransform rectTransform = newItem.GetComponent<RectTransform>();
+                        rectTransform.localScale = Vector3.one;  // Scale을 1로 설정
+                        rectTransform.anchoredPosition3D = Vector3.zero;  // 초기 위치를 (0,0,0)으로 설정
+
+
                         Debug.Log($"item id : {itemData.id} , item Name : {itemData.itemName}");
+
+                        // 작동이 잘 안되면 Populate 함수보고 작업하기 
                     }
                 }
             }

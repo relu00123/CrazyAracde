@@ -55,9 +55,9 @@ namespace Data
 	{
 		public int id;
 		public string itemName;
-		public CAStoreItemInfo storItemInfo;
-		// 나중에 Item Image Path도 추가하자. 
-	}
+        public string iconPath;
+        public CAStoreItemInfo storItemInfo;
+    }
 
 	[Serializable]
 	public class CAItemLoader : ILoader<int, CAItemData>
