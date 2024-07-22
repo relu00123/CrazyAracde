@@ -76,7 +76,7 @@ namespace Data
 
 		public Dictionary<string, Dictionary<string, List<int>>> MakeCategoryDict()
 		{
-			Debug.Log("이부분에서 상점UI 전용 대분류 - 소분류 Dictioanry를 추가할 것임");
+			//Debug.Log("이부분에서 상점UI 전용 대분류 - 소분류 Dictioanry를 추가할 것임");
 
 			Dictionary<string, Dictionary<string, List<int>>> categoryDict = new Dictionary<string, Dictionary<string, List<int>>>();
 

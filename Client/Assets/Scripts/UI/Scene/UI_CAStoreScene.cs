@@ -34,6 +34,8 @@ public class UI_CAStoreScene : UI_Scene
 
     public GameObject FocusedSubCategoryButton;
 
+    [SerializeField] private int MoneyAmount = 50000;
+
 
 
     [SerializeField]
@@ -256,6 +258,11 @@ public class UI_CAStoreScene : UI_Scene
         Click.callback.AddListener((eventData) => {
             // 돈을 충전해 달라는 Packet을 Server에 보내야한다.
             Debug.Log("Money Fill Required from Clinet!!");
+
+            C_AddMoney AddMoneyPacket = new C_AddMoney();
+            AddMoneyPacket.Moneyamount = MoneyAmount;
+
+            Managers.Network.Send(AddMoneyPacket);
         });
 
         trigger.triggers.Add(Click);
@@ -398,6 +405,16 @@ public class UI_CAStoreScene : UI_Scene
         {
             subCategoryPanel.gameObject.SetActive(false);
         }
+    }
+
+
+    public void UpdateMoneyUI()
+    {
+        // TODO 
+        // Player의 Inventory에서 돈을 가져와서 가지고 있는 돈을 UI에 뿌려줘야 한다.
+        // 7-Segement의 UpdateMoney() 를 호출해야할듯
+        // 그런데 지금 인벤토리가 없다!! 초비상!!!! 
+        Debug.Log("UpdateMoneyUI 호출");
     }
 
 }

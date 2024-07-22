@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class CAStoreScene : BaseScene
 {
-    UI_CAStoreScene _sceneUI { get; set; }
+    public UI_CAStoreScene sceneUI { get; set; }
 
     protected override void Init()
     {
@@ -12,7 +12,7 @@ public class CAStoreScene : BaseScene
 
         SceneType = Define.Scene.CAStore;
 
-        _sceneUI = Managers.UI.ShowSceneUI<UI_CAStoreScene>();
+        sceneUI = Managers.UI.ShowSceneUI<UI_CAStoreScene>();
     }
 
     public override void Clear()

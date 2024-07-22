@@ -118,4 +118,24 @@ class PacketHandler
 		// ServerState를 Lobby로 변경한다.
 		clientSession.HandleServerStateChange(PlayerServerState.ServerStateLobby);
 	}
+
+
+	public static void C_AddMoneyHandler(PacketSession session, IMessage packet)
+	{
+		Console.WriteLine("Add Money Received From Client!");
+
+		ClientSession clientSession = (ClientSession)session;
+		C_AddMoney AddMoneyPacket = (C_AddMoney)packet;
+ 
+		// DB로부터 돈을 반영한다.
+		// Client에게 돈을 보내는 Packet을 작성하는 이유는 Inventory 동기화 및 Money 동기화를 위해서.\
+		// 돈을 추가해야하는 것은 StoreManager에서 해야할 일이 아니라 InventoryManager에서 해야할일..
+		// StoreManager에서는 Item만 인벤토리에 추가를 위임한다.
+		StoreManager.Instance.AddMoney(clientSession, AddMoneyPacket.Moneyamount);
+
+		// Client가 돈을 체워달라고 요청. 돈을 체워준다. 
+		// 일단은 DB무시하고 진행. 
+		// 어디서 돈을 체워줘야 할까... StoreManager? 
+		//FreeMoneyPacket.Moneyamount;
+	}
 }

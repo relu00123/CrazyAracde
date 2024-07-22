@@ -283,7 +283,40 @@ class PacketHandler
 			}
 		}
 	}
-	 
+
+
+	public static void S_AddMoneyHandler(PacketSession session, IMessage packet)
+	{
+		Debug.Log("AddMoney Packet Received!");
+
+		S_AddMoney AddMoneyPacket = (S_AddMoney)packet;
+
+		// 만약에 현재 Scene 이 상점인 경우 상점 돈 UI에 추가해야 한다.
+		// 플레이어의 돈을 다른 곳에서 관리하고 상점에서는 업데이트만 하도록 하자. 
+
+		//SceneManager.GetActiveScene();
+		string ActiveSceneName = SceneManager.GetActiveScene().name;
+
+		Debug.Log($"ActiveSceneName : {ActiveSceneName}");
+
+		if (ActiveSceneName == "CAStore")
+		{
+			// CAStoreScene에서 Script가져와야 함. 
+			CAStoreScene storeSceneScript = GameObject.FindObjectOfType<CAStoreScene>();
+
+			if (storeSceneScript == null)
+			{
+				Debug.Log("Store Scene Script is Missing!");
+			}
+
+			else
+			{
+				storeSceneScript.sceneUI.UpdateMoneyUI();
+			}
+		}
+	}
+
+
 }
 
 

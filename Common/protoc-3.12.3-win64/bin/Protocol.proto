@@ -34,6 +34,8 @@ enum MsgId {
   S_CHATTING = 27;
   C_ENTER_STORE = 28;
   C_ENTER_LOBBY = 29;
+  C_ADD_MONEY = 30;
+  S_ADD_MONEY = 31;
 }
 
 enum CreatureState {
@@ -175,6 +177,14 @@ message S_ItemList {
   repeated ItemInfo items = 1;
 }
 
+message C_AddMoney {
+  int32 moneyamount = 1;
+}
+
+message S_AddMoney {
+  int32 moneyamount = 1;
+}
+
 message S_AddItem {
   repeated ItemInfo items = 1;
 }
@@ -268,3 +278,5 @@ message ItemInfo {
   int32 slot = 4;
   bool equipped = 5;
 }
+
+ 
