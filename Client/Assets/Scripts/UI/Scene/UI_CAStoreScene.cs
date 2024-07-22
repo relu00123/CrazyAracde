@@ -1,11 +1,15 @@
 using Data;
+using Google.Protobuf.Protocol;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using UnityEngine.UIElements;
+//using static UnityEditor.Progress;
+
 
  
 
@@ -15,6 +19,8 @@ public class UI_CAStoreScene : UI_Scene
     [SerializeField] private RectTransform ItemPanelViewport;
     [SerializeField] private GridLayoutGroup ItemPanelGridLayout;
     [SerializeField] private Transform ItemPanelContent;
+    [SerializeField] private GameObject FreeMoneyButton;
+    [SerializeField] private GameObject ToLobbyButton;
 
     [SerializeField]
     public GameObject mainCategoryPanel; // MainCategory 패널
@@ -51,6 +57,8 @@ public class UI_CAStoreScene : UI_Scene
         SetupMainCategoryHoverEvents();
         SetupMainCategoryExitEvents();
         SetupSubCategoryButtonEvents();
+        SetupFreeMoneyEvents();
+        SetupOnToLobbyButton();
 
         AdjustGridCellSize();
         //PopulateItems();
@@ -239,6 +247,42 @@ public class UI_CAStoreScene : UI_Scene
         }
     }
 
+    public void SetupFreeMoneyEvents()
+    {
+        EventTrigger trigger = FreeMoneyButton.gameObject.AddComponent<EventTrigger>();
+
+        EventTrigger.Entry Click = new EventTrigger.Entry();
+        Click.eventID = EventTriggerType.PointerClick;
+        Click.callback.AddListener((eventData) => {
+            // 돈을 충전해 달라는 Packet을 Server에 보내야한다.
+            Debug.Log("Money Fill Required from Clinet!!");
+        });
+
+        trigger.triggers.Add(Click);
+    }
+
+
+    public void SetupOnToLobbyButton()
+    {
+        EventTrigger trigger = ToLobbyButton.gameObject.AddComponent<EventTrigger>();
+
+        EventTrigger.Entry Click = new EventTrigger.Entry();
+        Click.eventID = EventTriggerType.PointerClick;
+        Click.callback.AddListener((eventData) => {
+            // 메인 로비로 이동
+            Managers.Scene.LoadScene(Define.Scene.CAMainLobby);
+
+            C_EnterLobby enterLobbyPacket = new C_EnterLobby();
+            enterLobbyPacket.Player = Managers.UserInfo.myLobbyPlayerInfo;
+
+            Managers.Network.Send(enterLobbyPacket);
+           
+        });
+
+        trigger.triggers.Add(Click);
+    }
+     
+
     public void DeleteShownItems()
     {
         foreach (Transform child in ItemPanelContent)
@@ -281,7 +325,6 @@ public class UI_CAStoreScene : UI_Scene
             }
         }
     }
-
 
     private void OnClickMainCat(GameObject gameObject)
     {

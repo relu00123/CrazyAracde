@@ -12,6 +12,11 @@ public class UserListManager
 
     public event Action<List<LobbyPlayerInfo>> onUpdateUI;
 
+    public void ReEnterLobby()
+    {
+        UpdateUI();
+    }
+
 
     public void AddUser(LobbyPlayerInfo user)
     {

@@ -65,7 +65,7 @@ namespace Server.Game
             {
                 PlayerInfo Focusedinfo = Find(_playerID);
 
-                if (Focusedinfo != null)
+                if (Focusedinfo == null)
                 {
                     Console.WriteLine("Remove Error - UserManager.cs - Remove()");
                 }
@@ -94,7 +94,5 @@ namespace Server.Game
             return null;
         }
     
-    
-        
     }
 }

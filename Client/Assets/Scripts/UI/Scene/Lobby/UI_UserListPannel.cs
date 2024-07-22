@@ -20,6 +20,10 @@ public class UI_UserListPannel : UI_Base
     {
         UserGrid = GetComponent<VerticalLayoutGroup>();
 
+
+        Debug.Log(userinfo_UI.gameObject.name);
+
+
         if (UserGrid == null)
         {
             Debug.Log("U_UserListPanel.cs - UserGrid 가져오기 실패");
@@ -30,16 +34,20 @@ public class UI_UserListPannel : UI_Base
             Debug.Log("U_UserListPanel.cs - UserGrid 성공적으로 가져옴");
         }
 
-        Managers.UserList.onUpdateUI += UpdateUserListUI;
-
         for (int i = 0; i < Managers.UserList.usersPerPage; i++)
         {
+            
             UI_UserInfoItem item = Instantiate(userinfo_UI, UserGrid.transform);
+
             item.gameObject.SetActive(false);
             userInfoItems.Add(item);
         }
 
+        Managers.UserList.onUpdateUI += UpdateUserListUI;
+
         UpdateChildrenSize();
+
+        Managers.UserList.ReEnterLobby();
     }
 
     public void UpdateUserListUI(List<LobbyPlayerInfo> userList)
@@ -83,5 +91,10 @@ public class UI_UserListPannel : UI_Base
         }
 
         LayoutRebuilder.ForceRebuildLayoutImmediate(parentRectTransform);
+    }
+
+    public void OnDestroy()
+    {
+        Managers.UserList.onUpdateUI -= UpdateUserListUI;
     }
 }

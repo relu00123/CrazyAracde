@@ -95,4 +95,27 @@ class PacketHandler
 
 		ChattingManager.Instance.HandleChattingPacket(chattingPacket);
     }
+
+	public static void C_EnterStoreHandler(PacketSession session, IMessage packet)
+	{
+		ClientSession clientSession = (ClientSession)session;
+		C_EnterStore enterstorePacket = (C_EnterStore)packet;
+
+
+		Console.WriteLine("C_EnterStore Packet Received!");
+
+		// ServerState를 Store로 변경한다. 
+		clientSession.HandleServerStateChange(PlayerServerState.ServerStateStore);
+	}
+
+	public static void C_EnterLobbyHandler(PacketSession session, IMessage packet)
+	{
+		ClientSession clientSession = (ClientSession)session;
+		C_EnterLobby EnterLobbyPacket = (C_EnterLobby)packet;
+
+		Console.WriteLine("C_EnterLobby Packet Received!");
+
+		// ServerState를 Lobby로 변경한다.
+		clientSession.HandleServerStateChange(PlayerServerState.ServerStateLobby);
+	}
 }

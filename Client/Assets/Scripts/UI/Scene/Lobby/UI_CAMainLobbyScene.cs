@@ -1,3 +1,4 @@
+using Google.Protobuf.Protocol;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,14 +7,12 @@ using UnityEngine.UI;
 
 public class UI_CAMainLobbyScene : UI_Scene
 {
-
     enum Buttons
     {
         LeftButton,
         RightButton,
+        ToStoreButton,
     }
-
-
 
     public UI_UserListPannel UserListUI { get; private set; }
 
@@ -27,6 +26,7 @@ public class UI_CAMainLobbyScene : UI_Scene
 
         GetButton((int)Buttons.LeftButton).gameObject.BindEvent(OnPreviousPageButtonClicked);
         GetButton((int)Buttons.RightButton).gameObject.BindEvent(OnNextPageButtonClicked);
+        GetButton((int)Buttons.ToStoreButton).gameObject.BindEvent(OnToStoreButtonClicked);
 
         Transform userListPanelTransform = transform.Find("MainLobbyPannel/UserListPannel");
         Transform chattingPannelTransform = transform.Find("MainLobbyPannel/ChattingPannel");
@@ -45,5 +45,17 @@ public class UI_CAMainLobbyScene : UI_Scene
     public void OnPreviousPageButtonClicked(PointerEventData evt)
     {
         Managers.UserList.PreviousPage();
+    }
+
+    public void OnToStoreButtonClicked(PointerEventData evt)
+    {
+        // Store Scene으로 이동.
+        Debug.Log("To Store!");
+        Managers.Scene.LoadScene(Define.Scene.CAStore);
+
+        C_EnterStore EnterStorePacket = new C_EnterStore();
+        EnterStorePacket.Player = Managers.UserInfo.myLobbyPlayerInfo;
+
+        Managers.Network.Send(EnterStorePacket);
     }
 }

@@ -169,7 +169,9 @@ class PacketHandler
 		S_MyPlayerEnterLobby MyPlayerInfo = (S_MyPlayerEnterLobby)packet;
 
 		Managers.UserInfo.Add(MyPlayerInfo.Player, true);
-		Debug.Log("MyPlayer Added");
+		//Debug.Log("MyPlayer Added");
+		//Debug.Log($"PlayerDB ID : {MyPlayerInfo.Player.PlayerDbId} !!");
+		//Debug.Log($"PlayerName : {MyPlayerInfo.Player.Name}");  // Name에 로그인할때 입력한 ID가 들어오네
 
     }
 

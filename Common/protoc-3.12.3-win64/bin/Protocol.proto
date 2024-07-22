@@ -32,6 +32,8 @@ enum MsgId {
   S_PLAYER_LEAVE_LOBBY = 25;
   C_CHATTING = 26;
   S_CHATTING = 27;
+  C_ENTER_STORE = 28;
+  C_ENTER_LOBBY = 29;
 }
 
 enum CreatureState {
@@ -65,6 +67,7 @@ enum PlayerServerState {
   SERVER_STATE_LOGIN = 0;
   SERVER_STATE_LOBBY = 1;
   SERVER_STATE_GAME = 2;
+  SERVER_STATE_STORE = 3;
 }
 
 enum ItemType {
@@ -158,6 +161,14 @@ message S_CreatePlayer {
 
 message C_EnterGame {
   string name = 1;
+}
+
+message C_EnterStore {
+  LobbyPlayerInfo player = 1;
+}
+
+message C_EnterLobby {
+  LobbyPlayerInfo player = 1;
 }
 
 message S_ItemList {
