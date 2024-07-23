@@ -12,6 +12,12 @@ public class UI_CAMainLobbyScene : UI_Scene
         LeftButton,
         RightButton,
         ToStoreButton,
+        CreateRoomButton,
+    }
+
+    enum Panels
+    {
+        GameRoomCreatePanel,
     }
 
     public UI_UserListPannel UserListUI { get; private set; }
@@ -22,11 +28,16 @@ public class UI_CAMainLobbyScene : UI_Scene
     {
         base.Init();
 
+         
+
         Bind<Button>(typeof(Buttons));
+        Bind<GameObject>(typeof(Panels));
 
         GetButton((int)Buttons.LeftButton).gameObject.BindEvent(OnPreviousPageButtonClicked);
         GetButton((int)Buttons.RightButton).gameObject.BindEvent(OnNextPageButtonClicked);
         GetButton((int)Buttons.ToStoreButton).gameObject.BindEvent(OnToStoreButtonClicked);
+        GetButton((int)Buttons.CreateRoomButton).gameObject.BindEvent(OnCreateRoomButtonClicked);
+        GetObject((int)Panels.GameRoomCreatePanel).SetActive(false);
 
         Transform userListPanelTransform = transform.Find("MainLobbyPannel/UserListPannel");
         Transform chattingPannelTransform = transform.Find("MainLobbyPannel/ChattingPannel");
@@ -57,5 +68,15 @@ public class UI_CAMainLobbyScene : UI_Scene
         EnterStorePacket.Player = Managers.UserInfo.myLobbyPlayerInfo;
 
         Managers.Network.Send(EnterStorePacket);
+    }
+
+    public void OnCreateRoomButtonClicked(PointerEventData evt)
+    {
+        Debug.Log("OnCreateRoomButtonClicked!!");
+
+        // CreateRoom Popup UI를 보여줘야 한다.
+        // 이런 식으로 사용하는 것 맞는지 확인하기.
+        GetObject((int)Panels.GameRoomCreatePanel).SetActive(true);
+        UI_GameRoomCreatePopup Popup = Managers.UI.ShowPopupUI<UI_GameRoomCreatePopup>(GetObject((int)Panels.GameRoomCreatePanel));
     }
 }

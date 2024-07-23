@@ -93,6 +93,36 @@ public class UIManager
 		return popup;
     }
 
+
+    // 내가 작성한 오버로딩 코드
+    // Anchor 위치 이상함 고쳐야함..
+    public T ShowPopupUI<T>(GameObject ParentObj, string name = null) where T : UI_Popup
+    {
+        if (string.IsNullOrEmpty(name))
+            name = typeof(T).Name;
+
+        GameObject go = Managers.Resource.Instantiate($"UI/Popup/{name}");
+        T popup = Util.GetOrAddComponent<T>(go);
+        _popupStack.Push(popup);
+
+        go.transform.SetParent(ParentObj.transform, false);
+        RectTransform rectTransform = go.GetComponent<RectTransform>();
+        RectTransform parentRectTransform = ParentObj.GetComponent<RectTransform>();
+
+        // 부모의 앵커와 크기를 자식 패널에 맞추기 위해 설정
+        rectTransform.anchorMin = parentRectTransform.anchorMin;
+        rectTransform.anchorMax = parentRectTransform.anchorMax;
+        rectTransform.anchoredPosition = Vector2.zero;
+        rectTransform.sizeDelta = Vector2.zero;
+
+        // 부모의 전체 크기에 맞추기 위해 오프셋 설정
+        rectTransform.offsetMin = Vector2.zero;
+        rectTransform.offsetMax = Vector2.zero;
+
+        return popup;
+    }
+
+
     public void ClosePopupUI(UI_Popup popup)
     {
 		if (_popupStack.Count == 0)
