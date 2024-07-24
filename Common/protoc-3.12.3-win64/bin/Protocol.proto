@@ -97,6 +97,13 @@ enum ConsumableType {
    CONSUMABLE_TYPE_POTION = 1;
 }
 
+enum TeamModeType 
+{
+  MANNER_MODE = 0;
+  FREE_MODE = 1;
+  RANDOM_MODE = 2;
+}
+
 
 message S_EnterGame {
   ObjectInfo player = 1;

@@ -98,11 +98,13 @@ namespace Google.Protobuf.Protocol {
             "X0JPVxACKmMKCUFybW9yVHlwZRITCg9BUk1PUl9UWVBFX05PTkUQABIVChFB",
             "Uk1PUl9UWVBFX0hFTE1FVBABEhQKEEFSTU9SX1RZUEVfQVJNT1IQAhIUChBB",
             "Uk1PUl9UWVBFX0JPT1RTEAMqRgoOQ29uc3VtYWJsZVR5cGUSGAoUQ09OU1VN",
-            "QUJMRV9UWVBFX05PTkUQABIaChZDT05TVU1BQkxFX1RZUEVfUE9USU9OEAFC",
-            "G6oCGEdvb2dsZS5Qcm90b2J1Zi5Qcm90b2NvbGIGcHJvdG8z"));
+            "QUJMRV9UWVBFX05PTkUQABIaChZDT05TVU1BQkxFX1RZUEVfUE9USU9OEAEq",
+            "PwoMVGVhbU1vZGVUeXBlEg8KC01BTk5FUl9NT0RFEAASDQoJRlJFRV9NT0RF",
+            "EAESDwoLUkFORE9NX01PREUQAkIbqgIYR29vZ2xlLlByb3RvYnVmLlByb3Rv",
+            "Y29sYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
-          new pbr::GeneratedClrTypeInfo(new[] {typeof(global::Google.Protobuf.Protocol.MsgId), typeof(global::Google.Protobuf.Protocol.CreatureState), typeof(global::Google.Protobuf.Protocol.MoveDir), typeof(global::Google.Protobuf.Protocol.GameObjectType), typeof(global::Google.Protobuf.Protocol.SkillType), typeof(global::Google.Protobuf.Protocol.PlayerServerState), typeof(global::Google.Protobuf.Protocol.ItemType), typeof(global::Google.Protobuf.Protocol.WeaponType), typeof(global::Google.Protobuf.Protocol.ArmorType), typeof(global::Google.Protobuf.Protocol.ConsumableType), }, null, new pbr::GeneratedClrTypeInfo[] {
+          new pbr::GeneratedClrTypeInfo(new[] {typeof(global::Google.Protobuf.Protocol.MsgId), typeof(global::Google.Protobuf.Protocol.CreatureState), typeof(global::Google.Protobuf.Protocol.MoveDir), typeof(global::Google.Protobuf.Protocol.GameObjectType), typeof(global::Google.Protobuf.Protocol.SkillType), typeof(global::Google.Protobuf.Protocol.PlayerServerState), typeof(global::Google.Protobuf.Protocol.ItemType), typeof(global::Google.Protobuf.Protocol.WeaponType), typeof(global::Google.Protobuf.Protocol.ArmorType), typeof(global::Google.Protobuf.Protocol.ConsumableType), typeof(global::Google.Protobuf.Protocol.TeamModeType), }, null, new pbr::GeneratedClrTypeInfo[] {
             new pbr::GeneratedClrTypeInfo(typeof(global::Google.Protobuf.Protocol.S_EnterGame), global::Google.Protobuf.Protocol.S_EnterGame.Parser, new[]{ "Player" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Google.Protobuf.Protocol.S_LeaveGame), global::Google.Protobuf.Protocol.S_LeaveGame.Parser, null, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Google.Protobuf.Protocol.S_Spawn), global::Google.Protobuf.Protocol.S_Spawn.Parser, new[]{ "Objects" }, null, null, null, null),
@@ -240,6 +242,12 @@ namespace Google.Protobuf.Protocol {
   public enum ConsumableType {
     [pbr::OriginalName("CONSUMABLE_TYPE_NONE")] None = 0,
     [pbr::OriginalName("CONSUMABLE_TYPE_POTION")] Potion = 1,
+  }
+
+  public enum TeamModeType {
+    [pbr::OriginalName("MANNER_MODE")] MannerMode = 0,
+    [pbr::OriginalName("FREE_MODE")] FreeMode = 1,
+    [pbr::OriginalName("RANDOM_MODE")] RandomMode = 2,
   }
 
   #endregion

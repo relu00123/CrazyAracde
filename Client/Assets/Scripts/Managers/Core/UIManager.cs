@@ -110,8 +110,9 @@ public class UIManager
         RectTransform parentRectTransform = ParentObj.GetComponent<RectTransform>();
 
         // 부모의 앵커와 크기를 자식 패널에 맞추기 위해 설정
-        rectTransform.anchorMin = parentRectTransform.anchorMin;
-        rectTransform.anchorMax = parentRectTransform.anchorMax;
+        rectTransform.anchorMin = new Vector2(0, 0);
+        rectTransform.anchorMax = new Vector2(1, 1);
+        rectTransform.pivot = parentRectTransform.pivot;
         rectTransform.anchoredPosition = Vector2.zero;
         rectTransform.sizeDelta = Vector2.zero;
 
