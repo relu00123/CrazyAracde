@@ -104,6 +104,13 @@ enum TeamModeType
   RANDOM_MODE = 2;
 }
 
+enum GameModeType
+{
+  NORMAL_MODE = 0;
+  MONSTER_MODE = 1;
+  A_I_MODE = 2;
+}
+
 
 message S_EnterGame {
   ObjectInfo player = 1;

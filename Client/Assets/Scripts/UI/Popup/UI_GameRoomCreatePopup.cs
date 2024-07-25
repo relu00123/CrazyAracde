@@ -20,10 +20,21 @@ public class UI_GameRoomCreatePopup : UI_Popup
         FreeModeBtn,
         RandomModeBtn,
         SecretRoomBtn,
+
+        // ModeUncheckedBtn
+        NormalModeUncheckedBtn,
+        MonsterModeUncheckedBtn,
+        AIModeUncheckedBtn,
+
+        // ModeCheckedBtn
+        NormalMode,
+        MonsterMode,
+        AIMode,
     }
 
     enum GameObjects
     {
+        RoomName,
         Password,
     }
 
@@ -34,17 +45,29 @@ public class UI_GameRoomCreatePopup : UI_Popup
         { TeamModeType.RandomMode, Buttons.RandomModeBtn }
     };
 
+    Dictionary<Buttons, (List<Buttons> activateButtons, List<Buttons> deactivateButtons)> GameModeButtons = new Dictionary<Buttons, (List<Buttons>, List<Buttons>)>
+    {
+        { Buttons.NormalMode,  (new List<Buttons> {Buttons.NormalMode, Buttons.MonsterModeUncheckedBtn , Buttons.AIModeUncheckedBtn} ,
+                                new List<Buttons> {Buttons.NormalModeUncheckedBtn, Buttons.MonsterMode, Buttons.AIMode})},
+
+        { Buttons.MonsterMode,  (new List<Buttons> {Buttons.NormalModeUncheckedBtn, Buttons.MonsterMode, Buttons.AIModeUncheckedBtn} ,
+                            new List<Buttons> {Buttons.NormalMode, Buttons.MonsterModeUncheckedBtn, Buttons.AIMode})},
+
+        { Buttons.AIMode,  (new List<Buttons> {Buttons.NormalModeUncheckedBtn, Buttons.MonsterModeUncheckedBtn , Buttons.AIMode } ,
+                            new List<Buttons> {Buttons.NormalMode, Buttons.MonsterMode, Buttons.AIModeUncheckedBtn})},
+    };
+
     // 나중에 CreateGameRoom Info 패킷에 차곡차곡 모아서 보내야함. 
     TeamModeType SelectedTeamMode = TeamModeType.MannerMode;
+    GameModeType SelectedGameMode = GameModeType.NormalMode;
     bool         IsPasswordUsed = false;
-   
+
     public override void Init()
     {
         base.Init();
-
         Bind<Button>(typeof(Buttons));
         Bind<GameObject>(typeof(GameObjects));
-         
+
         GetButton((int)Buttons.CreateBtn).gameObject.BindEvent(OnCreateBtnClicked);
         GetButton((int)Buttons.CancelBtn).gameObject.BindEvent(OnCancelBtnClicked);
         GetButton((int)Buttons.MannerModeBtn).gameObject.BindEvent(OnTeamModeSelectBtnClicked);
@@ -52,13 +75,67 @@ public class UI_GameRoomCreatePopup : UI_Popup
         GetButton((int)Buttons.RandomModeBtn).gameObject.BindEvent(OnTeamModeSelectBtnClicked);
         GetButton((int)Buttons.SecretRoomBtn).gameObject.BindEvent(OnSecretRoomBtnClicked);
 
+        // ModeUnchecked
+        GetButton((int)Buttons.NormalModeUncheckedBtn).gameObject.BindEvent(OnGameModeSelectBtnClicked);
+        GetButton((int)Buttons.MonsterModeUncheckedBtn).gameObject.BindEvent(OnGameModeSelectBtnClicked);
+        GetButton((int)Buttons.AIModeUncheckedBtn).gameObject.BindEvent(OnGameModeSelectBtnClicked);
+
+        // ModeChecked
+        GetButton((int)Buttons.NormalMode).gameObject.BindEvent(OnGameModeSelectBtnClicked);
+        GetButton((int)Buttons.MonsterMode).gameObject.BindEvent(OnGameModeSelectBtnClicked);
+        GetButton((int)Buttons.AIMode).gameObject.BindEvent(OnGameModeSelectBtnClicked);
+
+
         GetObject((int)GameObjects.Password).gameObject.GetComponent<TMP_InputField>().interactable = false;
+        string DefaultGameMode = "NormalMode";
+        GameModeSelect(DefaultGameMode);
+        CheckUIApply(GetButton((int)Buttons.MannerModeBtn).gameObject);
+    }
+
+    public void OnGameModeSelectBtnClicked(PointerEventData evt)
+    {
+        string ClickedBtnName = evt.pointerPress.name.Replace("UncheckedBtn", "");
+        GameModeSelect(ClickedBtnName);
+    }
+
+    public void GameModeSelect(string ClickedBtnName)
+    {
+        if (Enum.TryParse(ClickedBtnName, out Buttons btnName))
+        {
+            if (GameModeButtons.TryGetValue(btnName, out var buttonLists))
+            {
+                if (Enum.TryParse(btnName.ToString(), out GameModeType gamemode))
+                {
+                    //Debug.Log($"GameMode Select called successfully {gamemode.ToString()}");
+                    SelectedGameMode = gamemode;
+                }
+
+                // 비활성화할 버튼들 처리
+                foreach (Buttons button in buttonLists.deactivateButtons)
+                {
+                    GetButton((int)button).gameObject.SetActive(false);
+                }
+
+                // 활성화할 버튼들 처리
+                foreach (Buttons button in buttonLists.activateButtons)
+                {
+                    GetButton((int)button).gameObject.SetActive(true);
+                }
+
+                UpdateTeamMode();
+            }
+        }
     }
 
     public void OnTeamModeSelectBtnClicked(PointerEventData evt)
     {
         Debug.Log("OnTeamModeSelectBtnClicked!");
+        TeamModeSelect(evt.pointerPress.gameObject);
+        UpdateTeamMode();
+    }
 
+    private void TeamModeSelect(GameObject selectedObj)
+    {
         // 기존에 선택되어 있던것 초기화 (Image를 없에고 투명하게 바꾼다
         if (TeamModeAssistDic.TryGetValue(SelectedTeamMode, out Buttons MappingButton))
         {
@@ -66,11 +143,11 @@ public class UI_GameRoomCreatePopup : UI_Popup
         }
 
         // 클릭한 버튼의 이름을 기반으로 TeamModeType 변환
-        string clickedButtonName = evt.pointerPress.name.Replace("Btn", "").ToUpper();
+        string clickedButtonName = selectedObj.name.Replace("Btn", "").ToUpper();
         if (Enum.TryParse(clickedButtonName, true, out TeamModeType teamMode))
         {
             SelectedTeamMode = teamMode;
-            CheckUIApply(evt.pointerPress.gameObject, true);
+            CheckUIApply(selectedObj, true);
         }
     }
 
@@ -107,7 +184,18 @@ public class UI_GameRoomCreatePopup : UI_Popup
 
     public void OnCreateBtnClicked(PointerEventData evt)
     {
+        // 여기서 Game Room의 Info를 가지고 GameRoom을 Create 해달라고 서버에 요청을 해야한다. 
         Debug.Log("OnClickBtnClicked!");
+        Debug.Log("=========== Room Info ============");
+
+        string RoomName = GetObject((int)GameObjects.RoomName).gameObject.GetComponent<TMP_InputField>().text;
+        Debug.Log($"Room Name : {RoomName}");
+        Debug.Log($"Game Mode : {SelectedGameMode.ToString()}");
+        Debug.Log($"Team Mode : {SelectedTeamMode.ToString()}");
+        Debug.Log($"Pwd  Use  : {IsPasswordUsed}");
+        if (IsPasswordUsed)
+        Debug.Log($"Password  : {GetObject((int)GameObjects.Password).gameObject.GetComponent<TMP_InputField>().text}");
+        Debug.Log("==========  Room Info ============");
     }
 
     public void OnCancelBtnClicked(PointerEventData evt)
@@ -145,5 +233,30 @@ public class UI_GameRoomCreatePopup : UI_Popup
             targetObject.GetComponent<Image>().sprite = null;
             targetObject.GetComponent<Image>().color = new Color(1f, 1f, 1f, 0f);
         }
+    }
+
+    private void UpdateTeamMode()
+    {
+        switch (SelectedGameMode)
+        {
+            case GameModeType.NormalMode:
+            {
+                    break;
+            }
+
+            case GameModeType.MonsterMode:
+            {
+               TeamModeSelect(GetButton((int)Buttons.MannerModeBtn).gameObject);
+                break;
+            }
+
+            case GameModeType.AIMode:
+            {
+                if (SelectedTeamMode == TeamModeType.RandomMode)
+                    TeamModeSelect(GetButton((int)Buttons.MannerModeBtn).gameObject);
+                break;
+            }
+        }
+             
     }
 }
