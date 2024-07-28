@@ -111,6 +111,15 @@ enum GameModeType
   A_I_MODE = 2;
 }
 
+enum RoomStateType
+{
+  WAITING = 0;
+  FULL = 1;
+  PLAYING = 2;
+}
+
+ 
+
 
 message S_EnterGame {
   ObjectInfo player = 1;
@@ -293,4 +302,15 @@ message ItemInfo {
   bool equipped = 5;
 }
 
+message RoomInfo 
+{
+  int32  RoomNumber = 1;
+  string RoomName = 2;
+  string MapImagePath = 3;
+  int32  CurPeopleCnt = 4;
+  int32  MaxPeopleCnt = 5;
+  RoomStateType RoomState = 6;
+  TeamModeType TeamMode = 7;
+  bool isSecretRoom = 8;
+}
  

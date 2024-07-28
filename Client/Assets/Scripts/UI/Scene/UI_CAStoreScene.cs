@@ -407,7 +407,7 @@ public class UI_CAStoreScene : UI_Scene
         }
     }
 
-
+ 
     public void UpdateMoneyUI()
     {
         // TODO 

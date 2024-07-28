@@ -8,6 +8,7 @@ public class UI_EventHandler : MonoBehaviour, IPointerClickHandler, IDragHandler
 {
     public Action<PointerEventData> OnClickHandler = null;
     public Action<PointerEventData> OnDragHandler = null;
+	public Action<PointerEventData> OnHoverHandler = null;
 
 	public void OnPointerClick(PointerEventData eventData)
 	{
@@ -20,4 +21,10 @@ public class UI_EventHandler : MonoBehaviour, IPointerClickHandler, IDragHandler
 		if (OnDragHandler != null)
             OnDragHandler.Invoke(eventData);
 	}
+
+    public void OnHover(PointerEventData eventData)
+    {
+        if (OnHoverHandler != null)
+            OnDragHandler.Invoke(eventData);
+    }
 }

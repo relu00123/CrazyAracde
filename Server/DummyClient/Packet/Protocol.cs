@@ -70,7 +70,12 @@ namespace Google.Protobuf.Protocol {
             "BCABKAUSDQoFc3BlZWQYBSABKAISEAoIdG90YWxFeHAYBiABKAUiHAoJU2tp",
             "bGxJbmZvEg8KB3NraWxsSWQYASABKAUiXwoISXRlbUluZm8SEAoIaXRlbURi",
             "SWQYASABKAUSEgoKdGVtcGxhdGVJZBgCIAEoBRINCgVjb3VudBgDIAEoBRIM",
-            "CgRzbG90GAQgASgFEhAKCGVxdWlwcGVkGAUgASgIKqsECgVNc2dJZBIQCgxT",
+            "CgRzbG90GAQgASgFEhAKCGVxdWlwcGVkGAUgASgIIt4BCghSb29tSW5mbxIS",
+            "CgpSb29tTnVtYmVyGAEgASgFEhAKCFJvb21OYW1lGAIgASgJEhQKDE1hcElt",
+            "YWdlUGF0aBgDIAEoCRIUCgxDdXJQZW9wbGVDbnQYBCABKAUSFAoMTWF4UGVv",
+            "cGxlQ250GAUgASgFEioKCVJvb21TdGF0ZRgGIAEoDjIXLlByb3RvY29sLlJv",
+            "b21TdGF0ZVR5cGUSKAoIVGVhbU1vZGUYByABKA4yFi5Qcm90b2NvbC5UZWFt",
+            "TW9kZVR5cGUSFAoMaXNTZWNyZXRSb29tGAggASgIKqsECgVNc2dJZBIQCgxT",
             "X0VOVEVSX0dBTUUQABIQCgxTX0xFQVZFX0dBTUUQARILCgdTX1NQQVdOEAIS",
             "DQoJU19ERVNQQVdOEAMSCgoGQ19NT1ZFEAQSCgoGU19NT1ZFEAUSCwoHQ19T",
             "S0lMTBAGEgsKB1NfU0tJTEwQBxIPCgtTX0NIQU5HRV9IUBAIEgkKBVNfRElF",
@@ -101,11 +106,12 @@ namespace Google.Protobuf.Protocol {
             "QUJMRV9UWVBFX05PTkUQABIaChZDT05TVU1BQkxFX1RZUEVfUE9USU9OEAEq",
             "PwoMVGVhbU1vZGVUeXBlEg8KC01BTk5FUl9NT0RFEAASDQoJRlJFRV9NT0RF",
             "EAESDwoLUkFORE9NX01PREUQAio/CgxHYW1lTW9kZVR5cGUSDwoLTk9STUFM",
-            "X01PREUQABIQCgxNT05TVEVSX01PREUQARIMCghBX0lfTU9ERRACQhuqAhhH",
-            "b29nbGUuUHJvdG9idWYuUHJvdG9jb2xiBnByb3RvMw=="));
+            "X01PREUQABIQCgxNT05TVEVSX01PREUQARIMCghBX0lfTU9ERRACKjMKDVJv",
+            "b21TdGF0ZVR5cGUSCwoHV0FJVElORxAAEggKBEZVTEwQARILCgdQTEFZSU5H",
+            "EAJCG6oCGEdvb2dsZS5Qcm90b2J1Zi5Qcm90b2NvbGIGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
-          new pbr::GeneratedClrTypeInfo(new[] {typeof(global::Google.Protobuf.Protocol.MsgId), typeof(global::Google.Protobuf.Protocol.CreatureState), typeof(global::Google.Protobuf.Protocol.MoveDir), typeof(global::Google.Protobuf.Protocol.GameObjectType), typeof(global::Google.Protobuf.Protocol.SkillType), typeof(global::Google.Protobuf.Protocol.PlayerServerState), typeof(global::Google.Protobuf.Protocol.ItemType), typeof(global::Google.Protobuf.Protocol.WeaponType), typeof(global::Google.Protobuf.Protocol.ArmorType), typeof(global::Google.Protobuf.Protocol.ConsumableType), typeof(global::Google.Protobuf.Protocol.TeamModeType), typeof(global::Google.Protobuf.Protocol.GameModeType), }, null, new pbr::GeneratedClrTypeInfo[] {
+          new pbr::GeneratedClrTypeInfo(new[] {typeof(global::Google.Protobuf.Protocol.MsgId), typeof(global::Google.Protobuf.Protocol.CreatureState), typeof(global::Google.Protobuf.Protocol.MoveDir), typeof(global::Google.Protobuf.Protocol.GameObjectType), typeof(global::Google.Protobuf.Protocol.SkillType), typeof(global::Google.Protobuf.Protocol.PlayerServerState), typeof(global::Google.Protobuf.Protocol.ItemType), typeof(global::Google.Protobuf.Protocol.WeaponType), typeof(global::Google.Protobuf.Protocol.ArmorType), typeof(global::Google.Protobuf.Protocol.ConsumableType), typeof(global::Google.Protobuf.Protocol.TeamModeType), typeof(global::Google.Protobuf.Protocol.GameModeType), typeof(global::Google.Protobuf.Protocol.RoomStateType), }, null, new pbr::GeneratedClrTypeInfo[] {
             new pbr::GeneratedClrTypeInfo(typeof(global::Google.Protobuf.Protocol.S_EnterGame), global::Google.Protobuf.Protocol.S_EnterGame.Parser, new[]{ "Player" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Google.Protobuf.Protocol.S_LeaveGame), global::Google.Protobuf.Protocol.S_LeaveGame.Parser, null, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Google.Protobuf.Protocol.S_Spawn), global::Google.Protobuf.Protocol.S_Spawn.Parser, new[]{ "Objects" }, null, null, null, null),
@@ -144,7 +150,8 @@ namespace Google.Protobuf.Protocol {
             new pbr::GeneratedClrTypeInfo(typeof(global::Google.Protobuf.Protocol.LevelInfo), global::Google.Protobuf.Protocol.LevelInfo.Parser, new[]{ "Level", "Curexp" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Google.Protobuf.Protocol.StatInfo), global::Google.Protobuf.Protocol.StatInfo.Parser, new[]{ "Level", "Hp", "MaxHp", "Attack", "Speed", "TotalExp" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Google.Protobuf.Protocol.SkillInfo), global::Google.Protobuf.Protocol.SkillInfo.Parser, new[]{ "SkillId" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Protobuf.Protocol.ItemInfo), global::Google.Protobuf.Protocol.ItemInfo.Parser, new[]{ "ItemDbId", "TemplateId", "Count", "Slot", "Equipped" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Protobuf.Protocol.ItemInfo), global::Google.Protobuf.Protocol.ItemInfo.Parser, new[]{ "ItemDbId", "TemplateId", "Count", "Slot", "Equipped" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Protobuf.Protocol.RoomInfo), global::Google.Protobuf.Protocol.RoomInfo.Parser, new[]{ "RoomNumber", "RoomName", "MapImagePath", "CurPeopleCnt", "MaxPeopleCnt", "RoomState", "TeamMode", "IsSecretRoom" }, null, null, null, null)
           }));
     }
     #endregion
@@ -255,6 +262,12 @@ namespace Google.Protobuf.Protocol {
     [pbr::OriginalName("NORMAL_MODE")] NormalMode = 0,
     [pbr::OriginalName("MONSTER_MODE")] MonsterMode = 1,
     [pbr::OriginalName("A_I_MODE")] AIMode = 2,
+  }
+
+  public enum RoomStateType {
+    [pbr::OriginalName("WAITING")] Waiting = 0,
+    [pbr::OriginalName("FULL")] Full = 1,
+    [pbr::OriginalName("PLAYING")] Playing = 2,
   }
 
   #endregion
@@ -5964,6 +5977,331 @@ namespace Google.Protobuf.Protocol {
           }
           case 40: {
             Equipped = input.ReadBool();
+            break;
+          }
+        }
+      }
+    }
+
+  }
+
+  public sealed partial class RoomInfo : pb::IMessage<RoomInfo> {
+    private static readonly pb::MessageParser<RoomInfo> _parser = new pb::MessageParser<RoomInfo>(() => new RoomInfo());
+    private pb::UnknownFieldSet _unknownFields;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pb::MessageParser<RoomInfo> Parser { get { return _parser; } }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pbr::MessageDescriptor Descriptor {
+      get { return global::Google.Protobuf.Protocol.ProtocolReflection.Descriptor.MessageTypes[39]; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    pbr::MessageDescriptor pb::IMessage.Descriptor {
+      get { return Descriptor; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public RoomInfo() {
+      OnConstruction();
+    }
+
+    partial void OnConstruction();
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public RoomInfo(RoomInfo other) : this() {
+      roomNumber_ = other.roomNumber_;
+      roomName_ = other.roomName_;
+      mapImagePath_ = other.mapImagePath_;
+      curPeopleCnt_ = other.curPeopleCnt_;
+      maxPeopleCnt_ = other.maxPeopleCnt_;
+      roomState_ = other.roomState_;
+      teamMode_ = other.teamMode_;
+      isSecretRoom_ = other.isSecretRoom_;
+      _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public RoomInfo Clone() {
+      return new RoomInfo(this);
+    }
+
+    /// <summary>Field number for the "RoomNumber" field.</summary>
+    public const int RoomNumberFieldNumber = 1;
+    private int roomNumber_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int RoomNumber {
+      get { return roomNumber_; }
+      set {
+        roomNumber_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "RoomName" field.</summary>
+    public const int RoomNameFieldNumber = 2;
+    private string roomName_ = "";
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public string RoomName {
+      get { return roomName_; }
+      set {
+        roomName_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    /// <summary>Field number for the "MapImagePath" field.</summary>
+    public const int MapImagePathFieldNumber = 3;
+    private string mapImagePath_ = "";
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public string MapImagePath {
+      get { return mapImagePath_; }
+      set {
+        mapImagePath_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    /// <summary>Field number for the "CurPeopleCnt" field.</summary>
+    public const int CurPeopleCntFieldNumber = 4;
+    private int curPeopleCnt_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int CurPeopleCnt {
+      get { return curPeopleCnt_; }
+      set {
+        curPeopleCnt_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "MaxPeopleCnt" field.</summary>
+    public const int MaxPeopleCntFieldNumber = 5;
+    private int maxPeopleCnt_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int MaxPeopleCnt {
+      get { return maxPeopleCnt_; }
+      set {
+        maxPeopleCnt_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "RoomState" field.</summary>
+    public const int RoomStateFieldNumber = 6;
+    private global::Google.Protobuf.Protocol.RoomStateType roomState_ = global::Google.Protobuf.Protocol.RoomStateType.Waiting;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public global::Google.Protobuf.Protocol.RoomStateType RoomState {
+      get { return roomState_; }
+      set {
+        roomState_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "TeamMode" field.</summary>
+    public const int TeamModeFieldNumber = 7;
+    private global::Google.Protobuf.Protocol.TeamModeType teamMode_ = global::Google.Protobuf.Protocol.TeamModeType.MannerMode;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public global::Google.Protobuf.Protocol.TeamModeType TeamMode {
+      get { return teamMode_; }
+      set {
+        teamMode_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "isSecretRoom" field.</summary>
+    public const int IsSecretRoomFieldNumber = 8;
+    private bool isSecretRoom_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public bool IsSecretRoom {
+      get { return isSecretRoom_; }
+      set {
+        isSecretRoom_ = value;
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override bool Equals(object other) {
+      return Equals(other as RoomInfo);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public bool Equals(RoomInfo other) {
+      if (ReferenceEquals(other, null)) {
+        return false;
+      }
+      if (ReferenceEquals(other, this)) {
+        return true;
+      }
+      if (RoomNumber != other.RoomNumber) return false;
+      if (RoomName != other.RoomName) return false;
+      if (MapImagePath != other.MapImagePath) return false;
+      if (CurPeopleCnt != other.CurPeopleCnt) return false;
+      if (MaxPeopleCnt != other.MaxPeopleCnt) return false;
+      if (RoomState != other.RoomState) return false;
+      if (TeamMode != other.TeamMode) return false;
+      if (IsSecretRoom != other.IsSecretRoom) return false;
+      return Equals(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override int GetHashCode() {
+      int hash = 1;
+      if (RoomNumber != 0) hash ^= RoomNumber.GetHashCode();
+      if (RoomName.Length != 0) hash ^= RoomName.GetHashCode();
+      if (MapImagePath.Length != 0) hash ^= MapImagePath.GetHashCode();
+      if (CurPeopleCnt != 0) hash ^= CurPeopleCnt.GetHashCode();
+      if (MaxPeopleCnt != 0) hash ^= MaxPeopleCnt.GetHashCode();
+      if (RoomState != global::Google.Protobuf.Protocol.RoomStateType.Waiting) hash ^= RoomState.GetHashCode();
+      if (TeamMode != global::Google.Protobuf.Protocol.TeamModeType.MannerMode) hash ^= TeamMode.GetHashCode();
+      if (IsSecretRoom != false) hash ^= IsSecretRoom.GetHashCode();
+      if (_unknownFields != null) {
+        hash ^= _unknownFields.GetHashCode();
+      }
+      return hash;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override string ToString() {
+      return pb::JsonFormatter.ToDiagnosticString(this);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void WriteTo(pb::CodedOutputStream output) {
+      if (RoomNumber != 0) {
+        output.WriteRawTag(8);
+        output.WriteInt32(RoomNumber);
+      }
+      if (RoomName.Length != 0) {
+        output.WriteRawTag(18);
+        output.WriteString(RoomName);
+      }
+      if (MapImagePath.Length != 0) {
+        output.WriteRawTag(26);
+        output.WriteString(MapImagePath);
+      }
+      if (CurPeopleCnt != 0) {
+        output.WriteRawTag(32);
+        output.WriteInt32(CurPeopleCnt);
+      }
+      if (MaxPeopleCnt != 0) {
+        output.WriteRawTag(40);
+        output.WriteInt32(MaxPeopleCnt);
+      }
+      if (RoomState != global::Google.Protobuf.Protocol.RoomStateType.Waiting) {
+        output.WriteRawTag(48);
+        output.WriteEnum((int) RoomState);
+      }
+      if (TeamMode != global::Google.Protobuf.Protocol.TeamModeType.MannerMode) {
+        output.WriteRawTag(56);
+        output.WriteEnum((int) TeamMode);
+      }
+      if (IsSecretRoom != false) {
+        output.WriteRawTag(64);
+        output.WriteBool(IsSecretRoom);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(output);
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int CalculateSize() {
+      int size = 0;
+      if (RoomNumber != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(RoomNumber);
+      }
+      if (RoomName.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(RoomName);
+      }
+      if (MapImagePath.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(MapImagePath);
+      }
+      if (CurPeopleCnt != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(CurPeopleCnt);
+      }
+      if (MaxPeopleCnt != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(MaxPeopleCnt);
+      }
+      if (RoomState != global::Google.Protobuf.Protocol.RoomStateType.Waiting) {
+        size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) RoomState);
+      }
+      if (TeamMode != global::Google.Protobuf.Protocol.TeamModeType.MannerMode) {
+        size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) TeamMode);
+      }
+      if (IsSecretRoom != false) {
+        size += 1 + 1;
+      }
+      if (_unknownFields != null) {
+        size += _unknownFields.CalculateSize();
+      }
+      return size;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(RoomInfo other) {
+      if (other == null) {
+        return;
+      }
+      if (other.RoomNumber != 0) {
+        RoomNumber = other.RoomNumber;
+      }
+      if (other.RoomName.Length != 0) {
+        RoomName = other.RoomName;
+      }
+      if (other.MapImagePath.Length != 0) {
+        MapImagePath = other.MapImagePath;
+      }
+      if (other.CurPeopleCnt != 0) {
+        CurPeopleCnt = other.CurPeopleCnt;
+      }
+      if (other.MaxPeopleCnt != 0) {
+        MaxPeopleCnt = other.MaxPeopleCnt;
+      }
+      if (other.RoomState != global::Google.Protobuf.Protocol.RoomStateType.Waiting) {
+        RoomState = other.RoomState;
+      }
+      if (other.TeamMode != global::Google.Protobuf.Protocol.TeamModeType.MannerMode) {
+        TeamMode = other.TeamMode;
+      }
+      if (other.IsSecretRoom != false) {
+        IsSecretRoom = other.IsSecretRoom;
+      }
+      _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(pb::CodedInputStream input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+            break;
+          case 8: {
+            RoomNumber = input.ReadInt32();
+            break;
+          }
+          case 18: {
+            RoomName = input.ReadString();
+            break;
+          }
+          case 26: {
+            MapImagePath = input.ReadString();
+            break;
+          }
+          case 32: {
+            CurPeopleCnt = input.ReadInt32();
+            break;
+          }
+          case 40: {
+            MaxPeopleCnt = input.ReadInt32();
+            break;
+          }
+          case 48: {
+            RoomState = (global::Google.Protobuf.Protocol.RoomStateType) input.ReadEnum();
+            break;
+          }
+          case 56: {
+            TeamMode = (global::Google.Protobuf.Protocol.TeamModeType) input.ReadEnum();
+            break;
+          }
+          case 64: {
+            IsSecretRoom = input.ReadBool();
             break;
           }
         }
