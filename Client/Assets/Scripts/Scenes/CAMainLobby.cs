@@ -28,5 +28,23 @@ public class CAMainLobby : BaseScene
         _sceneUI.ChattingUI.AddToScrollView(chatpacket);
     }
 
+    public void HandleAlterRoom(S_AlterRoom alterRoomPacket)
+    {
+        switch (alterRoomPacket.Altertype)
+        {
+            case RoomAlterType.Add:
+                _sceneUI.GameRoomGridPanel.AddRoom(alterRoomPacket.Roominfo.RoomNumber, alterRoomPacket.Roominfo);
+                break;
+
+            case RoomAlterType.Delete:
+                _sceneUI.GameRoomGridPanel.RemoveRoom(alterRoomPacket.Roominfo.RoomNumber);
+                break;
+
+            case RoomAlterType.Alter:
+                _sceneUI.GameRoomGridPanel.ChangeRoomInfo(alterRoomPacket.Roominfo.RoomNumber, alterRoomPacket.Roominfo);
+                break;
+        }
+    }
+
 
 }

@@ -186,27 +186,69 @@ public class UI_GameRoomCreatePopup : UI_Popup
     {
         // 여기서 Game Room의 Info를 가지고 GameRoom을 Create 해달라고 서버에 요청을 해야한다. 
         Debug.Log("OnClickBtnClicked!");
-        Debug.Log("=========== Room Info ============");
+        //Debug.Log("=========== Room Info ============");
 
-        string RoomName = GetObject((int)GameObjects.RoomName).gameObject.GetComponent<TMP_InputField>().text;
-        Debug.Log($"Room Name : {RoomName}");
-        Debug.Log($"Game Mode : {SelectedGameMode.ToString()}");
-        Debug.Log($"Team Mode : {SelectedTeamMode.ToString()}");
-        Debug.Log($"Pwd  Use  : {IsPasswordUsed}");
-        if (IsPasswordUsed)
-        Debug.Log($"Password  : {GetObject((int)GameObjects.Password).gameObject.GetComponent<TMP_InputField>().text}");
-        Debug.Log("==========  Room Info ============");
+        //string RoomName = GetObject((int)GameObjects.RoomName).gameObject.GetComponent<TMP_InputField>().text;
+        //Debug.Log($"Room Name : {RoomName}");
+        //Debug.Log($"Game Mode : {SelectedGameMode.ToString()}");
+        //Debug.Log($"Team Mode : {SelectedTeamMode.ToString()}");
+        //Debug.Log($"Pwd  Use  : {IsPasswordUsed}");
+        //if (IsPasswordUsed)
+        //Debug.Log($"Password  : {GetObject((int)GameObjects.Password).gameObject.GetComponent<TMP_InputField>().text}");
+        //Debug.Log("==========  Room Info ============");
+
+        RoomInfo roominfo = new RoomInfo();
+        roominfo.RoomNumber = -1; // 이부분은 Client가 결정하는 것이 아닌 서버에서 결정하는 것임 
+        roominfo.RoomName = GetObject((int)GameObjects.RoomName).gameObject.GetComponent<TMP_InputField>().text;
+        roominfo.MapImagePath = ""; // 나중에 RandomMap으로 변경할 것임. DataManager에서 작업해야할듯 
+        roominfo.CurPeopleCnt = 1;
+        roominfo.MaxPeopleCnt = -1; // 이거는 Create시 모드마다 Maximum People로서 Server에서 강제 세팅
+        roominfo.RoomState = RoomStateType.Waiting;
+        roominfo.TeamMode = SelectedTeamMode;
+        roominfo.GameMode = SelectedGameMode;
+        roominfo.IsSecretRoom = IsPasswordUsed;
+ 
+        C_CreateRoom createRoomPacket = new C_CreateRoom();
+        createRoomPacket.Roominfo = roominfo;
+        
+        Managers.Network.Send(createRoomPacket);
+
+        CloseCreatePopup(evt);
     }
+
 
     public void OnCancelBtnClicked(PointerEventData evt)
     {
         Debug.Log("OnCancelBtnClicked!");
 
+        // Server에다 데이터를 보내보자. 
+
+        CloseCreatePopup(evt);
+
         // 클릭한 버튼 객체 가져오기
+        //GameObject clickedButton = evt.pointerPress;
+        //if (clickedButton != null)
+        //{
+        //    Debug.Log($"Clicked Button: {clickedButton.name}");
+
+        //    // 부모 객체 가져오기
+        //    Transform parentTransform = clickedButton.transform.parent;
+
+        //    // 부모의 부모 객체 가져오기
+        //    Transform grandParentTransform = parentTransform.parent;
+
+        //    grandParentTransform.gameObject.SetActive(false);
+
+        //}
+        //Managers.UI.ClosePopupUI();
+    }
+
+    private void CloseCreatePopup(PointerEventData evt)
+    {
         GameObject clickedButton = evt.pointerPress;
         if (clickedButton != null)
         {
-            Debug.Log($"Clicked Button: {clickedButton.name}");
+            //Debug.Log($"Clicked Button: {clickedButton.name}");
 
             // 부모 객체 가져오기
             Transform parentTransform = clickedButton.transform.parent;

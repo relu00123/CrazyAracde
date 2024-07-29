@@ -36,6 +36,8 @@ enum MsgId {
   C_ENTER_LOBBY = 29;
   C_ADD_MONEY = 30;
   S_ADD_MONEY = 31;
+  C_CREATE_ROOM = 32;
+  S_ALTER_ROOM  = 33;
 }
 
 enum CreatureState {
@@ -118,8 +120,12 @@ enum RoomStateType
   PLAYING = 2;
 }
 
- 
-
+enum RoomAlterType
+{
+  ADD = 0;
+  DELETE = 1;
+  ALTER = 2;
+}
 
 message S_EnterGame {
   ObjectInfo player = 1;
@@ -256,9 +262,17 @@ message S_OtherPlayerEnterLobby {
   repeated LobbyPlayerInfo otherplayers = 1;
 }
 
-
 message S_PlayerLeaveLobby {
   LobbyPlayerInfo player = 1;
+}
+
+message C_CreateRoom {
+  RoomInfo roominfo = 1;
+}
+
+message S_AlterRoom {
+  RoomAlterType altertype = 1;
+  RoomInfo roominfo = 2;
 }
 
 
@@ -311,6 +325,7 @@ message RoomInfo
   int32  MaxPeopleCnt = 5;
   RoomStateType RoomState = 6;
   TeamModeType TeamMode = 7;
-  bool isSecretRoom = 8;
+  GameModeType GameMode = 8;
+  bool isSecretRoom = 9;
 }
  

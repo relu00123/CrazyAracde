@@ -14,14 +14,14 @@ public class UI_CAMainLobbyScene : UI_Scene
         RightButton,
         ToStoreButton,
         CreateRoomButton,
+        PreviousRoomsBtn,
+        NextRoomsBtn,
     }
 
     enum Panels
     {
         GameRoomCreatePanel,
     }
-
-
 
     public UI_UserListPannel UserListUI { get; private set; }
 
@@ -40,6 +40,8 @@ public class UI_CAMainLobbyScene : UI_Scene
         GetButton((int)Buttons.RightButton).gameObject.BindEvent(OnNextPageButtonClicked);
         GetButton((int)Buttons.ToStoreButton).gameObject.BindEvent(OnToStoreButtonClicked);
         GetButton((int)Buttons.CreateRoomButton).gameObject.BindEvent(OnCreateRoomButtonClicked);
+        GetButton((int)Buttons.PreviousRoomsBtn).gameObject.BindEvent(OnPreviousRoomsBtnClicked);
+        GetButton((int)Buttons.NextRoomsBtn).gameObject.BindEvent(OnNextRoomsBtnClicked);
         GetObject((int)Panels.GameRoomCreatePanel).SetActive(false);
 
         Transform userListPanelTransform = transform.Find("MainLobbyPannel/UserListPannel");
@@ -84,5 +86,15 @@ public class UI_CAMainLobbyScene : UI_Scene
         // 이런 식으로 사용하는 것 맞는지 확인하기.
         GetObject((int)Panels.GameRoomCreatePanel).SetActive(true);
         UI_GameRoomCreatePopup Popup = Managers.UI.ShowPopupUI<UI_GameRoomCreatePopup>(GetObject((int)Panels.GameRoomCreatePanel));
+    }
+
+    public void OnPreviousRoomsBtnClicked(PointerEventData evt)
+    {
+        GameRoomGridPanel.PreviousRoomsBtnClicked();
+    }
+
+    public void OnNextRoomsBtnClicked(PointerEventData evt)
+    {
+        GameRoomGridPanel.NextRoomsBtnClicked();
     }
 }

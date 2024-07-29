@@ -31,11 +31,6 @@ public class UI_RoomItem : UI_Base
         { RoomInfoImages.Waiting,    "Textures/GameRoom/Info/ExistringRoom"},
     };
 
-
-    enum Objects
-    {
-        
-    }
     enum Images
     {
         MapImage,
@@ -61,12 +56,12 @@ public class UI_RoomItem : UI_Base
 
 
     bool isRoomItemActive { get; set; }
+    RoomInfo roomInfo { get; set; }
 
 
     public override void Init()
     {
         Bind<TextMeshProUGUI>(typeof(Texts));
-        Bind<GameObject>(typeof(Images));
         Bind<Image>(typeof(Images));
         Bind<Button>(typeof(Buttons));
 
@@ -79,10 +74,10 @@ public class UI_RoomItem : UI_Base
 
         Vector2 cellSize = ParentGrid.GetComponent<GridLayoutGroup>().cellSize;
 
-        RectTransform normalRectTransform = GetObject((int)Images.Normal).GetComponent<RectTransform>();
+        RectTransform normalRectTransform = GetImage((int)Images.Normal).GetComponent<RectTransform>();
         normalRectTransform.sizeDelta = new Vector2(cellSize.x, cellSize.y);
 
-        RectTransform HighlightedRectTransform = GetObject((int)Images.Highlighted).GetComponent<RectTransform>();
+        RectTransform HighlightedRectTransform = GetImage((int)Images.Highlighted).GetComponent<RectTransform>();
         HighlightedRectTransform.sizeDelta = new Vector2(cellSize.x, cellSize.y);
 
         OutlineInitialize();
@@ -104,40 +99,42 @@ public class UI_RoomItem : UI_Base
         GetImage((int)Images.GameState).gameObject.SetActive(false);
     }
 
-    public void SetActive(RoomInfo roominfo)
+    public void SetRoomInfo(RoomInfo _roominfo)
     {
-        // Todo..
         isRoomItemActive = true;
+        roomInfo = _roominfo;
+        UpdateRoomInfoUI();
+    }
 
-        GetTextMeshPro((int)Texts.RoomNumber).text = roominfo.RoomNumber.ToString();
-        GetTextMeshPro((int)Texts.RoomName).text = roominfo.RoomName;
+    public void UpdateRoomInfoUI()
+    {
+        GetTextMeshPro((int)Texts.RoomNumber).text = roomInfo.RoomNumber.ToString();
+        GetTextMeshPro((int)Texts.RoomName).text = roomInfo.RoomName;
 
         // 이부분 나중에 Json 으로 변경할지 고려해 봐야함 
-        GetImage((int)Images.MapImage).sprite = Resources.Load<Sprite>(roominfo.MapImagePath);
-        GetTextMeshPro((int)Texts.RoomCapacity).text = MakeCurPeopleInfo(roominfo.CurPeopleCnt, roominfo.MaxPeopleCnt);
-        
+        GetImage((int)Images.MapImage).sprite = Resources.Load<Sprite>(roomInfo.MapImagePath);
+        GetTextMeshPro((int)Texts.RoomCapacity).text = MakeCurPeopleInfo(roomInfo.CurPeopleCnt, roomInfo.MaxPeopleCnt);
+
         // RoomState
-        string stateString = roominfo.RoomState.ToString();
+        string stateString = roomInfo.RoomState.ToString();
         if (RoomInfoImages.TryParse(stateString, out RoomInfoImages roominfoimage))
         {
             GetImage((int)Images.GameState).sprite = Resources.Load<Sprite>(SpritePath[roominfoimage]);
         }
 
         // TeamMode
-        string TeamModeString = roominfo.TeamMode.ToString();
+        string TeamModeString = roomInfo.TeamMode.ToString();
         if (RoomInfoImages.TryParse(TeamModeString, out RoomInfoImages teammodeinfoimage))
         {
             GetImage((int)Images.TeamMode).sprite = Resources.Load<Sprite>(SpritePath[teammodeinfoimage]);
         }
 
-        GetImage((int)Images.SecretMode).gameObject.SetActive(roominfo.IsSecretRoom);
+        GetImage((int)Images.SecretMode).gameObject.SetActive(roomInfo.IsSecretRoom);
     }
-
 
     private string MakeCurPeopleInfo(int curppl, int maxppl)
     {
-        string returnvalue = curppl.ToString() + "/" + maxppl.ToString();
-        return returnvalue;
+        return $"{curppl}/{maxppl}";
     }
 
 

@@ -23,6 +23,9 @@ namespace Server
 
 		public int SessionId { get; set; }
 
+		public int BelongRoomId { get; set; }
+
+
 		object _lock = new object();
 		List<ArraySegment<byte>> _reserveQueue = new List<ArraySegment<byte>>();
 

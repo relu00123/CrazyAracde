@@ -284,8 +284,23 @@ class PacketHandler
 		}
 	}
 
+	public static void S_AlterRoomHandler(PacketSession session, IMessage packet)
+	{
+		Debug.Log("Alter Room Packet Received!");
 
-	public static void S_AddMoneyHandler(PacketSession session, IMessage packet)
+		if (SceneManager.GetActiveScene().name != "CAMainLobby")
+		{
+			Debug.Log("Current Scne is not Lobby Scene!"); // LobbyScene일때만 이 패킷이 도착애햐암
+			return;
+		}
+
+		CAMainLobby mainLobby = GameObject.FindObjectOfType<CAMainLobby>();
+		mainLobby.HandleAlterRoom((S_AlterRoom)packet);
+	}
+
+
+
+    public static void S_AddMoneyHandler(PacketSession session, IMessage packet)
 	{
 		Debug.Log("AddMoney Packet Received!");
 

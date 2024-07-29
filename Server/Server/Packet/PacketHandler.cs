@@ -6,6 +6,7 @@ using Server.Game;
 using ServerCore;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 
@@ -45,7 +46,20 @@ class PacketHandler
 		room.Push(room.HandleSkill, player, skillPacket);
 	}
 
-	public static void C_LoginHandler(PacketSession session, IMessage packet)
+	public static void C_CreateRoomHandler(PacketSession session, IMessage packet)
+	{
+		C_CreateRoom createroomPacket = packet as C_CreateRoom;
+		ClientSession clientSession = session as ClientSession;
+
+		// Game Room 생성해주고 Player State 바꿔주는 등의 행동을 해야한다. 
+		Console.WriteLine("Create Room Handler Called From Server");
+
+		return;
+	}
+
+
+
+    public static void C_LoginHandler(PacketSession session, IMessage packet)
 	{
 		C_Login loginPacket = packet as C_Login;
 		ClientSession clientSession = session as ClientSession;
