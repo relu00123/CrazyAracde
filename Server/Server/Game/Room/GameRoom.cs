@@ -18,6 +18,13 @@ namespace Server.Game
 		Dictionary<int, Monster> _monsters = new Dictionary<int, Monster>();
 		Dictionary<int, Projectile> _projectiles = new Dictionary<int, Projectile>();
 
+
+		public GameRoom(int id)
+		{
+			RoomId = id;
+		}
+
+
 		public Zone[,] Zones { get; private set; }
 		public int ZoneCells { get; private set; }
 

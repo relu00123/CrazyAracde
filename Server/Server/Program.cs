@@ -106,7 +106,10 @@ namespace Server
 			ConfigManager.LoadConfig();
 			DataManager.LoadData();
 
-			GameLogic.Instance.Push(() => { GameLogic.Instance.Add(1); });
+			// 기존 코드
+			//GameLogic.Instance.Push(() => { GameLogic.Instance.Add(1); });
+
+			//GameLogic.Instance.Push(() => { GameLogic.Instance.AddRoom(); });
 
 			// DNS (Domain Name System)
 			string host = Dns.GetHostName();
@@ -135,8 +138,14 @@ namespace Server
 				t.Start();
 			}
 
+			// 기존 코드
 			// GameLogic
 			Thread.CurrentThread.Name = "GameLogic";
+			//GameLogicTask();
+
+
+			// 변경코드
+			//Thread.CurrentThread.Name = "Main";
 			GameLogicTask();
 		}
 	}
