@@ -232,8 +232,16 @@ namespace Server
 			}
 		}
 
-		public void HandleServerStateChange(PlayerServerState state)
+		public void HandleServerStateChange(ClientSession clientsession, PlayerServerState state)
 		{
+			if (clientsession.ServerState == PlayerServerState.ServerStateRoom)
+			{
+				if (state == PlayerServerState.ServerStateLobby)
+				{
+					clientsession.LeaveRoom();
+				}
+			}
+
 			// 나중에 함수가 수정되어야 할 수도 있음. 일단은 문제가 터지기 전까지 이 함수 사용. 
 			ServerState = state; 
 		}

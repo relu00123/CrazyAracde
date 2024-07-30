@@ -65,8 +65,8 @@ class PacketManager
 		_handler.Add((ushort)MsgId.SChatting, PacketHandler.S_ChattingHandler);		
 		_onRecv.Add((ushort)MsgId.SAddMoney, MakePacket<S_AddMoney>);
 		_handler.Add((ushort)MsgId.SAddMoney, PacketHandler.S_AddMoneyHandler);		
-		_onRecv.Add((ushort)MsgId.SAlterRoom , MakePacket<S_AlterRoom >);
-		_handler.Add((ushort)MsgId.SAlterRoom , PacketHandler.S_AlterRoom Handler);
+		_onRecv.Add((ushort)MsgId.SAlterRoom, MakePacket<S_AlterRoom>);
+		_handler.Add((ushort)MsgId.SAlterRoom, PacketHandler.S_AlterRoomHandler);
 	}
 
 	public void OnRecvPacket(PacketSession session, ArraySegment<byte> buffer)

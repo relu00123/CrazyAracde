@@ -12,6 +12,7 @@ public class Define
         Game,
         CAMainLobby,
         CAStore,
+        CAGameRoom,
     }
 
     public enum Sound

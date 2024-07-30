@@ -37,7 +37,7 @@ enum MsgId {
   C_ADD_MONEY = 30;
   S_ADD_MONEY = 31;
   C_CREATE_ROOM = 32;
-  S_ALTER_ROOM  = 33;
+  S_ALTER_ROOM = 33;
 }
 
 enum CreatureState {
@@ -70,8 +70,9 @@ enum SkillType {
 enum PlayerServerState {
   SERVER_STATE_LOGIN = 0;
   SERVER_STATE_LOBBY = 1;
-  SERVER_STATE_GAME = 2;
-  SERVER_STATE_STORE = 3;
+  SERVER_STATE_STORE = 2;
+  SERVER_STATE_ROOM  = 3;
+  SERVER_STATE_GAME  = 4;
 }
 
 enum ItemType {

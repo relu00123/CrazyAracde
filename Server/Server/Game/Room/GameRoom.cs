@@ -12,7 +12,10 @@ namespace Server.Game
 	{
 		public const int VisionCells = 5;
 
-		public int RoomId { get; set; }
+		public int _roomId { get; set; }
+		private List<ClientSession> _sessions = new List<ClientSession>();
+		public bool IsClosed { get; private set; } = false;
+
 
 		Dictionary<int, Player> _players = new Dictionary<int, Player>();
 		Dictionary<int, Monster> _monsters = new Dictionary<int, Monster>();
@@ -21,7 +24,7 @@ namespace Server.Game
 
 		public GameRoom(int id)
 		{
-			RoomId = id;
+			_roomId = id;
 		}
 
 
@@ -83,6 +86,28 @@ namespace Server.Game
 		public void Update()
 		{
 			Flush();
+
+			if (_sessions.Count == 0 && !IsClosed)
+			{
+				CloseRoom();
+			}
+		}
+
+		public void AddSession(ClientSession session)
+		{
+			_sessions.Add(session);
+		}
+
+		public void RemoveSession(ClientSession session)
+		{
+			_sessions.Remove(session);
+		}
+
+		private void CloseRoom()
+		{
+			IsClosed = true;
+
+			GameLogic.Instance.RemoveRoom(_roomId);
 		}
 
 		Random _rand = new Random();
@@ -308,6 +333,13 @@ namespace Server.Game
 			}
 
 			return zones.ToList();
+		}
+
+
+		public void TestFunc()
+		{
+			Console.WriteLine($"Test Func Called from Room_{_roomId}");
+			 
 		}
 	}
 }

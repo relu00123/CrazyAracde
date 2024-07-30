@@ -211,9 +211,19 @@ public class UI_GameRoomCreatePopup : UI_Popup
         C_CreateRoom createRoomPacket = new C_CreateRoom();
         createRoomPacket.Roominfo = roominfo;
         
-        Managers.Network.Send(createRoomPacket);
+        
 
         CloseCreatePopup(evt);
+
+
+        // Scene 전환 GameRoom 으로 일단 Server의 허락을 받지 않고 Scene Change를 해보자. 
+        // 이게 정상적으로 된다면 서버에서 Room을 만들고 이후에 Client가 Room에 참여할 수 있는 방식으로 바꾸어야 함 
+        Managers.Scene.LoadScene(Define.Scene.CAGameRoom);
+
+      
+        // 서버에게 방을 만들어 달라고 요청
+        Managers.Network.Send(createRoomPacket);
+
     }
 
 

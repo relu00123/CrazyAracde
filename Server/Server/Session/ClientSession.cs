@@ -23,7 +23,7 @@ namespace Server
 
 		public int SessionId { get; set; }
 
-		public int BelongRoomId { get; set; }
+		public GameRoom BeloingRoom { get; private set; }
 
 
 		object _lock = new object();
@@ -144,5 +144,21 @@ namespace Server
 			//Console.WriteLine($"Transferred bytes: {numOfBytes}");
 		}
 		#endregion
+
+		public void JoinRoom(GameRoom room)
+		{
+			BeloingRoom = room;
+			room.AddSession(this);
+		}
+
+		public void LeaveRoom()
+		{
+			if (BeloingRoom != null)
+			{
+				BeloingRoom.RemoveSession(this);
+				BeloingRoom = null;
+			}
+		}
+
 	}
 }

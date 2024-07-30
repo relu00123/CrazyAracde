@@ -1,12 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
  
 namespace Server.Game
 {
-	public class GameLogic : JobSerializer
+	public partial class GameLogic : JobSerializer
 	{
 		public static GameLogic Instance { get; } = new GameLogic();
 		private const double UpdateTime = 16.67;
@@ -14,13 +15,15 @@ namespace Server.Game
 		Dictionary<int, GameRoom> _rooms = new Dictionary<int, GameRoom>();
 		int _roomId = 1;
 
-		public void AddRoom()
+		public GameRoom AddRoom()
 		{
 			var room = new GameRoom(_roomId);
 			_rooms[_roomId] = room;
 			_roomId++;
 
 			Task.Run(() => GameRoomTask(room));
+
+			return room;
 
 			//Thread roomThread = new Thread(() => GameRoomTask(room));
 			//roomThread.Name = $"GameRoom_{room.RoomId}";
@@ -35,9 +38,10 @@ namespace Server.Game
 			//	room.Update();
 			//	Thread.Sleep(0);
 			//}
+ 
 
 			var updateInterval = TimeSpan.FromMilliseconds(UpdateTime);
-			while (true)
+			while (!room.IsClosed)
 			{
 				var startTime = DateTime.UtcNow;
 
@@ -71,7 +75,7 @@ namespace Server.Game
 			GameRoom gameRoom = new GameRoom(_roomId);
 			gameRoom.Push(gameRoom.Init, mapId, 10);
 
-			gameRoom.RoomId = _roomId;
+			gameRoom._roomId = _roomId;
 			_rooms.Add(_roomId, gameRoom);
 			_roomId++;
 
@@ -82,6 +86,18 @@ namespace Server.Game
 		{
 			return _rooms.Remove(roomId);
 		}
+
+
+		// 새로 작성한 함수 
+		public void RemoveRoom(int roomId)
+		{
+			if (_rooms.TryGetValue(roomId, out var room))
+			{
+				_rooms.Remove(roomId);
+                Console.WriteLine($"Room {roomId} has been removed. There are {_rooms.Count} Rooms in Server Now");
+            }
+		}
+
 
 		public GameRoom Find(int roomId)
 		{

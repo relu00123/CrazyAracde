@@ -54,6 +54,9 @@ class PacketHandler
 		// Game Room 생성해주고 Player State 바꿔주는 등의 행동을 해야한다. 
 		Console.WriteLine("Create Room Handler Called From Server");
 
+		// GameLogic에 해야할 일감 추가. 
+		GameLogic.Instance.Push(GameLogic.Instance.HandleCreateRoom, clientSession, createroomPacket);
+
 		return;
 	}
 
@@ -119,7 +122,7 @@ class PacketHandler
 		Console.WriteLine("C_EnterStore Packet Received!");
 
 		// ServerState를 Store로 변경한다. 
-		clientSession.HandleServerStateChange(PlayerServerState.ServerStateStore);
+		clientSession.HandleServerStateChange(clientSession, PlayerServerState.ServerStateStore);
 	}
 
 	public static void C_EnterLobbyHandler(PacketSession session, IMessage packet)
@@ -130,7 +133,7 @@ class PacketHandler
 		Console.WriteLine("C_EnterLobby Packet Received!");
 
 		// ServerState를 Lobby로 변경한다.
-		clientSession.HandleServerStateChange(PlayerServerState.ServerStateLobby);
+		clientSession.HandleServerStateChange(clientSession, PlayerServerState.ServerStateLobby);
 	}
 
 
