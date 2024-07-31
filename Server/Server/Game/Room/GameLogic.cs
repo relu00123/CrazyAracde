@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Google.Protobuf.Protocol;
+using System;
 using System.Collections.Generic;
 using System.Runtime.InteropServices;
 using System.Text;
@@ -7,105 +8,15 @@ using System.Threading.Tasks;
  
 namespace Server.Game
 {
-	public partial class GameLogic : JobSerializer
+	public class GameLogic : JobSerializer
 	{
 		public static GameLogic Instance { get; } = new GameLogic();
-		private const double UpdateTime = 16.67;
-
-		Dictionary<int, GameRoom> _rooms = new Dictionary<int, GameRoom>();
-		int _roomId = 1;
-
-		public GameRoom AddRoom()
-		{
-			var room = new GameRoom(_roomId);
-			_rooms[_roomId] = room;
-			_roomId++;
-
-			Task.Run(() => GameRoomTask(room));
-
-			return room;
-
-			//Thread roomThread = new Thread(() => GameRoomTask(room));
-			//roomThread.Name = $"GameRoom_{room.RoomId}";
-			//roomThread.Start();
-		}
-
-		static async void GameRoomTask(GameRoom room)
-		{
-			//while (true)
-			//{
-			//	Console.WriteLine($"Running Thread : {room.RoomId}");
-			//	room.Update();
-			//	Thread.Sleep(0);
-			//}
- 
-
-			var updateInterval = TimeSpan.FromMilliseconds(UpdateTime);
-			while (!room.IsClosed)
-			{
-				var startTime = DateTime.UtcNow;
-
-				room.Update();
-
-				var elapsedTime = DateTime.UtcNow - startTime;
-				var delayTime = updateInterval - elapsedTime;
-				if (delayTime > TimeSpan.Zero)
-				{
-					await Task.Delay(delayTime);
-				}
-
-            }
-		}
-
-
+	
 		public void Update()
 		{
 			Flush();
 
 			UserManager.Instance.Update();
-
-			//foreach (GameRoom room in _rooms.Values)
-			//{
-			//	room.Update();
-			//}
-		}
-
-		public GameRoom Add(int mapId)
-		{
-			GameRoom gameRoom = new GameRoom(_roomId);
-			gameRoom.Push(gameRoom.Init, mapId, 10);
-
-			gameRoom._roomId = _roomId;
-			_rooms.Add(_roomId, gameRoom);
-			_roomId++;
-
-			return gameRoom;
-		}
-
-		public bool Remove(int roomId)
-		{
-			return _rooms.Remove(roomId);
-		}
-
-
-		// 새로 작성한 함수 
-		public void RemoveRoom(int roomId)
-		{
-			if (_rooms.TryGetValue(roomId, out var room))
-			{
-				_rooms.Remove(roomId);
-                Console.WriteLine($"Room {roomId} has been removed. There are {_rooms.Count} Rooms in Server Now");
-            }
-		}
-
-
-		public GameRoom Find(int roomId)
-		{
-			GameRoom room = null;
-			if (_rooms.TryGetValue(roomId, out room))
-				return room;
-
-			return null;
 		}
 	}
 }

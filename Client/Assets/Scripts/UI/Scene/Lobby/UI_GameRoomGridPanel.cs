@@ -51,26 +51,63 @@ public class UI_GameRoomGridPanel : UI_Base
             UI_RoomItem item = Instantiate(roomInfo_UI, gridLayoutGroup.transform);
             ShownRoomList.Add(item);
         }
+
+        RoomInfo roominfo = new RoomInfo();
+        roominfo.RoomNumber = 10;
+        roominfo.RoomName = "TestRoom1";
+        roominfo.CurPeopleCnt = 2;
+        roominfo.MaxPeopleCnt = 6;
+        roominfo.RoomState = RoomStateType.Waiting;
+        roominfo.TeamMode = TeamModeType.MannerMode;
+        roominfo.GameMode = GameModeType.NormalMode;
+        roominfo.IsSecretRoom = true;
+
+        //AddRoom(1, roominfo);
+        //AddRoom(2, roominfo);
+        //AddRoom(3, roominfo);
+        //AddRoom(4, roominfo);
+        //AddRoom(5, roominfo);
+        //AddRoom(6, roominfo);
+        //AddRoom(7, roominfo);
+        //AddRoom(8, roominfo);
+        //AddRoom(9, roominfo);
+        //AddRoom(10, roominfo);
+        //AddRoom(11, roominfo);
+        //AddRoom(12, roominfo);
+        //AddRoom(13, roominfo);
+        //AddRoom(14, roominfo);
+        //AddRoom(15, roominfo);
+        //AddRoom(16, roominfo);
+        //AddRoom(17, roominfo);
+        //AddRoom(18, roominfo);
+        //AddRoom(19, roominfo);
+        //AddRoom(20, roominfo);
+
+
     }
 
-    public void AddRoom(int roomNumber, RoomInfo roomInfo)
+    public void AddRoom(RoomInfo roomInfo)
     {
-        if (!Rooms.ContainsKey(roomNumber))
+        int TargetRoomNumber = roomInfo.RoomNumber;
+
+        if (!Rooms.ContainsKey(TargetRoomNumber))
         {
-            Rooms[roomNumber] = roomInfo;
-            OrderedRoomNumber.Add(roomNumber);
+            Rooms[TargetRoomNumber] = roomInfo;
+            OrderedRoomNumber.Add(TargetRoomNumber);
             OrderedRoomNumber.Sort();
-            UpdateRoomUI();
+            UpdateShowingRoomsUI();
         }
     }
 
 
-    public void ChangeRoomInfo(int roomNumber, RoomInfo roomInfo)
+    public void ChangeRoomInfo(RoomInfo roomInfo)
     {
-        if (Rooms.ContainsKey(roomNumber))
+        int TargetRoomNumber = roomInfo.RoomNumber;
+
+        if (Rooms.ContainsKey(TargetRoomNumber))
         {
-            Rooms[roomNumber] = roomInfo;
-            UpdateRoomUI();
+            Rooms[TargetRoomNumber] = roomInfo;
+            UpdateShowingRoomsUI();
         }
     }
 
@@ -81,7 +118,7 @@ public class UI_GameRoomGridPanel : UI_Base
         {
             Rooms.Remove(roomNumber);
             OrderedRoomNumber.Remove(roomNumber);
-            UpdateRoomUI();
+            UpdateShowingRoomsUI();
         }
     }
 
@@ -102,6 +139,20 @@ public class UI_GameRoomGridPanel : UI_Base
         return roomsForPage;
     }
 
+    private void UpdateShowingRoomsUI()
+    {
+        List<RoomInfo> SelectedRooms = GetRoomsForPage(curPage, roomsPerPage);
+
+        for (int i = 0; i < roomsPerPage; i++)
+        {
+            if (i < SelectedRooms.Count)
+                ShownRoomList[i].SetRoomInfo(SelectedRooms[i]);
+            else
+                ShownRoomList[i].SetEmpty();
+        }
+    }
+
+    #region ButtonCallBackFunctions
     public void PreviousRoomsBtnClicked()
     {
         Debug.Log("PreviousRoomsBtnClicked Called!");
@@ -109,7 +160,7 @@ public class UI_GameRoomGridPanel : UI_Base
         if (curPage > 1)
         {
             curPage--;
-            UpdateRoomUI();
+            UpdateShowingRoomsUI();
         }
 
     }
@@ -123,20 +174,10 @@ public class UI_GameRoomGridPanel : UI_Base
         if (curPage < totalPages)
         {
             curPage++;
-            UpdateRoomUI();
+            UpdateShowingRoomsUI();
         }
     }
 
-    private void UpdateRoomUI()
-    {
-        List<RoomInfo> SelectedRooms = GetRoomsForPage(curPage, roomsPerPage);
+    #endregion
 
-        for (int i = 0; i < roomsPerPage; i++)
-        {
-            if (i < SelectedRooms.Count)
-                ShownRoomList[i].SetRoomInfo(SelectedRooms[i]);
-            else
-                ShownRoomList[i].SetEmpty();
-        }
-    }
 }

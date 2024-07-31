@@ -80,8 +80,19 @@ public class UI_RoomItem : UI_Base
         RectTransform HighlightedRectTransform = GetImage((int)Images.Highlighted).GetComponent<RectTransform>();
         HighlightedRectTransform.sizeDelta = new Vector2(cellSize.x, cellSize.y);
 
+
+        // Click 이 아니라 더블클릭시 이벤트 발생하도록 바꿀 예정 
+        GetImage((int)Images.Normal).gameObject.BindEvent(OnTest);
+
+
         OutlineInitialize();
         SetEmpty();
+    }
+
+    public void OnTest(PointerEventData evt)
+    {
+        if (isRoomItemActive)
+            Debug.Log("On Test Function Called!!!!!!!!!!!");
     }
 
     public void SetEmpty()
@@ -103,6 +114,9 @@ public class UI_RoomItem : UI_Base
     {
         isRoomItemActive = true;
         roomInfo = _roominfo;
+
+   
+
         UpdateRoomInfoUI();
     }
 
@@ -112,7 +126,12 @@ public class UI_RoomItem : UI_Base
         GetTextMeshPro((int)Texts.RoomName).text = roomInfo.RoomName;
 
         // 이부분 나중에 Json 으로 변경할지 고려해 봐야함 
-        GetImage((int)Images.MapImage).sprite = Resources.Load<Sprite>(roomInfo.MapImagePath);
+        var LoadedImage = Resources.Load<Sprite>(roomInfo.MapImagePath);
+        if (LoadedImage != null)
+        {
+            GetImage((int)Images.MapImage).sprite = LoadedImage;
+        }
+             
         GetTextMeshPro((int)Texts.RoomCapacity).text = MakeCurPeopleInfo(roomInfo.CurPeopleCnt, roomInfo.MaxPeopleCnt);
 
         // RoomState

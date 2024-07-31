@@ -53,6 +53,9 @@ public class UI_CAMainLobbyScene : UI_Scene
         GameRoomGridPanel = gameRoomGridPanelTransform.GetComponent<UI_GameRoomGridPanel>();
 
         // GameRoom GridPanel에 RoomItem 8개를 추가해야한다.  Grid Panel 이 Init할때 자동으로 해주도록 했음. 
+        // Test중
+
+       
     }
 
     // 이게 Lobby Scene에서 관리해야함 

@@ -55,7 +55,7 @@ class PacketHandler
 		Console.WriteLine("Create Room Handler Called From Server");
 
 		// GameLogic에 해야할 일감 추가. 
-		GameLogic.Instance.Push(GameLogic.Instance.HandleCreateRoom, clientSession, createroomPacket);
+		GameLogic.Instance.Push(RoomManager.Instance.HandleCreateRoom, clientSession, createroomPacket);
 
 		return;
 	}
@@ -66,7 +66,7 @@ class PacketHandler
 	{
 		C_Login loginPacket = packet as C_Login;
 		ClientSession clientSession = session as ClientSession;
-		clientSession.HandleLogin(loginPacket);
+		clientSession.HandleLogin(clientSession, loginPacket);
 	}
 
 	public static void C_EnterGameHandler(PacketSession session, IMessage packet)

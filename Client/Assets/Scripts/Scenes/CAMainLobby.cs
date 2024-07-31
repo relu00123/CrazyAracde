@@ -33,7 +33,7 @@ public class CAMainLobby : BaseScene
         switch (alterRoomPacket.Altertype)
         {
             case RoomAlterType.Add:
-                _sceneUI.GameRoomGridPanel.AddRoom(alterRoomPacket.Roominfo.RoomNumber, alterRoomPacket.Roominfo);
+                _sceneUI.GameRoomGridPanel.AddRoom(alterRoomPacket.Roominfo);
                 break;
 
             case RoomAlterType.Delete:
@@ -41,7 +41,7 @@ public class CAMainLobby : BaseScene
                 break;
 
             case RoomAlterType.Alter:
-                _sceneUI.GameRoomGridPanel.ChangeRoomInfo(alterRoomPacket.Roominfo.RoomNumber, alterRoomPacket.Roominfo);
+                _sceneUI.GameRoomGridPanel.ChangeRoomInfo(alterRoomPacket.Roominfo);
                 break;
         }
     }

@@ -16,7 +16,7 @@ namespace Server
 		public int AccountDbId { get; private set; }
 		public List<LobbyPlayerInfo> LobbyPlayers { get; set; } = new List<LobbyPlayerInfo>();
 
-		public void HandleLogin(C_Login loginPacket)
+		public void HandleLogin(ClientSession clientsession, C_Login loginPacket)
 		{
 			// TODO : 이런 저런 보안 체크
 			if (ServerState != PlayerServerState.ServerStateLogin)
@@ -61,7 +61,8 @@ namespace Server
 					// 단 하나의 Player만 LobbyPlayers에 들어간채로 loginOK패킷을 보낸다. 
 					Send(loginOk);
 					// 로비로 이동
-					ServerState = PlayerServerState.ServerStateLobby;
+					//ServerState = PlayerServerState.ServerStateLobby;
+					HandleServerStateChange(clientsession, PlayerServerState.ServerStateLobby);
 				}
 				else
 				{
@@ -79,9 +80,10 @@ namespace Server
 					// 이렇게 보내면 LobbyPlayer는 빈 상태로 패킷이 보내지므로
 					// 케릭터가 생성이 안되었음을 알 수 있다.
 					Send(loginOk);
-					// 로비로 이동
-					ServerState = PlayerServerState.ServerStateLobby;
-				}
+                    // 로비로 이동
+                    //ServerState = PlayerServerState.ServerStateLobby;
+                    HandleServerStateChange(clientsession, PlayerServerState.ServerStateLobby);
+                }
 			}
 		}
 
@@ -242,8 +244,11 @@ namespace Server
 				}
 			}
 
-			// 나중에 함수가 수정되어야 할 수도 있음. 일단은 문제가 터지기 전까지 이 함수 사용. 
-			ServerState = state; 
+			if (state == PlayerServerState.ServerStateLobby)
+                RoomManager.Instance.EnterLobby(clientsession);
+
+            // 나중에 함수가 수정되어야 할 수도 있음. 일단은 문제가 터지기 전까지 이 함수 사용. 
+            ServerState = state; 
 		}
 	}
 }

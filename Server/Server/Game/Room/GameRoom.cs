@@ -10,21 +10,26 @@ namespace Server.Game
 {
 	public partial class GameRoom : JobSerializer
 	{
-		public const int VisionCells = 5;
+		public RoomInfo _roomInfo { get; private set; }
 
 		public int _roomId { get; set; }
 		private List<ClientSession> _sessions = new List<ClientSession>();
-		public bool IsClosed { get; private set; } = false;
+		public bool _isClosed { get; private set; } = false;
 
 
-		Dictionary<int, Player> _players = new Dictionary<int, Player>();
+
+		// 강의때 사용했던 변수들 나는 쓰지 않음.
+        public const int VisionCells = 5;
+        Dictionary<int, Player> _players = new Dictionary<int, Player>();
 		Dictionary<int, Monster> _monsters = new Dictionary<int, Monster>();
 		Dictionary<int, Projectile> _projectiles = new Dictionary<int, Projectile>();
 
 
-		public GameRoom(int id)
+		public GameRoom(int roomid, RoomInfo roominfo)
 		{
-			_roomId = id;
+			_roomId = roomid;
+			roominfo.RoomNumber = _roomId;
+			_roomInfo = roominfo;
 		}
 
 
@@ -87,7 +92,7 @@ namespace Server.Game
 		{
 			Flush();
 
-			if (_sessions.Count == 0 && !IsClosed)
+			if (_sessions.Count == 0 && !_isClosed)
 			{
 				CloseRoom();
 			}
@@ -105,9 +110,10 @@ namespace Server.Game
 
 		private void CloseRoom()
 		{
-			IsClosed = true;
+			_isClosed = true;
 
-			GameLogic.Instance.RemoveRoom(_roomId);
+			//GameLogic.Instance.RemoveRoom(_roomId);
+			RoomManager.Instance.RemoveRoom(_roomId);
 		}
 
 		Random _rand = new Random();
