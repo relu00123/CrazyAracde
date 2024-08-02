@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class UI_UsersGridPanel : UI_Base
 {
     [SerializeField]
-    private UI_UserSlot userSlot_UI;
+    private UI_GameRoomUserSlot userSlot_UI;
 
     [SerializeField]
     private RectTransform CanvasRect;
@@ -15,7 +15,7 @@ public class UI_UsersGridPanel : UI_Base
 
     private const int UserSlotsPerPage = 8;
 
-    private List<UI_UserSlot> UsersList = new List<UI_UserSlot>();
+    private List<UI_GameRoomUserSlot> UsersList = new List<UI_GameRoomUserSlot>();
 
     public override void Init()
     {
@@ -37,7 +37,7 @@ public class UI_UsersGridPanel : UI_Base
 
         for (int i = 0; i < UserSlotsPerPage; ++i)
         {
-            UI_UserSlot item = Instantiate(userSlot_UI, gridLayoutGroup.transform);
+            UI_GameRoomUserSlot item = Instantiate(userSlot_UI, gridLayoutGroup.transform);
             UsersList.Add(item);
         }
     }
