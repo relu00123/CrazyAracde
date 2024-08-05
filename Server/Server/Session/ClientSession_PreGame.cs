@@ -240,7 +240,7 @@ namespace Server
 			{
 				if (state == PlayerServerState.ServerStateLobby)
 				{
-					clientsession.LeaveRoom();
+					BeloingRoom.RemoveClient(clientsession);
 				}
 			}
 

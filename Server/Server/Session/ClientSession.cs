@@ -25,6 +25,8 @@ namespace Server
 
 		public GameRoom BeloingRoom { get; private set; }
 
+		public int SlotId { get; set; }
+
 
 		object _lock = new object();
 		List<ArraySegment<byte>> _reserveQueue = new List<ArraySegment<byte>>();
@@ -148,15 +150,14 @@ namespace Server
 		public void JoinRoom(GameRoom room)
 		{
 			BeloingRoom = room;
-			room.AddSession(this);
 		}
 
 		public void LeaveRoom()
 		{
 			if (BeloingRoom != null)
 			{
-				BeloingRoom.RemoveSession(this);
 				BeloingRoom = null;
+				SlotId = -1;
 			}
 		}
 

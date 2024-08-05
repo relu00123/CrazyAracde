@@ -22,7 +22,9 @@ namespace Server.Game
         public void HandleCreateRoom(ClientSession clientSession, C_CreateRoom createRoomPacket)
         {
             GameRoom NewRoom = AddRoom(createRoomPacket.Roominfo);
-            clientSession.JoinRoom(NewRoom);
+
+            NewRoom.AddClient(clientSession);
+         
 
             Console.WriteLine($"There are {_rooms.Count} Rooms in Server Now");
 

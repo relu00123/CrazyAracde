@@ -10,10 +10,22 @@ namespace Server.Game
 {
 	public partial class GameRoom : JobSerializer
 	{
+		private class Slot
+		{
+			public bool IsAvailable { get; set; } = true;
+			public ClientSession ClientSession { get; set; } = null;
+		}
+
+
 		public RoomInfo _roomInfo { get; private set; }
 
 		public int _roomId { get; set; }
-		private List<ClientSession> _sessions = new List<ClientSession>();
+
+		// 동적 배열 방식에서 Array로 교환 필요.. 흠.. 
+		//private List<ClientSession> _sessions = new List<ClientSession>();
+		private Slot[] _slots = new Slot[8];
+
+
 		public bool _isClosed { get; private set; } = false; // 방이 더이상 존재하는 방인지 따질때 사용.
 
 
@@ -30,35 +42,48 @@ namespace Server.Game
 			_roomId = roomid;
 			roominfo.RoomNumber = _roomId;
 			_roomInfo = roominfo;
+
+
+			for (int i = 0; i < _slots.Length; i++)
+			{
+				_slots[i] = new Slot();
+			}
+
+
 		}
 
+        #region Lecture
 
-		public Zone[,] Zones { get; private set; }
+        public Zone[,] Zones { get; private set; }
 		public int ZoneCells { get; private set; }
 
-		public Map Map { get; private set; } = new Map();
+        public Map Map { get; private set; } = new Map();
 
-		// ㅁㅁㅁ
-		// ㅁㅁㅁ
-		// ㅁㅁㅁ
-		public Zone GetZone(Vector2Int cellPos)
-		{
-			int x = (cellPos.x - Map.MinX) / ZoneCells;
-			int y = (Map.MaxY - cellPos.y) / ZoneCells;
-			return GetZone(y, x);
-		}
+        // ㅁㅁㅁ
+        // ㅁㅁㅁ
+        // ㅁㅁㅁ
+        public Zone GetZone(Vector2Int cellPos)
+        {
+            int x = (cellPos.x - Map.MinX) / ZoneCells;
+            int y = (Map.MaxY - cellPos.y) / ZoneCells;
+            return GetZone(y, x);
+        }
 
-		public Zone GetZone(int indexY, int indexX)
-		{
-			if (indexX < 0 || indexX >= Zones.GetLength(1))
-				return null;
-			if (indexY < 0 || indexY >= Zones.GetLength(0))
-				return null;
+        public Zone GetZone(int indexY, int indexX)
+        {
+            if (indexX < 0 || indexX >= Zones.GetLength(1))
+                return null;
+            if (indexY < 0 || indexY >= Zones.GetLength(0))
+                return null;
 
-			return Zones[indexY, indexX];
-		}
+            return Zones[indexY, indexX];
+        }
 
-		public void Init(int mapId, int zoneCells)
+
+        #endregion
+
+
+        public void Init(int mapId, int zoneCells)
 		{
 			Map.LoadMap(mapId);
 
@@ -92,21 +117,92 @@ namespace Server.Game
 		{
 			Flush();
 
-			if (_sessions.Count == 0 && !_isClosed)
+			if ( IsRoomEmpty() && !_isClosed)
 			{
 				CloseRoom();
 			}
 		}
 
-		public void AddSession(ClientSession session)
+		private bool IsRoomEmpty()
 		{
-			_sessions.Add(session);
+			foreach (var slot in _slots)
+			{
+				if (slot.ClientSession != null)
+					return false;
+			}
+			return true;
 		}
 
-		public void RemoveSession(ClientSession session)
+
+		public bool AddClient(ClientSession session)
 		{
-			_sessions.Remove(session);
+			int? slotId = GetNextAvailableSlot();
+			if (slotId == null)
+				return false; 
+
+			session.SlotId = slotId.Value;
+			session.JoinRoom(this);
+			_slots[slotId.Value].ClientSession = session;
+			_slots[slotId.Value].IsAvailable = false;
+			return true;
 		}
+
+		public bool RemoveClient(ClientSession session)
+		{
+			int slotId = session.SlotId;
+			if (slotId < 0 || slotId > _slots.Length || _slots[slotId].ClientSession != session)
+			{
+				Console.WriteLine("GameRoom 에서 Client 삭제 실패 (치명적 오류)");
+				return false;
+			}
+
+			_slots[slotId].ClientSession = null;
+			_slots[slotId].IsAvailable = true;
+			session.LeaveRoom();
+			return true;
+		}
+
+		public ClientSession GetClientBySlot(int slotId)
+		{
+			if (slotId < 0 || slotId >= _slots.Length)
+				return null;
+			return _slots[slotId].ClientSession;
+		}
+
+
+		// Host가 Slot을 열고 닫을때 사용하는 함수. 만약 사용자가 있다면 해당 사용자를 로비로 킥해야한다.
+		// 불안정한 코드이고 아직 개선이 필요한 코드
+
+		public void CloseSlot(int slotId)
+		{
+            //if (slotId >= 0 && slotId < _slots.Length)
+            //{
+            //    _slots[slotId].IsAvailable = false;
+            //    _slots[slotId].ClientSession = null;
+            //}
+        }
+
+		public void OpenSlot(int slotId)
+		{
+            //if (slotId >= 0 && slotId < _slots.Length)
+            //{
+            //    _slots[slotId].IsAvailable = true;
+            //    _slots[slotId].ClientSession = null;
+            //}
+        }
+
+
+		public int? GetNextAvailableSlot()
+		{
+			for (int i = 0; i < _slots.Length; i++)
+			{
+				if (_slots[i].IsAvailable)
+					return i;
+			}
+
+			return null;
+		}
+
 
 		private void CloseRoom()
 		{
