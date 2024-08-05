@@ -47,6 +47,8 @@ public abstract class UI_Base : MonoBehaviour
 	protected Text GetText(int idx) { return Get<Text>(idx); }
 	protected Button GetButton(int idx) { return Get<Button>(idx); }
 	protected Image GetImage(int idx) { return Get<Image>(idx); }
+	protected RawImage GetRawImage(int idx) { return Get<RawImage>(idx); }
+
 	protected CanvasGroup GetCanvasGroup(int idx) { return Get<CanvasGroup>(idx); }
 
 	protected TextMeshProUGUI GetTextMeshPro(int idx) { return Get<TextMeshProUGUI>(idx); }

@@ -38,6 +38,8 @@ public class UI_UsersGridPanel : UI_Base
         for (int i = 0; i < UserSlotsPerPage; ++i)
         {
             UI_GameRoomUserSlot item = Instantiate(userSlot_UI, gridLayoutGroup.transform);
+            item.uiUserSlot.TestFunc(i);
+            item.uiUserSlot.AdjustCharacterUV(i);
             UsersList.Add(item);
         }
     }

@@ -12,6 +12,11 @@ public class UI_GameRoomUserSlot : UI_Base
 
     public UI_UsersGridPanel ParentGrid { get; set; }
 
+
+    [SerializeField] private GameObject userSlotBG;
+    public UI_UserSlot uiUserSlot { get; private set; }
+
+
     public override void Init()
     {
         Bind<Image>(typeof(Images));
@@ -27,6 +32,10 @@ public class UI_GameRoomUserSlot : UI_Base
 
         RectTransform SlotBGTransform = GetImage((int)Images.SlotBackGround).GetComponent<RectTransform>();
         SlotBGTransform.sizeDelta = new Vector2(cellSize.x, cellSize.y);
+
+
+        uiUserSlot = userSlotBG.GetComponent<UI_UserSlot>();  
+
     }
 
 }

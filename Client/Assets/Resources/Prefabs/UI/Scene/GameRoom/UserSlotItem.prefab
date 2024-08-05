@@ -401,6 +401,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3020aaee6c1f97d408f34c17ea328363, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  userSlotBG: {fileID: 693044383507575490}
 --- !u!1 &5616475357996970329
 GameObject:
   m_ObjectHideFlags: 0
@@ -717,6 +718,12 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a44d120dba4c0b44a99383dbf445ebd4, type: 3}
+--- !u!1 &693044383507575490 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 25014833900774916, guid: a44d120dba4c0b44a99383dbf445ebd4,
+    type: 3}
+  m_PrefabInstance: {fileID: 704513080591717574}
+  m_PrefabAsset: {fileID: 0}
 --- !u!224 &7909013722753346823 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 7207053502003952065, guid: a44d120dba4c0b44a99383dbf445ebd4,
