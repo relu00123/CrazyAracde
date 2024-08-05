@@ -61,6 +61,13 @@ enum GameObjectType {
   PROJECTILE = 3;
 }
 
+enum CharacterType  {
+  DAO = 0;
+  BAZZI = 1;
+  KEFI = 2;
+  MARID = 3;
+}
+
 enum SkillType {
   SKILL_NONE = 0;
   SKILL_AUTO = 1;

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Google.Protobuf.Protocol;
 
 public class GameRoomCamera : MonoBehaviour
 {
@@ -36,6 +37,17 @@ public class GameRoomCamera : MonoBehaviour
 
                 // 캐릭터를 해당 World 좌표에 Instantiate
                 GameObject go = Instantiate(characterPrefab, worldPos, Quaternion.identity);
+
+                CACharacter caCharacter = go.GetComponent<CACharacter>();
+
+                if (caCharacter != null)
+                {
+                    int randomValue = Random.Range(0, 2);
+
+                    caCharacter.characterType = randomValue == 0 ? CharacterType.Dao : CharacterType.Kefi;
+                }
+
+                 
 
                 // 여기서 캐릭터의 가로 크기를 거의 Camera가 찍는 것의 1/4의 크기에 걸맞게 늘린다.
                 // 어떻게 늘릴 것인지 고민을 해봐야 함.

@@ -14,7 +14,7 @@ namespace Server.Game
 
 		public int _roomId { get; set; }
 		private List<ClientSession> _sessions = new List<ClientSession>();
-		public bool _isClosed { get; private set; } = false;
+		public bool _isClosed { get; private set; } = false; // 방이 더이상 존재하는 방인지 따질때 사용.
 
 
 
