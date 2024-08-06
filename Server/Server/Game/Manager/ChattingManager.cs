@@ -39,7 +39,7 @@ namespace Server.Game
                     // 지금은 로비에서만 채팅을 친다고 가정 
                     // 패킷에다가 서버스테이트가 무엇인지, InGame이라면 
                     // Room Number에 따라 해당 룸에서만 BroadCast되도록 해야할듯
-                    if (kvp.Value.Session.ServerState == PlayerServerState.ServerStateLobby)
+                    if (kvp.Value.Session._serverState == PlayerServerState.ServerStateLobby)
                     {
                         kvp.Value.Session.Send(SendChat);
                     }

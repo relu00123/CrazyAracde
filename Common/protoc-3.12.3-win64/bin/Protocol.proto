@@ -38,6 +38,8 @@ enum MsgId {
   S_ADD_MONEY = 31;
   C_CREATE_ROOM = 32;
   S_ALTER_ROOM = 33;
+  C_JOIN_ROOM = 34;
+  S_JOIN_ROOM = 35; 
 }
 
 enum CreatureState {
@@ -126,6 +128,14 @@ enum RoomStateType
   WAITING = 0;
   FULL = 1;
   PLAYING = 2;
+}
+
+enum JoinResultType
+{
+  SUCCESS = 0;
+  ROOM_NOT_EXIST = 1;
+  ROOM_FULL = 2;
+  GAME_ALREADY_STARTED = 3; 
 }
 
 enum RoomAlterType
@@ -281,6 +291,15 @@ message C_CreateRoom {
 message S_AlterRoom {
   RoomAlterType altertype = 1;
   RoomInfo roominfo = 2;
+}
+
+message C_JoinRoom {
+  int32  roomid = 1;
+}
+
+message S_JoinRoom {
+  JoinResultType joinresult = 1;
+
 }
 
 

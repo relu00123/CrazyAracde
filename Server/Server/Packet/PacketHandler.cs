@@ -122,7 +122,8 @@ class PacketHandler
 		Console.WriteLine("C_EnterStore Packet Received!");
 
 		// ServerState를 Store로 변경한다. 
-		clientSession.HandleServerStateChange(clientSession, PlayerServerState.ServerStateStore);
+		clientSession.ServerState = PlayerServerState.ServerStateStore;
+		//clientSession.HandleServerStateChange(clientSession, PlayerServerState.ServerStateStore);
 	}
 
 	public static void C_EnterLobbyHandler(PacketSession session, IMessage packet)
@@ -133,7 +134,7 @@ class PacketHandler
 		Console.WriteLine("C_EnterLobby Packet Received!");
 
 		// ServerState를 Lobby로 변경한다.
-		clientSession.HandleServerStateChange(clientSession, PlayerServerState.ServerStateLobby);
+		clientSession.ServerState = PlayerServerState.ServerStateLobby;
 	}
 
 
@@ -155,4 +156,14 @@ class PacketHandler
 		// 어디서 돈을 체워줘야 할까... StoreManager? 
 		//FreeMoneyPacket.Moneyamount;
 	}
+
+	public static void C_JoinRoomHandler(PacketSession session, IMessage packet)
+	{
+		ClientSession clientSession = (ClientSession)(session);
+		C_JoinRoom joinRoomPacket = (C_JoinRoom)packet;
+
+		RoomManager.Instance.ClientEnterRoom(clientSession, joinRoomPacket.Roomid);
+	}
 }
+
+

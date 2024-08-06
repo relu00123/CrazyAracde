@@ -16,15 +16,11 @@ namespace Server.Game
 			public ClientSession ClientSession { get; set; } = null;
 		}
 
-
 		public RoomInfo _roomInfo { get; private set; }
-
 		public int _roomId { get; set; }
 
-		// 동적 배열 방식에서 Array로 교환 필요.. 흠.. 
-		//private List<ClientSession> _sessions = new List<ClientSession>();
 		private Slot[] _slots = new Slot[8];
-
+		private int _hostIndex { get; set; } = -1;
 
 		public bool _isClosed { get; private set; } = false; // 방이 더이상 존재하는 방인지 따질때 사용.
 
@@ -133,24 +129,50 @@ namespace Server.Game
 			return true;
 		}
 
+        private int? GetNextAvailableSlot()
+        {
+            for (int i = 0; i < _slots.Length; i++)
+            {
+                if (_slots[i].IsAvailable)
+                    return i;
+            }
 
-		public bool AddClient(ClientSession session)
+            return null;
+        }
+
+        public bool AddClient(ClientSession session)
 		{
 			int? slotId = GetNextAvailableSlot();
 			if (slotId == null)
-				return false; 
+				return false;   // 방이 꽉차서 더이상 추가가 안될 경우
 
 			session.SlotId = slotId.Value;
 			session.JoinRoom(this);
 			_slots[slotId.Value].ClientSession = session;
 			_slots[slotId.Value].IsAvailable = false;
-			return true;
+
+			// Host 역할을 맡고 있는 사람이 아무도 없다면 Host를 시켜준다.
+			if (_hostIndex == -1)
+				FindNewHost();
+
+			// 현재 Room의 인원정보를 수정한다.
+			_roomInfo.CurPeopleCnt += 1;
+            RoomManager.Instance.BroadCastRoomAlter(_roomId);
+
+
+			// S_Join Packet을 보내준다. 
+			S_JoinRoom joinRoomPacket = new S_JoinRoom();
+			joinRoomPacket.Joinresult = JoinResultType.Success;
+			session.Send(joinRoomPacket);
+
+
+            return true;
 		}
 
 		public bool RemoveClient(ClientSession session)
 		{
 			int slotId = session.SlotId;
-			if (slotId < 0 || slotId > _slots.Length || _slots[slotId].ClientSession != session)
+			if (slotId < 0 || slotId >= _slots.Length || _slots[slotId].ClientSession != session)
 			{
 				Console.WriteLine("GameRoom 에서 Client 삭제 실패 (치명적 오류)");
 				return false;
@@ -158,9 +180,37 @@ namespace Server.Game
 
 			_slots[slotId].ClientSession = null;
 			_slots[slotId].IsAvailable = true;
-			session.LeaveRoom();
+
+			if (slotId == _hostIndex)
+				FindNewHost();
+
+            // 현재 Room의 인원정보를 수정하고 Lobby에 있는 플레이어들에게 알린다. 
+            _roomInfo.CurPeopleCnt -= 1;
+			RoomManager.Instance.BroadCastRoomAlter(_roomId);
+
 			return true;
 		}
+
+		private void FindNewHost()
+		{
+			_hostIndex = -1;
+
+			// Host가 나갔을 때 가장 앞에 있는 클라이언트를 새로운 Host로 설정
+			 for (int i = 0; i < _slots.Length; i++)
+			{
+				if (!_slots[i].IsAvailable && _slots[i].ClientSession != null)
+				{
+					_hostIndex = i;
+					// Host에 변화가 생겼으면 모든 Client에게 Host가 변했다는 사실을 BroadCast해줘야함
+					// 나중에 할 것임..
+
+					Console.WriteLine($"New Host Found! It's {_hostIndex} slot!");
+					return;
+				}
+			}
+		}
+
+
 
 		public ClientSession GetClientBySlot(int slotId)
 		{
@@ -192,16 +242,7 @@ namespace Server.Game
         }
 
 
-		public int? GetNextAvailableSlot()
-		{
-			for (int i = 0; i < _slots.Length; i++)
-			{
-				if (_slots[i].IsAvailable)
-					return i;
-			}
-
-			return null;
-		}
+		 
 
 
 		private void CloseRoom()

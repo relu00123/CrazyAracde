@@ -19,7 +19,7 @@ namespace Server
 		public void HandleLogin(ClientSession clientsession, C_Login loginPacket)
 		{
 			// TODO : 이런 저런 보안 체크
-			if (ServerState != PlayerServerState.ServerStateLogin)
+			if (_serverState != PlayerServerState.ServerStateLogin)
 				return;
 
 			LobbyPlayers.Clear();
@@ -62,7 +62,8 @@ namespace Server
 					Send(loginOk);
 					// 로비로 이동
 					//ServerState = PlayerServerState.ServerStateLobby;
-					HandleServerStateChange(clientsession, PlayerServerState.ServerStateLobby);
+					clientsession.ServerState = PlayerServerState.ServerStateLobby;
+					//HandleServerStateChange(clientsession, PlayerServerState.ServerStateLobby);
 				}
 				else
 				{
@@ -81,15 +82,15 @@ namespace Server
 					// 케릭터가 생성이 안되었음을 알 수 있다.
 					Send(loginOk);
                     // 로비로 이동
-                    //ServerState = PlayerServerState.ServerStateLobby;
-                    HandleServerStateChange(clientsession, PlayerServerState.ServerStateLobby);
+                    ServerState = PlayerServerState.ServerStateLobby;
+                    //HandleServerStateChange(clientsession, PlayerServerState.ServerStateLobby);
                 }
 			}
 		}
 
 		public void HandleEnterGame(C_EnterGame enterGamePacket)
 		{
-			if (ServerState != PlayerServerState.ServerStateLobby)
+			if (_serverState != PlayerServerState.ServerStateLobby)
 				return;
 
 			LobbyPlayerInfo playerInfo = LobbyPlayers.Find(p => p.Name == enterGamePacket.Name);
@@ -234,21 +235,17 @@ namespace Server
 			}
 		}
 
-		public void HandleServerStateChange(ClientSession clientsession, PlayerServerState state)
+		public void HandleServerStateChange(ClientSession clientsession, PlayerServerState previousState, PlayerServerState newState)
 		{
-			if (clientsession.ServerState == PlayerServerState.ServerStateRoom)
-			{
-				if (state == PlayerServerState.ServerStateLobby)
-				{
-					BeloingRoom.RemoveClient(clientsession);
-				}
-			}
+            if (previousState == PlayerServerState.ServerStateRoom && newState == PlayerServerState.ServerStateLobby)
+            {
+				clientsession.LeaveRoom();
+            }
 
-			if (state == PlayerServerState.ServerStateLobby)
+            if (newState == PlayerServerState.ServerStateLobby)
+            {
                 RoomManager.Instance.EnterLobby(clientsession);
-
-            // 나중에 함수가 수정되어야 할 수도 있음. 일단은 문제가 터지기 전까지 이 함수 사용. 
-            ServerState = state; 
-		}
+            }
+        }
 	}
 }

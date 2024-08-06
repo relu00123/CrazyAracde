@@ -82,18 +82,32 @@ public class UI_RoomItem : UI_Base
 
 
         // Click 이 아니라 더블클릭시 이벤트 발생하도록 바꿀 예정 
-        GetImage((int)Images.Normal).gameObject.BindEvent(OnTest);
+        GetImage((int)Images.Normal).gameObject.BindEvent(EnterRoom);
 
 
         OutlineInitialize();
         SetEmpty();
     }
 
-    public void OnTest(PointerEventData evt)
+    public void EnterRoom(PointerEventData evt)
     {
         if (isRoomItemActive)
-            Debug.Log("On Test Function Called!!!!!!!!!!!");
+        {
+            Debug.Log($"Entering Room ... Room Number : {roomInfo.RoomNumber}");
+
+            C_JoinRoom joinPacket = new C_JoinRoom();
+            joinPacket.Roomid = roomInfo.RoomNumber;
+            Managers.Network.Send(joinPacket);
+        }
+          
     }
+
+    public void OnDoubleClickTest(PointerEventData evt)
+    {
+        if (isRoomItemActive)
+            Debug.Log("On Double Click Test Function Called!!!!!!!!!!!");
+    }
+
 
     public void SetEmpty()
     {

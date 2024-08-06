@@ -15,7 +15,22 @@ namespace Server
 {
 	public partial class ClientSession : PacketSession
 	{
-		public PlayerServerState ServerState { get; private set; } = PlayerServerState.ServerStateLogin;
+		public PlayerServerState _serverState { get; private set; } = PlayerServerState.ServerStateLogin;
+
+		public PlayerServerState ServerState
+		{
+			get => _serverState;
+			set
+			{
+				if (_serverState != value) // 현재 상태와 다르다면
+				{
+					PlayerServerState previousServerState = _serverState;
+					_serverState = value;
+					HandleServerStateChange(this, previousServerState, value);
+				}
+			}
+		}
+
 
 		public Player MyPlayer { get; set; }
 
@@ -149,16 +164,20 @@ namespace Server
 
 		public void JoinRoom(GameRoom room)
 		{
-			BeloingRoom = room;
+            ServerState = PlayerServerState.ServerStateRoom;
+            BeloingRoom = room;
 		}
 
 		public void LeaveRoom()
 		{
 			if (BeloingRoom != null)
 			{
-				BeloingRoom = null;
-				SlotId = -1;
-			}
+				ServerState = PlayerServerState.ServerStateLobby;
+				BeloingRoom.RemoveClient(this); 
+                BeloingRoom = null;
+                SlotId = -1;
+				
+            }
 		}
 
 	}

@@ -298,8 +298,6 @@ class PacketHandler
 		mainLobby.HandleAlterRoom((S_AlterRoom)packet);
 	}
 
-
-
     public static void S_AddMoneyHandler(PacketSession session, IMessage packet)
 	{
 		Debug.Log("AddMoney Packet Received!");
@@ -329,6 +327,12 @@ class PacketHandler
 				storeSceneScript.sceneUI.UpdateMoneyUI();
 			}
 		}
+	}
+
+	public static void S_JoinRoomHandler(PacketSession session, IMessage packet)
+	{
+		Debug.Log("Join Room Packet Received!");
+		Managers.Room.HandleJoinRoom((S_JoinRoom)packet);
 	}
 
 

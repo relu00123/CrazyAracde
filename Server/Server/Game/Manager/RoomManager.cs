@@ -46,12 +46,6 @@ namespace Server.Game
             // 그에 맞는 Player Image를 생성할 수 있다. (하지만 아직 Player Image에 대한 정보를 관리하고 있지는 않음)
             // 대충 지금 존재하는 인원과 Room에서의 위치 (1 ~ 8) 어느 Room이 열려 있고 닫혀있는지에 대한 정보를 
             // 보내줘서 그에 대한 동기화를 해보자. 
-
-
-
-            // 이부분 개선 필요
-            clientSession.HandleServerStateChange(clientSession, PlayerServerState.ServerStateRoom);
-            NewRoom.Push(NewRoom.TestFunc);
         }
 
 
@@ -67,7 +61,7 @@ namespace Server.Game
                 // 지금은 로비에서만 채팅을 친다고 가정 
                 // 패킷에다가 서버스테이트가 무엇인지, InGame이라면 
                 // Room Number에 따라 해당 룸에서만 BroadCast되도록 해야할듯
-                if (kvp.Value.Session.ServerState == PlayerServerState.ServerStateLobby && kvp.Value.Session != excludeSession)
+                if (kvp.Value.Session._serverState == PlayerServerState.ServerStateLobby && kvp.Value.Session != excludeSession)
                 {
                     kvp.Value.Session.Send(alterRoomPacket);
                 }
@@ -84,12 +78,36 @@ namespace Server.Game
 
             foreach (KeyValuePair<int, PlayerInfo> kvp in UserManager.Instance.Players)
             {
-                if(kvp.Value.Session.ServerState == PlayerServerState.ServerStateLobby)
+                if(kvp.Value.Session._serverState == PlayerServerState.ServerStateLobby)
                 {
                     kvp.Value.Session.Send(alterRoomPacket);
                 }
             }
+        }
+
+        public void BroadCastRoomAlter(int roomId)
+        {
+            if (_rooms.TryGetValue(roomId, out GameRoom gameRoom))
+            {
+                S_AlterRoom alterRoomPacket = new S_AlterRoom();
+                alterRoomPacket.Altertype = RoomAlterType.Alter;
+                alterRoomPacket.Roominfo = gameRoom._roomInfo;
+
+                foreach (KeyValuePair<int, PlayerInfo> kvp in UserManager.Instance.Players)
+                {
+                    if (kvp.Value.Session._serverState == PlayerServerState.ServerStateLobby)
+                        kvp.Value.Session.Send(alterRoomPacket);
+                }
+            }
             
+        }
+
+        public void ClientEnterRoom(ClientSession clientSession, int roomid)
+        {
+            if ( _rooms.TryGetValue(roomid, out GameRoom gameRoom))
+            {
+                gameRoom.AddClient(clientSession);
+            }
         }
 
 

@@ -27,5 +27,6 @@ public class Define
         Click,
         Drag,
         Hover,
+        DoubleClick,
     }
 }
