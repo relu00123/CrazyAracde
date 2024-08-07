@@ -91,6 +91,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   AnimBaseTexture: {fileID: 2800000, guid: 87bea6372b5499e41901d8e5ea7a629e, type: 3}
   CharacterObjectImage: {fileID: 0}
+  NormalImage: {fileID: 21300000, guid: 47cf028433f289d44a769630235167ae, type: 3}
+  HighlightedImage: {fileID: 21300000, guid: bd005585f956608438573178eb0acd24, type: 3}
 --- !u!1 &1320255209256523132
 GameObject:
   m_ObjectHideFlags: 0

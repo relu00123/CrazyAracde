@@ -31,6 +31,8 @@ namespace Server
 			}
 		}
 
+		public CharacterType Character { get; set; } =  CharacterType.Dao;
+
 
 		public Player MyPlayer { get; set; }
 

@@ -15,7 +15,8 @@ public class UI_UsersGridPanel : UI_Base
 
     private const int UserSlotsPerPage = 8;
 
-    private List<UI_GameRoomUserSlot> UsersList = new List<UI_GameRoomUserSlot>();
+    private UI_GameRoomUserSlot[] UsersList = new UI_GameRoomUserSlot[UserSlotsPerPage];
+    //private List<UI_GameRoomUserSlot> UsersList = new List<UI_GameRoomUserSlot>();
 
     public override void Init()
     {
@@ -39,7 +40,14 @@ public class UI_UsersGridPanel : UI_Base
         {
             UI_GameRoomUserSlot item = Instantiate(userSlot_UI, gridLayoutGroup.transform);
             item.uiUserSlot.AdjustCharacterUV(i);
-            UsersList.Add(item);
+            //UsersList.Add(item);
+            UsersList[i] = item;
         }
+    }
+
+    public void SetName(int index, string name)
+    {
+        if (index >= 0  && index < UsersList.Length) 
+            UsersList[index].SetName(name);
     }
 }

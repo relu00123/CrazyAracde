@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -9,6 +10,13 @@ public class UI_GameRoomUserSlot : UI_Base
     {
         SlotBackGround
     }
+
+    enum Texts
+    {
+        CharacterName
+    }
+
+
 
     public UI_UsersGridPanel ParentGrid { get; set; }
 
@@ -20,6 +28,7 @@ public class UI_GameRoomUserSlot : UI_Base
     public override void Init()
     {
         Bind<Image>(typeof(Images));
+        Bind<TextMeshProUGUI>(typeof(Texts));
 
         // Scale (0, 0) 잡혀있는 것 (1, 1)로 초기화
         RectTransform rectTransform = GetComponent<RectTransform>();
@@ -35,7 +44,11 @@ public class UI_GameRoomUserSlot : UI_Base
 
 
         uiUserSlot = userSlotBG.GetComponent<UI_UserSlot>();  
+    }
 
+    public void SetName(string name)
+    {
+        GetTextMeshPro((int)Texts.CharacterName).text = name;
     }
 
 }

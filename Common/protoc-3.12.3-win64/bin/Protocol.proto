@@ -299,7 +299,7 @@ message C_JoinRoom {
 
 message S_JoinRoom {
   JoinResultType joinresult = 1;
-
+  repeated SlotInfo slotInfos = 2;
 }
 
 
@@ -354,5 +354,13 @@ message RoomInfo
   TeamModeType TeamMode = 7;
   GameModeType GameMode = 8;
   bool isSecretRoom = 9;
+}
+
+message SlotInfo
+{
+  int32 SlotIndex = 1;
+  bool  IsAvailable = 2;
+  int32 PlayerId = 3;
+  CharacterType character = 4;
 }
  

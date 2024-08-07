@@ -1,5 +1,6 @@
 ﻿using Google.Protobuf;
 using Google.Protobuf.Protocol;
+using Microsoft.Extensions.Logging.Abstractions;
 using Server.Data;
 using System;
 using System.Collections.Generic;
@@ -163,8 +164,26 @@ namespace Server.Game
 			// S_Join Packet을 보내준다. 
 			S_JoinRoom joinRoomPacket = new S_JoinRoom();
 			joinRoomPacket.Joinresult = JoinResultType.Success;
-			session.Send(joinRoomPacket);
 
+			for (int i = 0; i < _slots.Length; ++i)
+			{
+				SlotInfo slotInfo = new SlotInfo
+				{
+					SlotIndex = i,
+					IsAvailable = _slots[i].IsAvailable
+				};
+
+				slotInfo.PlayerId = _slots[i].ClientSession == null ? -1 : _slots[i].ClientSession.AccountDbId;
+
+				if (_slots[i].ClientSession != null)
+				{
+                    slotInfo.Character = _slots[i].ClientSession.Character;
+                }
+				 
+				joinRoomPacket.SlotInfos.Add(slotInfo);
+			}
+
+			session.Send(joinRoomPacket);
 
             return true;
 		}

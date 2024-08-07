@@ -12,11 +12,17 @@ public class UI_CAGameRoomScene : UI_Scene
         ToLobby,
     }
 
+    enum GridPanels
+    {
+        UsersGridPanel,
+    }
+
     public override void Init()
     {
         base.Init();
 
         Bind<Button>(typeof(Buttons));
+        Bind<GridLayoutGroup>(typeof(GridPanels));
 
         GetButton((int)Buttons.ToLobby).gameObject.BindEvent(OnToLobbyButtonClicked);
     }
@@ -30,6 +36,11 @@ public class UI_CAGameRoomScene : UI_Scene
         Managers.Scene.LoadScene(Define.Scene.CAMainLobby);
 
         Managers.Network.Send(enterLobbyPacket);
+    }
+
+    public UI_UsersGridPanel GetUIUserGridPanel()
+    {
+        return GetGridPanel((int)GridPanels.UsersGridPanel).gameObject.GetComponent<UI_UsersGridPanel>();
     }
 
 
