@@ -50,4 +50,10 @@ public class UI_UsersGridPanel : UI_Base
         if (index >= 0  && index < UsersList.Length) 
             UsersList[index].SetName(name);
     }
+
+    public void ClearSlot(int index)
+    {
+        if (index >= 0 && index < UsersList.Length)
+            UsersList[index].ClearSlot();
+    }
 }

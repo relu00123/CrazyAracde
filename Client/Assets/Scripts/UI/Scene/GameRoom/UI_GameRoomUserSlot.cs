@@ -51,4 +51,14 @@ public class UI_GameRoomUserSlot : UI_Base
         GetTextMeshPro((int)Texts.CharacterName).text = name;
     }
 
+    public void ClearSlot()
+    {
+        // ToDo..
+        // 배경화면 초기화 
+        // 레벨 초기화
+
+        // 이름 초기화 
+        GetTextMeshPro((int)Texts.CharacterName).text = "";
+    }
+
 }

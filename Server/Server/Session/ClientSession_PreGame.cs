@@ -244,7 +244,8 @@ namespace Server
 
             if (newState == PlayerServerState.ServerStateLobby)
             {
-                RoomManager.Instance.EnterLobby(clientsession);
+				RoomManager.Instance.Push(RoomManager.Instance.EnterLobby, clientsession);
+               // RoomManager.Instance.EnterLobby(clientsession);
             }
         }
 	}

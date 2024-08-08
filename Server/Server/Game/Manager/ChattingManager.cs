@@ -6,14 +6,19 @@ using System.Text;
 
 namespace Server.Game
 {
-    public class ChattingManager
+    public class ChattingManager : JobSerializer
     {
         public static ChattingManager Instance { get; } = new ChattingManager();
 
         object _lock = new object();
 
+        public void Update()
+        {
+            Flush();
+        }
 
-        public void HandleChattingPacket(C_Chatting chattingPacket)
+
+            public void HandleChattingPacket(C_Chatting chattingPacket)
         {
             GameLogic.Instance.Push(() =>
             {

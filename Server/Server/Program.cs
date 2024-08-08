@@ -35,6 +35,7 @@ namespace Server
 		{
 			while (true)
 			{
+				ChattingManager.Instance.Update();
 				GameLogic.Instance.Update();
 				Thread.Sleep(0);
 			}

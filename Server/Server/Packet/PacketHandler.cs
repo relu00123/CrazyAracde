@@ -110,7 +110,8 @@ class PacketHandler
         ClientSession clientSession = (ClientSession)session;
 		C_Chatting chattingPacket = (C_Chatting)packet;
 
-		ChattingManager.Instance.HandleChattingPacket(chattingPacket);
+		ChattingManager.Instance.Push(ChattingManager.Instance.HandleChattingPacket, chattingPacket);
+		//ChattingManager.Instance.HandleChattingPacket(chattingPacket);
     }
 
 	public static void C_EnterStoreHandler(PacketSession session, IMessage packet)
@@ -144,12 +145,13 @@ class PacketHandler
 
 		ClientSession clientSession = (ClientSession)session;
 		C_AddMoney AddMoneyPacket = (C_AddMoney)packet;
- 
+
 		// DB로부터 돈을 반영한다.
 		// Client에게 돈을 보내는 Packet을 작성하는 이유는 Inventory 동기화 및 Money 동기화를 위해서.\
 		// 돈을 추가해야하는 것은 StoreManager에서 해야할 일이 아니라 InventoryManager에서 해야할일..
 		// StoreManager에서는 Item만 인벤토리에 추가를 위임한다.
-		StoreManager.Instance.AddMoney(clientSession, AddMoneyPacket.Moneyamount);
+		StoreManager.Instance.Push(StoreManager.Instance.AddMoney, clientSession, AddMoneyPacket.Moneyamount);
+		//StoreManager.Instance.AddMoney(clientSession, AddMoneyPacket.Moneyamount);
 
 		// Client가 돈을 체워달라고 요청. 돈을 체워준다. 
 		// 일단은 DB무시하고 진행. 
@@ -162,7 +164,8 @@ class PacketHandler
 		ClientSession clientSession = (ClientSession)(session);
 		C_JoinRoom joinRoomPacket = (C_JoinRoom)packet;
 
-		RoomManager.Instance.ClientEnterRoom(clientSession, joinRoomPacket.Roomid);
+		//RoomManager.Instance.ClientEnterRoom(clientSession, joinRoomPacket.Roomid);
+		RoomManager.Instance.Push(RoomManager.Instance.ClientEnterRoom, clientSession, joinRoomPacket.Roomid);
 	}
 }
 

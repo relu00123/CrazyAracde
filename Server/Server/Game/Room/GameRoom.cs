@@ -141,29 +141,49 @@ namespace Server.Game
             return null;
         }
 
-        public bool AddClient(ClientSession session)
+        public void AddClient(ClientSession session)
 		{
 			int? slotId = GetNextAvailableSlot();
 			if (slotId == null)
-				return false;   // 방이 꽉차서 더이상 추가가 안될 경우
+				return;   // 방이 꽉차서 더이상 추가가 안될 경우
 
-			session.SlotId = slotId.Value;
-			session.JoinRoom(this);
-			_slots[slotId.Value].ClientSession = session;
-			_slots[slotId.Value].IsAvailable = false;
+            // 현재 Room의 인원정보를 수정한다.
+            _roomInfo.CurPeopleCnt += 1;
+            RoomManager.Instance.BroadCastRoomAlter(_roomId);
+
 
 			// Host 역할을 맡고 있는 사람이 아무도 없다면 Host를 시켜준다.
 			if (_hostIndex == -1)
 				FindNewHost();
 
-			// 현재 Room의 인원정보를 수정한다.
-			_roomInfo.CurPeopleCnt += 1;
-            RoomManager.Instance.BroadCastRoomAlter(_roomId);
+	 
+            // S_JoinRoomBroadcast Packet을 보내준다. (기존에 있던 클라이언트들)
+            S_JoinRoomBroadcast joinRoomBroadcastPacket = new S_JoinRoomBroadcast();
+			SlotInfo JoinRoomPacketSlotInfo = new SlotInfo
+			{
+				SlotIndex = slotId.Value,
+				IsAvailable = false,
+				PlayerId = session.AccountDbId,
+				Character = session.Character
+			};
+			joinRoomBroadcastPacket.SlotInfo = JoinRoomPacketSlotInfo;
 
+			for (int i = 0; i < _slots.Length; ++i)
+			{
+				if (_slots[i].ClientSession != null)
+					_slots[i].ClientSession.Send(joinRoomBroadcastPacket);
+			}
 
-			// S_Join Packet을 보내준다. 
-			S_JoinRoom joinRoomPacket = new S_JoinRoom();
+            // 새로들어온 클라이언트를 GameRoom에서 관리하도록 한다.
+            session.SlotId = slotId.Value;
+            session.JoinRoom(this);
+            _slots[slotId.Value].ClientSession = session;
+            _slots[slotId.Value].IsAvailable = false;
+
+            // S_JoinRoom Packet을 보내준다. (접속한 클라이언트)
+            S_JoinRoom joinRoomPacket = new S_JoinRoom();
 			joinRoomPacket.Joinresult = JoinResultType.Success;
+			joinRoomPacket.HostIdx = _hostIndex;
 
 			for (int i = 0; i < _slots.Length; ++i)
 			{
@@ -182,20 +202,33 @@ namespace Server.Game
 				 
 				joinRoomPacket.SlotInfos.Add(slotInfo);
 			}
-
 			session.Send(joinRoomPacket);
 
-            return true;
+            
 		}
 
-		public bool RemoveClient(ClientSession session)
+		public void RemoveClient(ClientSession session)
 		{
 			int slotId = session.SlotId;
 			if (slotId < 0 || slotId >= _slots.Length || _slots[slotId].ClientSession != session)
 			{
 				Console.WriteLine("GameRoom 에서 Client 삭제 실패 (치명적 오류)");
-				return false;
+				return;
 			}
+
+
+			// 해당 Session의 삭제를 방에 있는 남아있는 유저들에게 알린다. 
+			for (int i = 0; i < _slots.Length; ++i)
+			{
+				if (_slots[i].ClientSession == null || _slots[i].ClientSession == session) continue;
+
+				S_ExitRoomBroadcast exitRoomPacket = new S_ExitRoomBroadcast();
+				exitRoomPacket.SlotId = slotId;
+				_slots[i].ClientSession.Send(exitRoomPacket);
+			}
+
+			session.BeloingRoom = null;
+			session.SlotId = -1;
 
 			_slots[slotId].ClientSession = null;
 			_slots[slotId].IsAvailable = true;
@@ -203,11 +236,10 @@ namespace Server.Game
 			if (slotId == _hostIndex)
 				FindNewHost();
 
+
             // 현재 Room의 인원정보를 수정하고 Lobby에 있는 플레이어들에게 알린다. 
             _roomInfo.CurPeopleCnt -= 1;
-			RoomManager.Instance.BroadCastRoomAlter(_roomId);
-
-			return true;
+			RoomManager.Instance.BroadCastRoomAlter(_roomId);			 
 		}
 
 		private void FindNewHost()

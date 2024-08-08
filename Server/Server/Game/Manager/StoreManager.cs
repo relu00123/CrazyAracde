@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Server.Game
 {
-    public  class StoreManager
+    public  class StoreManager : JobSerializer
     {
         public static StoreManager Instance { get; } = new StoreManager();
 

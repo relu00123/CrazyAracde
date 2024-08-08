@@ -40,7 +40,7 @@ namespace Server
 
 		public int SessionId { get; set; }
 
-		public GameRoom BeloingRoom { get; private set; }
+		public GameRoom BeloingRoom { get;  set; }
 
 		public int SlotId { get; set; }
 
@@ -175,9 +175,10 @@ namespace Server
 			if (BeloingRoom != null)
 			{
 				ServerState = PlayerServerState.ServerStateLobby;
-				BeloingRoom.RemoveClient(this); 
-                BeloingRoom = null;
-                SlotId = -1;
+				BeloingRoom.Push(BeloingRoom.RemoveClient, this);
+				//BeloingRoom.RemoveClient(this); 
+                //BeloingRoom = null;
+                //SlotId = -1;
 				
             }
 		}

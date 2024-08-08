@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Server.Game
 {
-    public class RoomManager
+    public class RoomManager : JobSerializer
     {
         public static RoomManager Instance { get; } = new RoomManager();
 
@@ -19,11 +19,19 @@ namespace Server.Game
 
         object _lock = new object(); // 지금은 JobSerializer에 전부 담아서 시행함으로 딱히 필요가 없다. 
 
+
+        public void Update()
+        {
+            Flush();
+        }
+
         public void HandleCreateRoom(ClientSession clientSession, C_CreateRoom createRoomPacket)
         {
-            GameRoom NewRoom = AddRoom(createRoomPacket.Roominfo);
+            GameRoom NewRoom = AddRoom(createRoomPacket.Roominfo, clientSession);
 
-            NewRoom.AddClient(clientSession);
+            //NewRoom.Push(NewRoom.AddClient, clientSession);
+
+            //NewRoom.AddClient(clientSession);
          
 
             Console.WriteLine($"There are {_rooms.Count} Rooms in Server Now");
@@ -106,7 +114,8 @@ namespace Server.Game
         {
             if ( _rooms.TryGetValue(roomid, out GameRoom gameRoom))
             {
-                gameRoom.AddClient(clientSession);
+                gameRoom.Push(gameRoom.AddClient, clientSession);
+                //gameRoom.AddClient(clientSession);
             }
         }
 
@@ -125,11 +134,14 @@ namespace Server.Game
 
 
 
-        public GameRoom AddRoom(RoomInfo roominfo)
+        public GameRoom AddRoom(RoomInfo roominfo, ClientSession clientSession)
         {
             var room = new GameRoom(_roomId, roominfo);
             _rooms[_roomId] = room;
             _roomId++;
+
+            room.AddClient(clientSession);
+
 
             Task.Run(() => GameRoomTask(room));
 

@@ -40,6 +40,8 @@ enum MsgId {
   S_ALTER_ROOM = 33;
   C_JOIN_ROOM = 34;
   S_JOIN_ROOM = 35; 
+  S_JOIN_ROOM_BROADCAST = 36;
+  S_EXIT_ROOM_BROADCAST = 37;
 }
 
 enum CreatureState {
@@ -300,8 +302,16 @@ message C_JoinRoom {
 message S_JoinRoom {
   JoinResultType joinresult = 1;
   repeated SlotInfo slotInfos = 2;
+  int32 hostIdx = 3;
 }
 
+message S_JoinRoomBroadcast {
+  SlotInfo slotInfo = 1;
+}
+
+message S_ExitRoomBroadcast {
+  int32 slotId = 1;
+}
 
 message ObjectInfo {
   int32 objectId = 1;

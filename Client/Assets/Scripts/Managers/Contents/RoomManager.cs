@@ -19,17 +19,39 @@ public class RoomManager : MonoBehaviour
     public int rows = 2;
     public int columns = 4;
 
+    private bool _host = false;
+    public bool host
+    {
+        get { return _host; }
+        private set
+        {
+            if (_host != value)
+            {
+                _host = value;
+                OnHostChanged();
+            }
+        }
+    }
+    
+    //public bool host { get; private set; }
+
     private S_JoinRoom currentJoinRoomPakcet;
 
     public void SetCurrentGameRoomScene(CAGameRoomScene gameRoomScene)
     {
         curGameRoomScene = gameRoomScene;
     }
+
+    public void OnHostChanged()
+    {
+        curGameRoomScene._sceneUI.SetHost(host);
+        // 권한도 바꿔줘야 하는데 일단 나중에..   
+    }
  
     public void HandleJoinRoom(S_JoinRoom joinRoomPacket)
     {
-
         currentJoinRoomPakcet = joinRoomPacket;
+
 
         foreach ( var slotInfo in joinRoomPacket.SlotInfos)
         {
@@ -46,6 +68,7 @@ public class RoomManager : MonoBehaviour
             case JoinResultType.Success:
 
                 SceneManager.sceneLoaded += OnSceneLoaded;
+                SceneManager.sceneUnloaded += OnSceneUnloaded;
                 Managers.Scene.LoadScene(Define.Scene.CAGameRoom);
 
                 break;
@@ -64,22 +87,63 @@ public class RoomManager : MonoBehaviour
         } 
     }
 
+    public void HandleJoinRoomBroadcast(S_JoinRoomBroadcast joinRoomBroadcastPacket)
+    {
+        SlotInfo slotInfo = joinRoomBroadcastPacket.SlotInfo;
+
+        characters[slotInfo.SlotIndex] = InstantiateCharacter(slotInfo);
+    }
+
+    public void HandleExitRoomBroadcast(S_ExitRoomBroadcast exitRoomBroadcastPacket)
+    {
+        int slotid = exitRoomBroadcastPacket.SlotId;
+
+        if (0 <= slotid && slotid < characters.Length && characters[slotid] != null)
+        {
+            // 해당 캐릭터를 삭제한다.
+            Destroy(characters[slotid].gameObject);
+
+            // 해당 Slot을 Empty로 바꾼다. (이름, 배경 포함)
+            curGameRoomScene._sceneUI.GetUIUserGridPanel().ClearSlot(slotid);
+        }
+    }
+
+    public void OnSceneUnloaded(Scene scene)
+    {
+        SceneManager.sceneUnloaded -= OnSceneUnloaded;
+
+        for (int i = 0; i < characters.Length; i++)
+        {
+            characters[i] = null;
+        }
+    }
+
+
+
     public void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
         characterPrefab = Resources.Load<GameObject>("Prefabs/Creature/CACharacter");
        
         Debug.Log("Hello");
         SceneManager.sceneLoaded -= OnSceneLoaded;
+        host = false;
+
+        int clientcount = 0;
 
         foreach (var slotInfo in currentJoinRoomPakcet.SlotInfos)
         {
             if (slotInfo.PlayerId != -1)
             {
               characters[slotInfo.SlotIndex] = InstantiateCharacter(slotInfo);
+                clientcount++;
             }
         }
+
+        // 자기 자신이 Host일 경우 host의 권한을 줘야 한다.  
+        if (clientcount == 1)
+            host = true;
     }
- 
+
     public CACharacter InstantiateCharacter(SlotInfo slotinfo) // 나중에는 PlayerInfo로 바꿔줘야 한다.
     {
         GameRoomCamera camera =  Managers.Scene.CurrentScene.gameObject.GetComponent<CAGameRoomScene>().gameRoomCamera;

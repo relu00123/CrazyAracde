@@ -17,6 +17,7 @@ namespace Server.Game
 			Flush();
 
 			UserManager.Instance.Update();
+			RoomManager.Instance.Update();
 		}
 	}
 }

@@ -335,6 +335,16 @@ class PacketHandler
 		Managers.Room.HandleJoinRoom((S_JoinRoom)packet);
 	}
 
+	public static void S_JoinRoomBroadcastHandler(PacketSession session, IMessage packet)
+	{
+		Managers.Room.HandleJoinRoomBroadcast((S_JoinRoomBroadcast)packet);
+	}
+
+	public static void S_ExitRoomBroadcastHandler(PacketSession session, IMessage packet)
+	{
+		Managers.Room.HandleExitRoomBroadcast((S_ExitRoomBroadcast)packet);
+	}
+
 
 }
 
