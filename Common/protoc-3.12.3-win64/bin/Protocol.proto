@@ -42,6 +42,10 @@ enum MsgId {
   S_JOIN_ROOM = 35; 
   S_JOIN_ROOM_BROADCAST = 36;
   S_EXIT_ROOM_BROADCAST = 37;
+  S_GAMEROOM_CHAR_STATE = 38;
+  S_ALTER_HOST = 39;
+  C_KICK_PLAYER = 40;
+  S_CHANGE_SCENE = 41;
 }
 
 enum CreatureState {
@@ -56,6 +60,15 @@ enum MoveDir {
   DOWN = 1;
   LEFT = 2;
   RIGHT = 3;
+}
+
+enum GameSceneType 
+{
+  LOGIN_SCENE = 0;
+  LOBBY_SCENE = 1;
+  ROOM_SCENE = 2;
+  STORE_SCENE = 3;
+  GAME_SCENE = 4;
 }
 
 enum GameObjectType {
@@ -145,6 +158,14 @@ enum RoomAlterType
   ADD = 0;
   DELETE = 1;
   ALTER = 2;
+}
+
+enum GameRoomCharacterStateType
+{
+  HOST = 0;
+  READY = 1;
+  NOT_READY = 2;
+  STORE = 3;
 }
 
 message S_EnterGame {
@@ -303,6 +324,22 @@ message S_JoinRoom {
   JoinResultType joinresult = 1;
   repeated SlotInfo slotInfos = 2;
   int32 hostIdx = 3;
+  int32 clientslotIdx = 4;
+}
+
+message S_AlterHost {
+  int32 previousidx = 1;
+  int32 nowidx = 2;
+}
+
+message C_KickPlayer 
+{
+  int32 slotidx = 1;
+}
+
+message S_ChangeScene
+{
+  GameSceneType scene = 1;
 }
 
 message S_JoinRoomBroadcast {
@@ -311,6 +348,11 @@ message S_JoinRoomBroadcast {
 
 message S_ExitRoomBroadcast {
   int32 slotId = 1;
+}
+
+message S_GameroomCharState {
+  int32 slotId = 1;
+  GameRoomCharacterStateType charstate = 2;
 }
 
 message ObjectInfo {

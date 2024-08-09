@@ -1,3 +1,4 @@
+using Google.Protobuf.Protocol;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -40,6 +41,7 @@ public class UI_UsersGridPanel : UI_Base
         {
             UI_GameRoomUserSlot item = Instantiate(userSlot_UI, gridLayoutGroup.transform);
             item.uiUserSlot.AdjustCharacterUV(i);
+            item.SetSlotIndex(i);
             //UsersList.Add(item);
             UsersList[i] = item;
         }
@@ -55,5 +57,11 @@ public class UI_UsersGridPanel : UI_Base
     {
         if (index >= 0 && index < UsersList.Length)
             UsersList[index].ClearSlot();
+    }
+
+    public void SetCharState(int index , GameRoomCharacterStateType charState)
+    {
+        if (index >= 0 && index < UsersList.Length)
+            UsersList[index].SetCharState(charState);
     }
 }

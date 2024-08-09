@@ -141,6 +141,24 @@ namespace Server.Game
             return null;
         }
 
+		public void KickPlayer(ClientSession session, int kickslotidx)
+		{
+			if (kickslotidx < 0 || kickslotidx >= _slots.Length) 
+				return;
+
+			if (_slots[kickslotidx].ClientSession != null)
+			{
+				S_ChangeScene changeScenePakcet = new S_ChangeScene();
+				changeScenePakcet.Scene = GameSceneType.LobbyScene;
+				_slots[kickslotidx].ClientSession.Send(changeScenePakcet);
+				_slots[kickslotidx].ClientSession.LeaveRoom();
+			}
+
+
+			// 킥당한 플레이어는 로비로 전환되도록 해줘야 한다. 
+		}
+
+
         public void AddClient(ClientSession session)
 		{
 			int? slotId = GetNextAvailableSlot();
@@ -184,6 +202,7 @@ namespace Server.Game
             S_JoinRoom joinRoomPacket = new S_JoinRoom();
 			joinRoomPacket.Joinresult = JoinResultType.Success;
 			joinRoomPacket.HostIdx = _hostIndex;
+			joinRoomPacket.ClientslotIdx = slotId.Value;
 
 			for (int i = 0; i < _slots.Length; ++i)
 			{
@@ -244,19 +263,34 @@ namespace Server.Game
 
 		private void FindNewHost()
 		{
-			_hostIndex = -1;
+			S_AlterHost alterHostPacket = new S_AlterHost();
+			alterHostPacket.Previousidx = _hostIndex;
 
-			// Host가 나갔을 때 가장 앞에 있는 클라이언트를 새로운 Host로 설정
-			 for (int i = 0; i < _slots.Length; i++)
+            _hostIndex = -1;
+
+            // Host가 나갔을 때 가장 앞에 있는 클라이언트를 새로운 Host로 설정
+            for (int i = 0; i < _slots.Length; i++)
 			{
 				if (!_slots[i].IsAvailable && _slots[i].ClientSession != null)
 				{
 					_hostIndex = i;
+
 					// Host에 변화가 생겼으면 모든 Client에게 Host가 변했다는 사실을 BroadCast해줘야함
 					// 나중에 할 것임..
 
+					alterHostPacket.Nowidx = i;
+
 					Console.WriteLine($"New Host Found! It's {_hostIndex} slot!");
-					return;
+					//return;
+				}
+			}
+
+
+			 for (int i = 0; i < _slots.Length; i++)
+			{
+				if (!_slots[i].IsAvailable && _slots[i].ClientSession != null)
+				{
+					_slots[i].ClientSession.Send(alterHostPacket);
 				}
 			}
 		}

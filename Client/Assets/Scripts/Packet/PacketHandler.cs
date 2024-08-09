@@ -3,6 +3,7 @@ using Google.Protobuf.Protocol;
 using ServerCore;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -345,7 +346,20 @@ class PacketHandler
 		Managers.Room.HandleExitRoomBroadcast((S_ExitRoomBroadcast)packet);
 	}
 
+	public static void S_GameroomCharStateHandler(PacketSession session, IMessage packet)
+	{
+		Managers.Room.HandleGameroomCharState((S_GameroomCharState)packet);
+	}
 
+	public static void S_AlterHostHandler(PacketSession session, IMessage packet)
+	{
+		Managers.Room.HandleAlterHost((S_AlterHost)packet);
+	}
+
+	public static void S_ChangeSceneHandler(PacketSession session, IMessage packet)
+	{
+        Managers.Scene.LoadScene(Define.Scene.CAMainLobby);
+    }
 }
 
 

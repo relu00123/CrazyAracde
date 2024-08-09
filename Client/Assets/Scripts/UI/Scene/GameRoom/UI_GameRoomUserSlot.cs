@@ -1,3 +1,4 @@
+using Google.Protobuf.Protocol;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -6,9 +7,16 @@ using UnityEngine.UI;
 
 public class UI_GameRoomUserSlot : UI_Base
 {
+    [SerializeField] public Sprite HostStateTexture;
+    [SerializeField] public Sprite ReadyStateTexture;
+    [SerializeField] public Sprite NotReadyStateTexture;
+    [SerializeField] public Sprite StoreStateTexture;
+
+
     enum Images
     {
-        SlotBackGround
+        SlotBackGround,
+        CharacterState,
     }
 
     enum Texts
@@ -16,6 +24,7 @@ public class UI_GameRoomUserSlot : UI_Base
         CharacterName
     }
 
+    private int slotidx = -1;
 
 
     public UI_UsersGridPanel ParentGrid { get; set; }
@@ -59,6 +68,33 @@ public class UI_GameRoomUserSlot : UI_Base
 
         // 이름 초기화 
         GetTextMeshPro((int)Texts.CharacterName).text = "";
+    }
+
+    public void SetCharState(GameRoomCharacterStateType state)
+    {
+        switch (state)
+        {
+            case GameRoomCharacterStateType.Host:
+                GetImage((int)Images.CharacterState).sprite = HostStateTexture;
+                break;
+            case GameRoomCharacterStateType.Ready:
+                GetImage((int)Images.CharacterState).sprite = ReadyStateTexture;
+                break;
+            case GameRoomCharacterStateType.NotReady:
+                GetImage((int)Images.CharacterState).sprite = NotReadyStateTexture;
+                break;
+            case GameRoomCharacterStateType.Store:
+                GetImage((int)Images.CharacterState).sprite = StoreStateTexture;
+                break;
+        }
+    }
+
+    public void SetSlotIndex(int idx)
+    {
+        slotidx = idx;
+
+        if (uiUserSlot != null)
+            uiUserSlot.SetSlotIndex(idx);
     }
 
 }

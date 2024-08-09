@@ -72,7 +72,13 @@ class PacketManager
 		_onRecv.Add((ushort)MsgId.SJoinRoomBroadcast, MakePacket<S_JoinRoomBroadcast>);
 		_handler.Add((ushort)MsgId.SJoinRoomBroadcast, PacketHandler.S_JoinRoomBroadcastHandler);		
 		_onRecv.Add((ushort)MsgId.SExitRoomBroadcast, MakePacket<S_ExitRoomBroadcast>);
-		_handler.Add((ushort)MsgId.SExitRoomBroadcast, PacketHandler.S_ExitRoomBroadcastHandler);
+		_handler.Add((ushort)MsgId.SExitRoomBroadcast, PacketHandler.S_ExitRoomBroadcastHandler);		
+		_onRecv.Add((ushort)MsgId.SGameroomCharState, MakePacket<S_GameroomCharState>);
+		_handler.Add((ushort)MsgId.SGameroomCharState, PacketHandler.S_GameroomCharStateHandler);		
+		_onRecv.Add((ushort)MsgId.SAlterHost, MakePacket<S_AlterHost>);
+		_handler.Add((ushort)MsgId.SAlterHost, PacketHandler.S_AlterHostHandler);		
+		_onRecv.Add((ushort)MsgId.SChangeScene, MakePacket<S_ChangeScene>);
+		_handler.Add((ushort)MsgId.SChangeScene, PacketHandler.S_ChangeSceneHandler);
 	}
 
 	public void OnRecvPacket(PacketSession session, ArraySegment<byte> buffer)

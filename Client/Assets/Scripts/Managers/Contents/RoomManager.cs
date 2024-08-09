@@ -19,6 +19,9 @@ public class RoomManager : MonoBehaviour
     public int rows = 2;
     public int columns = 4;
 
+
+    private int clientSlotidx = -1;
+
     private bool _host = false;
     public bool host
     {
@@ -45,7 +48,7 @@ public class RoomManager : MonoBehaviour
     public void OnHostChanged()
     {
         curGameRoomScene._sceneUI.SetHost(host);
-        // 권한도 바꿔줘야 하는데 일단 나중에..   
+        // 권한도 바꿔줘야 하는데 일단 나중에..    // 자신이 호스트가 되면 UI가 바뀌어야 한다.
     }
  
     public void HandleJoinRoom(S_JoinRoom joinRoomPacket)
@@ -87,6 +90,8 @@ public class RoomManager : MonoBehaviour
         } 
     }
 
+    #region PacketHandle
+
     public void HandleJoinRoomBroadcast(S_JoinRoomBroadcast joinRoomBroadcastPacket)
     {
         SlotInfo slotInfo = joinRoomBroadcastPacket.SlotInfo;
@@ -108,9 +113,33 @@ public class RoomManager : MonoBehaviour
         }
     }
 
+    public void HandleGameroomCharState(S_GameroomCharState pkt)
+    {
+        curGameRoomScene._sceneUI.GetUIUserGridPanel().SetCharState(pkt.SlotId, pkt.Charstate);
+
+    }
+
+    public void HandleAlterHost(S_AlterHost pkt)
+    {
+        if (pkt.Previousidx == clientSlotidx)
+            host = false;
+        else if (pkt.Nowidx == clientSlotidx && clientSlotidx != -1) 
+            host = true;
+    }
+
+
+
+    #endregion
+
+
+
     public void OnSceneUnloaded(Scene scene)
     {
         SceneManager.sceneUnloaded -= OnSceneUnloaded;
+
+        clientSlotidx = -1;
+        host = false;
+
 
         for (int i = 0; i < characters.Length; i++)
         {
@@ -118,6 +147,8 @@ public class RoomManager : MonoBehaviour
         }
     }
 
+
+    
 
 
     public void OnSceneLoaded(Scene scene, LoadSceneMode mode)
@@ -128,6 +159,7 @@ public class RoomManager : MonoBehaviour
         SceneManager.sceneLoaded -= OnSceneLoaded;
         host = false;
 
+        clientSlotidx = currentJoinRoomPakcet.ClientslotIdx;
         int clientcount = 0;
 
         foreach (var slotInfo in currentJoinRoomPakcet.SlotInfos)

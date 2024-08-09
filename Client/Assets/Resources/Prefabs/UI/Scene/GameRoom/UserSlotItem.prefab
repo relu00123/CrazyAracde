@@ -65,7 +65,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: New Text
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -92,7 +92,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 25.5
+  m_fontSize: 36
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -401,6 +401,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3020aaee6c1f97d408f34c17ea328363, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  HostStateTexture: {fileID: 21300000, guid: fcc668774a434384cb5f6c2a7732f31c, type: 3}
+  ReadyStateTexture: {fileID: 21300000, guid: a65c3e743456ea54587f406ae8544d05, type: 3}
+  NotReadyStateTexture: {fileID: 21300000, guid: 4f10d460c7eddec4b84b205b49e48b8a,
+    type: 3}
+  StoreStateTexture: {fileID: 21300000, guid: fcc668774a434384cb5f6c2a7732f31c, type: 3}
   userSlotBG: {fileID: 693044383507575490}
 --- !u!1 &5616475357996970329
 GameObject:

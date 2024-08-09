@@ -167,6 +167,14 @@ class PacketHandler
 		//RoomManager.Instance.ClientEnterRoom(clientSession, joinRoomPacket.Roomid);
 		RoomManager.Instance.Push(RoomManager.Instance.ClientEnterRoom, clientSession, joinRoomPacket.Roomid);
 	}
+
+	public static void C_KickPlayerHandler(PacketSession session, IMessage packet)
+	{
+        ClientSession clientSession = (ClientSession)(session);
+        C_KickPlayer kickPlayerPakcet = (C_KickPlayer)packet;
+
+		clientSession.BeloingRoom.Push(clientSession.BeloingRoom.KickPlayer, clientSession, kickPlayerPakcet.Slotidx);
+    }
 }
 
 

@@ -38,6 +38,8 @@ public class UI_UserSlot : UI_Base
     [SerializeField] private Sprite NormalImage;
     [SerializeField] private Sprite HighlightedImage;
 
+    private int slotIdx = -1;
+
 
     public override void Init()
     {
@@ -45,6 +47,7 @@ public class UI_UserSlot : UI_Base
 
         AdjustCharacterSizeAndPosition();
         SetupHoverEvents();
+       
     }
 
     public void SetupHoverEvents()
@@ -55,7 +58,8 @@ public class UI_UserSlot : UI_Base
         EventTrigger.Entry entryEnter = new EventTrigger.Entry();
         entryEnter.eventID = EventTriggerType.PointerEnter;
         entryEnter.callback.AddListener((data) => {
-            GetComponent<Image>().sprite = HighlightedImage;
+            if (Managers.Room.host == true)
+                GetComponent<Image>().sprite = HighlightedImage;
         });
 
         trigger.triggers.Add(entryEnter);
@@ -67,7 +71,26 @@ public class UI_UserSlot : UI_Base
         });
 
         trigger.triggers.Add(entryExit);
+
+
+        EventTrigger.Entry entryclick = new EventTrigger.Entry();
+        entryclick.eventID = EventTriggerType.PointerClick;
+        entryclick.callback.AddListener((data) =>
+        {
+            if (Managers.Room.host == true)
+            {
+                Debug.Log($"Kick Player!!!! {slotIdx}");
+                C_KickPlayer kickpacket = new C_KickPlayer();
+                kickpacket.Slotidx = slotIdx;
+                Managers.Network.Send(kickpacket);
+            }
+        });
+
+        trigger.triggers.Add((entryclick));
     }
+
+ 
+
 
     private void AdjustCharacterSizeAndPosition()
     {
@@ -96,5 +119,10 @@ public class UI_UserSlot : UI_Base
         float start_y = (num < 4) ? 0.5f : 0.0f;
 
         GetRawImage((int)RawImages.Character).uvRect = new Rect(start_x, start_y, scale_x, scale_y);
+    }
+
+    public void SetSlotIndex(int idx)
+    {
+        slotIdx = idx;
     }
 }
