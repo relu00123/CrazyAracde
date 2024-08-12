@@ -244,9 +244,19 @@ namespace Server
 
             if (newState == PlayerServerState.ServerStateLobby)
             {
-				RoomManager.Instance.Push(RoomManager.Instance.EnterLobby, clientsession);
+				//RoomManager.Instance.Push(RoomManager.Instance.EnterLobby, clientsession);
                // RoomManager.Instance.EnterLobby(clientsession);
             }
         }
+
+		public void HandleChangeSceneCompleted(ClientSession clientSession, C_ChangeSceneCompleted packet)
+		{
+			GameSceneType scene = packet.Scene;
+
+			if (scene == GameSceneType.CAMainLobby)
+			{
+                RoomManager.Instance.Push(RoomManager.Instance.EnterLobby, clientSession);
+            }
+		}
 	}
 }

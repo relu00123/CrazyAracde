@@ -14,6 +14,10 @@ enum RawImages
     Character,
 }
 
+enum Images
+{
+    UserSlotBG,
+}
 
 
 public class UI_UserSlot : UI_Base
@@ -38,12 +42,16 @@ public class UI_UserSlot : UI_Base
     [SerializeField] private Sprite NormalImage;
     [SerializeField] private Sprite HighlightedImage;
 
+    [SerializeField] private Sprite OpenSlotTexture;
+    [SerializeField] private Sprite CloseSlotTexture;
+
     private int slotIdx = -1;
 
 
     public override void Init()
     {
         Bind<RawImage>(typeof(RawImages));
+        Bind<Image>(typeof(Images));
 
         AdjustCharacterSizeAndPosition();
         SetupHoverEvents();
@@ -124,5 +132,15 @@ public class UI_UserSlot : UI_Base
     public void SetSlotIndex(int idx)
     {
         slotIdx = idx;
+    }
+
+    public void CloseSlot()
+    {
+        GetImage((int)Images.UserSlotBG).sprite = CloseSlotTexture;
+    }
+
+    public void OpenSlot()
+    {
+        GetImage((int)Images.UserSlotBG).sprite = OpenSlotTexture;
     }
 }

@@ -31,7 +31,7 @@ public class RoomManager : MonoBehaviour
             if (_host != value)
             {
                 _host = value;
-                OnHostChanged();
+                OnHostChanged(clientSlotidx);
             }
         }
     }
@@ -45,10 +45,12 @@ public class RoomManager : MonoBehaviour
         curGameRoomScene = gameRoomScene;
     }
 
-    public void OnHostChanged()
+    public void OnHostChanged(int slotidx)
     {
+        if (curGameRoomScene == null)
+            return;
+
         curGameRoomScene._sceneUI.SetHost(host);
-        // 권한도 바꿔줘야 하는데 일단 나중에..    // 자신이 호스트가 되면 UI가 바뀌어야 한다.
     }
  
     public void HandleJoinRoom(S_JoinRoom joinRoomPacket)
@@ -56,15 +58,15 @@ public class RoomManager : MonoBehaviour
         currentJoinRoomPakcet = joinRoomPacket;
 
 
-        foreach ( var slotInfo in joinRoomPacket.SlotInfos)
-        {
-            Debug.Log("===================");
-            Debug.Log(slotInfo.SlotIndex);
-            Debug.Log(slotInfo.IsAvailable);
-            Debug.Log(slotInfo.PlayerId);
-            Debug.Log(slotInfo.Character);
-            Debug.Log("===================");
-        }
+        //foreach ( var slotInfo in joinRoomPacket.SlotInfos)
+        //{
+        //    Debug.Log("===================");
+        //    Debug.Log(slotInfo.SlotIndex);
+        //    Debug.Log(slotInfo.IsAvailable);
+        //    Debug.Log(slotInfo.PlayerId);
+        //    Debug.Log(slotInfo.Character);
+        //    Debug.Log("===================");
+        //}
 
         switch (joinRoomPacket.Joinresult)
         {
@@ -110,6 +112,7 @@ public class RoomManager : MonoBehaviour
 
             // 해당 Slot을 Empty로 바꾼다. (이름, 배경 포함)
             curGameRoomScene._sceneUI.GetUIUserGridPanel().ClearSlot(slotid);
+            curGameRoomScene._sceneUI.GetUIUserGridPanel().SetCharState(slotid, GameRoomCharacterStateType.NotReady);
         }
     }
 
@@ -125,6 +128,10 @@ public class RoomManager : MonoBehaviour
             host = false;
         else if (pkt.Nowidx == clientSlotidx && clientSlotidx != -1) 
             host = true;
+
+       curGameRoomScene._sceneUI.GetUIUserGridPanel().SetCharState(pkt.Previousidx, GameRoomCharacterStateType.NotReady);
+       curGameRoomScene._sceneUI.GetUIUserGridPanel().SetCharState(pkt.Nowidx, GameRoomCharacterStateType.Host);
+
     }
 
 
@@ -137,6 +144,7 @@ public class RoomManager : MonoBehaviour
     {
         SceneManager.sceneUnloaded -= OnSceneUnloaded;
 
+        curGameRoomScene = null;
         clientSlotidx = -1;
         host = false;
 
@@ -146,10 +154,6 @@ public class RoomManager : MonoBehaviour
             characters[i] = null;
         }
     }
-
-
-    
-
 
     public void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
@@ -166,14 +170,27 @@ public class RoomManager : MonoBehaviour
         {
             if (slotInfo.PlayerId != -1)
             {
-              characters[slotInfo.SlotIndex] = InstantiateCharacter(slotInfo);
+                characters[slotInfo.SlotIndex] = InstantiateCharacter(slotInfo);
                 clientcount++;
+
+                // 해당하는 플레이어 State에 맞는 CharState UI를 보여준다. 
+                curGameRoomScene._sceneUI.GetUIUserGridPanel().SetCharState(slotInfo.SlotIndex, slotInfo.CharacterState);
+            }
+
+            else if (slotInfo.PlayerId == - 1 && slotInfo.IsAvailable == false)
+            {
+               Debug.Log($"SlotIndex : {slotInfo.SlotIndex}");
+                curGameRoomScene._sceneUI.GetUIUserGridPanel().CloseSlot(slotInfo.SlotIndex);
             }
         }
 
         // 자기 자신이 Host일 경우 host의 권한을 줘야 한다.  
         if (clientcount == 1)
+        {
             host = true;
+            curGameRoomScene._sceneUI.GetUIUserGridPanel().SetCharState(0, GameRoomCharacterStateType.Host);
+        }
+
     }
 
     public CACharacter InstantiateCharacter(SlotInfo slotinfo) // 나중에는 PlayerInfo로 바꿔줘야 한다.

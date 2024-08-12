@@ -358,7 +358,7 @@ class PacketHandler
 
 	public static void S_ChangeSceneHandler(PacketSession session, IMessage packet)
 	{
-        Managers.Scene.LoadScene(Define.Scene.CAMainLobby);
+		Managers.Scene.LoadScene(((S_ChangeScene)packet).Scene);
     }
 }
 

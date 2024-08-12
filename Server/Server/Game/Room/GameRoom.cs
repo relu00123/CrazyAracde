@@ -15,6 +15,8 @@ namespace Server.Game
 		{
 			public bool IsAvailable { get; set; } = true;
 			public ClientSession ClientSession { get; set; } = null;
+			public GameRoomCharacterStateType CharacterState { get; set; } = GameRoomCharacterStateType.NotReady;
+			public CharacterType CharType { get; set; } = CharacterType.CharacterNone;
 		}
 
 		public RoomInfo _roomInfo { get; private set; }
@@ -40,13 +42,33 @@ namespace Server.Game
 			roominfo.RoomNumber = _roomId;
 			_roomInfo = roominfo;
 
-
 			for (int i = 0; i < _slots.Length; i++)
 			{
 				_slots[i] = new Slot();
 			}
 
+			// GameMode에 따라서 최대 Slot의 제약이 있을 수 있을 수 있다. 나중에 함수화해야한다.
+			if (roominfo.GameMode == GameModeType.NormalMode)
+			{
+				_roomInfo.MaxPeopleCnt = 8;
+			}
 
+			else if (roominfo.GameMode == GameModeType.MonsterMode)
+			{
+				_roomInfo.MaxPeopleCnt = 4;
+				for (int i = _roomInfo.MaxPeopleCnt; i <  _slots.Length; i++)
+				{
+					_slots[i].IsAvailable = false;
+				}
+			}
+
+			else if (roominfo.GameMode == GameModeType.AIMode)
+			{
+				_roomInfo.MaxPeopleCnt = 8;
+				// 음.. 인게임에서 AI Mode는 혼자 놀도록 해놨는데.. 
+				// 직접구현한다면 어떻게 해야할지 몰루?
+			}
+			
 		}
 
         #region Lecture
@@ -149,15 +171,12 @@ namespace Server.Game
 			if (_slots[kickslotidx].ClientSession != null)
 			{
 				S_ChangeScene changeScenePakcet = new S_ChangeScene();
-				changeScenePakcet.Scene = GameSceneType.LobbyScene;
+				changeScenePakcet.Scene = GameSceneType.CAMainLobby;
 				_slots[kickslotidx].ClientSession.Send(changeScenePakcet);
-				_slots[kickslotidx].ClientSession.LeaveRoom();
+				_slots[kickslotidx].ClientSession.ServerState = PlayerServerState.ServerStateLobby;
+			 
 			}
-
-
-			// 킥당한 플레이어는 로비로 전환되도록 해줘야 한다. 
 		}
-
 
         public void AddClient(ClientSession session)
 		{
@@ -174,7 +193,6 @@ namespace Server.Game
 			if (_hostIndex == -1)
 				FindNewHost();
 
-	 
             // S_JoinRoomBroadcast Packet을 보내준다. (기존에 있던 클라이언트들)
             S_JoinRoomBroadcast joinRoomBroadcastPacket = new S_JoinRoomBroadcast();
 			SlotInfo JoinRoomPacketSlotInfo = new SlotInfo
@@ -197,6 +215,7 @@ namespace Server.Game
             session.JoinRoom(this);
             _slots[slotId.Value].ClientSession = session;
             _slots[slotId.Value].IsAvailable = false;
+		 
 
             // S_JoinRoom Packet을 보내준다. (접속한 클라이언트)
             S_JoinRoom joinRoomPacket = new S_JoinRoom();
@@ -218,12 +237,13 @@ namespace Server.Game
 				{
                     slotInfo.Character = _slots[i].ClientSession.Character;
                 }
-				 
-				joinRoomPacket.SlotInfos.Add(slotInfo);
-			}
-			session.Send(joinRoomPacket);
 
-            
+				slotInfo.CharacterState = _slots[i].CharacterState;
+				slotInfo.Character = _slots[i].CharType;
+
+				joinRoomPacket.SlotInfos.Add(slotInfo);				
+			}
+			session.Send(joinRoomPacket);        
 		}
 
 		public void RemoveClient(ClientSession session)
@@ -234,10 +254,9 @@ namespace Server.Game
 				Console.WriteLine("GameRoom 에서 Client 삭제 실패 (치명적 오류)");
 				return;
 			}
-
-
-			// 해당 Session의 삭제를 방에 있는 남아있는 유저들에게 알린다. 
-			for (int i = 0; i < _slots.Length; ++i)
+          
+            // 해당 Session의 삭제를 방에 있는 남아있는 유저들에게 알린다. 
+            for (int i = 0; i < _slots.Length; ++i)
 			{
 				if (_slots[i].ClientSession == null || _slots[i].ClientSession == session) continue;
 
@@ -251,8 +270,11 @@ namespace Server.Game
 
 			_slots[slotId].ClientSession = null;
 			_slots[slotId].IsAvailable = true;
+			_slots[slotId].CharacterState = GameRoomCharacterStateType.NotReady;
 
-			if (slotId == _hostIndex)
+            
+
+            if (slotId == _hostIndex)
 				FindNewHost();
 
 
@@ -266,27 +288,26 @@ namespace Server.Game
 			S_AlterHost alterHostPacket = new S_AlterHost();
 			alterHostPacket.Previousidx = _hostIndex;
 
-            _hostIndex = -1;
+			if (_hostIndex != -1)
+				_slots[_hostIndex].CharacterState = GameRoomCharacterStateType.NotReady;
+ 
 
+            _hostIndex = -1;
             // Host가 나갔을 때 가장 앞에 있는 클라이언트를 새로운 Host로 설정
             for (int i = 0; i < _slots.Length; i++)
 			{
 				if (!_slots[i].IsAvailable && _slots[i].ClientSession != null)
 				{
 					_hostIndex = i;
-
-					// Host에 변화가 생겼으면 모든 Client에게 Host가 변했다는 사실을 BroadCast해줘야함
-					// 나중에 할 것임..
-
+					_slots[_hostIndex].CharacterState = GameRoomCharacterStateType.Host;
 					alterHostPacket.Nowidx = i;
 
 					Console.WriteLine($"New Host Found! It's {_hostIndex} slot!");
-					//return;
+					break;
 				}
 			}
 
-
-			 for (int i = 0; i < _slots.Length; i++)
+            for (int i = 0; i < _slots.Length; i++)
 			{
 				if (!_slots[i].IsAvailable && _slots[i].ClientSession != null)
 				{
@@ -294,8 +315,6 @@ namespace Server.Game
 				}
 			}
 		}
-
-
 
 		public ClientSession GetClientBySlot(int slotId)
 		{
@@ -325,9 +344,6 @@ namespace Server.Game
             //    _slots[slotId].ClientSession = null;
             //}
         }
-
-
-		 
 
 
 		private void CloseRoom()
@@ -561,6 +577,53 @@ namespace Server.Game
 			}
 
 			return zones.ToList();
+		}
+
+		public void HandleStartGame()
+		{
+
+		}
+
+		public void HandleSetReady(ClientSession clientSession)
+		{
+			int slotidx = -1;
+			GameRoomCharacterStateType state = GameRoomCharacterStateType.NotReady;
+
+			for (int i = 0; i < _slots.Length; i++)
+			{
+				if (_slots[i].ClientSession == clientSession)
+				{
+					slotidx = i;
+
+					if (_slots[i].CharacterState == GameRoomCharacterStateType.Ready)
+					{
+						_slots[i].CharacterState = GameRoomCharacterStateType.NotReady;
+						state = GameRoomCharacterStateType.NotReady;
+					}
+					else if (_slots[i].CharacterState == GameRoomCharacterStateType.NotReady)
+					{
+						_slots[i].CharacterState = GameRoomCharacterStateType.Ready;
+						state = GameRoomCharacterStateType.Ready;
+					}
+
+					break;
+				}
+			}
+
+			for (int i = 0; i < _slots.Length; i++)
+			{
+				if (_slots[i].ClientSession != null)
+				{
+					S_GameroomCharState charstate = new S_GameroomCharState();
+					charstate.SlotId = slotidx;
+					charstate.Charstate = state;
+
+					_slots[i].ClientSession.Send(charstate);
+				}
+			}
+
+
+
 		}
 
 

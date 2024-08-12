@@ -97,4 +97,24 @@ public class UI_GameRoomUserSlot : UI_Base
             uiUserSlot.SetSlotIndex(idx);
     }
 
+    public void CloseSlot()
+    {
+        if (uiUserSlot != null)
+            uiUserSlot.CloseSlot();
+
+        GetImage((int)Images.SlotBackGround).sprite = ReadyStateTexture;
+
+        Canvas.ForceUpdateCanvases();
+    }
+
+    public void OpenSlot()
+    {
+        if (uiUserSlot != null)
+            uiUserSlot.OpenSlot();
+
+        Canvas.ForceUpdateCanvases();
+    }
+
+   
+
 }

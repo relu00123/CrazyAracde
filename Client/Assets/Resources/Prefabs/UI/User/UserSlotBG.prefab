@@ -93,6 +93,8 @@ MonoBehaviour:
   CharacterObjectImage: {fileID: 0}
   NormalImage: {fileID: 21300000, guid: 47cf028433f289d44a769630235167ae, type: 3}
   HighlightedImage: {fileID: 21300000, guid: bd005585f956608438573178eb0acd24, type: 3}
+  OpenSlotTexture: {fileID: 21300000, guid: fe20fd6ab9dc06642ada1d7dc44ec9ee, type: 3}
+  CloseSlotTexture: {fileID: 21300000, guid: f433fdf3d2f207442875be35fe5d8730, type: 3}
 --- !u!1 &1320255209256523132
 GameObject:
   m_ObjectHideFlags: 0

@@ -29,6 +29,7 @@ public class UI_CAGameRoomScene : UI_Scene
         Bind<GridLayoutGroup>(typeof(GridPanels));
 
         GetButton((int)Buttons.ToLobby).gameObject.BindEvent(OnToLobbyButtonClicked);
+        GetButton((int)Buttons.StartBtn).gameObject.BindEvent(OnStartBtnClicked);
     }
     public void OnToLobbyButtonClicked(PointerEventData evt)
     {
@@ -48,11 +49,15 @@ public class UI_CAGameRoomScene : UI_Scene
         if (Managers.Room.host)
         {
             // 게임을 시작하자는 패킷을 Server에 보낸다.
+            C_StartGame startgamepacket = new C_StartGame();
+            Managers.Network.Send(startgamepacket);
         }
 
         else
         {
-            // 게임을 레디하자는 패킷을 Server에 보낸다. 
+            //레디 상태로 변경하라는 패킷을 Server에 보낸다. 
+            C_ReadybtnClicked readybtnClickedPacket = new C_ReadybtnClicked();
+            Managers.Network.Send(readybtnClickedPacket);
         }
     }
 

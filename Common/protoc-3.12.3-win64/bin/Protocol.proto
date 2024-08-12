@@ -46,6 +46,9 @@ enum MsgId {
   S_ALTER_HOST = 39;
   C_KICK_PLAYER = 40;
   S_CHANGE_SCENE = 41;
+  C_CHANGE_SCENE_COMPLETED = 42;
+  C_START_GAME = 43;
+  C_READYBTN_CLICKED = 44;
 }
 
 enum CreatureState {
@@ -64,11 +67,9 @@ enum MoveDir {
 
 enum GameSceneType 
 {
-  LOGIN_SCENE = 0;
-  LOBBY_SCENE = 1;
-  ROOM_SCENE = 2;
-  STORE_SCENE = 3;
-  GAME_SCENE = 4;
+  C_A_Main_Lobby = 0;
+  C_A_Store = 1;
+  C_A_Game_Room = 2;
 }
 
 enum GameObjectType {
@@ -83,6 +84,7 @@ enum CharacterType  {
   BAZZI = 1;
   KEFI = 2;
   MARID = 3;
+  CHARACTER_NONE = 4;
 }
 
 enum SkillType {
@@ -269,6 +271,14 @@ message S_EquipItem {
   bool equipped = 2;
 }
 
+message C_StartGame {
+
+}
+
+message C_ReadybtnClicked {
+
+}
+
 message S_ChangeStat {
   StatInfo statInfo = 1;
 }
@@ -338,6 +348,11 @@ message C_KickPlayer
 }
 
 message S_ChangeScene
+{
+  GameSceneType scene = 1;
+}
+
+message C_ChangeSceneCompleted
 {
   GameSceneType scene = 1;
 }
@@ -414,5 +429,6 @@ message SlotInfo
   bool  IsAvailable = 2;
   int32 PlayerId = 3;
   CharacterType character = 4;
+  GameRoomCharacterStateType characterState = 5;
 }
  

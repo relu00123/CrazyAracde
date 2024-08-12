@@ -175,6 +175,30 @@ class PacketHandler
 
 		clientSession.BeloingRoom.Push(clientSession.BeloingRoom.KickPlayer, clientSession, kickPlayerPakcet.Slotidx);
     }
+
+	public static void C_ChangeSceneCompletedHandler(PacketSession session, IMessage packet)
+	{
+		ClientSession clientSession = (ClientSession)(session);
+		C_ChangeSceneCompleted ChangedScenePacket = (C_ChangeSceneCompleted)packet;
+
+		RoomManager.Instance.Push(clientSession.HandleChangeSceneCompleted, clientSession, ChangedScenePacket); 
+	}
+
+    public static void C_StartGameHandler(PacketSession session, IMessage packet)
+    {
+        ClientSession clientSession = (ClientSession)(session);
+        C_StartGame StartGamePacket = (C_StartGame)packet;
+
+		clientSession.BeloingRoom.Push(clientSession.BeloingRoom.HandleStartGame);
+    }
+
+    public static void C_ReadybtnClickedHandler(PacketSession session, IMessage packet)
+    {
+        ClientSession clientSession = (ClientSession)(session);
+        C_ReadybtnClicked ReadyBtnClickedPacket = (C_ReadybtnClicked)packet;
+
+        clientSession.BeloingRoom.Push(clientSession.BeloingRoom.HandleSetReady, clientSession);
+    }
 }
 
 
