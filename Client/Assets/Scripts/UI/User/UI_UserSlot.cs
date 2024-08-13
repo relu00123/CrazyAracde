@@ -1,6 +1,7 @@
 using Google.Protobuf.Protocol;
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics.Eventing.Reader;
 using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -16,7 +17,7 @@ enum RawImages
 
 enum Images
 {
-    UserSlotBG,
+    UserSlotBackGround,
 }
 
 
@@ -46,6 +47,7 @@ public class UI_UserSlot : UI_Base
     [SerializeField] private Sprite CloseSlotTexture;
 
     private int slotIdx = -1;
+    bool isslotopen = true;
 
 
     public override void Init()
@@ -87,18 +89,29 @@ public class UI_UserSlot : UI_Base
         {
             if (Managers.Room.host == true)
             {
-                Debug.Log($"Kick Player!!!! {slotIdx}");
-                C_KickPlayer kickpacket = new C_KickPlayer();
-                kickpacket.Slotidx = slotIdx;
-                Managers.Network.Send(kickpacket);
+                // 유저가 없을 경우에는 Close Packet을
+                if (Managers.Room.characters[slotIdx] != null)
+                {
+                    Debug.Log($"Kick Player!!!! {slotIdx}");
+                    C_KickPlayer kickpacket = new C_KickPlayer();
+                    kickpacket.Slotidx = slotIdx;
+                    Managers.Network.Send(kickpacket);
+                }
+
+                // 유저가 있을 경우에는 Kick Packet을 보내야 한다. 
+                else
+                {
+                    Debug.Log($"Close Slot!! {slotIdx}");
+                    C_ChangeSlotState changeslotpacket = new C_ChangeSlotState();
+                    changeslotpacket.Slotidx = slotIdx;
+                    changeslotpacket.Isopen = !isslotopen;
+                    Managers.Network.Send(changeslotpacket);
+                }
             }
         });
 
         trigger.triggers.Add((entryclick));
     }
-
- 
-
 
     private void AdjustCharacterSizeAndPosition()
     {
@@ -136,11 +149,13 @@ public class UI_UserSlot : UI_Base
 
     public void CloseSlot()
     {
-        GetImage((int)Images.UserSlotBG).sprite = CloseSlotTexture;
+        GetImage((int)Images.UserSlotBackGround).sprite = CloseSlotTexture;
+        isslotopen = false;
     }
 
     public void OpenSlot()
     {
-        GetImage((int)Images.UserSlotBG).sprite = OpenSlotTexture;
+        GetImage((int)Images.UserSlotBackGround).sprite = OpenSlotTexture;
+        isslotopen = true;
     }
 }

@@ -99,12 +99,15 @@ public class UI_GameRoomUserSlot : UI_Base
 
     public void CloseSlot()
     {
+        // 문제없이 동작하는 것을 확인하였음. 
+        //GetImage((int)Images.CharacterState).sprite = HostStateTexture;
+
         if (uiUserSlot != null)
             uiUserSlot.CloseSlot();
 
-        GetImage((int)Images.SlotBackGround).sprite = ReadyStateTexture;
+        //GetImage((int)Images.SlotBackGround).sprite = ReadyStateTexture;
 
-        Canvas.ForceUpdateCanvases();
+        // Canvas.ForceUpdateCanvases();
     }
 
     public void OpenSlot()

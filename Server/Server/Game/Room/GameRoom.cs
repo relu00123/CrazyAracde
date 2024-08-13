@@ -4,6 +4,7 @@ using Microsoft.Extensions.Logging.Abstractions;
 using Server.Data;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 
@@ -47,29 +48,33 @@ namespace Server.Game
 				_slots[i] = new Slot();
 			}
 
-			// GameMode에 따라서 최대 Slot의 제약이 있을 수 있을 수 있다. 나중에 함수화해야한다.
-			if (roominfo.GameMode == GameModeType.NormalMode)
-			{
-				_roomInfo.MaxPeopleCnt = 8;
-			}
-
-			else if (roominfo.GameMode == GameModeType.MonsterMode)
-			{
-				_roomInfo.MaxPeopleCnt = 4;
-				for (int i = _roomInfo.MaxPeopleCnt; i <  _slots.Length; i++)
-				{
-					_slots[i].IsAvailable = false;
-				}
-			}
-
-			else if (roominfo.GameMode == GameModeType.AIMode)
-			{
-				_roomInfo.MaxPeopleCnt = 8;
-				// 음.. 인게임에서 AI Mode는 혼자 놀도록 해놨는데.. 
-				// 직접구현한다면 어떻게 해야할지 몰루?
-			}
-			
+			InitializeSlotCount(_roomInfo.GameMode);
 		}
+
+		private void InitializeSlotCount(GameModeType gameModeType)
+		{
+			if (gameModeType == GameModeType.NormalMode)
+			{
+                _roomInfo.MaxPeopleCnt = 8;
+            }
+
+			else if (gameModeType == GameModeType.MonsterMode)
+			{
+                _roomInfo.MaxPeopleCnt = 4;
+                for (int i = _roomInfo.MaxPeopleCnt; i < _slots.Length; i++)
+                {
+                    _slots[i].IsAvailable = false;
+                }
+            }
+
+			else if (gameModeType == GameModeType.AIMode)
+			{
+                _roomInfo.MaxPeopleCnt = 8;
+                // 음.. 인게임에서 AI Mode는 혼자 놀도록 해놨는데.. 
+                // 직접구현한다면 어떻게 해야할지 몰루?
+            }
+        }
+
 
         #region Lecture
 
@@ -621,11 +626,94 @@ namespace Server.Game
 					_slots[i].ClientSession.Send(charstate);
 				}
 			}
-
-
-
 		}
 
+		public void HandleChangeSlotState(C_ChangeSlotState changeslotpkt)
+		{
+			// slotidx 와 // close 인지 open인지 여부를 알고 있다.
+			// 우선 서버의 slot상태를 바꿔준다.
+			if (changeslotpkt.Slotidx < 0 || changeslotpkt.Slotidx >= _slots.Length)
+				Console.WriteLine("C_ChangeSlotState Packet Error");
+
+
+			// 모드에 따라서 열수 없을 수 있음.
+			if (changeslotpkt.Isopen)
+			{
+				if (_roomInfo.GameMode == GameModeType.MonsterMode)
+				{
+					if (changeslotpkt.Slotidx >= 4) return;
+				}
+			}
+
+			_slots[changeslotpkt.Slotidx].IsAvailable = changeslotpkt.Isopen;
+
+
+			// 클라이언트들에게 바뀐 Slot 상태를 Broadcast한다.
+			S_ChangeSlotStateBroadcast broadcastpkt = new S_ChangeSlotStateBroadcast();
+			broadcastpkt.Slotidx = changeslotpkt.Slotidx;
+			broadcastpkt.Isopen = changeslotpkt.Isopen; ;
+
+			for (int i = 0; i < _slots.Length; ++i)
+			{
+				if (_slots[i].ClientSession != null)
+				{
+					_slots[i].ClientSession.Send(broadcastpkt);
+				}
+			}
+
+			// MaxPeople Count 변경이 있는데, 이를 Client들에게 Boradcast한다. 
+			if (changeslotpkt.Isopen)
+				_roomInfo.MaxPeopleCnt += 1;
+			else
+				_roomInfo.MaxPeopleCnt -= 1;
+            RoomManager.Instance.BroadCastRoomAlter(_roomId);
+        }
+
+		public void HandleCharacterSelect(ClientSession clientSession, C_CharacterSelect pkt)
+		{
+			int slotidx = clientSession.SlotId;
+			if (slotidx < 0 || slotidx > _slots.Length)
+			{
+				Console.WriteLine("Character Select Handle Error");
+				return;
+			}
+
+			// 모드에 따라서 캐릭터를 변경할 할 수도 있고 없을 수도 있다.
+			if (_roomInfo.GameMode == GameModeType.NormalMode)
+			{
+                // NormalMode에서는 아무 캐릭터나 골라도 상관없다.
+                _slots[slotidx].CharType = pkt.Chartype;
+
+				// 요청을 한 클라이언트에게 결과를 알려준다. ( Client Check 표시용도)
+                S_CharacterSelectResponse characterSelectResponse = new S_CharacterSelectResponse();
+				characterSelectResponse.IsSuccess = true;
+				characterSelectResponse.Chartype = pkt.Chartype;
+				clientSession.Send(characterSelectResponse);
+
+				// 다른 클라이언트들에게 캐릭터 변경을 알려준다.
+				S_CharacterSelectBroadcast characterSelectBroadcast = new S_CharacterSelectBroadcast();
+				characterSelectBroadcast.Slotid = slotidx;
+				characterSelectBroadcast.Chartype = pkt.Chartype;
+
+				for (int i = 0; i < _slots.Length; ++i)
+				{
+					if (_slots[i].ClientSession != null)
+						_slots[i].ClientSession.Send(characterSelectBroadcast);
+				}
+
+				// DB에 CharacterType바뀐 것을 저장해야한다. 
+				// 아직 DB가 없으므로 진행 X.. 나중에 해줘야 한다. 
+			}
+
+			else
+			{
+                // AI와 MonsterMode에서는 첫번째 캐릭터(Bazzi)만 가능하다. 
+                // 해당 모드들에서는 캐릭터의 선택이 Bazzi가 되도록 할 것이므로 False를 보내준다. 
+                S_CharacterSelectResponse characterSelectResponse = new S_CharacterSelectResponse();
+                characterSelectResponse.IsSuccess = false;
+                clientSession.Send(characterSelectResponse);
+            }
+		}
 
 		public void TestFunc()
 		{

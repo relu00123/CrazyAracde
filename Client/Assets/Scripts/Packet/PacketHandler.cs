@@ -360,6 +360,22 @@ class PacketHandler
 	{
 		Managers.Scene.LoadScene(((S_ChangeScene)packet).Scene);
     }
+
+	public static void S_ChangeSlotStateBroadcastHandler(PacketSession session, IMessage packet)
+	{
+		Managers.Room.HandleChangeSlotState((S_ChangeSlotStateBroadcast)packet);
+
+    }
+
+	public static void S_CharacterSelectResponseHandler(PacketSession session, IMessage packet)
+	{
+		Managers.Room.HandleCharacterSelectResponse((S_CharacterSelectResponse)packet);
+	}
+
+	public static void S_CharacterSelectBroadcastHandler(PacketSession session, IMessage packet)
+	{
+		Managers.Room.HandleCharacterSelectBroadcast((S_CharacterSelectBroadcast)packet);
+	}
 }
 
 

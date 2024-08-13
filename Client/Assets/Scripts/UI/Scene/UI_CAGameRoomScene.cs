@@ -1,4 +1,5 @@
 using Google.Protobuf.Protocol;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -14,6 +15,10 @@ public class UI_CAGameRoomScene : UI_Scene
     {
         ToLobby,
         StartBtn,
+        Bazzi,
+        Kefi,
+        Dao,
+        Marid,
     }
 
     enum GridPanels
@@ -30,6 +35,11 @@ public class UI_CAGameRoomScene : UI_Scene
 
         GetButton((int)Buttons.ToLobby).gameObject.BindEvent(OnToLobbyButtonClicked);
         GetButton((int)Buttons.StartBtn).gameObject.BindEvent(OnStartBtnClicked);
+        GetButton((int)Buttons.Bazzi).gameObject.BindEvent(OnCharacterSelect);
+        GetButton((int)Buttons.Kefi).gameObject.BindEvent(OnCharacterSelect);
+        GetButton((int)Buttons.Dao).gameObject.BindEvent(OnCharacterSelect);
+        GetButton((int)Buttons.Marid).gameObject.BindEvent(OnCharacterSelect);
+       
     }
     public void OnToLobbyButtonClicked(PointerEventData evt)
     {
@@ -42,7 +52,6 @@ public class UI_CAGameRoomScene : UI_Scene
 
         Managers.Network.Send(enterLobbyPacket);
     }
-
 
     public void OnStartBtnClicked(PointerEventData evt)
     {
@@ -61,6 +70,28 @@ public class UI_CAGameRoomScene : UI_Scene
         }
     }
 
+    public void OnCharacterSelect(PointerEventData evt)
+    {
+        GameObject selectedBtn = evt.pointerClick;
+        string buttonName = selectedBtn.name;
+
+       // Debug.Log($"Selected BtnName : {buttonName}");
+
+       if (Enum.TryParse(buttonName, out CharacterType characterType))
+       {
+            Debug.Log($"Selected Char Type : {characterType}");
+            // 해당 캐릭터를 골랐다고 서버에게 전달을 해야한다. 
+            // 서버에서는 해당 캐릭터를 고를 수 있으면 서버의 Character상태를 바꿔주고 클라한테는 Success를 보낸다.
+            // Success를 받은 클라는 자신이 선택한 Character에 Check표시를 달아준다.
+            // 몬스터 모드나 AI모드에서는 UnSuccess를 보낸다. 
+
+            C_CharacterSelect characterSelect = new C_CharacterSelect();
+            characterSelect.Chartype = characterType;
+
+            Managers.Network.Send(characterSelect);
+       }
+    }
+
 
     public UI_UsersGridPanel GetUIUserGridPanel()
     {
@@ -74,6 +105,18 @@ public class UI_CAGameRoomScene : UI_Scene
 
         else
             GetButton((int)Buttons.StartBtn).image.sprite = GameReadyBtnImage; 
+    }
+
+
+    public void CharacterSelect(CharacterType charType)
+    {
+        // 초기화 
+        GetButton((int)Buttons.Dao).transform.Find("Check").gameObject.SetActive(false);
+        GetButton((int)Buttons.Marid).transform.Find("Check").gameObject.SetActive(false);
+        GetButton((int)Buttons.Kefi).transform.Find("Check").gameObject.SetActive(false);
+        GetButton((int)Buttons.Bazzi).transform.Find("Check").gameObject.SetActive(false);
+
+        GetButton((int)((Buttons)Enum.Parse(typeof(Buttons), charType.ToString()))).transform.Find("Check").gameObject.SetActive(true);
     }
 
 

@@ -49,6 +49,11 @@ enum MsgId {
   C_CHANGE_SCENE_COMPLETED = 42;
   C_START_GAME = 43;
   C_READYBTN_CLICKED = 44;
+  C_CHANGE_SLOT_STATE = 45;
+  S_CHANGE_SLOT_STATE_BROADCAST = 46;
+  C_CHARACTER_SELECT = 47;
+  S_CHARACTER_SELECT_RESPONSE = 48;
+  S_CHARACTER_SELECT_BROADCAST = 49;
 }
 
 enum CreatureState {
@@ -245,6 +250,16 @@ message C_EnterLobby {
   LobbyPlayerInfo player = 1;
 }
 
+message C_ChangeSlotState  {
+  int32 slotidx = 1;
+  bool  isopen = 2;
+}
+
+message S_ChangeSlotStateBroadcast {
+  int32 slotidx = 1;
+  bool  isopen = 2;
+}
+ 
 message S_ItemList {
   repeated ItemInfo items = 1;
 }
@@ -345,6 +360,20 @@ message S_AlterHost {
 message C_KickPlayer 
 {
   int32 slotidx = 1;
+}
+
+message C_CharacterSelect {
+  CharacterType chartype = 1;
+}
+
+message S_CharacterSelectResponse {
+  bool isSuccess = 1;
+  CharacterType chartype = 2;
+}
+
+message S_CharacterSelectBroadcast {
+  int32 slotid = 1;
+  CharacterType chartype = 2;
 }
 
 message S_ChangeScene

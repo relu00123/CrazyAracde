@@ -68,7 +68,10 @@ public class UI_UsersGridPanel : UI_Base
     public void CloseSlot(int index)
     {
         if (index >= 0 && index < UsersList.Length)
+        {
+            Debug.Log("CloseSlot Funciton Called from UI_UserGridPanel");
             UsersList[index].CloseSlot();
+        }
     }   
     
     public void OpenSlot(int index)

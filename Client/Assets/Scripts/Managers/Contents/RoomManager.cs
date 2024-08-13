@@ -12,7 +12,7 @@ using UnityEngine.UIElements;
 public class RoomManager : MonoBehaviour
 {
     private GameObject characterPrefab;
-    private CACharacter[] characters { get; set; } = new CACharacter[8];
+    public CACharacter[] characters { get; private set; } = new CACharacter[8];
     private UI_UsersGridPanel userGridPanel;
     private CAGameRoomScene curGameRoomScene;
 
@@ -134,6 +134,43 @@ public class RoomManager : MonoBehaviour
 
     }
 
+    
+    public void HandleChangeSlotState(S_ChangeSlotStateBroadcast pkt)
+    {
+        if (pkt.Isopen)
+            curGameRoomScene._sceneUI.GetUIUserGridPanel().OpenSlot(pkt.Slotidx);
+        else
+            curGameRoomScene._sceneUI.GetUIUserGridPanel().CloseSlot(pkt.Slotidx);
+
+    }
+
+    public void HandleCharacterSelectResponse(S_CharacterSelectResponse pkt)
+    {
+        if (pkt.IsSuccess == true)
+        {
+            curGameRoomScene._sceneUI.CharacterSelect(pkt.Chartype);
+        }
+
+        else
+        {
+            // 해당모드에서는 배찌만 가능하다는 메세지를 출력해주는 팝업을 만들어준다. 
+           // GetObject((int)Panels.GameRoomCreatePanel).SetActive(true);
+           // UI_GameRoomCreatePopup Popup = Managers.UI.ShowPopupUI<UI_GameRoomCreatePopup>(GetObject((int)Panels.GameRoomCreatePanel));
+
+            Managers.UI.ShowPopupUI<UI_Popup>();
+        }
+    }
+
+
+    public void HandleCharacterSelectBroadcast(S_CharacterSelectBroadcast pkt)
+    {
+        // 예외처리
+        if (pkt.Slotid < 0 || pkt.Slotid >= characters.Length || characters[pkt.Slotid] == null) return;
+
+        string animationName = pkt.Chartype.ToString() + "_Idle";
+        characters[pkt.Slotid].animator.Play(animationName);
+
+    }
 
 
     #endregion

@@ -14,16 +14,12 @@ public class CACharacter : MonoBehaviour
     //}
     public CharacterType characterType {  set; get; }
 
-    private Animator animator;
+    public Animator animator { get; private set; }
 
     void Start()
     {
         animator = GetComponent<Animator>();
-
         string animationName = characterType.ToString() + "_Idle";
-
-       
-
         animator.Play(animationName);
     }
 

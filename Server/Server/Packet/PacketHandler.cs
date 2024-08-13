@@ -199,6 +199,22 @@ class PacketHandler
 
         clientSession.BeloingRoom.Push(clientSession.BeloingRoom.HandleSetReady, clientSession);
     }
+
+    public static void C_ChangeSlotStateHandler(PacketSession session, IMessage packet)
+    {
+        ClientSession clientSession = (ClientSession)(session);
+        C_ChangeSlotState ChangeSlotStatePacket = (C_ChangeSlotState)packet;
+
+        clientSession.BeloingRoom.Push(clientSession.BeloingRoom.HandleChangeSlotState, ChangeSlotStatePacket);
+    }
+
+	public static void C_CharacterSelectHandler(PacketSession session, IMessage packet)
+	{
+        ClientSession clientSession = (ClientSession)(session);
+		C_CharacterSelect CharacterSelectPacket = (C_CharacterSelect)packet;
+
+		clientSession.BeloingRoom.Push(clientSession.BeloingRoom.HandleCharacterSelect, clientSession, CharacterSelectPacket);
+    }
 }
 
 
