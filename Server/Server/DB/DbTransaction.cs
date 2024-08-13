@@ -12,6 +12,16 @@ namespace Server.DB
 	{
 		public static DbTransaction Instance { get; } = new DbTransaction();
 
+		public static void RemoveAllDataTemp()
+		{
+			using (AppDbContext context = new AppDbContext())
+			{
+				context.Database.EnsureDeleted();
+				context.Database.EnsureCreated();
+			}
+		}
+
+
 		// Me (GameRoom) -> You (Db) -> Me (GameRoom)
 		public static void SavePlayerStatus_AllInOne(Player player, GameRoom room)
 		{

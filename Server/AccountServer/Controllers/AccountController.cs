@@ -23,7 +23,8 @@ namespace AccountServer.Controllers
 			_shared = shared;
 		}
 
-		[HttpPost]
+        
+        [HttpPost]
 		[Route("create")]
 		public CreateAccountPacketRes CreateAccount([FromBody] CreateAccountPacketReq req)
 		{

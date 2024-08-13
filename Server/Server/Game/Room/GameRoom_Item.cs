@@ -16,6 +16,8 @@ namespace Server.Game
 				return;
 
 			player.HandleEquipItem(equipPacket);
+
+			 
 		}
 	}
 }

@@ -102,18 +102,23 @@ namespace Server
 		public static int Port { get; } = 7777;
 		public static string IpAddress { get; set; }
 
-		static void Main(string[] args)
+       
+
+        static void Main(string[] args)
 		{
 			ConfigManager.LoadConfig();
 			DataManager.LoadData();
 
-			// 기존 코드
-			//GameLogic.Instance.Push(() => { GameLogic.Instance.Add(1); });
+			// DB초기화 코드 
+            //DbTransaction.RemoveAllDataTemp();
 
-			//GameLogic.Instance.Push(() => { GameLogic.Instance.AddRoom(); });
+            // 기존 코드
+            //GameLogic.Instance.Push(() => { GameLogic.Instance.Add(1); });
 
-			// DNS (Domain Name System)
-			string host = Dns.GetHostName();
+            //GameLogic.Instance.Push(() => { GameLogic.Instance.AddRoom(); });
+
+            // DNS (Domain Name System)
+            string host = Dns.GetHostName();
 			IPHostEntry ipHost = Dns.GetHostEntry(host);
 			IPAddress ipAddr = ipHost.AddressList[1];
 			IPEndPoint endPoint = new IPEndPoint(ipAddr, Port);
@@ -148,6 +153,8 @@ namespace Server
 			// 변경코드
 			//Thread.CurrentThread.Name = "Main";
 			GameLogicTask();
-		}
+
+            
+        }
 	}
 }

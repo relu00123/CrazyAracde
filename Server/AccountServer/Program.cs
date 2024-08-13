@@ -6,6 +6,9 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using AccountServer.DB;
+using System.IO;
+using Microsoft.EntityFrameworkCore;
 
 namespace AccountServer
 {
@@ -13,8 +16,21 @@ namespace AccountServer
 	{
 		public static void Main(string[] args)
 		{
-			CreateHostBuilder(args).Build().Run();
-		}
+            // DB초기화 코드
+            //var configuration = new ConfigurationBuilder()
+            //.SetBasePath(Directory.GetCurrentDirectory())
+            //.AddJsonFile("appsettings.json")
+            //.Build();
+
+            //string connectionString = configuration.GetConnectionString("DefaultConnection");
+
+            //RemoveAllDataTemp(connectionString);
+
+            CreateHostBuilder(args).Build().Run();
+
+
+             
+        }
 
 		public static IHostBuilder CreateHostBuilder(string[] args) =>
 			Host.CreateDefaultBuilder(args)
@@ -22,5 +38,19 @@ namespace AccountServer
 				{
 					webBuilder.UseStartup<Startup>();
 				});
-	}
+
+        public static void RemoveAllDataTemp(string connectionString)
+        {
+            var options = new DbContextOptionsBuilder<AppDbContext>()
+                              .UseSqlServer(connectionString)
+                              .Options;
+
+            using (AppDbContext context = new AppDbContext(options))
+            {
+                context.Database.EnsureDeleted();
+                context.Database.EnsureCreated();
+            }
+        }
+
+    }
 }

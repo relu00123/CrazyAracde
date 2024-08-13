@@ -24,7 +24,10 @@ namespace Server.DB
 				.UseSqlServer(ConfigManager.Config == null ? _connectionString : ConfigManager.Config.connectionString);
 		}
 
-		protected override void OnModelCreating(ModelBuilder builder)
+
+       
+
+        protected override void OnModelCreating(ModelBuilder builder)
 		{
 			builder.Entity<AccountDb>()
 				.HasIndex(a => a.AccountName)
