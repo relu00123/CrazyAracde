@@ -584,10 +584,99 @@ namespace Server.Game
 			return zones.ToList();
 		}
 
-		public void HandleStartGame()
+		public void HandleStartGame(ClientSession clientSession)
 		{
+			// 모든 플레이어가 Ready상태가 아니면 return
+			// S_StartGameRes에서 FairGame인지 AllPlayerNotReady등의 Type을 건내줘야 좋을듯
+			bool isAllReady =  IsAllPlayerReady(clientSession.SlotId);
 
+			if (!isAllReady)
+			{
+                S_StartGameRes startGameResPkt = new S_StartGameRes();
+                startGameResPkt.IsSuccess = false;
+                clientSession.Send(startGameResPkt);
+                return;
+            }
+
+			if (_roomInfo.GameMode == GameModeType.NormalMode)
+			{
+				if (_roomInfo.TeamMode == TeamModeType.MannerMode)
+				{
+					bool isfairgame = JudgeIsFairGame();
+					 
+					if (!isfairgame)
+					{
+						S_StartGameRes startGameResPkt = new S_StartGameRes();
+						startGameResPkt.IsSuccess = false;
+						clientSession.Send(startGameResPkt);
+						return;
+					}
+				}
+			}
+ 
+			// Success인 경우에는 Client들에게 성공결과를 Broadcast 
+			S_StartGameBroadcast StartGameBroadcastPkt = new S_StartGameBroadcast();
+			for (int i = 0; i < _slots.Length; i++)
+			{
+				if (_slots[i].ClientSession != null)
+					_slots[i].ClientSession.Send(StartGameBroadcastPkt);
+			}
 		}
+
+		private bool IsAllPlayerReady(int hostidx)
+		{
+			for (int i = 0; i < _slots.Length; ++i)
+			{
+				if (_slots[i].ClientSession != null && _slots[i].ClientSession.SlotId != hostidx)
+				{
+					if (_slots[i].CharacterState != GameRoomCharacterStateType.Ready)
+						return false;
+				}
+			}
+
+			return true;
+		}
+
+
+		private bool JudgeIsFairGame()
+		{
+            Dictionary<CharacterType, int> teamMemberCounts = new Dictionary<CharacterType, int>();
+
+            for (int i = 0; i < _slots.Length; ++i)
+            {
+                if (_slots[i].ClientSession != null)
+                {
+                    CharacterType type = _slots[i].CharType;
+
+                    if (teamMemberCounts.ContainsKey(type))
+                        teamMemberCounts[type]++;
+                    else
+                        teamMemberCounts[type] = 1;
+                }
+            }
+
+			// Team이 하나만 경우한 경우도 게임을 시작할 수 없다.
+			if (teamMemberCounts.Count <= 1)
+			{
+				return false;
+			}
+
+            int? standardCount = null;
+            foreach (var count in teamMemberCounts.Values)
+            {
+                if (standardCount == null)
+                    standardCount = count;
+                else if (standardCount != count)
+                {
+					// 팀원수가 다르면 게임을 시작할 수 없음
+					return false;
+
+                }
+            }
+
+			return true;
+        }
+
 
 		public void HandleSetReady(ClientSession clientSession)
 		{

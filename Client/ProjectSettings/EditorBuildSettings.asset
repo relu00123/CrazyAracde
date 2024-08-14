@@ -15,7 +15,7 @@ EditorBuildSettings:
     path: Assets/Scenes/Login.unity
     guid: dadec0f093598fa4a95b28ba821f3088
   - enabled: 1
-    path: Assets/Scenes/Game.unity
+    path: Assets/Scenes/CAGameScene.unity
     guid: 73ed7a8d5df364a4f880b6b12f7f36de
   - enabled: 1
     path: Assets/Scenes/CAStore.unity

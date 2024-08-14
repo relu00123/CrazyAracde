@@ -189,7 +189,7 @@ class PacketHandler
         ClientSession clientSession = (ClientSession)(session);
         C_StartGame StartGamePacket = (C_StartGame)packet;
 
-		clientSession.BeloingRoom.Push(clientSession.BeloingRoom.HandleStartGame);
+		clientSession.BeloingRoom.Push(clientSession.BeloingRoom.HandleStartGame, clientSession);
     }
 
     public static void C_ReadybtnClickedHandler(PacketSession session, IMessage packet)

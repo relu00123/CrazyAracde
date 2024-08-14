@@ -376,6 +376,18 @@ class PacketHandler
 	{
 		Managers.Room.HandleCharacterSelectBroadcast((S_CharacterSelectBroadcast)packet);
 	}
+
+    public static void S_StartGameResHandler(PacketSession session, IMessage packet)
+    {
+        Managers.Room.HandleStartGameRes((S_StartGameRes)packet);
+    }
+
+    public static void S_StartGameBroadcastHandler(PacketSession session, IMessage packet)
+    {
+        Managers.Room.HandleStartGameBroadcast((S_StartGameBroadcast)packet);
+    }
+
+
 }
 
 

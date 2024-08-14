@@ -54,6 +54,8 @@ enum MsgId {
   C_CHARACTER_SELECT = 47;
   S_CHARACTER_SELECT_RESPONSE = 48;
   S_CHARACTER_SELECT_BROADCAST = 49;
+  S_START_GAME_RES = 51;
+  S_START_GAME_BROADCAST = 52;
 }
 
 enum CreatureState {
@@ -287,8 +289,20 @@ message S_EquipItem {
 }
 
 message C_StartGame {
+ 
+}
+
+
+message S_StartGameRes
+{
+  bool isSuccess = 1;
+}
+
+message S_StartGameBroadcast
+{
 
 }
+
 
 message C_ReadybtnClicked {
 
@@ -303,6 +317,7 @@ message S_Ping {
 
 message C_Pong {
 }
+
 
 message S_Chatting {
   string name = 1;

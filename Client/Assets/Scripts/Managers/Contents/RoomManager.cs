@@ -154,10 +154,16 @@ public class RoomManager : MonoBehaviour
         else
         {
             // 해당모드에서는 배찌만 가능하다는 메세지를 출력해주는 팝업을 만들어준다. 
-           // GetObject((int)Panels.GameRoomCreatePanel).SetActive(true);
-           // UI_GameRoomCreatePopup Popup = Managers.UI.ShowPopupUI<UI_GameRoomCreatePopup>(GetObject((int)Panels.GameRoomCreatePanel));
+            // GetObject((int)Panels.GameRoomCreatePanel).SetActive(true);
+            // UI_GameRoomCreatePopup Popup = Managers.UI.ShowPopupUI<UI_GameRoomCreatePopup>(GetObject((int)Panels.GameRoomCreatePanel));
 
-            Managers.UI.ShowPopupUI<UI_Popup>();
+            //.UI.ShowPopupUI<UI_Popup>()
+
+            //UI_GameRoomCreatePop Popupup = Managers.UI.ShowPopupUI<UI_GameRoomCreatePopup>(GetObject((int)Panels.GameRoomCreatePanel));
+
+            UI_NotificationPopup popup =  Managers.UI.ShowPopupUI<UI_NotificationPopup>();
+            popup.SetMainText("Only Team A Available in this mode!");
+            popup.AddDefaultCloseEventOnConfirmBtn();
         }
     }
 
@@ -170,6 +176,25 @@ public class RoomManager : MonoBehaviour
         string animationName = pkt.Chartype.ToString() + "_Idle";
         characters[pkt.Slotid].animator.Play(animationName);
 
+    }
+
+    public void HandleStartGameRes(S_StartGameRes pkt)
+    {
+        // Noti Popup하나 보여준다. 
+        if (pkt.IsSuccess == false)
+        {
+            UI_NotificationPopup popup = Managers.UI.ShowPopupUI<UI_NotificationPopup>();
+            popup.SetMainText("It's not Fair Team!");
+            popup.AddDefaultCloseEventOnConfirmBtn();
+        }
+    }
+
+    public void HandleStartGameBroadcast(S_StartGameBroadcast pkt)
+    {
+        // GameScene 전환 필요! (일단 팝업으로 해보자)
+        UI_NotificationPopup popup = Managers.UI.ShowPopupUI<UI_NotificationPopup>();
+        popup.SetMainText("GameStart!!!");
+        popup.AddDefaultCloseEventOnConfirmBtn();
     }
 
 
