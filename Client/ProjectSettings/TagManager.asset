@@ -4,7 +4,9 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - Monster
+  - Background
+  - WallsBackground
+  - WallsCollider
   layers:
   - Default
   - TransparentFX
@@ -41,4 +43,16 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Background
+    uniqueID: 1474464993
+    locked: 0
+  - name: WallsBackground
+    uniqueID: 46057377
+    locked: 0
+  - name: WallsCollider
+    uniqueID: 2263698241
+    locked: 0
+  - name: Boxes
+    uniqueID: 2799844271
     locked: 0
