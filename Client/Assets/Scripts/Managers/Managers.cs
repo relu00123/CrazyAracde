@@ -16,6 +16,7 @@ public class Managers : MonoBehaviour
     UserInfoManager _userinfo = new UserInfoManager();
     UserListManager _userinfoList = new UserListManager();
     RoomManager _room = new RoomManager();
+    CAMapManager _CAmap = new CAMapManager();
 
     public static InventoryManager Inven { get { return Instance._inven; } }
     public static MapManager Map { get { return Instance._map; } }
@@ -25,6 +26,7 @@ public class Managers : MonoBehaviour
     public static UserInfoManager UserInfo { get { return Instance._userinfo; } }
     public static UserListManager UserList { get { return Instance._userinfoList; } }
     public static RoomManager Room { get {  return Instance._room; } }
+    public static CAMapManager CaMap {  get { return Instance._CAmap; } }
 	#endregion
 
 	#region Core
@@ -71,6 +73,7 @@ public class Managers : MonoBehaviour
             s_instance._pool.Init();
             s_instance._sound.Init();
             s_instance._scene.Init();
+            s_instance._CAmap.Init();
         }		
 	}
 

@@ -1,3 +1,4 @@
+using Google.Protobuf.Protocol;
 using System.Collections.Generic;
 using System.IO;
 using UnityEditor;
@@ -13,6 +14,9 @@ public class CAMapEditor : MonoBehaviour
         SaveMapByPath("../Common/MapData_CA");
     }
 
+
+    // 굳이 Background 와 ForeGround에 해당하는 Tile을 Json으로 저장할 필요는 없을 것 같다.
+    // 나중에 봐서 예외처리 하던지 해야겠다. 
     private static void SaveMapByPath(string pathPrefix)
     {
         // `Prefabs/CAMap` 폴더 내의 모든 프리팹 로드
@@ -44,8 +48,9 @@ public class CAMapEditor : MonoBehaviour
                                 isSpine = customTile.isSpine,
                                 isProvidingStealth = customTile.isProvidingStealth,
                                 isMoveable = customTile.isMoveable,
-                                childTileName = customTile.childTileSprite != null ? customTile.childTileSprite.name : null
-                            }); 
+                                childTileName = customTile.childTileSprite != null ? customTile.childTileSprite.name : null,
+                                //charTypeTest = customTile.charactertype,
+                            }) ; 
                         }
                         else
                         {
@@ -77,27 +82,28 @@ public class CAMapEditor : MonoBehaviour
         }
     }
 
-    [System.Serializable]
-    public class TileData
-    {
-        public Vector3Int position;
-        public string tileName;
-        public string tilemapName;
-        public bool isSlippery = false;
-        public bool isSpine = false;
-        public bool isProvidingStealth = false;
-        public bool isMoveable = false;
-        public string childTileName;
-    }
+    //[System.Serializable]
+    //public class TileData   // Enum값도 집어넣을 수 있다는 것 확인하였음. 
+    //{
+    //    public Vector3Int position;
+    //    public string tileName;
+    //    public string tilemapName;
+    //    public bool isSlippery = false;
+    //    public bool isSpine = false;
+    //    public bool isProvidingStealth = false;
+    //    public bool isMoveable = false;
+    //    public string childTileName;
+    //    //public CharacterType charTypeTest;   // Enum저장되는지 테스트 용도. 사용되는 값은 아님.
+    //}
 
-    [System.Serializable]
-    public class TileDataList
-    {
-        public List<TileData> tiles;
+    //[System.Serializable]
+    //public class TileDataList
+    //{
+    //    public List<TileData> tiles;
 
-        public TileDataList(List<TileData> tiles)
-        {
-            this.tiles = tiles;
-        }
-    }
+    //    public TileDataList(List<TileData> tiles)
+    //    {
+    //        this.tiles = tiles;
+    //    }
+    //}
 }

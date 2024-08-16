@@ -1,3 +1,4 @@
+using Google.Protobuf.Protocol;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -12,4 +13,5 @@ public class CustomTile : Tile
     public bool isProvidingStealth = false;
     public bool isMoveable = false;
     public Sprite childTileSprite = null;
+    //public CharacterType charactertype;  Enum 저장되는지 확인용도 사용할 것은 아님. 
 }

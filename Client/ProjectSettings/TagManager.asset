@@ -47,7 +47,7 @@ TagManager:
   - name: Background
     uniqueID: 1474464993
     locked: 0
-  - name: WallsBackground
+  - name: Foreground
     uniqueID: 46057377
     locked: 0
   - name: WallsCollider

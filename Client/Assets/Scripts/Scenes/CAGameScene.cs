@@ -17,10 +17,12 @@ using UnityEngine;
 
         SceneType = Define.Scene.CAGame;
 
-        InGameCamera = Instantiate(InGameCameraPrefab);
-        InGameCamera.gameObject.SetActive(true);
+        //InGameCamera = Instantiate(InGameCameraPrefab);
+        //InGameCamera.gameObject.SetActive(true);
 
         _sceneUI = Managers.UI.ShowSceneUI<UI_CAGameScene>();
+
+        Managers.CaMap.LoadMap("Pirate_test", "Pirate_test");
 
     }
 
