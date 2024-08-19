@@ -28,7 +28,7 @@ namespace Server.Game
 
 		public bool _isClosed { get; private set; } = false; // 방이 더이상 존재하는 방인지 따질때 사용.
 
-
+		private InGame _inGame;
 
 		// 강의때 사용했던 변수들 나는 쓰지 않음.
         public const int VisionCells = 5;
@@ -146,6 +146,19 @@ namespace Server.Game
 				CloseRoom();
 			}
 		}
+
+		public void StartGame()
+		{
+			// GameRoom에 알려줘야 할 정보는 뭐가있을까?
+
+			// 어떤 맵을 플레이할 것인지 
+			// 누가 참여하는지 (clientSession)
+			// 참여하는 ClientSession의 Team정보 (CharacterType이 곧 Team정보임)
+
+			_inGame = new InGame(this);
+		}
+
+
 
 		private bool IsRoomEmpty()
 		{

@@ -19,6 +19,7 @@ public class UI_CAGameRoomScene : UI_Scene
         Kefi,
         Dao,
         Marid,
+        MapSelectBtn
     }
 
     enum GridPanels
@@ -39,8 +40,16 @@ public class UI_CAGameRoomScene : UI_Scene
         GetButton((int)Buttons.Kefi).gameObject.BindEvent(OnCharacterSelect);
         GetButton((int)Buttons.Dao).gameObject.BindEvent(OnCharacterSelect);
         GetButton((int)Buttons.Marid).gameObject.BindEvent(OnCharacterSelect);
-       
+        GetButton((int)Buttons.MapSelectBtn).gameObject.BindEvent(OnMapSelectBtn);
     }
+
+    public void OnMapSelectBtn(PointerEventData evt)
+    {
+        // PopupÀ» ¶ç¿öÁà¾ß ÇÑ´Ù. 
+        Managers.UI.ShowPopupUI<UI_CAMapSelect>();
+    }
+
+
     public void OnToLobbyButtonClicked(PointerEventData evt)
     {
         Debug.Log("To Lobby Button Clicked!");

@@ -8,7 +8,7 @@ using UnityEngine;
     [SerializeField] InGameCamera InGameCameraPrefab;
 
     public UI_CAGameScene _sceneUI { get; set; }
-
+   
     public InGameCamera InGameCamera { get; private set; }
 
     protected override void Init()

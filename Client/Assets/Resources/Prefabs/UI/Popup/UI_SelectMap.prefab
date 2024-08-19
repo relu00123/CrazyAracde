@@ -208,7 +208,7 @@ GameObject:
   - component: {fileID: 8716469814414654295}
   - component: {fileID: 25520770656744344}
   m_Layer: 0
-  m_Name: UI_SelectServerPopup_Item
+  m_Name: UI_SelectMap
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -5,20 +5,22 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-enum Buttons
-{
-    ConfirmBtn,
-}
-
-enum Texts
-{
-    MainText,
-}
+ 
 
 
 public class UI_NotificationPopup : UI_Popup
 {
     private UI_RaycastBlock BlockPopup;
+
+    enum Buttons
+    {
+        ConfirmBtn,
+    }
+
+    enum Texts
+    {
+        MainText,
+    }
 
 
     public override void Init()
