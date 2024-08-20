@@ -88,7 +88,9 @@ class PacketManager
 		_onRecv.Add((ushort)MsgId.SStartGameRes, MakePacket<S_StartGameRes>);
 		_handler.Add((ushort)MsgId.SStartGameRes, PacketHandler.S_StartGameResHandler);		
 		_onRecv.Add((ushort)MsgId.SStartGameBroadcast, MakePacket<S_StartGameBroadcast>);
-		_handler.Add((ushort)MsgId.SStartGameBroadcast, PacketHandler.S_StartGameBroadcastHandler);
+		_handler.Add((ushort)MsgId.SStartGameBroadcast, PacketHandler.S_StartGameBroadcastHandler);		
+		_onRecv.Add((ushort)MsgId.SMapSelectBroadcast, MakePacket<S_MapSelectBroadcast>);
+		_handler.Add((ushort)MsgId.SMapSelectBroadcast, PacketHandler.S_MapSelectBroadcastHandler);
 	}
 
 	public void OnRecvPacket(PacketSession session, ArraySegment<byte> buffer)

@@ -18,9 +18,11 @@ public class RoomManager : MonoBehaviour
 
     public int rows = 2;
     public int columns = 4;
-
-
     private int clientSlotidx = -1;
+
+    public MapType SelectedMap { get; private set; }
+
+    public GameModeType GameMode { get; private set; }
 
     private bool _host = false;
     public bool host
@@ -197,6 +199,15 @@ public class RoomManager : MonoBehaviour
         popup.AddDefaultCloseEventOnConfirmBtn();
     }
 
+    public void HandleMapSelectBroadcast(S_MapSelectBroadcast pkt)
+    {
+        // Select한 Map 바꿔주기. (관리용)
+        SelectedMap = pkt.Maptype;
+
+        // Highlight UI 바꿔주기 (UI용)
+        curGameRoomScene._sceneUI.SelectMap(SelectedMap);
+    }
+
 
     #endregion
 
@@ -228,6 +239,9 @@ public class RoomManager : MonoBehaviour
         clientSlotidx = currentJoinRoomPakcet.ClientslotIdx;
         int clientcount = 0;
 
+        // 게임 모드 설정
+        GameMode = currentJoinRoomPakcet.Gamemode;
+
         foreach (var slotInfo in currentJoinRoomPakcet.SlotInfos)
         {
             if (slotInfo.PlayerId != -1)
@@ -252,6 +266,12 @@ public class RoomManager : MonoBehaviour
             host = true;
             curGameRoomScene._sceneUI.GetUIUserGridPanel().SetCharState(0, GameRoomCharacterStateType.Host);
         }
+
+        // 선택된 맵을 보여주도록 한다.
+        curGameRoomScene._sceneUI.SelectMap(currentJoinRoomPakcet.Maptype);
+
+
+         
 
     }
 

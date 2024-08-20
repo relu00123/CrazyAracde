@@ -22,6 +22,11 @@ public class UI_CAGameRoomScene : UI_Scene
         MapSelectBtn
     }
 
+    enum Images
+    {
+        SelectedMap
+    }
+
     enum GridPanels
     {
         UsersGridPanel,
@@ -33,6 +38,7 @@ public class UI_CAGameRoomScene : UI_Scene
 
         Bind<Button>(typeof(Buttons));
         Bind<GridLayoutGroup>(typeof(GridPanels));
+        Bind<Image>(typeof(Images));
 
         GetButton((int)Buttons.ToLobby).gameObject.BindEvent(OnToLobbyButtonClicked);
         GetButton((int)Buttons.StartBtn).gameObject.BindEvent(OnStartBtnClicked);
@@ -45,8 +51,9 @@ public class UI_CAGameRoomScene : UI_Scene
 
     public void OnMapSelectBtn(PointerEventData evt)
     {
-        // Popup¿ª ∂Áøˆ¡‡æﬂ «—¥Ÿ. 
-        Managers.UI.ShowPopupUI<UI_CAMapSelect>();
+        //Host¿œ∂ß∏∏ Popup¿ª ∂Áøˆ¡‡æﬂ «—¥Ÿ. 
+        if (Managers.Room.host)
+            Managers.UI.ShowPopupUI<UI_CAMapSelect>();
     }
 
 
@@ -126,6 +133,12 @@ public class UI_CAGameRoomScene : UI_Scene
         GetButton((int)Buttons.Bazzi).transform.Find("Check").gameObject.SetActive(false);
 
         GetButton((int)((Buttons)Enum.Parse(typeof(Buttons), charType.ToString()))).transform.Find("Check").gameObject.SetActive(true);
+    }
+
+    public void SelectMap(MapType mapType)
+    {
+        Sprite mapImage = Managers.Data.MapPreviewImageDict[mapType];
+        GetImage((int)Images.SelectedMap).sprite = mapImage;
     }
 
 

@@ -387,6 +387,11 @@ class PacketHandler
         Managers.Room.HandleStartGameBroadcast((S_StartGameBroadcast)packet);
     }
 
+	public static void S_MapSelectBroadcastHandler(PacketSession session, IMessage packet)
+	{
+		Managers.Room.HandleMapSelectBroadcast((S_MapSelectBroadcast)packet);
+	}
+
 
 }
 

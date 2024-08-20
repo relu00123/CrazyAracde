@@ -215,6 +215,14 @@ class PacketHandler
 
 		clientSession.BeloingRoom.Push(clientSession.BeloingRoom.HandleCharacterSelect, clientSession, CharacterSelectPacket);
     }
+
+	public static void C_MapSelectHandler(PacketSession session, IMessage packet)
+	{
+        ClientSession clientSession = (ClientSession)(session);
+        C_MapSelect MapSelectPacket = (C_MapSelect)packet;
+
+		clientSession.BeloingRoom.Push(clientSession.BeloingRoom.HandleMapSelect, MapSelectPacket);
+    }
 }
 
 

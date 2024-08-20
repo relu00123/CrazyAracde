@@ -2947,7 +2947,7 @@
                 "z": 0
             },
             "tileName": "map_pirate_tile6_41",
-            "tilemapName": "WallsBackground",
+            "tilemapName": "Foreground",
             "isSlippery": false,
             "isSpine": false,
             "isProvidingStealth": false,
@@ -2961,7 +2961,7 @@
                 "z": 0
             },
             "tileName": "map_pirate_tile6_42",
-            "tilemapName": "WallsBackground",
+            "tilemapName": "Foreground",
             "isSlippery": false,
             "isSpine": false,
             "isProvidingStealth": false,
@@ -2975,7 +2975,7 @@
                 "z": 0
             },
             "tileName": "map_pirate_tile6_26",
-            "tilemapName": "WallsBackground",
+            "tilemapName": "Foreground",
             "isSlippery": false,
             "isSpine": false,
             "isProvidingStealth": false,
@@ -2989,7 +2989,7 @@
                 "z": 0
             },
             "tileName": "map_pirate_tile6_27",
-            "tilemapName": "WallsBackground",
+            "tilemapName": "Foreground",
             "isSlippery": false,
             "isSpine": false,
             "isProvidingStealth": false,
@@ -3003,7 +3003,7 @@
                 "z": 0
             },
             "tileName": "map_pirate_tile6_12",
-            "tilemapName": "WallsBackground",
+            "tilemapName": "Foreground",
             "isSlippery": false,
             "isSpine": false,
             "isProvidingStealth": false,
@@ -3017,7 +3017,7 @@
                 "z": 0
             },
             "tileName": "map_pirate_tile6_13",
-            "tilemapName": "WallsBackground",
+            "tilemapName": "Foreground",
             "isSlippery": false,
             "isSpine": false,
             "isProvidingStealth": false,
@@ -3031,7 +3031,7 @@
                 "z": 0
             },
             "tileName": "map_pirate_tile6_0",
-            "tilemapName": "WallsBackground",
+            "tilemapName": "Foreground",
             "isSlippery": false,
             "isSpine": false,
             "isProvidingStealth": false,
@@ -3045,7 +3045,7 @@
                 "z": 0
             },
             "tileName": "map_pirate_tile6_1",
-            "tilemapName": "WallsBackground",
+            "tilemapName": "Foreground",
             "isSlippery": false,
             "isSpine": false,
             "isProvidingStealth": false,

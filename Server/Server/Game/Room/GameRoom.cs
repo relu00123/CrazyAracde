@@ -25,6 +25,7 @@ namespace Server.Game
 
 		private Slot[] _slots = new Slot[8];
 		private int _hostIndex { get; set; } = -1;
+		MapType SelectedMap { get; set; }  // 작업 시작 할 부분. 이제 막 변수만 만들어 놓음. Packet Handler 부터 작성하면 된다. 
 
 		public bool _isClosed { get; private set; } = false; // 방이 더이상 존재하는 방인지 따질때 사용.
 
@@ -158,8 +159,6 @@ namespace Server.Game
 			_inGame = new InGame(this);
 		}
 
-
-
 		private bool IsRoomEmpty()
 		{
 			foreach (var slot in _slots)
@@ -209,7 +208,15 @@ namespace Server.Game
 
 			// Host 역할을 맡고 있는 사람이 아무도 없다면 Host를 시켜준다.
 			if (_hostIndex == -1)
+			{
 				FindNewHost();
+
+                // 처음 시작 맵 초기화
+                if (_roomInfo.GameMode == GameModeType.NormalMode)
+					SelectedMap = MapType.Desert1;  
+				else if (_roomInfo.GameMode == GameModeType.MonsterMode)
+					SelectedMap = MapType.Penguin1;
+			}
 
             // S_JoinRoomBroadcast Packet을 보내준다. (기존에 있던 클라이언트들)
             S_JoinRoomBroadcast joinRoomBroadcastPacket = new S_JoinRoomBroadcast();
@@ -240,6 +247,8 @@ namespace Server.Game
 			joinRoomPacket.Joinresult = JoinResultType.Success;
 			joinRoomPacket.HostIdx = _hostIndex;
 			joinRoomPacket.ClientslotIdx = slotId.Value;
+			joinRoomPacket.Maptype = SelectedMap;
+			joinRoomPacket.Gamemode = _roomInfo.GameMode;
 
 			for (int i = 0; i < _slots.Length; ++i)
 			{
@@ -261,7 +270,10 @@ namespace Server.Game
 
 				joinRoomPacket.SlotInfos.Add(slotInfo);				
 			}
-			session.Send(joinRoomPacket);        
+			session.Send(joinRoomPacket);    
+			
+			  
+			 
 		}
 
 		public void RemoveClient(ClientSession session)
@@ -815,6 +827,21 @@ namespace Server.Game
                 characterSelectResponse.IsSuccess = false;
                 clientSession.Send(characterSelectResponse);
             }
+		}
+
+		public void HandleMapSelect(C_MapSelect pkt)
+		{
+			// Server에서의 Map변경. 변경후 모든 Client에게 Map이 바뀌었다고 BroadCast.
+			SelectedMap = pkt.Maptype;
+
+			S_MapSelectBroadcast MapSelectBroadcastPkt = new S_MapSelectBroadcast();
+			MapSelectBroadcastPkt.Maptype = SelectedMap;
+
+			for (int i = 0; i <_slots.Length; ++i)
+			{
+				if (_slots[i].ClientSession != null)
+					_slots[i].ClientSession.Send(MapSelectBroadcastPkt);
+			}
 		}
 
 		public void TestFunc()
