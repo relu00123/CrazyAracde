@@ -573,6 +573,26 @@ PrefabInstance:
       propertyPath: m_Name
       value: UserSlotBG
       objectReference: {fileID: 0}
+    - target: {fileID: 2999792111395015051, guid: a44d120dba4c0b44a99383dbf445ebd4,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2999792111395015051, guid: a44d120dba4c0b44a99383dbf445ebd4,
+        type: 3}
+      propertyPath: m_SizeDelta.y
+      value: -0.000030518
+      objectReference: {fileID: 0}
+    - target: {fileID: 2999792111395015051, guid: a44d120dba4c0b44a99383dbf445ebd4,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2999792111395015051, guid: a44d120dba4c0b44a99383dbf445ebd4,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3487837153268574700, guid: a44d120dba4c0b44a99383dbf445ebd4,
         type: 3}
       propertyPath: m_Sprite
@@ -630,6 +650,16 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 21300000, guid: 47cf028433f289d44a769630235167ae,
         type: 3}
+    - target: {fileID: 7081756032471190021, guid: a44d120dba4c0b44a99383dbf445ebd4,
+        type: 3}
+      propertyPath: m_Color.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7081756032471190021, guid: a44d120dba4c0b44a99383dbf445ebd4,
+        type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7207053502003952065, guid: a44d120dba4c0b44a99383dbf445ebd4,
         type: 3}
       propertyPath: m_Pivot.x

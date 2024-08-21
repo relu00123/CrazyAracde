@@ -148,7 +148,7 @@ namespace Server.Game
 			}
 		}
 
-		public void StartGame()
+		public void StartGame(MapType maptype)
 		{
 			// GameRoom에 알려줘야 할 정보는 뭐가있을까?
 
@@ -156,7 +156,25 @@ namespace Server.Game
 			// 누가 참여하는지 (clientSession)
 			// 참여하는 ClientSession의 Team정보 (CharacterType이 곧 Team정보임)
 
-			_inGame = new InGame(this);
+			_roomInfo.RoomState = RoomStateType.Playing;
+
+			S_AlterRoom alterRoomPacket = new S_AlterRoom();
+			alterRoomPacket.Altertype = RoomAlterType.Alter;
+			alterRoomPacket.Roominfo = _roomInfo;
+
+
+			for (int i = 0; i < _slots.Length; ++i)
+			{
+				if (_slots[i].ClientSession != null)
+				{
+					_slots[i].ClientSession.Send(alterRoomPacket);
+
+				}
+			}
+
+			 
+
+			_inGame = new InGame(this, maptype);
 		}
 
 		private bool IsRoomEmpty()
@@ -200,6 +218,12 @@ namespace Server.Game
 			int? slotId = GetNextAvailableSlot();
 			if (slotId == null)
 				return;   // 방이 꽉차서 더이상 추가가 안될 경우
+
+
+			// 방이 Playing중일 경우 안됨
+			if (_roomInfo.RoomState == RoomStateType.Playing)
+				return;
+
 
             // 현재 Room의 인원정보를 수정한다.
             _roomInfo.CurPeopleCnt += 1;
@@ -611,9 +635,32 @@ namespace Server.Game
 
 		public void HandleStartGame(ClientSession clientSession)
 		{
-			// 모든 플레이어가 Ready상태가 아니면 return
-			// S_StartGameRes에서 FairGame인지 AllPlayerNotReady등의 Type을 건내줘야 좋을듯
-			bool isAllReady =  IsAllPlayerReady(clientSession.SlotId);
+            ///////////////////////////////////
+            // 일단은 무조건 시작되게 함. 안그러면 2개 Client 뛰어야 하기 때문에 귀찮음.
+            // 나중에 실제 게임에서는 이 코드 삭제 하면된다. 
+
+            S_StartGameBroadcast StartGameBroadcastPkt = new S_StartGameBroadcast();
+			StartGameBroadcastPkt.Maptype = SelectedMap;
+
+            for (int i = 0; i < _slots.Length; i++)
+            {
+                if (_slots[i].ClientSession != null)
+                    _slots[i].ClientSession.Send(StartGameBroadcastPkt);
+            }
+
+			// 이부분은 추가해야함
+			// TileMap을 로드해줘야 한다. 
+			StartGame(SelectedMap);
+
+			return;
+
+
+            ///////////////////////////////////
+
+
+            // 모든 플레이어가 Ready상태가 아니면 return
+            // S_StartGameRes에서 FairGame인지 AllPlayerNotReady등의 Type을 건내줘야 좋을듯
+            bool isAllReady =  IsAllPlayerReady(clientSession.SlotId);
 
 			if (!isAllReady)
 			{
@@ -640,11 +687,11 @@ namespace Server.Game
 			}
  
 			// Success인 경우에는 Client들에게 성공결과를 Broadcast 
-			S_StartGameBroadcast StartGameBroadcastPkt = new S_StartGameBroadcast();
+			S_StartGameBroadcast StartGameBroadcastPacket = new S_StartGameBroadcast();
 			for (int i = 0; i < _slots.Length; i++)
 			{
 				if (_slots[i].ClientSession != null)
-					_slots[i].ClientSession.Send(StartGameBroadcastPkt);
+					_slots[i].ClientSession.Send(StartGameBroadcastPacket);
 			}
 		}
 

@@ -25,7 +25,7 @@ namespace Server.Game
 					return;
 			}
 
-			info.PosInfo.State = movePosInfo.State;
+			//info.PosInfo. = movePosInfo.State;
 			info.PosInfo.MoveDir = movePosInfo.MoveDir;
 			Map.ApplyMove(player, new Vector2Int(movePosInfo.PosX, movePosInfo.PosY));
 
@@ -39,6 +39,9 @@ namespace Server.Game
 
 		public void HandleSkill(Player player, C_Skill skillPacket)
 		{
+			return;
+
+			/*
 			if (player == null)
 				return;
 
@@ -86,7 +89,9 @@ namespace Server.Game
 					}
 					break;
 			}
+			*/
 		}
+		
 
 	}
 }

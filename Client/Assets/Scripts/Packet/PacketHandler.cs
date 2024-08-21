@@ -384,12 +384,18 @@ class PacketHandler
 
     public static void S_StartGameBroadcastHandler(PacketSession session, IMessage packet)
     {
-        Managers.Room.HandleStartGameBroadcast((S_StartGameBroadcast)packet);
+        //Managers.Room.HandleStartGameBroadcast((S_StartGameBroadcast)packet);
+		Managers.InGame.HandleStartGameBroadcast((S_StartGameBroadcast)packet);
     }
 
 	public static void S_MapSelectBroadcastHandler(PacketSession session, IMessage packet)
 	{
 		Managers.Room.HandleMapSelectBroadcast((S_MapSelectBroadcast)packet);
+	}
+
+	public static void S_SpawnObjectHandler(PacketSession session, IMessage packet)
+	{
+		return;
 	}
 
 

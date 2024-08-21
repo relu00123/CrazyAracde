@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Google.Protobuf.Protocol;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -66,8 +67,11 @@ public class CAMapManager : MonoBehaviour
     }
  
 
-    public void LoadMap(string prefabName, string jsonFileName)
+    public void LoadMap(MapType maptype)
     {
+        string prefabName = maptype.ToString();
+        string jsonFileName = maptype.ToString();
+
         // 타일맵 프리팹 로드
         GameObject tilemapInstance = Managers.Resource.Instantiate($"Map_CA/{prefabName}");
         tilemapInstance.name = "Map";

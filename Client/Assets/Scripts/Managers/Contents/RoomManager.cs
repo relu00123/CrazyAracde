@@ -197,6 +197,11 @@ public class RoomManager : MonoBehaviour
         UI_NotificationPopup popup = Managers.UI.ShowPopupUI<UI_NotificationPopup>();
         popup.SetMainText("GameStart!!!");
         popup.AddDefaultCloseEventOnConfirmBtn();
+
+
+        SceneManager.sceneLoaded += OnSceneLoaded;
+        SceneManager.sceneUnloaded += OnSceneUnloaded;
+        Managers.Scene.LoadScene(Define.Scene.CAGameRoom);
     }
 
     public void HandleMapSelectBroadcast(S_MapSelectBroadcast pkt)

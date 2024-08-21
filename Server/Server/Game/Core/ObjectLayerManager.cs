@@ -6,7 +6,12 @@ namespace Server.Game
 {
     public class ObjectLayerManager
     {
-        private const int LayerCount = 30;
+        public const int LayerCount = 30;
+
+
+
+
+
         private List<InGameObject>[] _layerObjects = new List<InGameObject>[LayerCount];
 
         public ObjectLayerManager()

@@ -58,6 +58,14 @@ enum MsgId {
   S_START_GAME_BROADCAST = 52;
   C_MAP_SELECT = 53;
   S_MAP_SELECT_BROADCAST = 54;
+  S_SPAWN_OBJECT = 55;
+}
+
+enum ObjectType  {
+   OBJECT_NONE = 0;
+   OBJECT_PLAYER = 1;
+   OBJECT_MONSTER = 2;
+   OBJECT_PROJECTILE = 3;
 }
 
 enum CreatureState {
@@ -82,10 +90,10 @@ enum GameSceneType
 }
 
 enum GameObjectType {
-  NONE = 0;
-  PLAYER = 1;
-  MONSTER = 2;
-  PROJECTILE = 3;
+   NONE = 0;
+   PLAYER = 1;
+   MONSTER = 2;
+   PROJECTILE = 3;
 }
 
 enum CharacterType  {
@@ -306,7 +314,7 @@ message S_EquipItem {
 }
 
 message C_StartGame {
- 
+
 }
 
 
@@ -317,7 +325,7 @@ message S_StartGameRes
 
 message S_StartGameBroadcast
 {
-
+  MapType maptype = 1;
 }
 
 
@@ -344,6 +352,23 @@ message S_Chatting {
 message C_Chatting {
   string name = 1;
   string chat = 2;
+}
+
+message KeyValuePair  {
+  string key = 1;
+  oneof value {
+    string string_value = 2;
+    int32  int_value = 3;
+    float  float_value = 4;
+    CharacterType charactertype_value = 5;
+  }
+}
+
+message S_SpawnObject {
+  int32        objectid     = 1;
+  ObjectType   objecttype   = 2;
+  PositionInfo positioninfo = 3;
+  repeated KeyValuePair additional_data = 4;
 }
 
 message LobbyPlayerInfo {
@@ -447,14 +472,13 @@ message ObjectInfo {
   int32 objectId = 1;
   string name = 2;
   PositionInfo posInfo = 3;
-  StatInfo statInfo = 4;
 }
 
 message PositionInfo {
-  CreatureState state = 1;
-  MoveDir moveDir = 2;
-  int32 posX = 3;
-  int32 posY = 4;
+  MoveDir moveDir = 1;
+  int32 posX = 2;
+  int32 posY = 3;
+  CreatureState state = 4;
 }
 
 message LevelInfo {

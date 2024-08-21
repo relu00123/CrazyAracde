@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Numerics;
 using System.Text;
 
 namespace Server.Game
@@ -25,9 +26,24 @@ namespace Server.Game
             _transform = transform;
         }
 
-        public void AddCollider(Collider collider)
+        public void InitializeCollider(Vector2 colliderSize)
         {
-            _collider = collider;
+            _collider = new Collider(this, Vector2.Zero, colliderSize);
+        }
+
+        public void OnBeginOverlap(Collider other)
+        {
+            // 충돌 시작 시 동작
+        }
+
+        public void OnOverlap(Collider other)
+        {
+            // 충돌 중 동작
+        }
+
+        public void OnEndOverlap(Collider other)
+        {
+            // 충돌 종료시 동작 
         }
     }
 }

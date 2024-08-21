@@ -44,14 +44,14 @@ namespace Server.Game
 
 		public CreatureState State
 		{
-			get { return PosInfo.State; }
-			set { PosInfo.State = value; }
+			get { return CreatureState.Idle; }
+			set { return ; }
 		}
 
 		public GameObject()
 		{
 			Info.PosInfo = PosInfo;
-			Info.StatInfo = Stat;
+			//Info.StatInfo = Stat;
 		}
 
 		public virtual void Update()
@@ -146,7 +146,7 @@ namespace Server.Game
 			room.LeaveGame(Id);
 
 			Stat.Hp = Stat.MaxHp;
-			PosInfo.State = CreatureState.Idle;
+			//PosInfo.State = CreatureState.Idle;
 			PosInfo.MoveDir = MoveDir.Down;
 
 			room.EnterGame(this, randomPos: true);

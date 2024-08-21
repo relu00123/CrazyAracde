@@ -7,16 +7,16 @@ namespace Server.Game
 {
     public class Transform
     {
-        public Vector3 Position { get; set; }
-        public Vector3 Scale { get; set; }
+        public Vector2 Position { get; set; }
+        public Vector2 Scale { get; set; }
 
         public Transform()
         {
-            Position = new Vector3(0, 0, 0);
-            Scale = new Vector3(1, 1, 1);
+            Position = new Vector2(0, 0);
+            Scale = new Vector2(1, 1);
         }
 
-        public Transform(Vector3 position, Vector3 scale)
+        public Transform(Vector2 position, Vector2 scale)
         {
             Position = position;
             Scale = scale;

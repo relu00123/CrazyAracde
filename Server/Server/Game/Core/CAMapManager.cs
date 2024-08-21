@@ -4,6 +4,8 @@ using System.Text;
 using System.IO;
 using Server.Game;
 using Newtonsoft.Json;
+using Google.Protobuf.Protocol;
+using System.Diagnostics;
 
 public class TileInfo
 {
@@ -58,10 +60,18 @@ public class TileData   // Enum값도 집어넣을 수 있다는 것 확인하�
 namespace Server.Game
 {
     public class CAMapManager
-    {
+    { 
         private TileInfo[,] _tileMapData;
 
-        public void Init()
+        public  MapType _mapType { get; private set; }
+
+        public CAMapManager(MapType mapType)
+        {
+            _mapType = mapType;
+            Init();
+        }
+
+        private void Init()
         {
             int width = 15; // 가로 타일의 개수 
             int height = 14; // 세로 타일의 개수
@@ -75,11 +85,16 @@ namespace Server.Game
                     _tileMapData[x, y] = new TileInfo { isBlocktPermanently = false, isBlocktTemporary = false };
                 }
             }
+
+            LoadMap(_mapType);
         }
 
-        public void LoadMap(string MapName, string pathPrefix = "../../../../../Common/MapData")
+        private void LoadMap(MapType mapType, string pathPrefix = "../../../../../Common/MapData_CA")
         {
-            string filePath = $"{pathPrefix}/MapName";
+            string MapName = mapType.ToString();
+            string filePath = $"{pathPrefix}/{MapName}.json";
+
+            Console.WriteLine($"Loading Map : {MapName}");
 
             // JsonFile 읽기 
             if (!File.Exists(filePath))

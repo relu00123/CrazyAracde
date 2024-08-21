@@ -16,6 +16,7 @@ public class Managers : MonoBehaviour
     UserInfoManager _userinfo = new UserInfoManager();
     UserListManager _userinfoList = new UserListManager();
     RoomManager _room = new RoomManager();
+    InGameManager _ingame = new InGameManager();
     CAMapManager _CAmap = new CAMapManager();
 
     public static InventoryManager Inven { get { return Instance._inven; } }
@@ -26,6 +27,8 @@ public class Managers : MonoBehaviour
     public static UserInfoManager UserInfo { get { return Instance._userinfo; } }
     public static UserListManager UserList { get { return Instance._userinfoList; } }
     public static RoomManager Room { get {  return Instance._room; } }
+
+    public static InGameManager InGame { get { return Instance._ingame; } }
     public static CAMapManager CaMap {  get { return Instance._CAmap; } }
 	#endregion
 
