@@ -12,6 +12,8 @@ public class InGameManager : MonoBehaviour
     private CAGameScene curGameScene;
     private S_StartGameBroadcast currentStartGamePacket;
 
+    public ObjectLayerManager _objectLayerManager { get; private set; }
+
     public void HandleStartGameBroadcast(S_StartGameBroadcast pkt)
     {
         currentStartGamePacket = pkt;
@@ -26,8 +28,18 @@ public class InGameManager : MonoBehaviour
     {
         Managers.CaMap.LoadMap(currentStartGamePacket.Maptype);
 
+        _objectLayerManager = new ObjectLayerManager();
+
         // 서버에게 Scene이 Load되었으니 Instantiate할 Object들을 달라고 해야함 
         Debug.Log("On Scene Load Function Called! Please Load Map");
+
+        C_GameSceneLoadFinished LoadFinishedPkt = new C_GameSceneLoadFinished();
+        Managers.Network.Send(LoadFinishedPkt);
+    }
+
+    public void HandleSpawnObject(S_SpawnObject spawnObjectPacket)
+    {
+        _objectLayerManager.HandleSpawnObject(spawnObjectPacket);
     }
 
     public void OnSceneUnloaded(Scene scene)

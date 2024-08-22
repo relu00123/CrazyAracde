@@ -395,6 +395,8 @@ class PacketHandler
 
 	public static void S_SpawnObjectHandler(PacketSession session, IMessage packet)
 	{
+		Debug.Log("Spawn Object Received!!");
+		Managers.InGame.HandleSpawnObject((S_SpawnObject)packet);
 		return;
 	}
 

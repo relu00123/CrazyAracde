@@ -18,12 +18,14 @@ namespace Server.Game
 			public ClientSession ClientSession { get; set; } = null;
 			public GameRoomCharacterStateType CharacterState { get; set; } = GameRoomCharacterStateType.NotReady;
 			public CharacterType CharType { get; set; } = CharacterType.CharacterNone;
+
+			public bool isGameLoaded = false; 
 		}
 
 		public RoomInfo _roomInfo { get; private set; }
 		public int _roomId { get; set; }
 
-		private Slot[] _slots = new Slot[8];
+		private Slot[] _slots = new Slot[8];   
 		private int _hostIndex { get; set; } = -1;
 		MapType SelectedMap { get; set; }  // 작업 시작 할 부분. 이제 막 변수만 만들어 놓음. Packet Handler 부터 작성하면 된다. 
 
@@ -174,7 +176,8 @@ namespace Server.Game
 
 			 
 
-			_inGame = new InGame(this, maptype);
+			// 여기 코드를 Ack가 모두 모였을때로 미뤄야 함. 
+			//_inGame = new InGame(this, maptype);
 		}
 
 		private bool IsRoomEmpty()
@@ -888,6 +891,48 @@ namespace Server.Game
 			{
 				if (_slots[i].ClientSession != null)
 					_slots[i].ClientSession.Send(MapSelectBroadcastPkt);
+			}
+		}
+
+		public void HandleGameLoadFinished(C_GameSceneLoadFinished pkt, ClientSession clientsession)
+		{
+			int isAllLoadedFailCnt = 0;
+
+			for (int i = 0; i < _slots.Length; ++i)
+			{
+				if (_slots[i].ClientSession != null)
+				{
+					if (_slots[i].isGameLoaded == true)
+						continue;
+					else if (_slots[i].isGameLoaded == false)
+					{
+                        isAllLoadedFailCnt += 1;
+						_slots[i].isGameLoaded = true;
+					}
+				}
+			}
+
+			if (isAllLoadedFailCnt <= 1)
+			{
+                // CreatePacket을 보내라고 명령
+                _inGame = new InGame(this, SelectedMap);
+
+                for (int i = 0; i < _slots.Length; ++i)
+				{
+					if (_slots[i].ClientSession != null)
+					{
+						_slots[i].isGameLoaded = false;
+					}
+				}
+			}
+		}
+
+		public void BroadcastPacket<T>(T packet) where T : IMessage
+		{
+			for (int i = 0; i < _slots.Length; i++)
+			{
+				if (_slots[i].ClientSession != null)
+					_slots[i].ClientSession.Send(packet);
 			}
 		}
 

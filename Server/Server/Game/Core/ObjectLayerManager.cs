@@ -7,11 +7,6 @@ namespace Server.Game
     public class ObjectLayerManager
     {
         public const int LayerCount = 30;
-
-
-
-
-
         private List<InGameObject>[] _layerObjects = new List<InGameObject>[LayerCount];
 
         public ObjectLayerManager()
@@ -34,7 +29,6 @@ namespace Server.Game
             }
         }
 
-        // 레이어 인덱스로 오브젝트 제거
         public void RemoveObjectFromLayer(int layerIndex, InGameObject obj)
         {
             if (layerIndex >= 0 && layerIndex < LayerCount)
@@ -47,7 +41,6 @@ namespace Server.Game
             }
         }
 
-        // 특정 레이어에 있는 모든 오브젝트 가져오기
         public List<InGameObject> GetObjectsInLayer(int layerIndex)
         {
             if (layerIndex >= 0 && layerIndex < LayerCount)
@@ -59,6 +52,5 @@ namespace Server.Game
                 throw new IndexOutOfRangeException("Invalid layer index.");
             }
         }
-
     }
 }

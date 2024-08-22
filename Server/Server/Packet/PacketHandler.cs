@@ -223,6 +223,14 @@ class PacketHandler
 
 		clientSession.BeloingRoom.Push(clientSession.BeloingRoom.HandleMapSelect, MapSelectPacket);
     }
+
+	public static void C_GameSceneLoadFinishedHandler(PacketSession session, IMessage packet)
+	{
+        ClientSession clientSession = (ClientSession)(session);
+        C_GameSceneLoadFinished LoadFinishedPkt = (C_GameSceneLoadFinished)packet;
+
+		clientSession.BeloingRoom.Push(clientSession.BeloingRoom.HandleGameLoadFinished, LoadFinishedPkt, clientSession);
+    }
 }
 
 

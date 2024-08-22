@@ -59,6 +59,7 @@ enum MsgId {
   C_MAP_SELECT = 53;
   S_MAP_SELECT_BROADCAST = 54;
   S_SPAWN_OBJECT = 55;
+  C_GAME_SCENE_LOAD_FINISHED = 56;
 }
 
 enum ObjectType  {
@@ -66,6 +67,7 @@ enum ObjectType  {
    OBJECT_PLAYER = 1;
    OBJECT_MONSTER = 2;
    OBJECT_PROJECTILE = 3;
+   OBJECT_BOX = 4;
 }
 
 enum CreatureState {
@@ -73,6 +75,12 @@ enum CreatureState {
   MOVING = 1;
   SKILL = 2;
   DEAD = 3;
+}
+
+enum PositionType {
+  TILE_CENTER_POS = 0;
+  TILE_UNDER_POS = 1;
+  ABSOLUTE_POS = 2;
 }
 
 enum MoveDir {
@@ -277,6 +285,10 @@ message C_EnterLobby {
   LobbyPlayerInfo player = 1;
 }
 
+message C_GameSceneLoadFinished {
+  
+}
+
 message C_ChangeSlotState  {
   int32 slotidx = 1;
   bool  isopen = 2;
@@ -476,9 +488,10 @@ message ObjectInfo {
 
 message PositionInfo {
   MoveDir moveDir = 1;
-  int32 posX = 2;
-  int32 posY = 3;
-  CreatureState state = 4;
+  PositionType type = 2;
+  int32 posX = 3;
+  int32 posY = 4;
+  CreatureState state = 5;
 }
 
 message LevelInfo {

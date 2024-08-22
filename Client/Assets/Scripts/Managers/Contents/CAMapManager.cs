@@ -167,6 +167,15 @@ public class CAMapManager : MonoBehaviour
     }
 
 
+    public Vector2 CalculateTileCenter(int tileX, int tileY, float tileSize = 40)
+    {
+        return new Vector2(tileX * tileSize + tileSize / 2, tileY * tileSize + tileSize / 2);
+    }
+
+    public  Vector2 CalculateTileUnder(int tileX, int tileY, float tileSize = 40)
+    {
+        return new Vector2(tileX * tileSize + tileSize / 2, tileY * tileSize);
+    }
 
 
 }

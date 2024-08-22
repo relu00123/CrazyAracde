@@ -9,7 +9,7 @@ namespace Server.Game
     {
         public int _layeridx { get; private set; }
         public Collider _collider {  get; private set; }
-        public Transform _transform { get; private set; }
+        public Transform _transform { get;  set; }
         
 
         public InGameObject(int id, string name, int layer) 

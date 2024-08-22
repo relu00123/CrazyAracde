@@ -3,21 +3,21 @@ using Server.Game.Core;
 using System;
 using System.Collections.Generic;
 using System.Numerics;
+using System.Runtime.Serialization;
 using System.Text;
 
 namespace Server.Game
 {
     public class InGame
     {
-        private GameRoom _gameRoom;
+        public GameRoom _gameRoom { get; private set; }
+        public ObjectsManager _objectsManager { get; private set; }
 
-        private int _nextObjectId = 1;
+        public ObjectLayerManager _objectLayerManager { get; private set; }
 
-        private ObjectLayerManager _objectLayerManager;
+        public CAMapManager _caMapManager { get; private set; }
 
-        private CAMapManager _caMapManager;
-
-        private CollisionManager _collisionManager;
+        public CollisionManager _collisionManager { get; private set; }
 
 
         public InGame(GameRoom gameRoom, MapType mapType)  // 나중에 필요한 정보들 추가해서 구조체로 바꿀 수도 있음. 
@@ -25,30 +25,9 @@ namespace Server.Game
             
             _gameRoom = gameRoom;
             _objectLayerManager = new ObjectLayerManager();
-            _caMapManager = new CAMapManager(mapType);
+            _objectsManager = new ObjectsManager(_objectLayerManager);
+            _caMapManager = new CAMapManager(mapType, this);
             _collisionManager = new CollisionManager(_objectLayerManager);
-        }
-
-        public InGameObject CreateObject(int layerIndex, string objectName, Vector2? colliderSize = null)
-        {
-            int objectId = _nextObjectId++;
-            InGameObject newObject = new InGameObject(objectId, objectName, layerIndex);
-            
-
-            if (colliderSize.HasValue)
-            {
-                newObject.InitializeCollider(colliderSize.Value);
-                //_collisionManager.AddCollider(newObject._collider);
-            }
-
-            _objectLayerManager.AddObjectToLayer(layerIndex, newObject);
-
-            return newObject;
-        }
-
-        public List<InGameObject> GetObjectsInLayer(int layerIndex)
-        {
-            return _objectLayerManager.GetObjectsInLayer(layerIndex);
         }
 
         public void Update()
@@ -58,6 +37,25 @@ namespace Server.Game
             //_collisionManager.Tick();
         }
 
+        public InGameObject CreateAndBroadcastObject(int layerIndex, string objectName, PositionType posType, ObjectType objecttype,
+            Vector2 posValue, Vector2? scale = null, Vector2?colliderSize = null)
+        {
+            InGameObject newObject = _objectsManager.CreateObject(layerIndex, objectName, posType, posValue, scale, colliderSize);
 
+            S_SpawnObject spawnObjectPacket = new S_SpawnObject
+            {
+                Objecttype = objecttype,
+                Positioninfo = new PositionInfo
+                {
+                    Type = posType,
+                    PosX = (int)posValue.X,
+                    PosY = (int)posValue.Y,
+                }
+            };
+
+            _gameRoom.BroadcastPacket(spawnObjectPacket);
+
+            return newObject;
+        }
     }
 }

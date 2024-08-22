@@ -6,6 +6,7 @@ using Server.Game;
 using Newtonsoft.Json;
 using Google.Protobuf.Protocol;
 using System.Diagnostics;
+using System.Numerics;
 
 public class TileInfo
 {
@@ -63,12 +64,16 @@ namespace Server.Game
     { 
         private TileInfo[,] _tileMapData;
 
+        public InGame _currentGame { get; private set; }
+
         public  MapType _mapType { get; private set; }
 
-        public CAMapManager(MapType mapType)
+        public CAMapManager(MapType mapType, InGame currentGame)
         {
             _mapType = mapType;
+            _currentGame = currentGame;
             Init();
+             
         }
 
         private void Init()
@@ -112,7 +117,21 @@ namespace Server.Game
                 if (tileData.tilemapName == "WallsCollider")
                 {
                     Console.WriteLine("WallsCollider Tile Detected!");
-                    _tileMapData[tileData.position.x, tileData.position.y].isBlocktPermanently = true; 
+                    _tileMapData[tileData.position.x, tileData.position.y].isBlocktPermanently = true;
+
+                    // Client에 해당 위치에 벽을 생성하라고 해볼 것이다. 
+                    // 서버에서도 이 Object들을 관리하고 있어야 한다.  
+                    // 지금은 임시로 Wall 에 대해서 LayerIndex 1번을 사용하도록 한다.
+                    // 나중에는 layer의 이름으로 index로 찾을 수 있게 하던가 enum Type으로 관리해야할 것임. 
+                    // 이부분 코드가나중에도 재사용성이 매우 높기 때문에 함수로 만들어 버릴 것임. 
+
+                    _currentGame.CreateAndBroadcastObject(
+                        0, 
+                        "wall", 
+                        PositionType.TileCenterPos,
+                        ObjectType.ObjectBox, 
+                        new Vector2(tileData.position.x, tileData.position.y)
+                    );
                 }
             }
         }
