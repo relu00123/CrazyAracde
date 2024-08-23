@@ -49,6 +49,7 @@ public class CAMapEditor : MonoBehaviour
                                 isProvidingStealth = customTile.isProvidingStealth,
                                 isMoveable = customTile.isMoveable,
                                 childTileName = customTile.childTileSprite != null ? customTile.childTileSprite.name : null,
+                                spawnType = customTile.spawnType,
                                 //charTypeTest = customTile.charactertype,
                             }) ; 
                         }

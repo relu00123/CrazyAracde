@@ -13,5 +13,8 @@ public class CustomTile : Tile
     public bool isProvidingStealth = false;
     public bool isMoveable = false;
     public Sprite childTileSprite = null;
+    public CharacterSpawnType spawnType = CharacterSpawnType.SpawnNothing;
     //public CharacterType charactertype;  Enum 저장되는지 확인용도 사용할 것은 아님. 
+
+
 }

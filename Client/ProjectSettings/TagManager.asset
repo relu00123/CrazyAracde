@@ -56,3 +56,6 @@ TagManager:
   - name: Boxes
     uniqueID: 2799844271
     locked: 0
+  - name: CharacterSpawn
+    uniqueID: 3778174115
+    locked: 0

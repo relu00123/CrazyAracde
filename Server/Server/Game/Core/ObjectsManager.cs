@@ -25,13 +25,15 @@ namespace Server.Game
             return newObject;
         }
 
-        public InGameObject CreateObject(int layerIndex, string objectName, PositionType posType, Vector2 posValue, Vector2? scale = null, Vector2? colliderSize = null)
+        public InGameObject CreateObject(LayerType layerType, string objectName, PositionType posType, Vector2 posValue, Vector2? scale = null, Vector2? colliderSize = null)
         {
+            int LayerIndex = (int)layerType;
+
             Vector2 position = DeterminePosition(posType, posValue);
             Vector2 objectScale = scale ?? Vector2.One;
 
-            InGameObject newObject = InitializeObject(layerIndex, objectName, position, objectScale, colliderSize);
-            _objectLayerManager.AddObjectToLayer(layerIndex, newObject);
+            InGameObject newObject = InitializeObject(LayerIndex, objectName, position, objectScale, colliderSize);
+            _objectLayerManager.AddObjectToLayer(LayerIndex, newObject);
             return newObject;
         }
 

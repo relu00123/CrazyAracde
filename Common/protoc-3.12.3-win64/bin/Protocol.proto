@@ -78,9 +78,14 @@ enum CreatureState {
 }
 
 enum PositionType {
+
   TILE_CENTER_POS = 0;
   TILE_UNDER_POS = 1;
   ABSOLUTE_POS = 2;
+}
+
+enum LayerType {
+  DEFAULT_LAYER = 0;
 }
 
 enum MoveDir {
@@ -144,6 +149,13 @@ enum ArmorType {
   ARMOR_TYPE_HELMET = 1;
   ARMOR_TYPE_ARMOR = 2;
   ARMOR_TYPE_BOOTS = 3;
+}
+
+enum CharacterSpawnType {
+  SPAWN_NOTHING = 0;
+  SPAWN_RANDOM = 1;
+  SPAWN_BAZZI = 2;
+  SPAWN_MARID = 3;
 }
 
 enum ConsumableType {

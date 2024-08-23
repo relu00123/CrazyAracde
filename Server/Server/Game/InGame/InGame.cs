@@ -40,10 +40,11 @@ namespace Server.Game
         public InGameObject CreateAndBroadcastObject(int layerIndex, string objectName, PositionType posType, ObjectType objecttype,
             Vector2 posValue, Vector2? scale = null, Vector2?colliderSize = null)
         {
-            InGameObject newObject = _objectsManager.CreateObject(layerIndex, objectName, posType, posValue, scale, colliderSize);
+            InGameObject newObject = _objectsManager.CreateObject(LayerType.DefaultLayer, objectName, posType, posValue, scale, colliderSize);
 
             S_SpawnObject spawnObjectPacket = new S_SpawnObject
             {
+                Objectid = newObject.Id,
                 Objecttype = objecttype,
                 Positioninfo = new PositionInfo
                 {

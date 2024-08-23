@@ -12,7 +12,8 @@
             "isSpine": false,
             "isProvidingStealth": false,
             "isMoveable": false,
-            "childTileName": ""
+            "childTileName": "",
+            "spawnType": 0
         },
         {
             "position": {
@@ -26,7 +27,8 @@
             "isSpine": false,
             "isProvidingStealth": false,
             "isMoveable": false,
-            "childTileName": ""
+            "childTileName": "",
+            "spawnType": 0
         },
         {
             "position": {
@@ -40,7 +42,8 @@
             "isSpine": false,
             "isProvidingStealth": false,
             "isMoveable": false,
-            "childTileName": ""
+            "childTileName": "",
+            "spawnType": 0
         },
         {
             "position": {
@@ -54,7 +57,8 @@
             "isSpine": false,
             "isProvidingStealth": false,
             "isMoveable": false,
-            "childTileName": ""
+            "childTileName": "",
+            "spawnType": 0
         },
         {
             "position": {
@@ -68,7 +72,8 @@
             "isSpine": false,
             "isProvidingStealth": false,
             "isMoveable": false,
-            "childTileName": ""
+            "childTileName": "",
+            "spawnType": 0
         },
         {
             "position": {
@@ -82,7 +87,8 @@
             "isSpine": false,
             "isProvidingStealth": false,
             "isMoveable": false,
-            "childTileName": ""
+            "childTileName": "",
+            "spawnType": 0
         },
         {
             "position": {
@@ -96,7 +102,8 @@
             "isSpine": false,
             "isProvidingStealth": false,
             "isMoveable": false,
-            "childTileName": ""
+            "childTileName": "",
+            "spawnType": 0
         },
         {
             "position": {
@@ -110,7 +117,8 @@
             "isSpine": false,
             "isProvidingStealth": false,
             "isMoveable": false,
-            "childTileName": ""
+            "childTileName": "",
+            "spawnType": 0
         },
         {
             "position": {
@@ -124,7 +132,8 @@
             "isSpine": false,
             "isProvidingStealth": false,
             "isMoveable": false,
-            "childTileName": ""
+            "childTileName": "",
+            "spawnType": 0
         },
         {
             "position": {
@@ -138,7 +147,8 @@
             "isSpine": false,
             "isProvidingStealth": false,
             "isMoveable": false,
-            "childTileName": ""
+            "childTileName": "",
+            "spawnType": 0
         },
         {
             "position": {
@@ -152,7 +162,8 @@
             "isSpine": false,
             "isProvidingStealth": false,
             "isMoveable": false,
-            "childTileName": ""
+            "childTileName": "",
+            "spawnType": 0
         },
         {
             "position": {
@@ -166,7 +177,8 @@
             "isSpine": false,
             "isProvidingStealth": false,
             "isMoveable": false,
-            "childTileName": ""
+            "childTileName": "",
+            "spawnType": 0
         },
         {
             "position": {
@@ -180,7 +192,8 @@
             "isSpine": false,
             "isProvidingStealth": false,
             "isMoveable": false,
-            "childTileName": ""
+            "childTileName": "",
+            "spawnType": 0
         },
         {
             "position": {
@@ -194,7 +207,8 @@
             "isSpine": false,
             "isProvidingStealth": false,
             "isMoveable": false,
-            "childTileName": ""
+            "childTileName": "",
+            "spawnType": 0
         },
         {
             "position": {
@@ -208,7 +222,8 @@
             "isSpine": false,
             "isProvidingStealth": false,
             "isMoveable": false,
-            "childTileName": ""
+            "childTileName": "",
+            "spawnType": 0
         },
         {
             "position": {
@@ -222,7 +237,8 @@
             "isSpine": false,
             "isProvidingStealth": false,
             "isMoveable": false,
-            "childTileName": ""
+            "childTileName": "",
+            "spawnType": 0
         },
         {
             "position": {
@@ -236,7 +252,8 @@
             "isSpine": false,
             "isProvidingStealth": false,
             "isMoveable": false,
-            "childTileName": ""
+            "childTileName": "",
+            "spawnType": 0
         },
         {
             "position": {
@@ -250,7 +267,8 @@
             "isSpine": false,
             "isProvidingStealth": false,
             "isMoveable": false,
-            "childTileName": ""
+            "childTileName": "",
+            "spawnType": 0
         },
         {
             "position": {
@@ -264,7 +282,8 @@
             "isSpine": false,
             "isProvidingStealth": false,
             "isMoveable": false,
-            "childTileName": ""
+            "childTileName": "",
+            "spawnType": 0
         },
         {
             "position": {
@@ -278,7 +297,8 @@
             "isSpine": false,
             "isProvidingStealth": false,
             "isMoveable": false,
-            "childTileName": ""
+            "childTileName": "",
+            "spawnType": 0
         },
         {
             "position": {
@@ -292,7 +312,8 @@
             "isSpine": false,
             "isProvidingStealth": false,
             "isMoveable": false,
-            "childTileName": ""
+            "childTileName": "",
+            "spawnType": 0
         },
         {
             "position": {
@@ -306,7 +327,8 @@
             "isSpine": false,
             "isProvidingStealth": false,
             "isMoveable": false,
-            "childTileName": ""
+            "childTileName": "",
+            "spawnType": 0
         },
         {
             "position": {
@@ -320,7 +342,8 @@
             "isSpine": false,
             "isProvidingStealth": false,
             "isMoveable": false,
-            "childTileName": ""
+            "childTileName": "",
+            "spawnType": 0
         },
         {
             "position": {
@@ -334,7 +357,8 @@
             "isSpine": false,
             "isProvidingStealth": false,
             "isMoveable": false,
-            "childTileName": ""
+            "childTileName": "",
+            "spawnType": 0
         },
         {
             "position": {
@@ -348,7 +372,8 @@
             "isSpine": false,
             "isProvidingStealth": false,
             "isMoveable": false,
-            "childTileName": ""
+            "childTileName": "",
+            "spawnType": 0
         },
         {
             "position": {
@@ -362,7 +387,8 @@
             "isSpine": false,
             "isProvidingStealth": false,
             "isMoveable": false,
-            "childTileName": ""
+            "childTileName": "",
+            "spawnType": 0
         },
         {
             "position": {
@@ -376,7 +402,8 @@
             "isSpine": false,
             "isProvidingStealth": false,
             "isMoveable": false,
-            "childTileName": ""
+            "childTileName": "",
+            "spawnType": 0
         },
         {
             "position": {
@@ -390,7 +417,8 @@
             "isSpine": false,
             "isProvidingStealth": false,
             "isMoveable": false,
-            "childTileName": ""
+            "childTileName": "",
+            "spawnType": 0
         },
         {
             "position": {
@@ -404,7 +432,8 @@
             "isSpine": false,
             "isProvidingStealth": false,
             "isMoveable": false,
-            "childTileName": ""
+            "childTileName": "",
+            "spawnType": 0
         },
         {
             "position": {
@@ -418,7 +447,8 @@
             "isSpine": false,
             "isProvidingStealth": false,
             "isMoveable": false,
-            "childTileName": ""
+            "childTileName": "",
+            "spawnType": 0
         },
         {
             "position": {
@@ -432,7 +462,8 @@
             "isSpine": false,
             "isProvidingStealth": false,
             "isMoveable": false,
-            "childTileName": ""
+            "childTileName": "",
+            "spawnType": 0
         },
         {
             "position": {
@@ -446,7 +477,8 @@
             "isSpine": false,
             "isProvidingStealth": false,
             "isMoveable": false,
-            "childTileName": ""
+            "childTileName": "",
+            "spawnType": 0
         },
         {
             "position": {
@@ -460,7 +492,8 @@
             "isSpine": false,
             "isProvidingStealth": false,
             "isMoveable": false,
-            "childTileName": ""
+            "childTileName": "",
+            "spawnType": 0
         },
         {
             "position": {
@@ -474,7 +507,8 @@
             "isSpine": false,
             "isProvidingStealth": false,
             "isMoveable": false,
-            "childTileName": ""
+            "childTileName": "",
+            "spawnType": 0
         },
         {
             "position": {
@@ -488,7 +522,8 @@
             "isSpine": false,
             "isProvidingStealth": false,
             "isMoveable": false,
-            "childTileName": ""
+            "childTileName": "",
+            "spawnType": 0
         },
         {
             "position": {
@@ -502,7 +537,8 @@
             "isSpine": false,
             "isProvidingStealth": false,
             "isMoveable": false,
-            "childTileName": ""
+            "childTileName": "",
+            "spawnType": 0
         },
         {
             "position": {
@@ -516,7 +552,8 @@
             "isSpine": false,
             "isProvidingStealth": false,
             "isMoveable": false,
-            "childTileName": ""
+            "childTileName": "",
+            "spawnType": 0
         },
         {
             "position": {
@@ -530,7 +567,8 @@
             "isSpine": false,
             "isProvidingStealth": false,
             "isMoveable": false,
-            "childTileName": ""
+            "childTileName": "",
+            "spawnType": 0
         },
         {
             "position": {
@@ -544,7 +582,8 @@
             "isSpine": false,
             "isProvidingStealth": false,
             "isMoveable": false,
-            "childTileName": ""
+            "childTileName": "",
+            "spawnType": 0
         },
         {
             "position": {
@@ -558,7 +597,8 @@
             "isSpine": false,
             "isProvidingStealth": false,
             "isMoveable": false,
-            "childTileName": ""
+            "childTileName": "",
+            "spawnType": 0
         },
         {
             "position": {
@@ -572,7 +612,8 @@
             "isSpine": false,
             "isProvidingStealth": false,
             "isMoveable": false,
-            "childTileName": ""
+            "childTileName": "",
+            "spawnType": 0
         },
         {
             "position": {
@@ -586,7 +627,8 @@
             "isSpine": false,
             "isProvidingStealth": false,
             "isMoveable": false,
-            "childTileName": ""
+            "childTileName": "",
+            "spawnType": 0
         },
         {
             "position": {
@@ -600,7 +642,8 @@
             "isSpine": false,
             "isProvidingStealth": false,
             "isMoveable": false,
-            "childTileName": ""
+            "childTileName": "",
+            "spawnType": 0
         },
         {
             "position": {
@@ -614,7 +657,8 @@
             "isSpine": false,
             "isProvidingStealth": false,
             "isMoveable": false,
-            "childTileName": ""
+            "childTileName": "",
+            "spawnType": 0
         },
         {
             "position": {
@@ -628,7 +672,8 @@
             "isSpine": false,
             "isProvidingStealth": false,
             "isMoveable": false,
-            "childTileName": ""
+            "childTileName": "",
+            "spawnType": 0
         },
         {
             "position": {
@@ -642,7 +687,8 @@
             "isSpine": false,
             "isProvidingStealth": false,
             "isMoveable": false,
-            "childTileName": ""
+            "childTileName": "",
+            "spawnType": 0
         },
         {
             "position": {
@@ -656,7 +702,8 @@
             "isSpine": false,
             "isProvidingStealth": false,
             "isMoveable": false,
-            "childTileName": ""
+            "childTileName": "",
+            "spawnType": 0
         },
         {
             "position": {
@@ -670,7 +717,8 @@
             "isSpine": false,
             "isProvidingStealth": false,
             "isMoveable": false,
-            "childTileName": ""
+            "childTileName": "",
+            "spawnType": 0
         },
         {
             "position": {
@@ -684,7 +732,8 @@
             "isSpine": false,
             "isProvidingStealth": false,
             "isMoveable": false,
-            "childTileName": ""
+            "childTileName": "",
+            "spawnType": 0
         },
         {
             "position": {
@@ -698,7 +747,8 @@
             "isSpine": false,
             "isProvidingStealth": false,
             "isMoveable": false,
-            "childTileName": ""
+            "childTileName": "",
+            "spawnType": 0
         },
         {
             "position": {
@@ -712,7 +762,8 @@
             "isSpine": false,
             "isProvidingStealth": false,
             "isMoveable": false,
-            "childTileName": ""
+            "childTileName": "",
+            "spawnType": 0
         },
         {
             "position": {
@@ -726,7 +777,8 @@
             "isSpine": false,
             "isProvidingStealth": false,
             "isMoveable": false,
-            "childTileName": ""
+            "childTileName": "",
+            "spawnType": 0
         },
         {
             "position": {
@@ -740,7 +792,8 @@
             "isSpine": false,
             "isProvidingStealth": false,
             "isMoveable": false,
-            "childTileName": ""
+            "childTileName": "",
+            "spawnType": 0
         },
         {
             "position": {
@@ -754,7 +807,8 @@
             "isSpine": false,
             "isProvidingStealth": false,
             "isMoveable": false,
-            "childTileName": ""
+            "childTileName": "",
+            "spawnType": 0
         },
         {
             "position": {
@@ -768,7 +822,8 @@
             "isSpine": false,
             "isProvidingStealth": false,
             "isMoveable": false,
-            "childTileName": ""
+            "childTileName": "",
+            "spawnType": 0
         },
         {
             "position": {
@@ -782,7 +837,8 @@
             "isSpine": false,
             "isProvidingStealth": false,
             "isMoveable": false,
-            "childTileName": ""
+            "childTileName": "",
+            "spawnType": 0
         },
         {
             "position": {
@@ -796,7 +852,8 @@
             "isSpine": false,
             "isProvidingStealth": false,
             "isMoveable": false,
-            "childTileName": ""
+            "childTileName": "",
+            "spawnType": 0
         },
         {
             "position": {
@@ -810,7 +867,8 @@
             "isSpine": false,
             "isProvidingStealth": false,
             "isMoveable": false,
-            "childTileName": ""
+            "childTileName": "",
+            "spawnType": 0
         },
         {
             "position": {
@@ -824,7 +882,8 @@
             "isSpine": false,
             "isProvidingStealth": false,
             "isMoveable": false,
-            "childTileName": ""
+            "childTileName": "",
+            "spawnType": 0
         },
         {
             "position": {
@@ -838,7 +897,8 @@
             "isSpine": false,
             "isProvidingStealth": false,
             "isMoveable": false,
-            "childTileName": ""
+            "childTileName": "",
+            "spawnType": 0
         },
         {
             "position": {
@@ -852,7 +912,8 @@
             "isSpine": false,
             "isProvidingStealth": false,
             "isMoveable": false,
-            "childTileName": ""
+            "childTileName": "",
+            "spawnType": 0
         },
         {
             "position": {
@@ -866,7 +927,8 @@
             "isSpine": false,
             "isProvidingStealth": false,
             "isMoveable": false,
-            "childTileName": ""
+            "childTileName": "",
+            "spawnType": 0
         },
         {
             "position": {
@@ -880,7 +942,8 @@
             "isSpine": false,
             "isProvidingStealth": false,
             "isMoveable": false,
-            "childTileName": ""
+            "childTileName": "",
+            "spawnType": 0
         },
         {
             "position": {
@@ -894,7 +957,8 @@
             "isSpine": false,
             "isProvidingStealth": false,
             "isMoveable": false,
-            "childTileName": ""
+            "childTileName": "",
+            "spawnType": 0
         },
         {
             "position": {
@@ -908,7 +972,8 @@
             "isSpine": false,
             "isProvidingStealth": false,
             "isMoveable": false,
-            "childTileName": ""
+            "childTileName": "",
+            "spawnType": 0
         },
         {
             "position": {
@@ -922,7 +987,8 @@
             "isSpine": false,
             "isProvidingStealth": false,
             "isMoveable": false,
-            "childTileName": ""
+            "childTileName": "",
+            "spawnType": 0
         },
         {
             "position": {
@@ -936,7 +1002,8 @@
             "isSpine": false,
             "isProvidingStealth": false,
             "isMoveable": false,
-            "childTileName": ""
+            "childTileName": "",
+            "spawnType": 0
         },
         {
             "position": {
@@ -950,7 +1017,8 @@
             "isSpine": false,
             "isProvidingStealth": false,
             "isMoveable": false,
-            "childTileName": ""
+            "childTileName": "",
+            "spawnType": 0
         },
         {
             "position": {
@@ -964,7 +1032,8 @@
             "isSpine": false,
             "isProvidingStealth": false,
             "isMoveable": false,
-            "childTileName": ""
+            "childTileName": "",
+            "spawnType": 0
         },
         {
             "position": {
@@ -978,7 +1047,8 @@
             "isSpine": false,
             "isProvidingStealth": false,
             "isMoveable": false,
-            "childTileName": ""
+            "childTileName": "",
+            "spawnType": 0
         },
         {
             "position": {
@@ -992,7 +1062,8 @@
             "isSpine": false,
             "isProvidingStealth": false,
             "isMoveable": false,
-            "childTileName": ""
+            "childTileName": "",
+            "spawnType": 0
         },
         {
             "position": {
@@ -1006,7 +1077,8 @@
             "isSpine": false,
             "isProvidingStealth": false,
             "isMoveable": false,
-            "childTileName": ""
+            "childTileName": "",
+            "spawnType": 0
         },
         {
             "position": {
@@ -1020,7 +1092,8 @@
             "isSpine": false,
             "isProvidingStealth": false,
             "isMoveable": false,
-            "childTileName": ""
+            "childTileName": "",
+            "spawnType": 0
         },
         {
             "position": {
@@ -1034,7 +1107,8 @@
             "isSpine": false,
             "isProvidingStealth": false,
             "isMoveable": false,
-            "childTileName": ""
+            "childTileName": "",
+            "spawnType": 0
         },
         {
             "position": {
@@ -1048,7 +1122,8 @@
             "isSpine": false,
             "isProvidingStealth": false,
             "isMoveable": false,
-            "childTileName": ""
+            "childTileName": "",
+            "spawnType": 0
         },
         {
             "position": {
@@ -1062,7 +1137,8 @@
             "isSpine": false,
             "isProvidingStealth": false,
             "isMoveable": false,
-            "childTileName": ""
+            "childTileName": "",
+            "spawnType": 0
         },
         {
             "position": {
@@ -1076,7 +1152,8 @@
             "isSpine": false,
             "isProvidingStealth": false,
             "isMoveable": false,
-            "childTileName": ""
+            "childTileName": "",
+            "spawnType": 0
         },
         {
             "position": {
@@ -1090,7 +1167,8 @@
             "isSpine": false,
             "isProvidingStealth": false,
             "isMoveable": false,
-            "childTileName": ""
+            "childTileName": "",
+            "spawnType": 0
         },
         {
             "position": {
@@ -1104,7 +1182,8 @@
             "isSpine": false,
             "isProvidingStealth": false,
             "isMoveable": false,
-            "childTileName": ""
+            "childTileName": "",
+            "spawnType": 0
         },
         {
             "position": {
@@ -1118,7 +1197,8 @@
             "isSpine": false,
             "isProvidingStealth": false,
             "isMoveable": false,
-            "childTileName": ""
+            "childTileName": "",
+            "spawnType": 0
         },
         {
             "position": {
@@ -1132,7 +1212,8 @@
             "isSpine": false,
             "isProvidingStealth": false,
             "isMoveable": false,
-            "childTileName": ""
+            "childTileName": "",
+            "spawnType": 0
         },
         {
             "position": {
@@ -1146,7 +1227,8 @@
             "isSpine": false,
             "isProvidingStealth": false,
             "isMoveable": false,
-            "childTileName": ""
+            "childTileName": "",
+            "spawnType": 0
         },
         {
             "position": {
@@ -1160,7 +1242,8 @@
             "isSpine": false,
             "isProvidingStealth": false,
             "isMoveable": false,
-            "childTileName": ""
+            "childTileName": "",
+            "spawnType": 0
         },
         {
             "position": {
@@ -1174,7 +1257,8 @@
             "isSpine": false,
             "isProvidingStealth": false,
             "isMoveable": false,
-            "childTileName": ""
+            "childTileName": "",
+            "spawnType": 0
         },
         {
             "position": {
@@ -1188,7 +1272,8 @@
             "isSpine": false,
             "isProvidingStealth": false,
             "isMoveable": false,
-            "childTileName": ""
+            "childTileName": "",
+            "spawnType": 0
         },
         {
             "position": {
@@ -1202,7 +1287,8 @@
             "isSpine": false,
             "isProvidingStealth": false,
             "isMoveable": false,
-            "childTileName": ""
+            "childTileName": "",
+            "spawnType": 0
         },
         {
             "position": {
@@ -1216,7 +1302,8 @@
             "isSpine": false,
             "isProvidingStealth": false,
             "isMoveable": false,
-            "childTileName": ""
+            "childTileName": "",
+            "spawnType": 0
         },
         {
             "position": {
@@ -1230,7 +1317,8 @@
             "isSpine": false,
             "isProvidingStealth": false,
             "isMoveable": false,
-            "childTileName": ""
+            "childTileName": "",
+            "spawnType": 0
         },
         {
             "position": {
@@ -1244,7 +1332,8 @@
             "isSpine": false,
             "isProvidingStealth": false,
             "isMoveable": false,
-            "childTileName": ""
+            "childTileName": "",
+            "spawnType": 0
         },
         {
             "position": {
@@ -1258,7 +1347,8 @@
             "isSpine": false,
             "isProvidingStealth": false,
             "isMoveable": false,
-            "childTileName": ""
+            "childTileName": "",
+            "spawnType": 0
         },
         {
             "position": {
@@ -1272,7 +1362,8 @@
             "isSpine": false,
             "isProvidingStealth": false,
             "isMoveable": false,
-            "childTileName": ""
+            "childTileName": "",
+            "spawnType": 0
         },
         {
             "position": {
@@ -1286,7 +1377,8 @@
             "isSpine": false,
             "isProvidingStealth": false,
             "isMoveable": false,
-            "childTileName": ""
+            "childTileName": "",
+            "spawnType": 0
         },
         {
             "position": {
@@ -1300,7 +1392,8 @@
             "isSpine": false,
             "isProvidingStealth": false,
             "isMoveable": false,
-            "childTileName": ""
+            "childTileName": "",
+            "spawnType": 0
         },
         {
             "position": {
@@ -1314,7 +1407,8 @@
             "isSpine": false,
             "isProvidingStealth": false,
             "isMoveable": false,
-            "childTileName": ""
+            "childTileName": "",
+            "spawnType": 0
         },
         {
             "position": {
@@ -1328,7 +1422,8 @@
             "isSpine": false,
             "isProvidingStealth": false,
             "isMoveable": false,
-            "childTileName": ""
+            "childTileName": "",
+            "spawnType": 0
         },
         {
             "position": {
@@ -1342,7 +1437,8 @@
             "isSpine": false,
             "isProvidingStealth": false,
             "isMoveable": false,
-            "childTileName": ""
+            "childTileName": "",
+            "spawnType": 0
         },
         {
             "position": {
@@ -1356,7 +1452,8 @@
             "isSpine": false,
             "isProvidingStealth": false,
             "isMoveable": false,
-            "childTileName": ""
+            "childTileName": "",
+            "spawnType": 0
         },
         {
             "position": {
@@ -1370,7 +1467,8 @@
             "isSpine": false,
             "isProvidingStealth": false,
             "isMoveable": false,
-            "childTileName": ""
+            "childTileName": "",
+            "spawnType": 0
         },
         {
             "position": {
@@ -1384,7 +1482,8 @@
             "isSpine": false,
             "isProvidingStealth": false,
             "isMoveable": false,
-            "childTileName": ""
+            "childTileName": "",
+            "spawnType": 0
         },
         {
             "position": {
@@ -1398,7 +1497,8 @@
             "isSpine": false,
             "isProvidingStealth": false,
             "isMoveable": false,
-            "childTileName": ""
+            "childTileName": "",
+            "spawnType": 0
         },
         {
             "position": {
@@ -1412,7 +1512,8 @@
             "isSpine": false,
             "isProvidingStealth": false,
             "isMoveable": false,
-            "childTileName": ""
+            "childTileName": "",
+            "spawnType": 0
         },
         {
             "position": {
@@ -1426,7 +1527,8 @@
             "isSpine": false,
             "isProvidingStealth": false,
             "isMoveable": false,
-            "childTileName": ""
+            "childTileName": "",
+            "spawnType": 0
         },
         {
             "position": {
@@ -1440,7 +1542,8 @@
             "isSpine": false,
             "isProvidingStealth": false,
             "isMoveable": false,
-            "childTileName": ""
+            "childTileName": "",
+            "spawnType": 0
         },
         {
             "position": {
@@ -1454,7 +1557,8 @@
             "isSpine": false,
             "isProvidingStealth": false,
             "isMoveable": false,
-            "childTileName": ""
+            "childTileName": "",
+            "spawnType": 0
         },
         {
             "position": {
@@ -1468,7 +1572,8 @@
             "isSpine": false,
             "isProvidingStealth": false,
             "isMoveable": false,
-            "childTileName": ""
+            "childTileName": "",
+            "spawnType": 0
         },
         {
             "position": {
@@ -1482,7 +1587,8 @@
             "isSpine": false,
             "isProvidingStealth": false,
             "isMoveable": false,
-            "childTileName": ""
+            "childTileName": "",
+            "spawnType": 0
         },
         {
             "position": {
@@ -1496,7 +1602,8 @@
             "isSpine": false,
             "isProvidingStealth": false,
             "isMoveable": false,
-            "childTileName": ""
+            "childTileName": "",
+            "spawnType": 0
         },
         {
             "position": {
@@ -1510,7 +1617,8 @@
             "isSpine": false,
             "isProvidingStealth": false,
             "isMoveable": false,
-            "childTileName": ""
+            "childTileName": "",
+            "spawnType": 0
         },
         {
             "position": {
@@ -1524,7 +1632,8 @@
             "isSpine": false,
             "isProvidingStealth": false,
             "isMoveable": false,
-            "childTileName": ""
+            "childTileName": "",
+            "spawnType": 0
         },
         {
             "position": {
@@ -1538,7 +1647,8 @@
             "isSpine": false,
             "isProvidingStealth": false,
             "isMoveable": false,
-            "childTileName": ""
+            "childTileName": "",
+            "spawnType": 0
         },
         {
             "position": {
@@ -1552,7 +1662,8 @@
             "isSpine": false,
             "isProvidingStealth": false,
             "isMoveable": false,
-            "childTileName": ""
+            "childTileName": "",
+            "spawnType": 0
         },
         {
             "position": {
@@ -1566,7 +1677,8 @@
             "isSpine": false,
             "isProvidingStealth": false,
             "isMoveable": false,
-            "childTileName": ""
+            "childTileName": "",
+            "spawnType": 0
         },
         {
             "position": {
@@ -1580,7 +1692,8 @@
             "isSpine": false,
             "isProvidingStealth": false,
             "isMoveable": false,
-            "childTileName": ""
+            "childTileName": "",
+            "spawnType": 0
         },
         {
             "position": {
@@ -1594,7 +1707,8 @@
             "isSpine": false,
             "isProvidingStealth": false,
             "isMoveable": false,
-            "childTileName": ""
+            "childTileName": "",
+            "spawnType": 0
         },
         {
             "position": {
@@ -1608,7 +1722,8 @@
             "isSpine": false,
             "isProvidingStealth": false,
             "isMoveable": false,
-            "childTileName": ""
+            "childTileName": "",
+            "spawnType": 0
         },
         {
             "position": {
@@ -1622,7 +1737,8 @@
             "isSpine": false,
             "isProvidingStealth": false,
             "isMoveable": false,
-            "childTileName": ""
+            "childTileName": "",
+            "spawnType": 0
         },
         {
             "position": {
@@ -1636,7 +1752,8 @@
             "isSpine": false,
             "isProvidingStealth": false,
             "isMoveable": false,
-            "childTileName": ""
+            "childTileName": "",
+            "spawnType": 0
         },
         {
             "position": {
@@ -1650,7 +1767,8 @@
             "isSpine": false,
             "isProvidingStealth": false,
             "isMoveable": false,
-            "childTileName": ""
+            "childTileName": "",
+            "spawnType": 0
         },
         {
             "position": {
@@ -1664,7 +1782,8 @@
             "isSpine": false,
             "isProvidingStealth": false,
             "isMoveable": false,
-            "childTileName": ""
+            "childTileName": "",
+            "spawnType": 0
         },
         {
             "position": {
@@ -1678,7 +1797,8 @@
             "isSpine": false,
             "isProvidingStealth": false,
             "isMoveable": false,
-            "childTileName": ""
+            "childTileName": "",
+            "spawnType": 0
         },
         {
             "position": {
@@ -1692,7 +1812,8 @@
             "isSpine": false,
             "isProvidingStealth": false,
             "isMoveable": false,
-            "childTileName": ""
+            "childTileName": "",
+            "spawnType": 0
         },
         {
             "position": {
@@ -1706,7 +1827,8 @@
             "isSpine": false,
             "isProvidingStealth": false,
             "isMoveable": false,
-            "childTileName": ""
+            "childTileName": "",
+            "spawnType": 0
         },
         {
             "position": {
@@ -1720,7 +1842,8 @@
             "isSpine": false,
             "isProvidingStealth": false,
             "isMoveable": false,
-            "childTileName": ""
+            "childTileName": "",
+            "spawnType": 0
         },
         {
             "position": {
@@ -1734,7 +1857,8 @@
             "isSpine": false,
             "isProvidingStealth": false,
             "isMoveable": false,
-            "childTileName": ""
+            "childTileName": "",
+            "spawnType": 0
         },
         {
             "position": {
@@ -1748,7 +1872,8 @@
             "isSpine": false,
             "isProvidingStealth": false,
             "isMoveable": false,
-            "childTileName": ""
+            "childTileName": "",
+            "spawnType": 0
         },
         {
             "position": {
@@ -1762,7 +1887,8 @@
             "isSpine": false,
             "isProvidingStealth": false,
             "isMoveable": false,
-            "childTileName": ""
+            "childTileName": "",
+            "spawnType": 0
         },
         {
             "position": {
@@ -1776,7 +1902,8 @@
             "isSpine": false,
             "isProvidingStealth": false,
             "isMoveable": false,
-            "childTileName": ""
+            "childTileName": "",
+            "spawnType": 0
         },
         {
             "position": {
@@ -1790,7 +1917,8 @@
             "isSpine": false,
             "isProvidingStealth": false,
             "isMoveable": false,
-            "childTileName": ""
+            "childTileName": "",
+            "spawnType": 0
         },
         {
             "position": {
@@ -1804,7 +1932,8 @@
             "isSpine": false,
             "isProvidingStealth": false,
             "isMoveable": false,
-            "childTileName": ""
+            "childTileName": "",
+            "spawnType": 0
         },
         {
             "position": {
@@ -1818,7 +1947,8 @@
             "isSpine": false,
             "isProvidingStealth": false,
             "isMoveable": false,
-            "childTileName": ""
+            "childTileName": "",
+            "spawnType": 0
         },
         {
             "position": {
@@ -1832,7 +1962,8 @@
             "isSpine": false,
             "isProvidingStealth": false,
             "isMoveable": false,
-            "childTileName": ""
+            "childTileName": "",
+            "spawnType": 0
         },
         {
             "position": {
@@ -1846,7 +1977,8 @@
             "isSpine": false,
             "isProvidingStealth": false,
             "isMoveable": false,
-            "childTileName": ""
+            "childTileName": "",
+            "spawnType": 0
         },
         {
             "position": {
@@ -1860,7 +1992,8 @@
             "isSpine": false,
             "isProvidingStealth": false,
             "isMoveable": false,
-            "childTileName": ""
+            "childTileName": "",
+            "spawnType": 0
         },
         {
             "position": {
@@ -1874,7 +2007,8 @@
             "isSpine": false,
             "isProvidingStealth": false,
             "isMoveable": false,
-            "childTileName": ""
+            "childTileName": "",
+            "spawnType": 0
         },
         {
             "position": {
@@ -1888,7 +2022,8 @@
             "isSpine": false,
             "isProvidingStealth": false,
             "isMoveable": false,
-            "childTileName": ""
+            "childTileName": "",
+            "spawnType": 0
         },
         {
             "position": {
@@ -1902,7 +2037,8 @@
             "isSpine": false,
             "isProvidingStealth": false,
             "isMoveable": false,
-            "childTileName": ""
+            "childTileName": "",
+            "spawnType": 0
         },
         {
             "position": {
@@ -1916,7 +2052,8 @@
             "isSpine": false,
             "isProvidingStealth": false,
             "isMoveable": false,
-            "childTileName": ""
+            "childTileName": "",
+            "spawnType": 0
         },
         {
             "position": {
@@ -1930,7 +2067,8 @@
             "isSpine": false,
             "isProvidingStealth": false,
             "isMoveable": false,
-            "childTileName": ""
+            "childTileName": "",
+            "spawnType": 0
         },
         {
             "position": {
@@ -1944,7 +2082,8 @@
             "isSpine": false,
             "isProvidingStealth": false,
             "isMoveable": false,
-            "childTileName": ""
+            "childTileName": "",
+            "spawnType": 0
         },
         {
             "position": {
@@ -1958,7 +2097,8 @@
             "isSpine": false,
             "isProvidingStealth": false,
             "isMoveable": false,
-            "childTileName": ""
+            "childTileName": "",
+            "spawnType": 0
         },
         {
             "position": {
@@ -1972,7 +2112,8 @@
             "isSpine": false,
             "isProvidingStealth": false,
             "isMoveable": false,
-            "childTileName": ""
+            "childTileName": "",
+            "spawnType": 0
         },
         {
             "position": {
@@ -1986,7 +2127,8 @@
             "isSpine": false,
             "isProvidingStealth": false,
             "isMoveable": false,
-            "childTileName": ""
+            "childTileName": "",
+            "spawnType": 0
         },
         {
             "position": {
@@ -2000,7 +2142,8 @@
             "isSpine": false,
             "isProvidingStealth": false,
             "isMoveable": false,
-            "childTileName": ""
+            "childTileName": "",
+            "spawnType": 0
         },
         {
             "position": {
@@ -2014,7 +2157,8 @@
             "isSpine": false,
             "isProvidingStealth": false,
             "isMoveable": false,
-            "childTileName": ""
+            "childTileName": "",
+            "spawnType": 0
         },
         {
             "position": {
@@ -2028,7 +2172,8 @@
             "isSpine": false,
             "isProvidingStealth": false,
             "isMoveable": false,
-            "childTileName": ""
+            "childTileName": "",
+            "spawnType": 0
         },
         {
             "position": {
@@ -2042,7 +2187,8 @@
             "isSpine": false,
             "isProvidingStealth": false,
             "isMoveable": false,
-            "childTileName": ""
+            "childTileName": "",
+            "spawnType": 0
         },
         {
             "position": {
@@ -2056,7 +2202,8 @@
             "isSpine": false,
             "isProvidingStealth": false,
             "isMoveable": false,
-            "childTileName": ""
+            "childTileName": "",
+            "spawnType": 0
         },
         {
             "position": {
@@ -2070,7 +2217,8 @@
             "isSpine": false,
             "isProvidingStealth": false,
             "isMoveable": false,
-            "childTileName": ""
+            "childTileName": "",
+            "spawnType": 0
         },
         {
             "position": {
@@ -2084,7 +2232,8 @@
             "isSpine": false,
             "isProvidingStealth": false,
             "isMoveable": false,
-            "childTileName": ""
+            "childTileName": "",
+            "spawnType": 0
         },
         {
             "position": {
@@ -2098,7 +2247,8 @@
             "isSpine": false,
             "isProvidingStealth": false,
             "isMoveable": false,
-            "childTileName": ""
+            "childTileName": "",
+            "spawnType": 0
         },
         {
             "position": {
@@ -2112,7 +2262,8 @@
             "isSpine": false,
             "isProvidingStealth": false,
             "isMoveable": false,
-            "childTileName": ""
+            "childTileName": "",
+            "spawnType": 0
         },
         {
             "position": {
@@ -2126,7 +2277,8 @@
             "isSpine": false,
             "isProvidingStealth": false,
             "isMoveable": false,
-            "childTileName": ""
+            "childTileName": "",
+            "spawnType": 0
         },
         {
             "position": {
@@ -2140,7 +2292,8 @@
             "isSpine": false,
             "isProvidingStealth": false,
             "isMoveable": false,
-            "childTileName": ""
+            "childTileName": "",
+            "spawnType": 0
         },
         {
             "position": {
@@ -2154,7 +2307,8 @@
             "isSpine": false,
             "isProvidingStealth": false,
             "isMoveable": false,
-            "childTileName": ""
+            "childTileName": "",
+            "spawnType": 0
         },
         {
             "position": {
@@ -2168,7 +2322,8 @@
             "isSpine": false,
             "isProvidingStealth": false,
             "isMoveable": false,
-            "childTileName": ""
+            "childTileName": "",
+            "spawnType": 0
         },
         {
             "position": {
@@ -2182,7 +2337,8 @@
             "isSpine": false,
             "isProvidingStealth": false,
             "isMoveable": false,
-            "childTileName": ""
+            "childTileName": "",
+            "spawnType": 0
         },
         {
             "position": {
@@ -2196,7 +2352,8 @@
             "isSpine": false,
             "isProvidingStealth": false,
             "isMoveable": false,
-            "childTileName": ""
+            "childTileName": "",
+            "spawnType": 0
         },
         {
             "position": {
@@ -2210,7 +2367,8 @@
             "isSpine": false,
             "isProvidingStealth": false,
             "isMoveable": false,
-            "childTileName": ""
+            "childTileName": "",
+            "spawnType": 0
         },
         {
             "position": {
@@ -2224,7 +2382,8 @@
             "isSpine": false,
             "isProvidingStealth": false,
             "isMoveable": false,
-            "childTileName": ""
+            "childTileName": "",
+            "spawnType": 0
         },
         {
             "position": {
@@ -2238,7 +2397,8 @@
             "isSpine": false,
             "isProvidingStealth": false,
             "isMoveable": false,
-            "childTileName": ""
+            "childTileName": "",
+            "spawnType": 0
         },
         {
             "position": {
@@ -2252,7 +2412,8 @@
             "isSpine": false,
             "isProvidingStealth": false,
             "isMoveable": false,
-            "childTileName": ""
+            "childTileName": "",
+            "spawnType": 0
         },
         {
             "position": {
@@ -2266,7 +2427,8 @@
             "isSpine": false,
             "isProvidingStealth": false,
             "isMoveable": false,
-            "childTileName": ""
+            "childTileName": "",
+            "spawnType": 0
         },
         {
             "position": {
@@ -2280,7 +2442,8 @@
             "isSpine": false,
             "isProvidingStealth": false,
             "isMoveable": false,
-            "childTileName": ""
+            "childTileName": "",
+            "spawnType": 0
         },
         {
             "position": {
@@ -2294,7 +2457,8 @@
             "isSpine": false,
             "isProvidingStealth": false,
             "isMoveable": false,
-            "childTileName": ""
+            "childTileName": "",
+            "spawnType": 0
         },
         {
             "position": {
@@ -2308,7 +2472,8 @@
             "isSpine": false,
             "isProvidingStealth": false,
             "isMoveable": false,
-            "childTileName": ""
+            "childTileName": "",
+            "spawnType": 0
         },
         {
             "position": {
@@ -2322,7 +2487,8 @@
             "isSpine": false,
             "isProvidingStealth": false,
             "isMoveable": false,
-            "childTileName": ""
+            "childTileName": "",
+            "spawnType": 0
         },
         {
             "position": {
@@ -2336,7 +2502,8 @@
             "isSpine": false,
             "isProvidingStealth": false,
             "isMoveable": false,
-            "childTileName": ""
+            "childTileName": "",
+            "spawnType": 0
         },
         {
             "position": {
@@ -2350,7 +2517,8 @@
             "isSpine": false,
             "isProvidingStealth": false,
             "isMoveable": false,
-            "childTileName": ""
+            "childTileName": "",
+            "spawnType": 0
         },
         {
             "position": {
@@ -2364,7 +2532,8 @@
             "isSpine": false,
             "isProvidingStealth": false,
             "isMoveable": false,
-            "childTileName": ""
+            "childTileName": "",
+            "spawnType": 0
         },
         {
             "position": {
@@ -2378,7 +2547,8 @@
             "isSpine": false,
             "isProvidingStealth": false,
             "isMoveable": false,
-            "childTileName": ""
+            "childTileName": "",
+            "spawnType": 0
         },
         {
             "position": {
@@ -2392,7 +2562,8 @@
             "isSpine": false,
             "isProvidingStealth": false,
             "isMoveable": false,
-            "childTileName": ""
+            "childTileName": "",
+            "spawnType": 0
         },
         {
             "position": {
@@ -2406,7 +2577,8 @@
             "isSpine": false,
             "isProvidingStealth": false,
             "isMoveable": false,
-            "childTileName": ""
+            "childTileName": "",
+            "spawnType": 0
         },
         {
             "position": {
@@ -2420,7 +2592,8 @@
             "isSpine": false,
             "isProvidingStealth": false,
             "isMoveable": false,
-            "childTileName": ""
+            "childTileName": "",
+            "spawnType": 0
         },
         {
             "position": {
@@ -2434,7 +2607,8 @@
             "isSpine": false,
             "isProvidingStealth": false,
             "isMoveable": false,
-            "childTileName": ""
+            "childTileName": "",
+            "spawnType": 0
         },
         {
             "position": {
@@ -2448,7 +2622,8 @@
             "isSpine": false,
             "isProvidingStealth": false,
             "isMoveable": false,
-            "childTileName": ""
+            "childTileName": "",
+            "spawnType": 0
         },
         {
             "position": {
@@ -2462,7 +2637,8 @@
             "isSpine": false,
             "isProvidingStealth": false,
             "isMoveable": false,
-            "childTileName": ""
+            "childTileName": "",
+            "spawnType": 0
         },
         {
             "position": {
@@ -2476,7 +2652,8 @@
             "isSpine": false,
             "isProvidingStealth": false,
             "isMoveable": false,
-            "childTileName": ""
+            "childTileName": "",
+            "spawnType": 0
         },
         {
             "position": {
@@ -2490,7 +2667,8 @@
             "isSpine": false,
             "isProvidingStealth": false,
             "isMoveable": false,
-            "childTileName": ""
+            "childTileName": "",
+            "spawnType": 0
         },
         {
             "position": {
@@ -2504,7 +2682,8 @@
             "isSpine": false,
             "isProvidingStealth": false,
             "isMoveable": false,
-            "childTileName": ""
+            "childTileName": "",
+            "spawnType": 0
         },
         {
             "position": {
@@ -2518,7 +2697,8 @@
             "isSpine": false,
             "isProvidingStealth": false,
             "isMoveable": false,
-            "childTileName": ""
+            "childTileName": "",
+            "spawnType": 0
         },
         {
             "position": {
@@ -2532,7 +2712,8 @@
             "isSpine": false,
             "isProvidingStealth": false,
             "isMoveable": false,
-            "childTileName": ""
+            "childTileName": "",
+            "spawnType": 0
         },
         {
             "position": {
@@ -2546,7 +2727,8 @@
             "isSpine": false,
             "isProvidingStealth": false,
             "isMoveable": false,
-            "childTileName": ""
+            "childTileName": "",
+            "spawnType": 0
         },
         {
             "position": {
@@ -2560,7 +2742,8 @@
             "isSpine": false,
             "isProvidingStealth": false,
             "isMoveable": false,
-            "childTileName": ""
+            "childTileName": "",
+            "spawnType": 0
         },
         {
             "position": {
@@ -2574,7 +2757,8 @@
             "isSpine": false,
             "isProvidingStealth": false,
             "isMoveable": false,
-            "childTileName": ""
+            "childTileName": "",
+            "spawnType": 0
         },
         {
             "position": {
@@ -2588,7 +2772,8 @@
             "isSpine": false,
             "isProvidingStealth": false,
             "isMoveable": false,
-            "childTileName": ""
+            "childTileName": "",
+            "spawnType": 0
         },
         {
             "position": {
@@ -2602,7 +2787,8 @@
             "isSpine": false,
             "isProvidingStealth": false,
             "isMoveable": false,
-            "childTileName": ""
+            "childTileName": "",
+            "spawnType": 0
         },
         {
             "position": {
@@ -2616,7 +2802,8 @@
             "isSpine": false,
             "isProvidingStealth": false,
             "isMoveable": false,
-            "childTileName": ""
+            "childTileName": "",
+            "spawnType": 0
         },
         {
             "position": {
@@ -2630,7 +2817,8 @@
             "isSpine": false,
             "isProvidingStealth": false,
             "isMoveable": false,
-            "childTileName": ""
+            "childTileName": "",
+            "spawnType": 0
         },
         {
             "position": {
@@ -2644,7 +2832,8 @@
             "isSpine": false,
             "isProvidingStealth": false,
             "isMoveable": false,
-            "childTileName": ""
+            "childTileName": "",
+            "spawnType": 0
         },
         {
             "position": {
@@ -2658,7 +2847,8 @@
             "isSpine": false,
             "isProvidingStealth": false,
             "isMoveable": false,
-            "childTileName": ""
+            "childTileName": "",
+            "spawnType": 0
         },
         {
             "position": {
@@ -2672,7 +2862,8 @@
             "isSpine": false,
             "isProvidingStealth": false,
             "isMoveable": false,
-            "childTileName": ""
+            "childTileName": "",
+            "spawnType": 0
         },
         {
             "position": {
@@ -2686,7 +2877,8 @@
             "isSpine": false,
             "isProvidingStealth": false,
             "isMoveable": false,
-            "childTileName": ""
+            "childTileName": "",
+            "spawnType": 0
         },
         {
             "position": {
@@ -2700,7 +2892,8 @@
             "isSpine": false,
             "isProvidingStealth": false,
             "isMoveable": false,
-            "childTileName": ""
+            "childTileName": "",
+            "spawnType": 0
         },
         {
             "position": {
@@ -2714,7 +2907,8 @@
             "isSpine": false,
             "isProvidingStealth": false,
             "isMoveable": false,
-            "childTileName": ""
+            "childTileName": "",
+            "spawnType": 0
         },
         {
             "position": {
@@ -2728,7 +2922,8 @@
             "isSpine": false,
             "isProvidingStealth": false,
             "isMoveable": false,
-            "childTileName": ""
+            "childTileName": "",
+            "spawnType": 0
         },
         {
             "position": {
@@ -2742,7 +2937,8 @@
             "isSpine": false,
             "isProvidingStealth": false,
             "isMoveable": false,
-            "childTileName": ""
+            "childTileName": "",
+            "spawnType": 0
         },
         {
             "position": {
@@ -2756,7 +2952,8 @@
             "isSpine": false,
             "isProvidingStealth": false,
             "isMoveable": false,
-            "childTileName": ""
+            "childTileName": "",
+            "spawnType": 0
         },
         {
             "position": {
@@ -2770,7 +2967,8 @@
             "isSpine": false,
             "isProvidingStealth": false,
             "isMoveable": false,
-            "childTileName": ""
+            "childTileName": "",
+            "spawnType": 0
         },
         {
             "position": {
@@ -2784,7 +2982,8 @@
             "isSpine": false,
             "isProvidingStealth": false,
             "isMoveable": false,
-            "childTileName": ""
+            "childTileName": "",
+            "spawnType": 0
         },
         {
             "position": {
@@ -2798,7 +2997,8 @@
             "isSpine": false,
             "isProvidingStealth": false,
             "isMoveable": false,
-            "childTileName": ""
+            "childTileName": "",
+            "spawnType": 0
         },
         {
             "position": {
@@ -2812,7 +3012,8 @@
             "isSpine": false,
             "isProvidingStealth": false,
             "isMoveable": false,
-            "childTileName": ""
+            "childTileName": "",
+            "spawnType": 0
         },
         {
             "position": {
@@ -2826,7 +3027,8 @@
             "isSpine": false,
             "isProvidingStealth": false,
             "isMoveable": false,
-            "childTileName": ""
+            "childTileName": "",
+            "spawnType": 0
         },
         {
             "position": {
@@ -2840,7 +3042,8 @@
             "isSpine": false,
             "isProvidingStealth": false,
             "isMoveable": false,
-            "childTileName": ""
+            "childTileName": "",
+            "spawnType": 0
         },
         {
             "position": {
@@ -2854,7 +3057,8 @@
             "isSpine": false,
             "isProvidingStealth": false,
             "isMoveable": false,
-            "childTileName": ""
+            "childTileName": "",
+            "spawnType": 0
         },
         {
             "position": {
@@ -2868,7 +3072,8 @@
             "isSpine": false,
             "isProvidingStealth": false,
             "isMoveable": false,
-            "childTileName": ""
+            "childTileName": "",
+            "spawnType": 0
         },
         {
             "position": {
@@ -2882,7 +3087,8 @@
             "isSpine": false,
             "isProvidingStealth": false,
             "isMoveable": false,
-            "childTileName": ""
+            "childTileName": "",
+            "spawnType": 0
         },
         {
             "position": {
@@ -2896,7 +3102,8 @@
             "isSpine": false,
             "isProvidingStealth": false,
             "isMoveable": false,
-            "childTileName": ""
+            "childTileName": "",
+            "spawnType": 0
         },
         {
             "position": {
@@ -2910,7 +3117,8 @@
             "isSpine": false,
             "isProvidingStealth": false,
             "isMoveable": false,
-            "childTileName": ""
+            "childTileName": "",
+            "spawnType": 0
         },
         {
             "position": {
@@ -2924,7 +3132,8 @@
             "isSpine": false,
             "isProvidingStealth": false,
             "isMoveable": false,
-            "childTileName": ""
+            "childTileName": "",
+            "spawnType": 0
         },
         {
             "position": {
@@ -2938,7 +3147,8 @@
             "isSpine": false,
             "isProvidingStealth": false,
             "isMoveable": false,
-            "childTileName": ""
+            "childTileName": "",
+            "spawnType": 0
         },
         {
             "position": {
@@ -2952,7 +3162,8 @@
             "isSpine": false,
             "isProvidingStealth": false,
             "isMoveable": false,
-            "childTileName": ""
+            "childTileName": "",
+            "spawnType": 0
         },
         {
             "position": {
@@ -2966,7 +3177,8 @@
             "isSpine": false,
             "isProvidingStealth": false,
             "isMoveable": false,
-            "childTileName": ""
+            "childTileName": "",
+            "spawnType": 0
         },
         {
             "position": {
@@ -2980,7 +3192,8 @@
             "isSpine": false,
             "isProvidingStealth": false,
             "isMoveable": false,
-            "childTileName": ""
+            "childTileName": "",
+            "spawnType": 0
         },
         {
             "position": {
@@ -2994,7 +3207,8 @@
             "isSpine": false,
             "isProvidingStealth": false,
             "isMoveable": false,
-            "childTileName": ""
+            "childTileName": "",
+            "spawnType": 0
         },
         {
             "position": {
@@ -3008,7 +3222,8 @@
             "isSpine": false,
             "isProvidingStealth": false,
             "isMoveable": false,
-            "childTileName": ""
+            "childTileName": "",
+            "spawnType": 0
         },
         {
             "position": {
@@ -3022,7 +3237,8 @@
             "isSpine": false,
             "isProvidingStealth": false,
             "isMoveable": false,
-            "childTileName": ""
+            "childTileName": "",
+            "spawnType": 0
         },
         {
             "position": {
@@ -3036,7 +3252,8 @@
             "isSpine": false,
             "isProvidingStealth": false,
             "isMoveable": false,
-            "childTileName": ""
+            "childTileName": "",
+            "spawnType": 0
         },
         {
             "position": {
@@ -3050,7 +3267,8 @@
             "isSpine": false,
             "isProvidingStealth": false,
             "isMoveable": false,
-            "childTileName": ""
+            "childTileName": "",
+            "spawnType": 0
         },
         {
             "position": {
@@ -3064,7 +3282,8 @@
             "isSpine": false,
             "isProvidingStealth": false,
             "isMoveable": false,
-            "childTileName": ""
+            "childTileName": "",
+            "spawnType": 0
         },
         {
             "position": {
@@ -3078,7 +3297,8 @@
             "isSpine": false,
             "isProvidingStealth": false,
             "isMoveable": false,
-            "childTileName": ""
+            "childTileName": "",
+            "spawnType": 0
         },
         {
             "position": {
@@ -3092,7 +3312,8 @@
             "isSpine": false,
             "isProvidingStealth": false,
             "isMoveable": false,
-            "childTileName": "map_pirate_object5_0"
+            "childTileName": "map_pirate_object5_0",
+            "spawnType": 0
         },
         {
             "position": {
@@ -3106,7 +3327,8 @@
             "isSpine": false,
             "isProvidingStealth": false,
             "isMoveable": false,
-            "childTileName": "map_pirate_object5_0"
+            "childTileName": "map_pirate_object5_0",
+            "spawnType": 0
         },
         {
             "position": {
@@ -3120,7 +3342,38 @@
             "isSpine": false,
             "isProvidingStealth": false,
             "isMoveable": false,
-            "childTileName": "map_pirate_object5_0"
+            "childTileName": "map_pirate_object5_0",
+            "spawnType": 0
+        },
+        {
+            "position": {
+                "x": 2,
+                "y": 5,
+                "z": 0
+            },
+            "tileName": "Random_Spawn",
+            "tilemapName": "CharacterSpawn",
+            "isSlippery": false,
+            "isSpine": false,
+            "isProvidingStealth": false,
+            "isMoveable": false,
+            "childTileName": "",
+            "spawnType": 3
+        },
+        {
+            "position": {
+                "x": 2,
+                "y": 8,
+                "z": 0
+            },
+            "tileName": "Random_Spawn",
+            "tilemapName": "CharacterSpawn",
+            "isSlippery": false,
+            "isSpine": false,
+            "isProvidingStealth": false,
+            "isMoveable": false,
+            "childTileName": "",
+            "spawnType": 3
         }
     ]
 }
