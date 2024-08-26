@@ -56,8 +56,19 @@ public class ObjectLayerManager
 
         // 객체를 생성하고 Unity에 Instantiate합니다.
         GameObject prefab = Resources.Load<GameObject>($"Prefabs/InGameObject/{spawnObjectPacket.Objecttype}");
+
+       
+
        
         GameObject unityObject = GameObject.Instantiate(prefab, position, Quaternion.identity);
+
+        if (spawnObjectPacket.Objecttype == ObjectType.ObjectPlayer)
+        {
+            if (unityObject.GetComponentInChildren<Animator>() != null)
+                Debug.Log("Player Animator Found!");
+
+            unityObject.GetComponentInChildren<Animator>().Play("Kefi_Walk_Front_InGame", -1, 0f);
+        }
 
         InGameObject newObject = new InGameObject(spawnObjectPacket.Objectid, spawnObjectPacket.Objecttype.ToString());
         newObject.AttachUnityObject(unityObject);

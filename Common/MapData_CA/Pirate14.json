@@ -3351,14 +3351,14 @@
                 "y": 5,
                 "z": 0
             },
-            "tileName": "Random_Spawn",
+            "tileName": "Spawn_Random",
             "tilemapName": "CharacterSpawn",
             "isSlippery": false,
             "isSpine": false,
             "isProvidingStealth": false,
             "isMoveable": false,
             "childTileName": "",
-            "spawnType": 3
+            "spawnType": 1
         },
         {
             "position": {
@@ -3366,14 +3366,14 @@
                 "y": 8,
                 "z": 0
             },
-            "tileName": "Random_Spawn",
+            "tileName": "Spawn_Random",
             "tilemapName": "CharacterSpawn",
             "isSlippery": false,
             "isSpine": false,
             "isProvidingStealth": false,
             "isMoveable": false,
             "childTileName": "",
-            "spawnType": 3
+            "spawnType": 1
         }
     ]
 }

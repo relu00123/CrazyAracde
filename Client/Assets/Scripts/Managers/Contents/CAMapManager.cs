@@ -48,10 +48,11 @@ public class CAMapManager : MonoBehaviour
 {
     private TileInfo[,] _tileMapData;
 
-    private Tilemap[] _tileMaps;
+    //private Tilemap[] _tileMaps;
 
     public Grid _currentGrid { get; private set; }
 
+    public List<Tilemap> _tileMaps = new List<Tilemap>();
     public void Init()
     {
         int width = 15; // 가로 타일의 개수 
@@ -80,15 +81,21 @@ public class CAMapManager : MonoBehaviour
 
         _currentGrid = tilemapInstance.GetComponent<Grid>();
 
+         
+
+        FindTilemapsInChildren(tilemapInstance.transform);
+
         // 타일맵 프리팹의 정보로 부터 진행되는 작업
-        _tileMaps = FindObjectsOfType<Tilemap>();
+        //_tileMaps = FindObjectsOfType<Tilemap>();
 
         Tilemap WallsCollider = FindTileMap("WallsCollider");
         Tilemap Boxes = FindTileMap("Boxes");
+        Tilemap CharacterSpawns = FindTileMap("CharacterSpawn");
 
         // 투명하게 만들 타일들을 투명하게 만들어준다.
         ExchangeToTransparentTile(WallsCollider);
         ExchangeToTransparentTile(Boxes);
+        ExchangeToTransparentTile(CharacterSpawns);
 
         // JsonFile Load
         TextAsset jsonFile = Resources.Load<TextAsset>($"Map_CA/{jsonFileName}");
@@ -120,30 +127,46 @@ public class CAMapManager : MonoBehaviour
     {
         foreach (Tilemap tilemap in _tileMaps)
         {
+            Debug.Log($"Checking Tilemap: {tilemap.name}");
+
             if (tilemap.name == name)
+            {
+                Debug.Log($"Tilemap found: {tilemap.name}");
                 return tilemap;
+            }
         }
+
 
         return null;
     }
 
     public void ExchangeToTransparentTile(Tilemap TargetTilemap)
     {
-        Tile TransparentTile = Resources.Load<Tile>("Tiles/TransparentTile");
-
         if (TargetTilemap != null)
         {
-            // 모든 타일을 순회하며 새로운 타일로 교체합니다.
-            foreach (Vector3Int pos in TargetTilemap.cellBounds.allPositionsWithin)
-            {
-                TileBase tile = TargetTilemap.GetTile(pos);
-                if (tile != null)
-                {
-                    // 해당 위치의 타일을 새로운 타일로 교체
-                    TargetTilemap.SetTile(pos, TransparentTile);
-                }
-            }
+            TargetTilemap.ClearAllTiles();
+            TargetTilemap.RefreshAllTiles();
         }
+
+        //Tile TransparentTile = Resources.Load<Tile>("Tiles/TransparentTile");
+
+        //if (TargetTilemap != null)
+        //{
+        //    // 모든 타일을 순회하며 새로운 타일로 교체합니다.
+        //    foreach (Vector3Int pos in TargetTilemap.cellBounds.allPositionsWithin)
+        //    {
+        //        TileBase tile = TargetTilemap.GetTile(pos);
+        //        if (tile != null)
+        //        {
+        //            // 해당 위치의 타일을 새로운 타일로 교체
+        //            //TargetTilemap.SetTile(pos, TransparentTile);
+        //            Debug.Log("SetTile None Logic Called!");
+        //            TargetTilemap.SetTile(pos, null);
+        //        }
+        //    }
+
+        //    TargetTilemap.RefreshAllTiles();
+        //}
     }
 
     public void DestroyMap()
@@ -156,6 +179,21 @@ public class CAMapManager : MonoBehaviour
         }
     }
 
+    private void FindTilemapsInChildren(Transform parentTransform)
+    {
+        // 현재 오브젝트에서 Tilemap 컴포넌트를 찾습니다.
+        Tilemap tilemap = parentTransform.GetComponent<Tilemap>();
+        if (tilemap != null)
+        {
+            _tileMaps.Add(tilemap);
+        }
+
+        // 모든 자식 오브젝트를 순회하면서 재귀적으로 Tilemap을 찾습니다.
+        foreach (Transform child in parentTransform)
+        {
+            FindTilemapsInChildren(child);
+        }
+    }
 
     public void SetTileState(int x, int y, bool isblockedTemp, bool isblockedPer)
     {

@@ -22,6 +22,8 @@ public class RoomManager : MonoBehaviour
 
     public MapType SelectedMap { get; private set; }
 
+    public MapTeamType SelectedMapTeamType { get; set; }
+
     public GameModeType GameMode { get; private set; }
 
     private bool _host = false;
@@ -208,9 +210,20 @@ public class RoomManager : MonoBehaviour
     {
         // Select한 Map 바꿔주기. (관리용)
         SelectedMap = pkt.Maptype;
+        SelectedMapTeamType = pkt.MapTeamType;
+
 
         // Highlight UI 바꿔주기 (UI용)
-        curGameRoomScene._sceneUI.SelectMap(SelectedMap);
+        curGameRoomScene._sceneUI.SelectMap(SelectedMap, SelectedMapTeamType);
+
+
+        if (SelectedMapTeamType == MapTeamType.TwoTeam)
+        {
+            C_CharacterSelect characterSelect = new C_CharacterSelect();
+            characterSelect.Chartype = CharacterType.Bazzi;
+
+            Managers.Network.Send(characterSelect);
+        }
     }
 
 
@@ -273,7 +286,7 @@ public class RoomManager : MonoBehaviour
         }
 
         // 선택된 맵을 보여주도록 한다.
-        curGameRoomScene._sceneUI.SelectMap(currentJoinRoomPakcet.Maptype);
+        curGameRoomScene._sceneUI.SelectMap(currentJoinRoomPakcet.Maptype, MapTeamType.FourTeam);
 
 
          

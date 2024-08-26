@@ -1,4 +1,5 @@
-﻿using Google.Protobuf.Protocol;
+﻿using Google.Protobuf.Collections;
+using Google.Protobuf.Protocol;
 using Server.Game.Core;
 using System;
 using System.Collections.Generic;
@@ -37,9 +38,17 @@ namespace Server.Game
             //_collisionManager.Tick();
         }
 
-        public InGameObject CreateAndBroadcastObject(int layerIndex, string objectName, PositionType posType, ObjectType objecttype,
-            Vector2 posValue, Vector2? scale = null, Vector2?colliderSize = null)
+        public InGameObject CreateAndBroadcastObject(
+            LayerType layerType,
+            string objectName,
+            PositionType posType,
+            ObjectType objecttype,
+            Vector2 posValue,
+            List<KeyValuePairs> additionalData = null,
+            Vector2? scale = null, 
+            Vector2?colliderSize = null)
         {
+            int layerIndex = (int)layerType;
             InGameObject newObject = _objectsManager.CreateObject(LayerType.DefaultLayer, objectName, posType, posValue, scale, colliderSize);
 
             S_SpawnObject spawnObjectPacket = new S_SpawnObject
@@ -53,6 +62,11 @@ namespace Server.Game
                     PosY = (int)posValue.Y,
                 }
             };
+           
+            if (additionalData != null)
+            {
+                spawnObjectPacket.AdditionalData.AddRange(additionalData);
+            }
 
             _gameRoom.BroadcastPacket(spawnObjectPacket);
 

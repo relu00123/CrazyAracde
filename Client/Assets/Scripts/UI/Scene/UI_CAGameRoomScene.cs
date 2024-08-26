@@ -93,6 +93,15 @@ public class UI_CAGameRoomScene : UI_Scene
 
        // Debug.Log($"Selected BtnName : {buttonName}");
 
+       // 2팀만 존재하는 경우에는 Marid혹은 Dao를 고를 수가 없다. 
+       if (Managers.Room.SelectedMapTeamType == MapTeamType.TwoTeam)
+        {
+            if (buttonName == "Marid" || buttonName == "Dao")
+                return;
+        }
+
+
+
        if (Enum.TryParse(buttonName, out CharacterType characterType))
        {
             Debug.Log($"Selected Char Type : {characterType}");
@@ -135,10 +144,16 @@ public class UI_CAGameRoomScene : UI_Scene
         GetButton((int)((Buttons)Enum.Parse(typeof(Buttons), charType.ToString()))).transform.Find("Check").gameObject.SetActive(true);
     }
 
-    public void SelectMap(MapType mapType)
+    public void SelectMap(MapType mapType, MapTeamType mapTeamType)
     {
         Sprite mapImage = Managers.Data.MapPreviewImageDict[mapType];
         GetImage((int)Images.SelectedMap).sprite = mapImage;
+
+
+        Color color = new Color(1, 1, 1, mapTeamType == MapTeamType.TwoTeam ? 1 : 0);
+        GetButton((int)Buttons.Dao).image.color = color;
+        GetButton((int)Buttons.Marid).image.color = color;
+
     }
 
 

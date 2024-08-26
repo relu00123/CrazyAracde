@@ -155,7 +155,7 @@ enum CharacterSpawnType {
   SPAWN_NOTHING = 0;
   SPAWN_RANDOM = 1;
   SPAWN_BAZZI = 2;
-  SPAWN_MARID = 3;
+  SPAWN_DAO = 3;
 }
 
 enum ConsumableType {
@@ -176,6 +176,11 @@ enum MapType {
    ROBOT1 = 9;
    SEAL1 = 10;
    TURTLE1 = 11;
+}
+
+enum MapTeamType {
+  FOUR_TEAM = 0;
+  TWO_TEAM = 1;
 }
 
 enum TeamModeType 
@@ -378,7 +383,7 @@ message C_Chatting {
   string chat = 2;
 }
 
-message KeyValuePair  {
+message KeyValuePairs  {
   string key = 1;
   oneof value {
     string string_value = 2;
@@ -392,7 +397,7 @@ message S_SpawnObject {
   int32        objectid     = 1;
   ObjectType   objecttype   = 2;
   PositionInfo positioninfo = 3;
-  repeated KeyValuePair additional_data = 4;
+  repeated KeyValuePairs additional_data = 4;
 }
 
 message LobbyPlayerInfo {
@@ -453,6 +458,7 @@ message C_MapSelect
 message S_MapSelectBroadcast
 {
   MapType maptype = 1;
+  MapTeamType mapTeamType = 2;
 }
 
 message C_CharacterSelect {

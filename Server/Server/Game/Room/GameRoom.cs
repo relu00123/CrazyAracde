@@ -12,7 +12,7 @@ namespace Server.Game
 {
 	public partial class GameRoom : JobSerializer
 	{
-		private class Slot
+		public class Slot
 		{
 			public bool IsAvailable { get; set; } = true;
 			public ClientSession ClientSession { get; set; } = null;
@@ -26,8 +26,15 @@ namespace Server.Game
 		public int _roomId { get; set; }
 
 		private Slot[] _slots = new Slot[8];   
+
+		public Slot[] Slots
+		{
+			get { return _slots; }
+		}
+
 		private int _hostIndex { get; set; } = -1;
-		MapType SelectedMap { get; set; }  // 작업 시작 할 부분. 이제 막 변수만 만들어 놓음. Packet Handler 부터 작성하면 된다. 
+		MapType SelectedMap { get; set; }  // 작업 시작 할 부분. 이제 막 변수만 만들어 놓음. Packet Handler 부터 작성하면 된다.
+		MapTeamType SelectedMapTeamType { get; set; }
 
 		public bool _isClosed { get; private set; } = false; // 방이 더이상 존재하는 방인지 따질때 사용.
 
@@ -884,8 +891,18 @@ namespace Server.Game
 			// Server에서의 Map변경. 변경후 모든 Client에게 Map이 바뀌었다고 BroadCast.
 			SelectedMap = pkt.Maptype;
 
+
+			// Camp8 같은 특수 Team A : Team B 로 나눠서하는 맵은 선택을 캐릭터 선택을 2개로 제한해야한다. 
+			// 일단은 야매로 처리.. 
+			if (SelectedMap == MapType.Camp8)
+				SelectedMapTeamType = MapTeamType.TwoTeam;
+			else
+				SelectedMapTeamType = MapTeamType.FourTeam;
+
+
 			S_MapSelectBroadcast MapSelectBroadcastPkt = new S_MapSelectBroadcast();
 			MapSelectBroadcastPkt.Maptype = SelectedMap;
+			MapSelectBroadcastPkt.MapTeamType = SelectedMapTeamType;
 
 			for (int i = 0; i <_slots.Length; ++i)
 			{

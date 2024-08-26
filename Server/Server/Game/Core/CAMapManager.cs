@@ -112,6 +112,8 @@ namespace Server.Game
             string json = File.ReadAllText(filePath);
             TileDataList tileDataList = JsonConvert.DeserializeObject<TileDataList>(json);
 
+            List<TileData> spawnTiles = new List<TileData>();
+
             foreach (var tileData in tileDataList.tiles)
             {
                 // TODO;  일단 테스트용
@@ -125,16 +127,23 @@ namespace Server.Game
                     // 지금은 임시로 Wall 에 대해서 LayerIndex 1번을 사용하도록 한다.
                     // 나중에는 layer의 이름으로 index로 찾을 수 있게 하던가 enum Type으로 관리해야할 것임. 
                     // 이부분 코드가나중에도 재사용성이 매우 높기 때문에 함수로 만들어 버릴 것임. 
-
+                    
                     _currentGame.CreateAndBroadcastObject(
-                        0, 
-                        "wall", 
+                        LayerType.DefaultLayer, 
+                        "Walls", 
                         PositionType.TileCenterPos,
                         ObjectType.ObjectBox, 
                         new Vector2(tileData.position.x, tileData.position.y)
                     );
                 }
+
+                else if (tileData.tilemapName == "CharacterSpawn")
+                {
+                    spawnTiles.Add(tileData);
+                }
             }
+            SpawnCharacterRandomly(spawnTiles);
+
         }
 
         public void SetTileState(int x, int y, bool isblockedTemp, bool isblockedPer)
@@ -146,6 +155,42 @@ namespace Server.Game
         public bool isTileBlocked(int x, int y)
         {
             return _tileMapData[x, y].isBlocktTemporary || _tileMapData[x, y].isBlocktPermanently;
+        }
+
+        private void SpawnCharacterRandomly(List<TileData> spawnTiles)
+        {
+            Random random = new Random();
+
+            for (int i = 0; i < _currentGame._gameRoom.Slots.Length; i++)
+            {
+                if (spawnTiles.Count == 0) break; // 더 이상 사용할 타일이 없다면 종료.
+                int randomidx = random.Next(spawnTiles.Count);
+
+                if (_currentGame._gameRoom.Slots[i].ClientSession == null) continue;
+
+                List<KeyValuePairs> testvalues = new List<KeyValuePairs>
+                {
+                        new KeyValuePairs { Key = "IntTest", IntValue = 10 },
+                        new KeyValuePairs { Key = "StringTest", StringValue = "test" }
+                };
+
+                // 해당 ClientSession을 randomidx위치에 Spawn한다 (Broadcast)
+                _currentGame.CreateAndBroadcastObject(
+                        LayerType.DefaultLayer,
+                        "Character",
+                        PositionType.TileCenterPos,
+                        ObjectType.ObjectPlayer,
+                        new Vector2(spawnTiles[randomidx].position.x, spawnTiles[randomidx].position.y),
+                        testvalues
+                );
+
+                // 해당 ClientSession에 자신의 캐릭터에 대해서 알려준다. (One Client)
+                // ToDo..
+
+
+                // 해당 타일을 사용한 후에는 리스트에서 제거하여 중복 스폰 방지 
+                spawnTiles.RemoveAt(randomidx);
+            }
         }
     }
 
