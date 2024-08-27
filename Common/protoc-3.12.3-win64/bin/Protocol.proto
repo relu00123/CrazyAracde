@@ -60,6 +60,7 @@ enum MsgId {
   S_MAP_SELECT_BROADCAST = 54;
   S_SPAWN_OBJECT = 55;
   C_GAME_SCENE_LOAD_FINISHED = 56;
+  S_OWN_PLAYER_INFORM = 57;
 }
 
 enum ObjectType  {
@@ -227,6 +228,11 @@ enum GameRoomCharacterStateType
   STORE = 3;
 }
 
+enum ObjectSpawnKeyType 
+{
+  CHARACTER = 0;
+}
+
 message S_EnterGame {
   ObjectInfo player = 1;
 }
@@ -357,6 +363,12 @@ message S_StartGameBroadcast
   MapType maptype = 1;
 }
 
+message S_OwnPlayerInform 
+{
+  int32 objid = 1;
+  LayerType layerinfo = 2;
+}
+
 
 message C_ReadybtnClicked {
 
@@ -384,13 +396,17 @@ message C_Chatting {
 }
 
 message KeyValuePairs  {
-  string key = 1;
+  ObjectSpawnKeyType key = 1;
   oneof value {
     string string_value = 2;
     int32  int_value = 3;
     float  float_value = 4;
-    CharacterType charactertype_value = 5;
+    ObjectSpawnPlayerValue player_info_vlaue = 5;
   }
+}
+
+message ObjectSpawnPlayerValue {
+  CharacterType charactertype_value = 1;
 }
 
 message S_SpawnObject {

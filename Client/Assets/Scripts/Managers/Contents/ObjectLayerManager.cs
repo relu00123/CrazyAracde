@@ -57,17 +57,32 @@ public class ObjectLayerManager
         // 객체를 생성하고 Unity에 Instantiate합니다.
         GameObject prefab = Resources.Load<GameObject>($"Prefabs/InGameObject/{spawnObjectPacket.Objecttype}");
 
-       
 
-       
         GameObject unityObject = GameObject.Instantiate(prefab, position, Quaternion.identity);
 
+        // Player인 경우
         if (spawnObjectPacket.Objecttype == ObjectType.ObjectPlayer)
         {
             if (unityObject.GetComponentInChildren<Animator>() != null)
                 Debug.Log("Player Animator Found!");
 
-            unityObject.GetComponentInChildren<Animator>().Play("Kefi_Walk_Front_InGame", -1, 0f);
+            foreach (var kvp in spawnObjectPacket.AdditionalData)
+            {
+                if (kvp.Key == ObjectSpawnKeyType.Character)
+                {
+                    var playerInfoValue = kvp.PlayerInfoVlaue;
+                    CharacterType chartype = playerInfoValue.CharactertypeValue;
+
+                    string chartype_string = chartype.ToString();
+                    string additional_info_temp = "_Walk_Front_InGame";
+                    chartype_string += additional_info_temp;
+                    Debug.Log(chartype_string);
+
+                    unityObject.GetComponentInChildren<Animator>().Play(chartype_string, -1, 0f);
+                }
+            }
+
+             
         }
 
         InGameObject newObject = new InGameObject(spawnObjectPacket.Objectid, spawnObjectPacket.Objecttype.ToString());
@@ -103,5 +118,35 @@ public class ObjectLayerManager
     private Vector2 CalculateTileUnder(int tileX, int tileY)
     {
         return new Vector2(tileX * 40 + 20, tileY * 40);
+    }
+
+    public InGameObject FindObjectbyId(int id, LayerType? layerType = null)
+    {
+        if (layerType == null)
+        {
+            // 모든 Layer에서 id에 해당하는 object가 있는지 찾는다.
+            for (int i = 0; i < _layerObjects.Length; ++i)
+            {
+                foreach(InGameObject obj in _layerObjects[i])
+                {
+                    if (obj.Id == id)
+                        return obj;
+                }
+            }
+        }
+
+        else
+        {
+            // 특정 Layer에서 해당하는 object가 있는지 찾는다.
+            int layeridx = (int)layerType;
+
+            foreach (InGameObject obj in _layerObjects[layeridx])
+            {
+                if (obj.Id == id)
+                    return obj;
+            }
+        }
+
+        return null;
     }
 }

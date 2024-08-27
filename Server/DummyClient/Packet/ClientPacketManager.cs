@@ -92,7 +92,9 @@ class PacketManager
 		_onRecv.Add((ushort)MsgId.SMapSelectBroadcast, MakePacket<S_MapSelectBroadcast>);
 		_handler.Add((ushort)MsgId.SMapSelectBroadcast, PacketHandler.S_MapSelectBroadcastHandler);		
 		_onRecv.Add((ushort)MsgId.SSpawnObject, MakePacket<S_SpawnObject>);
-		_handler.Add((ushort)MsgId.SSpawnObject, PacketHandler.S_SpawnObjectHandler);
+		_handler.Add((ushort)MsgId.SSpawnObject, PacketHandler.S_SpawnObjectHandler);		
+		_onRecv.Add((ushort)MsgId.SOwnPlayerInform, MakePacket<S_OwnPlayerInform>);
+		_handler.Add((ushort)MsgId.SOwnPlayerInform, PacketHandler.S_OwnPlayerInformHandler);
 	}
 
 	public void OnRecvPacket(PacketSession session, ArraySegment<byte> buffer)

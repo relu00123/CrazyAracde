@@ -50,4 +50,5 @@ public class InGameManager : MonoBehaviour
     {
         curGameScene = gameRoomScene;
     }
+
 }

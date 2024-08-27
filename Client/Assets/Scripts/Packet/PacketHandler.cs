@@ -400,6 +400,14 @@ class PacketHandler
 		return;
 	}
 
+	public static void S_OwnPlayerInformHandler(PacketSession session, IMessage packet)
+	{
+		S_OwnPlayerInform pkt = (S_OwnPlayerInform)packet;
+		InGameObject obj =  Managers.InGame._objectLayerManager.FindObjectbyId(pkt.Objid, pkt.Layerinfo);
+		var controller = obj.UnityObject.AddComponent<CAMyPlayerController>();
+		controller.MyPlayer = obj;
+		controller.Test();
+	}
 
 }
 

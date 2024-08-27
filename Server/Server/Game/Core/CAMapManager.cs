@@ -159,6 +159,8 @@ namespace Server.Game
 
         private void SpawnCharacterRandomly(List<TileData> spawnTiles)
         {
+            Console.WriteLine("SpawnCharacterRandomly Function Called!");
+
             Random random = new Random();
 
             for (int i = 0; i < _currentGame._gameRoom.Slots.Length; i++)
@@ -168,28 +170,41 @@ namespace Server.Game
 
                 if (_currentGame._gameRoom.Slots[i].ClientSession == null) continue;
 
+                // 해당 타일을 사용한 후에는 리스트에서 제거하여 중복 스폰 방지
+                var selectedTile = spawnTiles[randomidx];
+                spawnTiles.RemoveAt(randomidx);
+
+                Console.WriteLine($"Spawning character at tile: {selectedTile.position.x}, {selectedTile.position.y}");
+
+                ObjectSpawnPlayerValue playerInfoValue = new ObjectSpawnPlayerValue
+                {
+                    CharactertypeValue = _currentGame._gameRoom.Slots[i].CharType
+                };
+
                 List<KeyValuePairs> testvalues = new List<KeyValuePairs>
                 {
-                        new KeyValuePairs { Key = "IntTest", IntValue = 10 },
-                        new KeyValuePairs { Key = "StringTest", StringValue = "test" }
+                        new KeyValuePairs { Key = ObjectSpawnKeyType.Character  ,  PlayerInfoVlaue = playerInfoValue  },
                 };
 
                 // 해당 ClientSession을 randomidx위치에 Spawn한다 (Broadcast)
-                _currentGame.CreateAndBroadcastObject(
+                InGameObject spawnobj =  _currentGame.CreateAndBroadcastObject(
                         LayerType.DefaultLayer,
                         "Character",
                         PositionType.TileCenterPos,
                         ObjectType.ObjectPlayer,
-                        new Vector2(spawnTiles[randomidx].position.x, spawnTiles[randomidx].position.y),
+                        new Vector2(selectedTile.position.x, selectedTile.position.y),
                         testvalues
                 );
 
                 // 해당 ClientSession에 자신의 캐릭터에 대해서 알려준다. (One Client)
                 // ToDo..
+                S_OwnPlayerInform ownPlayerInform = new S_OwnPlayerInform
+                {
+                    Objid = spawnobj.Id,
+                    Layerinfo = (LayerType)spawnobj._layeridx
+                };
 
-
-                // 해당 타일을 사용한 후에는 리스트에서 제거하여 중복 스폰 방지 
-                spawnTiles.RemoveAt(randomidx);
+                _currentGame._gameRoom.Slots[i].ClientSession.Send(ownPlayerInform);
             }
         }
     }

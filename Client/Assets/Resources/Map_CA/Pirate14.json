@@ -3362,7 +3362,37 @@
         },
         {
             "position": {
+                "x": 12,
+                "y": 5,
+                "z": 0
+            },
+            "tileName": "Spawn_Random",
+            "tilemapName": "CharacterSpawn",
+            "isSlippery": false,
+            "isSpine": false,
+            "isProvidingStealth": false,
+            "isMoveable": false,
+            "childTileName": "",
+            "spawnType": 1
+        },
+        {
+            "position": {
                 "x": 2,
+                "y": 8,
+                "z": 0
+            },
+            "tileName": "Spawn_Random",
+            "tilemapName": "CharacterSpawn",
+            "isSlippery": false,
+            "isSpine": false,
+            "isProvidingStealth": false,
+            "isMoveable": false,
+            "childTileName": "",
+            "spawnType": 1
+        },
+        {
+            "position": {
+                "x": 12,
                 "y": 8,
                 "z": 0
             },

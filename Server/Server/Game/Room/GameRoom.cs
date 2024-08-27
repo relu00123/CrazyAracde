@@ -240,17 +240,11 @@ namespace Server.Game
             RoomManager.Instance.BroadCastRoomAlter(_roomId);
 
 
-			// Host 역할을 맡고 있는 사람이 아무도 없다면 Host를 시켜준다.
-			if (_hostIndex == -1)
-			{
-				FindNewHost();
 
-                // 처음 시작 맵 초기화
-                if (_roomInfo.GameMode == GameModeType.NormalMode)
-					SelectedMap = MapType.Desert1;  
-				else if (_roomInfo.GameMode == GameModeType.MonsterMode)
-					SelectedMap = MapType.Penguin1;
-			}
+
+            // 기존 2
+          
+
 
             // S_JoinRoomBroadcast Packet을 보내준다. (기존에 있던 클라이언트들)
             S_JoinRoomBroadcast joinRoomBroadcastPacket = new S_JoinRoomBroadcast();
@@ -269,12 +263,17 @@ namespace Server.Game
 					_slots[i].ClientSession.Send(joinRoomBroadcastPacket);
 			}
 
+            // 기존
+
             // 새로들어온 클라이언트를 GameRoom에서 관리하도록 한다.
             session.SlotId = slotId.Value;
             session.JoinRoom(this);
             _slots[slotId.Value].ClientSession = session;
             _slots[slotId.Value].IsAvailable = false;
-		 
+
+
+             
+
 
             // S_JoinRoom Packet을 보내준다. (접속한 클라이언트)
             S_JoinRoom joinRoomPacket = new S_JoinRoom();
@@ -304,11 +303,25 @@ namespace Server.Game
 
 				joinRoomPacket.SlotInfos.Add(slotInfo);				
 			}
-			session.Send(joinRoomPacket);    
-			
-			  
-			 
-		}
+			session.Send(joinRoomPacket);
+
+
+
+            // Host 역할을 맡고 있는 사람이 아무도 없다면 Host를 시켜준다.
+            if (_hostIndex == -1)
+            {
+                FindNewHost();
+
+                // 처음 시작 맵 초기화
+                if (_roomInfo.GameMode == GameModeType.NormalMode)
+                    SelectedMap = MapType.Desert1;
+                else if (_roomInfo.GameMode == GameModeType.MonsterMode)
+                    SelectedMap = MapType.Penguin1;
+            }
+
+
+
+        }
 
 		public void RemoveClient(ClientSession session)
 		{
@@ -913,6 +926,45 @@ namespace Server.Game
 
 		public void HandleGameLoadFinished(C_GameSceneLoadFinished pkt, ClientSession clientsession)
 		{
+			//bool allPlayersLoaded = true;
+
+			//for (int i = 0; i < _slots.Length; ++i)
+			//{
+			//    if (_slots[i].ClientSession != null)
+			//    {
+			//        if (!_slots[i].isGameLoaded)
+			//        {
+			//            _slots[i].isGameLoaded = true;
+			//        }
+			//    }
+
+			//    // 모든 플레이어가 로드를 완료했는지 확인
+			//    if (_slots[i].ClientSession != null && !_slots[i].isGameLoaded)
+			//    {
+			//        allPlayersLoaded = false;
+			//    }
+			//}
+
+			//if (allPlayersLoaded)
+			//{
+			//    // 모든 플레이어가 로드되었을 때만 InGame 객체를 생성하고 맵을 로드
+			//    _inGame = new InGame(this, SelectedMap);
+
+			//    // 모든 플레이어의 로드 상태를 초기화
+			//    for (int i = 0; i < _slots.Length; ++i)
+			//    {
+			//        if (_slots[i].ClientSession != null)
+			//        {
+			//            _slots[i].isGameLoaded = false;
+			//        }
+			//    }
+			//}
+
+			
+
+
+			 
+
 			int isAllLoadedFailCnt = 0;
 
 			for (int i = 0; i < _slots.Length; ++i)
@@ -923,18 +975,20 @@ namespace Server.Game
 						continue;
 					else if (_slots[i].isGameLoaded == false)
 					{
-                        isAllLoadedFailCnt += 1;
-						_slots[i].isGameLoaded = true;
+						isAllLoadedFailCnt += 1;
+
+						if (_slots[i].ClientSession == clientsession)
+							_slots[i].isGameLoaded = true;
 					}
 				}
 			}
 
-			if (isAllLoadedFailCnt <= 1)
+			if (isAllLoadedFailCnt == 1)
 			{
-                // CreatePacket을 보내라고 명령
-                _inGame = new InGame(this, SelectedMap);
+				// CreatePacket을 보내라고 명령
+				_inGame = new InGame(this, SelectedMap);
 
-                for (int i = 0; i < _slots.Length; ++i)
+				for (int i = 0; i < _slots.Length; ++i)
 				{
 					if (_slots[i].ClientSession != null)
 					{
