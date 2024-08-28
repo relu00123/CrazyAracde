@@ -176,6 +176,9 @@ namespace Server.Game
 
                 Console.WriteLine($"Spawning character at tile: {selectedTile.position.x}, {selectedTile.position.y}");
 
+                 
+
+
                 ObjectSpawnPlayerValue playerInfoValue = new ObjectSpawnPlayerValue
                 {
                     CharactertypeValue = _currentGame._gameRoom.Slots[i].CharType
@@ -196,15 +199,39 @@ namespace Server.Game
                         testvalues
                 );
 
-                // 해당 ClientSession에 자신의 캐릭터에 대해서 알려준다. (One Client)
-                // ToDo..
-                S_OwnPlayerInform ownPlayerInform = new S_OwnPlayerInform
-                {
-                    Objid = spawnobj.Id,
-                    Layerinfo = (LayerType)spawnobj._layeridx
-                };
+                // 클라이언트가 자신의 캐릭터를 알 수 있도록 한다.
+                _currentGame._gameRoom.Slots[i].ClientSession.CA_MyPlayer.MyPlayer = spawnobj;
 
-                _currentGame._gameRoom.Slots[i].ClientSession.Send(ownPlayerInform);
+
+                for (int idx = 0; idx < _currentGame._gameRoom.Slots.Length; ++idx)
+                {
+                    if (_currentGame._gameRoom.Slots[idx].ClientSession == null) continue;
+
+                    // 본인이 조작해야하는 플레이어인 경우  경우
+                    if ( idx == i)
+                    {
+                        S_OwnPlayerInform ownPlayerInform = new S_OwnPlayerInform
+                        {
+                            Objid = spawnobj.Id,
+                            Layerinfo = (LayerType)spawnobj._layeridx
+                        };
+
+                        _currentGame._gameRoom.Slots[idx].ClientSession.Send(ownPlayerInform);
+                    }
+
+
+                    // 다른 플레이어인 경우 
+                    else
+                    {
+                        S_NotOwnPlayerInform NotownPlayerInform = new S_NotOwnPlayerInform
+                        {
+                            Objid = spawnobj.Id,
+                            Layerinfo = (LayerType)spawnobj._layeridx
+                        };
+
+                        _currentGame._gameRoom.Slots[idx].ClientSession.Send(NotownPlayerInform);
+                    }
+                }
             }
         }
     }

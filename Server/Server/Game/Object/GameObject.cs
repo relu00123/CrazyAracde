@@ -63,7 +63,7 @@ namespace Server.Game
 		{
 			get
 			{
-				return new Vector2Int(PosInfo.PosX, PosInfo.PosY);
+				return new Vector2Int((int)PosInfo.PosX, (int)PosInfo.PosY);
 			}
 
 			set

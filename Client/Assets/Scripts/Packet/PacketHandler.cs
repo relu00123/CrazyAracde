@@ -405,10 +405,17 @@ class PacketHandler
 		S_OwnPlayerInform pkt = (S_OwnPlayerInform)packet;
 		InGameObject obj =  Managers.InGame._objectLayerManager.FindObjectbyId(pkt.Objid, pkt.Layerinfo);
 		var controller = obj.UnityObject.AddComponent<CAMyPlayerController>();
-		controller.MyPlayer = obj;
+		controller.Player = obj;
 		controller.Test();
 	}
-
+    public static void S_NotOwnPlayerInformHandler(PacketSession session, IMessage packet)
+    {
+        S_NotOwnPlayerInform pkt = (S_NotOwnPlayerInform)packet;
+        InGameObject obj = Managers.InGame._objectLayerManager.FindObjectbyId(pkt.Objid, pkt.Layerinfo);
+        var controller = obj.UnityObject.AddComponent<CAPlayerController>();
+        controller.Player = obj;
+        controller.Test();
+    }
 }
 
 

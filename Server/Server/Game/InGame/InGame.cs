@@ -72,5 +72,10 @@ namespace Server.Game
 
             return newObject;
         }
+
+        public void TestFunction()
+        {
+            Console.WriteLine("Test Function Called From InGame !!!");
+        }
     }
 }

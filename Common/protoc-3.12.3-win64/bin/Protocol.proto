@@ -61,6 +61,7 @@ enum MsgId {
   S_SPAWN_OBJECT = 55;
   C_GAME_SCENE_LOAD_FINISHED = 56;
   S_OWN_PLAYER_INFORM = 57;
+  S_NOT_OWN_PLAYER_INFORM = 58;
 }
 
 enum ObjectType  {
@@ -78,6 +79,12 @@ enum CreatureState {
   DEAD = 3;
 }
 
+enum CACreatureState {
+  CA_IDLE = 0;
+  CA_MOVING = 1;
+  CA_DEAD = 2; 
+}
+
 enum PositionType {
 
   TILE_CENTER_POS = 0;
@@ -90,10 +97,11 @@ enum LayerType {
 }
 
 enum MoveDir {
-  UP = 0;
-  DOWN = 1;
-  LEFT = 2;
-  RIGHT = 3;
+  MOVE_NONE = 0;
+  UP = 1;
+  DOWN = 2;
+  LEFT = 3;
+  RIGHT = 4;
 }
 
 enum GameSceneType 
@@ -369,6 +377,12 @@ message S_OwnPlayerInform
   LayerType layerinfo = 2;
 }
 
+message S_NotOwnPlayerInform 
+{
+  int32 objid = 1;
+  LayerType layerinfo = 2;
+}
+
 
 message C_ReadybtnClicked {
 
@@ -523,8 +537,8 @@ message ObjectInfo {
 message PositionInfo {
   MoveDir moveDir = 1;
   PositionType type = 2;
-  int32 posX = 3;
-  int32 posY = 4;
+  float posX = 3;
+  float posY = 4;
   CreatureState state = 5;
 }
 

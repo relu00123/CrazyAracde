@@ -38,7 +38,7 @@ namespace Server.Game
 
 		public bool _isClosed { get; private set; } = false; // 방이 더이상 존재하는 방인지 따질때 사용.
 
-		private InGame _inGame;
+		public InGame _inGame { get; private set; }
 
 		// 강의때 사용했던 변수들 나는 쓰지 않음.
         public const int VisionCells = 5;

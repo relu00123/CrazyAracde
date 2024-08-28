@@ -36,6 +36,8 @@ namespace Server
 
 		public Player MyPlayer { get; set; }
 
+		public CAPlayer CA_MyPlayer { get; set; } = new CAPlayer();
+
 		public PlayerInfo MyPlayerInfo {  get; set; }
 
 		public int SessionId { get; set; }

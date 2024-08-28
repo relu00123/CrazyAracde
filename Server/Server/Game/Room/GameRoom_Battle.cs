@@ -21,13 +21,13 @@ namespace Server.Game
 			// 다른 좌표로 이동할 경우, 갈 수 있는지 체크
 			if (movePosInfo.PosX != info.PosInfo.PosX || movePosInfo.PosY != info.PosInfo.PosY)
 			{
-				if (Map.CanGo(new Vector2Int(movePosInfo.PosX, movePosInfo.PosY)) == false)
+				if (Map.CanGo(new Vector2Int((int)movePosInfo.PosX, (int)movePosInfo.PosY)) == false)
 					return;
 			}
 
 			//info.PosInfo. = movePosInfo.State;
 			info.PosInfo.MoveDir = movePosInfo.MoveDir;
-			Map.ApplyMove(player, new Vector2Int(movePosInfo.PosX, movePosInfo.PosY));
+			Map.ApplyMove(player, new Vector2Int((int)movePosInfo.PosX, (int)movePosInfo.PosY));
 
 			// 다른 플레이어한테도 알려준다
 			S_Move resMovePacket = new S_Move();

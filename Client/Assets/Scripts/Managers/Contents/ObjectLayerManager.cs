@@ -99,9 +99,9 @@ public class ObjectLayerManager
         switch (positionInfo.Type)
         {
             case PositionType.TileCenterPos:
-                return CalculateTileCenter(positionInfo.PosX, positionInfo.PosY);
+                return CalculateTileCenter((int)positionInfo.PosX, (int)positionInfo.PosY);
             case PositionType.TileUnderPos:
-                return CalculateTileUnder(positionInfo.PosX, positionInfo.PosY);
+                return CalculateTileUnder((int)positionInfo.PosX, (int)positionInfo.PosY);
             case PositionType.AbsolutePos:
                 return new Vector2(positionInfo.PosX, positionInfo.PosY);
             default:

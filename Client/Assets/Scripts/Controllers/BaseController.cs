@@ -48,7 +48,7 @@ public class BaseController : MonoBehaviour
 			if (_positionInfo.Equals(value))
 				return;
 
-			CellPos = new Vector3Int(value.PosX, value.PosY, 0);
+			CellPos = new Vector3Int((int)value.PosX, (int)value.PosY, 0);
 			State = value.State;
 			Dir = value.MoveDir;
 		}
@@ -64,7 +64,7 @@ public class BaseController : MonoBehaviour
 	{
 		get
 		{
-			return new Vector3Int(PosInfo.PosX, PosInfo.PosY, 0);
+			return new Vector3Int((int)PosInfo.PosX, (int)PosInfo.PosY, 0);
 		}
 
 		set

@@ -137,8 +137,8 @@ namespace Server.Game
 			zone.Remove(gameObject);
 
 			{
-				int x = posInfo.PosX - MinX;
-				int y = MaxY - posInfo.PosY;
+				int x = (int)posInfo.PosX - MinX;
+				int y = MaxY - (int)posInfo.PosY;
 				if (_objects[y, x] == gameObject)
 					_objects[y, x] = null;
 			}
@@ -160,8 +160,8 @@ namespace Server.Game
 			if (collision)
 			{
 				{
-					int x = posInfo.PosX - MinX;
-					int y = MaxY - posInfo.PosY;
+					int x = (int)posInfo.PosX - MinX;
+					int y = MaxY - (int)posInfo.PosY;
 					if (_objects[y, x] == gameObject)
 						_objects[y, x] = null;
 				}

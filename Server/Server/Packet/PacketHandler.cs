@@ -17,17 +17,19 @@ class PacketHandler
 		C_Move movePacket = packet as C_Move;
 		ClientSession clientSession = session as ClientSession;
 
-		//Console.WriteLine($"C_Move ({movePacket.PosInfo.PosX}, {movePacket.PosInfo.PosY})");
+		Console.WriteLine($"Move Packet Arrived. To {movePacket.PosInfo.PosX}, {movePacket.PosInfo.PosY}");
 
-		Player player = clientSession.MyPlayer;
-		if (player == null)
-			return;
+		clientSession.BeloingRoom._inGame.TestFunction();
 
-		GameRoom room = player.Room;
-		if (room == null)
-			return;
+		//Player player = clientSession.MyPlayer;
+		//if (player == null)
+		//	return;
 
-		room.Push(room.HandleMove, player, movePacket);
+		//GameRoom room = player.Room;
+		//if (room == null)
+		//	return;
+
+		//room.Push(room.HandleMove, player, movePacket);
 	}
 
 	public static void C_SkillHandler(PacketSession session, IMessage packet)
