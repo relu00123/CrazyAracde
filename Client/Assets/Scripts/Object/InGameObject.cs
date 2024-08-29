@@ -23,10 +23,10 @@ public class InGameObject : Entity
 
         set
         {
-            if (CurrentPos == null) return;
+            if (value == null) return;
 
             if (UnityObject != null && GetComponentFromUnityObject<Transform>() != null)
-                GetComponentFromUnityObject<Transform>().position = (Vector3)CurrentPos;
+                GetComponentFromUnityObject<Transform>().position = (Vector3)value;
         }
     }
 }

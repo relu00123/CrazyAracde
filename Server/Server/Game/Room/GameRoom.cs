@@ -25,7 +25,9 @@ namespace Server.Game
 		public RoomInfo _roomInfo { get; private set; }
 		public int _roomId { get; set; }
 
-		private Slot[] _slots = new Slot[8];   
+		private Slot[] _slots = new Slot[8];
+
+		public double _deltaTime { get; set; }
 
 		public Slot[] Slots
 		{

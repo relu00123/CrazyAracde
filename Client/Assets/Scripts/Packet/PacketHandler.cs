@@ -1,6 +1,7 @@
 ﻿using Google.Protobuf;
 using Google.Protobuf.Protocol;
 using ServerCore;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
@@ -43,18 +44,29 @@ class PacketHandler
 	{
 		S_Move movePacket = packet as S_Move;
 
-		GameObject go = Managers.Object.FindById(movePacket.ObjectId);
-		if (go == null)
-			return;
 
-		if (Managers.Object.MyPlayer.Id == movePacket.ObjectId)
-			return;
+		// 임시 방편 테스트 
+		InGameObject obj =  Managers.InGame._objectLayerManager.FindObjectbyId(movePacket.ObjectId);
 
-		BaseController bc = go.GetComponent<BaseController>();
-		if (bc == null)
-			return;
+		Vector3 lastPos = (Vector3)obj.CurrentPos;
 
-		bc.PosInfo = movePacket.PosInfo;
+
+        Console.Write($"CurPos : {obj.CurrentPos} ");
+        obj.CurrentPos = new Vector3(movePacket.PosInfo.PosX, movePacket.PosInfo.PosY, lastPos.z);
+		 
+
+		//GameObject go = Managers.Object.FindById(movePacket.ObjectId);
+		//if (go == null)
+		//	return;
+
+		//if (Managers.Object.MyPlayer.Id == movePacket.ObjectId)
+		//	return;
+
+		//BaseController bc = go.GetComponent<BaseController>();
+		//if (bc == null)
+		//	return;
+
+		//bc.PosInfo = movePacket.PosInfo;
 	}
 
 	public static void S_SkillHandler(PacketSession session, IMessage packet)

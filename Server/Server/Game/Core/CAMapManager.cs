@@ -2,11 +2,11 @@
 using System.Collections.Generic;
 using System.Text;
 using System.IO;
-using Server.Game;
 using Newtonsoft.Json;
 using Google.Protobuf.Protocol;
 using System.Diagnostics;
 using System.Numerics;
+using Server.Game.CA_Object;
 
 public class TileInfo
 {
@@ -190,17 +190,27 @@ namespace Server.Game
                 };
 
                 // 해당 ClientSession을 randomidx위치에 Spawn한다 (Broadcast)
-                InGameObject spawnobj =  _currentGame.CreateAndBroadcastObject(
-                        LayerType.DefaultLayer,
-                        "Character",
-                        PositionType.TileCenterPos,
-                        ObjectType.ObjectPlayer,
-                        new Vector2(selectedTile.position.x, selectedTile.position.y),
+                //InGameObject spawnobj =  _currentGame.CreateAndBroadcastObject(
+                //        LayerType.DefaultLayer,
+                //        "Character",
+                //        PositionType.TileCenterPos,
+                //        ObjectType.ObjectPlayer,
+                //        new Vector2(selectedTile.position.x, selectedTile.position.y),
+                //        testvalues
+                //);
+
+                CAPlayer spawnobj = _currentGame.CreateAndBroadcastObject<CAPlayer>(
+                    LayerType.DefaultLayer,
+                    "Character",
+                    PositionType.TileCenterPos,
+                    ObjectType.ObjectPlayer,
+                    new Vector2(selectedTile.position.x, selectedTile.position.y),
                         testvalues
                 );
 
+
                 // 클라이언트가 자신의 캐릭터를 알 수 있도록 한다.
-                _currentGame._gameRoom.Slots[i].ClientSession.CA_MyPlayer.MyPlayer = spawnobj;
+                _currentGame._gameRoom.Slots[i].ClientSession.CA_MyPlayer = spawnobj;
 
 
                 for (int idx = 0; idx < _currentGame._gameRoom.Slots.Length; ++idx)
@@ -232,6 +242,10 @@ namespace Server.Game
                         _currentGame._gameRoom.Slots[idx].ClientSession.Send(NotownPlayerInform);
                     }
                 }
+
+
+                // InGame에 생성된 Object를 알려준다.
+                _currentGame.EnterGame(spawnobj);
             }
         }
     }

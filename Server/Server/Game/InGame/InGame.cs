@@ -1,5 +1,6 @@
 ﻿using Google.Protobuf.Collections;
 using Google.Protobuf.Protocol;
+using Server.Game.CA_Object;
 using Server.Game.Core;
 using System;
 using System.Collections.Generic;
@@ -69,9 +70,62 @@ namespace Server.Game
             }
 
             _gameRoom.BroadcastPacket(spawnObjectPacket);
+   
+            return newObject;
+        }
+
+
+        public T CreateAndBroadcastObject<T>(
+            LayerType layerType,
+            string objectName,
+            PositionType posType,
+            ObjectType objecttype,
+            Vector2 posValue,
+            List<KeyValuePairs> additionalData = null,
+            Vector2? scale = null,
+            Vector2? colliderSize = null)
+            where T : InGameObject
+        {
+            int layerIndex = (int)layerType;
+            T newObject = _objectsManager.CreateObject<T>(LayerType.DefaultLayer, objectName, posType, posValue, scale, colliderSize);
+
+            S_SpawnObject spawnObjectPacket = new S_SpawnObject
+            {
+                Objectid = newObject.Id,
+                Objecttype = objecttype,
+                Positioninfo = new PositionInfo
+                {
+                    Type = posType,
+                    PosX = (int)posValue.X,
+                    PosY = (int)posValue.Y,
+                }
+            };
+
+            if (additionalData != null)
+            {
+                spawnObjectPacket.AdditionalData.AddRange(additionalData);
+            }
+
+            _gameRoom.BroadcastPacket(spawnObjectPacket);
 
             return newObject;
         }
+
+        public void EnterGame(InGameObject gameObject)
+        {
+            gameObject._inGame = this;
+            gameObject.Update();
+        }
+
+        public void ApplyMove(InGameObject gameObject, PositionInfo posInfo)
+        {
+            Vector2 targetPosition = new Vector2(posInfo.PosX, posInfo.PosY);
+
+            gameObject._targetPos = targetPosition;
+
+            gameObject.ChangeState(CreatureState.Moving);
+        }
+
 
         public void TestFunction()
         {

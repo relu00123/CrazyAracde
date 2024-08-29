@@ -67,11 +67,15 @@ public class CAMyPlayerController : CAPlayerController
         {
             Debug.Log($"Move packet sent : {dir} , CurObject Pos : {Player.CurrentPos.Value.x} {Player.CurrentPos.Value.y}");
 
+            Vector3 targetpos = CalculateNextPosByInput(dir, Player.CurrentPos.Value);
+
             PositionInfo posinfo = new PositionInfo
             {
                 MoveDir = dir,
-                PosX = Player.CurrentPos.Value.x,
-                PosY = Player.CurrentPos.Value.y,
+                PosX = targetpos.x,
+                PosY = targetpos.y,
+                //PosX = Player.CurrentPos.Value.x,
+                //PosY = Player.CurrentPos.Value.y,
                 State = state,
             };
 
@@ -85,6 +89,36 @@ public class CAMyPlayerController : CAPlayerController
         {
             Debug.Log("CurrentPos is null");
         }
+    }
+
+    private Vector3 CalculateNextPosByInput(MoveDir dir, Vector3 curpos)
+    {
+        Vector3 nextpos = new Vector3();
+
+        nextpos = curpos;
+
+        switch (dir)
+        {
+            case MoveDir.Left:
+                nextpos.x = curpos.x - 1;
+                nextpos.y = curpos.y;
+                break;
+            case MoveDir.Right:
+                nextpos.x = curpos.x + 1;
+                nextpos.y = curpos.y;
+                break;
+            case MoveDir.Up:
+                nextpos.x = curpos.x;
+                nextpos.y = curpos.y + 1;
+                break;
+            case MoveDir.Down:
+                nextpos.x = curpos.x;
+                nextpos.y = curpos.y - 1;
+                break;
+        }
+
+        return nextpos;
+
     }
 
 

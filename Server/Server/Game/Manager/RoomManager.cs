@@ -151,11 +151,18 @@ namespace Server.Game
         static async void GameRoomTask(GameRoom room)
         {
             var updateInterval = TimeSpan.FromMilliseconds(RoomUpdateTime);
+            DateTime lastUpdateTime = DateTime.UtcNow;
+
             while (!room._isClosed)
             {
                 var startTime = DateTime.UtcNow;
 
+                double deltaTime = (startTime - lastUpdateTime).TotalSeconds;
+
+                room._deltaTime = deltaTime;
                 room.Update();
+
+                lastUpdateTime = startTime;
 
                 var elapsedTime = DateTime.UtcNow - startTime;
                 var delayTime = updateInterval - elapsedTime;
