@@ -48,11 +48,28 @@ class PacketHandler
 		// 임시 방편 테스트 
 		InGameObject obj =  Managers.InGame._objectLayerManager.FindObjectbyId(movePacket.ObjectId);
 
-		Vector3 lastPos = (Vector3)obj.CurrentPos;
+		if (obj != null)
+		{
+			CABaseController controller = obj.UnityObject.GetComponent<CABaseController>();
+
+			if (controller != null)
+			{
+				if (movePacket.PosInfo.MoveDir == MoveDir.MoveNone)
+					Debug.Log("MoveDirNone Detected!!!!!!");
+
+				controller.PosInfo = movePacket.PosInfo;
+            }
+				 
+		}
 
 
-        Console.Write($"CurPos : {obj.CurrentPos} ");
-        obj.CurrentPos = new Vector3(movePacket.PosInfo.PosX, movePacket.PosInfo.PosY, lastPos.z);
+
+		// 기존
+		//Vector3 lastPos = (Vector3)obj.CurrentPos;
+
+
+        //Console.Write($"CurPos : {obj.CurrentPos} ");
+        //obj.CurrentPos = new Vector3(movePacket.PosInfo.PosX, movePacket.PosInfo.PosY, lastPos.z);
 		 
 
 		//GameObject go = Managers.Object.FindById(movePacket.ObjectId);
@@ -417,7 +434,10 @@ class PacketHandler
 		S_OwnPlayerInform pkt = (S_OwnPlayerInform)packet;
 		InGameObject obj =  Managers.InGame._objectLayerManager.FindObjectbyId(pkt.Objid, pkt.Layerinfo);
 		var controller = obj.UnityObject.AddComponent<CAMyPlayerController>();
-		controller.Player = obj;
+		controller.InGameObj = obj;
+		controller._animator = obj.UnityObject.GetComponentInChildren<Animator>();
+		controller._spriteRenderer = controller._animator.GetComponent<SpriteRenderer>();
+		controller._charType = pkt.Chartype;
 		controller.Test();
 	}
     public static void S_NotOwnPlayerInformHandler(PacketSession session, IMessage packet)
@@ -425,7 +445,10 @@ class PacketHandler
         S_NotOwnPlayerInform pkt = (S_NotOwnPlayerInform)packet;
         InGameObject obj = Managers.InGame._objectLayerManager.FindObjectbyId(pkt.Objid, pkt.Layerinfo);
         var controller = obj.UnityObject.AddComponent<CAPlayerController>();
-        controller.Player = obj;
+        controller.InGameObj = obj;
+		controller._animator = obj.UnityObject.GetComponentInChildren<Animator>(true);
+        controller._spriteRenderer = controller._animator.GetComponent<SpriteRenderer>();
+        controller._charType = pkt.Chartype;
         controller.Test();
     }
 }

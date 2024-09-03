@@ -9,7 +9,7 @@ using UnityEngine;
 
 public class CAMyPlayerController : CAPlayerController
 {
-    float move_packet_coolTime = 2f;
+    float move_packet_coolTime = 0.1f;
     float last_sent_move_packet = 0f;
 
     public override void Test()
@@ -27,8 +27,7 @@ public class CAMyPlayerController : CAPlayerController
         Right,
     }
 
-
-    private void Update()
+    protected override void UpdateController()
     {
         if (Time.time - last_sent_move_packet >= move_packet_coolTime)
         {
@@ -36,16 +35,16 @@ public class CAMyPlayerController : CAPlayerController
             // 이동키를 누르고 있는지 계산한다.
             MoveDir CurInputDir = GetDirInput();
 
-            if (CurInputDir != MoveDir.MoveNone )
+            if (CurInputDir != MoveDir.MoveNone)
             {
                 // 이동 패킷을 보낸다. 
                 SendMovePacket(CurInputDir, CreatureState.Idle);
-            }    
-
+            }
         }
+        base.UpdateController();
     }
 
-     MoveDir GetDirInput()
+    MoveDir GetDirInput()
     {
         if (Input.GetKey(KeyCode.W))
             return MoveDir.Up;
@@ -61,34 +60,27 @@ public class CAMyPlayerController : CAPlayerController
 
     void SendMovePacket(MoveDir dir, CreatureState state)
     {
-        Debug.Log($"{Player.Name}");
+       // Debug.Log($"{InGameObj.Name}");
+       // Debug.Log($"Move packet sent : {dir} , CurObject Pos : {transform.position.x} {transform.position.y}");
 
-        if (Player.CurrentPos.HasValue)
+        Vector3 targetpos = CalculateNextPosByInput(dir, transform.position);
+
+        PositionInfo posinfo = new PositionInfo
         {
-            Debug.Log($"Move packet sent : {dir} , CurObject Pos : {Player.CurrentPos.Value.x} {Player.CurrentPos.Value.y}");
+            
+            MoveDir = dir,
+            PosX = targetpos.x,
+            PosY = targetpos.y,
+            //PosX = Player.CurrentPos.Value.x,
+            //PosY = Player.CurrentPos.Value.y,
+            State = state,
+        };
 
-            Vector3 targetpos = CalculateNextPosByInput(dir, Player.CurrentPos.Value);
+        C_Move movepkt = new C_Move();
+        movepkt.PosInfo = posinfo;
 
-            PositionInfo posinfo = new PositionInfo
-            {
-                MoveDir = dir,
-                PosX = targetpos.x,
-                PosY = targetpos.y,
-                //PosX = Player.CurrentPos.Value.x,
-                //PosY = Player.CurrentPos.Value.y,
-                State = state,
-            };
-
-            C_Move movepkt = new C_Move();
-            movepkt.PosInfo = posinfo;
-
-            Managers.Network.Send(movepkt);
-            last_sent_move_packet = Time.time;
-        }
-        else
-        {
-            Debug.Log("CurrentPos is null");
-        }
+        Managers.Network.Send(movepkt);
+        last_sent_move_packet = Time.time;
     }
 
     private Vector3 CalculateNextPosByInput(MoveDir dir, Vector3 curpos)
@@ -100,20 +92,20 @@ public class CAMyPlayerController : CAPlayerController
         switch (dir)
         {
             case MoveDir.Left:
-                nextpos.x = curpos.x - 1;
+                nextpos.x = curpos.x - 0.3f;
                 nextpos.y = curpos.y;
                 break;
             case MoveDir.Right:
-                nextpos.x = curpos.x + 1;
+                nextpos.x = curpos.x + 0.3f;
                 nextpos.y = curpos.y;
                 break;
             case MoveDir.Up:
                 nextpos.x = curpos.x;
-                nextpos.y = curpos.y + 1;
+                nextpos.y = curpos.y + 0.3f;
                 break;
             case MoveDir.Down:
                 nextpos.x = curpos.x;
-                nextpos.y = curpos.y - 1;
+                nextpos.y = curpos.y - 0.3f;
                 break;
         }
 

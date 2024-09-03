@@ -10,23 +10,33 @@ public class InGameObject : Entity
  
     }
 
-
-    public Vector3? CurrentPos
+    public override void AttachUnityObject(GameObject obj)
     {
-        get
-        {
-            if (UnityObject != null && GetComponentFromUnityObject<Transform>() != null)
-                return GetComponentFromUnityObject<Transform>().position;
-            else
-                return null;
-        }
+        base.AttachUnityObject(obj);
 
-        set
-        {
-            if (value == null) return;
+        CABaseController controller = UnityObject.GetComponent<CABaseController>();
 
-            if (UnityObject != null && GetComponentFromUnityObject<Transform>() != null)
-                GetComponentFromUnityObject<Transform>().position = (Vector3)value;
-        }
+        if (controller != null)
+            controller.InGameObj = this;
     }
+
+
+    //public Vector3? CurrentPos
+    //{
+    //    get
+    //    {
+    //        if (UnityObject != null && GetComponentFromUnityObject<Transform>() != null)
+    //            return GetComponentFromUnityObject<Transform>().position;
+    //        else
+    //            return null;
+    //    }
+
+    //    set
+    //    {
+    //        if (value == null) return;
+
+    //        if (UnityObject != null && GetComponentFromUnityObject<Transform>() != null)
+    //            GetComponentFromUnityObject<Transform>().position = (Vector3)value;
+    //    }
+    //}
 }

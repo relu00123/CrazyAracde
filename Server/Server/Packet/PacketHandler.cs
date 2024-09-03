@@ -17,7 +17,10 @@ class PacketHandler
 		C_Move movePacket = packet as C_Move;
 		ClientSession clientSession = session as ClientSession;
 
-		Console.WriteLine($"Move Packet Arrived. To {movePacket.PosInfo.PosX}, {movePacket.PosInfo.PosY}");
+		//Console.WriteLine($"Move Packet Arrived. To {movePacket.PosInfo.PosX}, {movePacket.PosInfo.PosY}");
+
+		 
+
 
 		clientSession.BeloingRoom._inGame.ApplyMove(clientSession.CA_MyPlayer, movePacket.PosInfo);
 

@@ -123,6 +123,9 @@ namespace Server.Game
 
             gameObject._targetPos = targetPosition;
 
+            if (posInfo.MoveDir != MoveDir.MoveNone)
+                gameObject.Direction = posInfo.MoveDir;
+
             gameObject.ChangeState(CreatureState.Moving);
         }
 

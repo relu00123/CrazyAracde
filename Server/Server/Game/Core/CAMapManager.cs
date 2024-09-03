@@ -223,10 +223,12 @@ namespace Server.Game
                         S_OwnPlayerInform ownPlayerInform = new S_OwnPlayerInform
                         {
                             Objid = spawnobj.Id,
-                            Layerinfo = (LayerType)spawnobj._layeridx
-                        };
+                            Layerinfo = (LayerType)spawnobj._layeridx,
+                            Chartype = _currentGame._gameRoom.Slots[idx].CharType
+                    };
 
                         _currentGame._gameRoom.Slots[idx].ClientSession.Send(ownPlayerInform);
+                           
                     }
 
 
@@ -236,7 +238,8 @@ namespace Server.Game
                         S_NotOwnPlayerInform NotownPlayerInform = new S_NotOwnPlayerInform
                         {
                             Objid = spawnobj.Id,
-                            Layerinfo = (LayerType)spawnobj._layeridx
+                            Layerinfo = (LayerType)spawnobj._layeridx,
+                            Chartype = _currentGame._gameRoom.Slots[idx].CharType
                         };
 
                         _currentGame._gameRoom.Slots[idx].ClientSession.Send(NotownPlayerInform);

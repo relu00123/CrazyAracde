@@ -21,7 +21,7 @@ public class CAPlayer  : InGameObject
 
     public override void Update()
     {
-        Console.WriteLine($"Update Function Called! (Object ID : {Id}) (CurPosition : {_transform.Position})");
+        //Console.WriteLine($"Update Function Called! (Object ID : {Id}) (CurPosition : {_transform.Position})");
 
         if (_inGame != null)
         {
@@ -36,7 +36,7 @@ public class CAPlayer  : InGameObject
                 
             }
 
-             _job =  _inGame._gameRoom.PushAfter(500, Update);
+             _job =  _inGame._gameRoom.PushAfter(100, Update);
         }
     }
 

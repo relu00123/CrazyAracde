@@ -17,10 +17,13 @@ public class Entity
         Name = name;
     }
 
-    public void AttachUnityObject(GameObject obj)
+    public virtual void AttachUnityObject(GameObject obj)
     {
         UnityObject = obj;
         UnityObject.name = $"{Name} (Id: {Id})";
+
+         
+
     }
 
     public T GetComponentFromUnityObject<T>() where T : Component
