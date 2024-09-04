@@ -80,16 +80,13 @@ public class CAPlayerController : CABaseController
 
         animation_name += "_InGame";
 
-        Debug.Log($"cur animation name : {animation_name}");
-
-
         // 수정된 코드
         AnimatorStateInfo currentAnimationState = _animator.GetCurrentAnimatorStateInfo(0);
-
+         
         // 애니메이션 이름 비교
         if (!currentAnimationState.IsName(animation_name))
         {
-            Debug.Log($"Playing new animation: {animation_name}");
+            Debug.Log($"Playing new animation: {animation_name} && Current State : {State}");
             _animator.Play(animation_name);
         }
 

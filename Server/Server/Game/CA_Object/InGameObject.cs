@@ -11,7 +11,7 @@ namespace Server.Game.CA_Object
     public class InGameObject : Entity
     {
         public int _layeridx { get; private set; }
-        public Collider _collider { get; private set; }
+        public Collider _collider { get; protected set; }
         public Transform _transform { get; set; }
 
         public Vector2 _targetPos { get; set; }
@@ -107,7 +107,7 @@ namespace Server.Game.CA_Object
                     return newState == CreatureState.Moving || newState == CreatureState.Dead;
 
                 case CreatureState.Moving:
-                    return newState == CreatureState.Idle || newState == CreatureState.Dead;
+                    return newState == CreatureState.Idle || newState == CreatureState.Moving;
 
                 case CreatureState.Dead:
                     return false; // Death 상태에서 다른 상태로 전환 불가

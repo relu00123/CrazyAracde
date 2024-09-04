@@ -144,6 +144,26 @@ namespace Server.Game
             }
             SpawnCharacterRandomly(spawnTiles);
 
+
+
+            // 맵의 상태를 확인해 보자. 
+            for (int y = 0; y < 14 - 1; y++)
+            {
+                for (int x = 0; x < 15; x++)
+                {
+                    if (_tileMapData[x,y].isBlocktTemporary == true || _tileMapData[x,y].isBlocktPermanently == true)
+                    {
+                        Console.Write("1 ");
+                    }
+                    else
+                    {
+                        Console.Write("0 ");
+                    }
+                    
+                }
+                Console.WriteLine(0);
+            }
+
         }
 
         public void SetTileState(int x, int y, bool isblockedTemp, bool isblockedPer)
@@ -224,7 +244,7 @@ namespace Server.Game
                         {
                             Objid = spawnobj.Id,
                             Layerinfo = (LayerType)spawnobj._layeridx,
-                            Chartype = _currentGame._gameRoom.Slots[idx].CharType
+                            Chartype = _currentGame._gameRoom.Slots[i].CharType
                     };
 
                         _currentGame._gameRoom.Slots[idx].ClientSession.Send(ownPlayerInform);
@@ -239,7 +259,7 @@ namespace Server.Game
                         {
                             Objid = spawnobj.Id,
                             Layerinfo = (LayerType)spawnobj._layeridx,
-                            Chartype = _currentGame._gameRoom.Slots[idx].CharType
+                            Chartype = _currentGame._gameRoom.Slots[i].CharType
                         };
 
                         _currentGame._gameRoom.Slots[idx].ClientSession.Send(NotownPlayerInform);

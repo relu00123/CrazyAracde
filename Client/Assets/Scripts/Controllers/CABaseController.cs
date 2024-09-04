@@ -43,11 +43,7 @@ public class CABaseController : MonoBehaviour
         get { return PosInfo.MoveDir; }
         set
         {
-            if (PosInfo.MoveDir == value)
-                return;
-
             PosInfo.MoveDir = value;
-
             UpdateAnimation();
             _updated = true;
         }
@@ -58,9 +54,6 @@ public class CABaseController : MonoBehaviour
         get { return PosInfo.State; }
         set
         {
-            if (PosInfo.State == value)
-                return;
-
             PosInfo.State = value;
             UpdateAnimation();
             _updated = true;
