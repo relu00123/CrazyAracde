@@ -45,7 +45,6 @@ namespace Server.Game
             var scale = OffsetScale;
 
             UpdateBounds(position, scale);
-
         }
 
         private void UpdateBounds(Vector2 position, Vector2 scale)  // AABB 경계값 업데이트 (position은 캐릭터의 중앙 좌표)
@@ -61,6 +60,24 @@ namespace Server.Game
 
             Console.WriteLine($"OnwerName : {_owner.Name} , ColliderPos : LB({LeftXValue},{DownYValue}), RT({RightXValue},{UpYValue})");
         }
+
+        public (float leftX, float rightX, float upY, float downY) CalculateTempBounds(Vector2 targetPosition)
+        {
+            // 목표 위치에서의 좌표를 기반으로 임시 경계값을 계산
+            var Position = targetPosition + OffsetPos;
+            var scale = OffsetScale;
+
+            var topLeft = Position - scale / 2;
+            var bottomRight = Position + scale / 2;
+
+            float tempLeftX = topLeft.X;
+            float tempRightX = bottomRight.X;
+            float tempUpY = bottomRight.Y;
+            float tempDownY = topLeft.Y;
+
+            return (tempLeftX, tempRightX, tempUpY, tempDownY);
+        }
+
 
         public bool IsCollidingWith(Collider other)
         {

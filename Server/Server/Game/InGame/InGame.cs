@@ -1,5 +1,6 @@
 ﻿using Google.Protobuf.Collections;
 using Google.Protobuf.Protocol;
+using Microsoft.Extensions.Logging.Abstractions;
 using Server.Game.CA_Object;
 using Server.Game.Core;
 using System;
@@ -119,13 +120,40 @@ namespace Server.Game
 
         public void ApplyMove(InGameObject gameObject, PositionInfo posInfo)
         {
+            Vector2 originalPosition = gameObject._transform.Position;
             Vector2 targetPosition = new Vector2(posInfo.PosX, posInfo.PosY);
 
+            // 잠시 테스트
+            if (posInfo.MoveDir == MoveDir.MoveNone)
+            {
+                Console.WriteLine("MoveNone Arrived");
+                Console.Write("Stop Walking (Move Key detached)");
+                gameObject.ChangeState(CreatureState.Idle);
+                return;
+            }
+
+            // Object에 충돌체가 존재한다면 TileMap에서 갈수없는 곳에 가려하는지 검사해야한다.
+            if (gameObject._collider != null)
+            {
+                // 목표 위치에서 임시로 경계값을 계산 (Colldier의 실제 값은 변경되지 않는다.)
+                var (tempLeftX, tempRightX, tempUpY, tempDownY) = gameObject._collider.CalculateTempBounds(targetPosition);
+
+                if (_collisionManager.IsCollidedWithMap(tempLeftX, tempRightX, tempUpY, tempDownY, _caMapManager._tileMapData))
+                {
+                    // 추가된 코드 (충돌 발생시 좌표를 보정)
+
+                    Console.WriteLine($"Collision Detected Original Pos : {gameObject._transform.Position}");
+                    Vector2 correctedPosition = _collisionManager.GetCorrectedPosition(gameObject._transform.Position, posInfo.MoveDir);
+                    targetPosition = correctedPosition;
+                    Console.WriteLine($"Collision Detected Fixed Pos : {correctedPosition}");
+
+                    // 충돌이 발생하면 이동 취소
+                    //Console.WriteLine("Collision detected, cannot move to the target position.");
+                }
+            }
+
             gameObject._targetPos = targetPosition;
-
-            if (posInfo.MoveDir != MoveDir.MoveNone)
-                gameObject.Direction = posInfo.MoveDir;
-
+            gameObject.Direction = posInfo.MoveDir;
             gameObject.ChangeState(CreatureState.Moving);
         }
 

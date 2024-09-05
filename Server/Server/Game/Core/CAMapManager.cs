@@ -63,7 +63,7 @@ namespace Server.Game
 {
     public class CAMapManager
     { 
-        private TileInfo[,] _tileMapData;
+        public TileInfo[,] _tileMapData { get; private set; }
 
         public InGame _currentGame { get; private set; }
 
@@ -86,7 +86,7 @@ namespace Server.Game
             // 타일맵 초기화 ( 세로의 가장 마지막줄은 갈수 없는 곳임
             for (int x = 0; x < width; x++)
             {
-                for (int y = 0; y < height - 1; y++)
+                for (int y = 0; y < height; y++)
                 {
                     _tileMapData[x, y] = new TileInfo { isBlocktPermanently = false, isBlocktTemporary = false };
                 }
@@ -147,7 +147,7 @@ namespace Server.Game
 
 
             // 맵의 상태를 확인해 보자. 
-            for (int y = 0; y < 14 - 1; y++)
+            for (int y = 0; y < 14 ; y++)
             {
                 for (int x = 0; x < 15; x++)
                 {

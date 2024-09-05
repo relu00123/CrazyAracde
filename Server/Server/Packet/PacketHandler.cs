@@ -19,9 +19,6 @@ class PacketHandler
 
 		//Console.WriteLine($"Move Packet Arrived. To {movePacket.PosInfo.PosX}, {movePacket.PosInfo.PosY}");
 
-		 
-
-
 		clientSession.BeloingRoom._inGame.ApplyMove(clientSession.CA_MyPlayer, movePacket.PosInfo);
 
 		//Player player = clientSession.MyPlayer;

@@ -12,6 +12,9 @@ public class CAMyPlayerController : CAPlayerController
     float move_packet_coolTime = 0.1f;
     float last_sent_move_packet = 0f;
 
+    private MoveDir currentInputDir = MoveDir.MoveNone;
+    private MoveDir previousInputDir = MoveDir.MoveNone;
+
     public override void Test()
     {
         Debug.Log("TestFunction Called from MyPlayerController");
@@ -31,15 +34,36 @@ public class CAMyPlayerController : CAPlayerController
     {
         if (Time.time - last_sent_move_packet >= move_packet_coolTime)
         {
+            // 기존 로직 (09.04까지)
             // 이동 패킷을 보낼 수 있다.
             // 이동키를 누르고 있는지 계산한다.
-            MoveDir CurInputDir = GetDirInput();
+            //MoveDir CurInputDir = GetDirInput();
 
-            if (CurInputDir != MoveDir.MoveNone)
+            //if (CurInputDir != MoveDir.MoveNone)
+            //{
+            //    // 이동 패킷을 보낸다. 
+            //    SendMovePacket(CurInputDir, CreatureState.Idle);
+            //}
+
+
+
+            // 새로운 로직 (09.05부터) 
+            currentInputDir = GetDirInput();
+
+            if (currentInputDir == MoveDir.MoveNone && previousInputDir != MoveDir.MoveNone)
             {
-                // 이동 패킷을 보낸다. 
-                SendMovePacket(CurInputDir, CreatureState.Idle);
+                SendMovePacket(MoveDir.MoveNone, CreatureState.Idle);
             }
+
+            else if (currentInputDir != MoveDir.MoveNone)
+            {
+                SendMovePacket(currentInputDir, CreatureState.Idle);
+            }
+
+            // 이전 입력 상태를 현재 상태로 업데이트
+            previousInputDir = currentInputDir;
+
+
         }
         base.UpdateController();
     }

@@ -104,7 +104,7 @@ namespace Server.Game.CA_Object
             switch(_state)
             {
                 case CreatureState.Idle:
-                    return newState == CreatureState.Moving || newState == CreatureState.Dead;
+                    return newState == CreatureState.Moving || newState == CreatureState.Dead || newState == CreatureState.Idle;
 
                 case CreatureState.Moving:
                     return newState == CreatureState.Idle || newState == CreatureState.Moving;
@@ -127,12 +127,29 @@ namespace Server.Game.CA_Object
 
         public virtual void UpdateMoving()
         {
-            bool isidle = false;
+            Vector2 direction = Vector2.Normalize(_targetPos - _transform.Position);
+            Vector2 nextPosition = _transform.Position + direction * _moveSpeed * (float)_inGame._gameRoom._deltaTime;
+            _transform.Position = _targetPos;
+
+            S_Move movePkt = new S_Move();
+            movePkt.ObjectId = Id;
+            movePkt.PosInfo = new PositionInfo();
+            movePkt.PosInfo.PosX = _transform.Position.X;
+            movePkt.PosInfo.PosY = _transform.Position.Y;
+            movePkt.PosInfo.MoveDir = Direction;
+            movePkt.PosInfo.State = CreatureState.Moving;
+            _inGame._gameRoom.BroadcastPacket(movePkt);
+
+
+
+            // 기존 코드
+            /*
+            //bool isidle = false;
 
             if (Vector2.Distance(_transform.Position, _targetPos) < Tolerance)
             {
-                isidle = true;
-                ChangeState(CreatureState.Idle);
+                //isidle = true;
+                //ChangeState(CreatureState.Idle);
                 _transform.Position = _targetPos; // 위치를 정확히 목표 위치로 맞춤
             }
 
@@ -163,7 +180,6 @@ namespace Server.Game.CA_Object
                 else
                 {
                     _transform.Position = _targetPos;
-                    //ChangeState(CreatureState.Idle); // 목표 위치에 도달하면 Idle상태로 전환 
                 }
             }
 
@@ -174,20 +190,18 @@ namespace Server.Game.CA_Object
             movePkt.PosInfo = new PositionInfo();
             movePkt.PosInfo.PosX = _transform.Position.X;
             movePkt.PosInfo.PosY = _transform.Position.Y;
-
-             
-
-
             movePkt.PosInfo.MoveDir = Direction;
-           
 
-            if (isidle) 
-               movePkt.PosInfo.State = CreatureState.Idle;
-            else
-                movePkt.PosInfo.State = CreatureState.Moving;
+            //if (isidle) 
+            //   movePkt.PosInfo.State = CreatureState.Idle;
+            //else
+            //    movePkt.PosInfo.State = CreatureState.Moving;
+
+            movePkt.PosInfo.State = CreatureState.Moving;
 
            // Console.WriteLine($"Sending S_Move pkt, (Pos : {movePkt.PosInfo.PosX} , {movePkt.PosInfo.PosY})");
             _inGame._gameRoom.BroadcastPacket(movePkt);
+            */
         }
     }
 }

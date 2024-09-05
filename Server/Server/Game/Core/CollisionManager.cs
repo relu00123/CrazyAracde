@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Numerics;
 using System.Text;
+using Google.Protobuf.Protocol;
 using Server.Game.CA_Object;
 
 namespace Server.Game.Core
@@ -80,7 +82,78 @@ namespace Server.Game.Core
             return ((ulong)left.GetHashCode() << 32) | (uint)right.GetHashCode();
         }
 
-       
+
+
+        // TileMap에 의한 충돌
+        public  bool IsCollidedWithMap(float leftX, float RightX, float upY, float downY , TileInfo[,] tileMapData)
+        {
+            int startX = (int)Math.Floor(leftX);     // 좌측 X 경계
+            int endX = (int)Math.Floor(RightX);   // 우측 X 경계
+
+            int startY = (int)Math.Floor(downY); // 하단 Y 경계
+            int endY = (int)Math.Floor(upY);       // 상단 Y 경계 
+
+            // 충돌 검사 : 이동하려는 위치에 벽이 있는지 확인
+            for (int x = startX; x <= endX; x++)
+            {
+                for (int y = startY;  y <= endY; y++)
+                {
+                    // 타일맵의 경계를 넘어가면 충돌로 간주 
+                    if (x < 0 || y < 0 || x >= tileMapData.GetLength(0) || y >= tileMapData.GetLength(1))
+                        return true;
+
+                    // 벽과 충돌이 발생했는지 확인 
+                    if (tileMapData[x, y].isBlocktPermanently || tileMapData[x, y].isBlocktTemporary)
+                        return true; 
+                }
+            }
+
+            return false;
+        }
+
+        public Vector2 GetCorrectedPosition(Vector2 currentPosition, MoveDir direction)
+        {
+            // 좌표를 타일 크기에 맞춰 보정
+            float correctedX;
+            float correctedY;
+
+            switch (direction)
+            {
+                case MoveDir.Left:
+                    // 왼쪽으로 이동할 때는 타일의 좌측 경계에 위치시킴
+                    correctedX = (float)Math.Floor(currentPosition.X) + 0.5f;
+                    correctedY = currentPosition.Y;  // Y는 그대로 타일 중심에 위치
+                    break;
+
+                case MoveDir.Right:
+                    // 오른쪽으로 이동할 때는 타일의 우측 경계에 위치시킴
+                    correctedX = (float)Math.Floor(currentPosition.X) + 0.5f;
+                    correctedY = currentPosition.Y; // Y는 그대로 타일 중심에 위치
+                    break;
+
+                case MoveDir.Up:
+                    // 위쪽으로 이동할 때는 타일의 위쪽 경계에 위치시킴
+                    correctedX = currentPosition.X;  // X는 그대로 타일 중심에 위치
+                    correctedY = (float)Math.Floor(currentPosition.Y) + 0.5f;
+                    break;
+
+                case MoveDir.Down:
+                    // 아래로 이동할 때는 타일의 아래쪽 경계에 위치시킴
+                    correctedX = currentPosition.X;  // X는 그대로 타일 중심에 위치
+                    correctedY = (float)Math.Floor(currentPosition.Y) + 0.5f;
+                    break;
+
+                default:
+                    // 기본적으로 타일 중심으로 맞추기
+                    correctedX = (float)Math.Floor(currentPosition.X) + 0.5f;
+                    correctedY = (float)Math.Floor(currentPosition.Y) + 0.5f;
+                    break;
+            }
+
+            return new Vector2(correctedX, correctedY);
+        }
+
+
 
     }
 }
