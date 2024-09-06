@@ -123,10 +123,12 @@ namespace Server.Game
             Vector2 originalPosition = gameObject._transform.Position;
             Vector2 targetPosition = new Vector2(posInfo.PosX, posInfo.PosY);
 
+            //Console.WriteLine($"Obj Pos : ({gameObject._transform.Position.X},{gameObject._transform.Position.Y})");
+
             // 잠시 테스트
             if (posInfo.MoveDir == MoveDir.MoveNone)
             {
-                Console.WriteLine("MoveNone Arrived");
+                //Console.WriteLine("MoveNone Arrived");
                 Console.Write("Stop Walking (Move Key detached)");
                 gameObject.ChangeState(CreatureState.Idle);
                 return;
@@ -138,14 +140,36 @@ namespace Server.Game
                 // 목표 위치에서 임시로 경계값을 계산 (Colldier의 실제 값은 변경되지 않는다.)
                 var (tempLeftX, tempRightX, tempUpY, tempDownY) = gameObject._collider.CalculateTempBounds(targetPosition);
 
-                if (_collisionManager.IsCollidedWithMap(tempLeftX, tempRightX, tempUpY, tempDownY, _caMapManager._tileMapData))
+                //if (_collisionManager.IsCollidedWithMap(tempLeftX, tempRightX, tempUpY, tempDownY, _caMapManager._tileMapData))
+                CollisionInfo collisionInfo = _collisionManager.IsCollidedWithMapTest(posInfo.MoveDir, tempLeftX, tempRightX, tempUpY, tempDownY, _caMapManager._tileMapData);
+
+                if (collisionInfo.IsCollided)
                 {
+                    Console.WriteLine($"Collision Occured. Original Position ({gameObject._transform.Position.X},{gameObject._transform.Position.Y})");
+                    //Console.WriteLine($"Collision Info : ");
+                    //Console.WriteLine($"isLeftCollision : {collisionInfo.IsLeftCollision}");
+                    //Console.WriteLine($"isRightCollision : {collisionInfo.IsRightCollision}");
+                    //Console.WriteLine($"isTopCollision : {collisionInfo.IsTopCollision}");
+                    //Console.WriteLine($"isBottomCollision : {collisionInfo.IsBottomCollision}");
+                    //Console.WriteLine($"CollidePercentage : {collisionInfo.OverlapPercentage}");
+
+                    // 새로운 코드 09.06
+                    // 충돌 방향에 따른 보정 처리
+                    Vector2 correctedPosition = _collisionManager.GetCorrectedPositionForCharacter(
+                        originalPosition, posInfo.MoveDir, collisionInfo, _caMapManager._tileMapData);
+
+                    targetPosition = correctedPosition;
+
+                    Console.WriteLine($"Fixed Position ({targetPosition.X}, {targetPosition.Y})");
+
+
+                    // 기존 코드 09.05
                     // 추가된 코드 (충돌 발생시 좌표를 보정)
 
-                    Console.WriteLine($"Collision Detected Original Pos : {gameObject._transform.Position}");
-                    Vector2 correctedPosition = _collisionManager.GetCorrectedPosition(gameObject._transform.Position, posInfo.MoveDir);
-                    targetPosition = correctedPosition;
-                    Console.WriteLine($"Collision Detected Fixed Pos : {correctedPosition}");
+                    //Console.WriteLine($"Collision Detected Original Pos : {gameObject._transform.Position}");
+                    //Vector2 correctedPosition = _collisionManager.GetCorrectedPosition(gameObject._transform.Position, posInfo.MoveDir);
+                    //targetPosition = correctedPosition;
+                    //Console.WriteLine($"Collision Detected Fixed Pos : {correctedPosition}");
 
                     // 충돌이 발생하면 이동 취소
                     //Console.WriteLine("Collision detected, cannot move to the target position.");
