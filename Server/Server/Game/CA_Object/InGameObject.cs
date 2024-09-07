@@ -26,7 +26,7 @@ namespace Server.Game.CA_Object
         }
            
 
-        public float _moveSpeed { get; set; } = 20f;
+        public float _moveSpeed { get; set; } = 1f;
 
         public InGame _inGame { get; set; }
 
@@ -123,6 +123,30 @@ namespace Server.Game.CA_Object
         public virtual void UpdateIdle()
         {
 
+        }
+
+        public Vector2 CalculateTargetPositon(MoveDir dir)
+        {
+            Vector2 targetPosition = _transform.Position;
+            float moveDistance = _moveSpeed;
+
+            switch (dir)
+            {
+                case MoveDir.Up:
+                    targetPosition += new Vector2(0, moveDistance);
+                    break;
+                case MoveDir.Down:
+                    targetPosition += new Vector2(0, -moveDistance);
+                    break;
+                case MoveDir.Left:
+                    targetPosition += new Vector2(-moveDistance, 0);
+                    break;
+                case MoveDir.Right:
+                    targetPosition += new Vector2(moveDistance, 0);
+                    break;
+            }
+
+            return targetPosition;
         }
 
         public virtual void UpdateMoving()

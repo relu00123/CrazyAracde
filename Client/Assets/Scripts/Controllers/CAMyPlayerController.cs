@@ -32,40 +32,40 @@ public class CAMyPlayerController : CAPlayerController
 
     protected override void UpdateController()
     {
+        switch (ObjState)
+        {
+            case CreatureState.Idle:
+                HandleMovementInput();
+                break;
+            case CreatureState.Moving:
+                HandleMovementInput();
+                break;
+        }
+
+        base.UpdateController();
+    }
+
+    public void HandleMovementInput()
+    {
         if (Time.time - last_sent_move_packet >= move_packet_coolTime)
         {
-            // 기존 로직 (09.04까지)
-            // 이동 패킷을 보낼 수 있다.
-            // 이동키를 누르고 있는지 계산한다.
-            //MoveDir CurInputDir = GetDirInput();
-
-            //if (CurInputDir != MoveDir.MoveNone)
-            //{
-            //    // 이동 패킷을 보낸다. 
-            //    SendMovePacket(CurInputDir, CreatureState.Idle);
-            //}
-
-
-
-            // 새로운 로직 (09.05부터) 
             currentInputDir = GetDirInput();
 
+            // 이동방향키에서 손을 뗀 순간
             if (currentInputDir == MoveDir.MoveNone && previousInputDir != MoveDir.MoveNone)
             {
-                SendMovePacket(MoveDir.MoveNone, CreatureState.Idle);
+                SendMovePacket(MoveDir.MoveNone);
             }
 
-            else if (currentInputDir != MoveDir.MoveNone)
+            // 이동방향키중 하나를 누르고 있는 경우
+            else if (currentInputDir != MoveDir.MoveNone)   
             {
-                SendMovePacket(currentInputDir, CreatureState.Idle);
+                SendMovePacket(currentInputDir);
             }
 
             // 이전 입력 상태를 현재 상태로 업데이트
             previousInputDir = currentInputDir;
-
-
         }
-        base.UpdateController();
     }
 
     MoveDir GetDirInput()
@@ -82,26 +82,14 @@ public class CAMyPlayerController : CAPlayerController
             return MoveDir.MoveNone;
     }
 
-    void SendMovePacket(MoveDir dir, CreatureState state)
+    void SendMovePacket(MoveDir dir)
     {
-       // Debug.Log($"{InGameObj.Name}");
-       // Debug.Log($"Move packet sent : {dir} , CurObject Pos : {transform.position.x} {transform.position.y}");
+        C_CaMove movepkt = new C_CaMove();
 
-        Vector3 targetpos = CalculateNextPosByInput(dir, transform.position);
+        movepkt.Dir = dir;
+        //var pos = InGameObj.UnityObject.GetComponent<Transform>().position;
+        //float temp = pos.x;
 
-        PositionInfo posinfo = new PositionInfo
-        {
-            
-            MoveDir = dir,
-            PosX = targetpos.x,
-            PosY = targetpos.y,
-            //PosX = Player.CurrentPos.Value.x,
-            //PosY = Player.CurrentPos.Value.y,
-            State = state,
-        };
-
-        C_Move movepkt = new C_Move();
-        movepkt.PosInfo = posinfo;
 
         Managers.Network.Send(movepkt);
         last_sent_move_packet = Time.time;

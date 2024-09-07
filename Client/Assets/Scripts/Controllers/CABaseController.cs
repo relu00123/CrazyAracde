@@ -14,6 +14,8 @@ public class CABaseController : MonoBehaviour
     public InGameObject InGameObj { get; set; }
 
 
+
+
     Vector3 _destination;
 
     public float MoveSpeed = 1f; // 케릭터 이동 속도
@@ -25,11 +27,11 @@ public class CABaseController : MonoBehaviour
         get { return _positionInfo; }
         set
         {
-            if (_positionInfo.Equals(value))                                                                                
+            if (_positionInfo.Equals(value))
                 return;
 
             // 기존에 여기
-            State = value.State;
+            ObjState = value.State;
             Dir = value.MoveDir;
 
             // 바뀌고 여기로
@@ -49,7 +51,7 @@ public class CABaseController : MonoBehaviour
         }
     }
 
-    public virtual CreatureState State
+    public virtual CreatureState ObjState
     {
         get { return PosInfo.State; }
         set
@@ -75,15 +77,17 @@ public class CABaseController : MonoBehaviour
         UpdateController();
     }
 
-    
+
     protected virtual void UpdateController()
     {
-        switch (State)
+        switch (ObjState)
         {
             case CreatureState.Idle:
+                SmoothMove();
                 UpdateIdle();
                 break;
             case CreatureState.Moving:
+                SmoothMove();
                 UpdateMoving();
                 break;
         }
@@ -101,10 +105,15 @@ public class CABaseController : MonoBehaviour
 
     protected virtual void UpdateMoving()
     {
+        Console.WriteLine("Update Moving Function Called!");
+    }
+
+    protected virtual void SmoothMove()
+    {
         // 현재 위치에서 목적지로 이동
         Vector3 direction = _destination - transform.position;
         float distance = direction.magnitude;
-        
+
         if (distance > 0.1f)
         {
             direction.Normalize();
@@ -112,12 +121,8 @@ public class CABaseController : MonoBehaviour
         }
         else
         {
-            // 목적지에 도달하면 상태를 IDLE로 전환
-            //State = CreatureState.Idle;
+            transform.position = _destination;
         }
-
-        Console.WriteLine("Update Moving Function Called!");
     }
 }
 
- 

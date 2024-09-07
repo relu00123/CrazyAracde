@@ -5,6 +5,7 @@ using Server.Game.CA_Object;
 using Server.Game.Core;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Numerics;
 using System.Runtime.Serialization;
 using System.Text;
@@ -118,12 +119,43 @@ namespace Server.Game
             gameObject.Update();
         }
 
+        public void ApplyMoveTemp(InGameObject gameObject, MoveDir dir)
+        {
+            Console.Write("ApplyMoveTemp Called");
+
+            Vector2 originalPosition = gameObject._transform.Position;
+
+            Console.WriteLine($"Obj Pos : ({gameObject._transform.Position.X},{gameObject._transform.Position.Y})");
+
+            if (dir == MoveDir.MoveNone)
+            {
+                Console.Write("Stop Walking (Move Key detached)");
+                gameObject.ChangeState(CreatureState.Idle);
+                return;
+            }
+
+            // TODO
+            // 방향키 입력에 따른 캐릭터의 속도를 적용해서 TargetPosition을 구한다. 
+            
+            Vector2 targetPosition = gameObject.CalculateTargetPositon(dir);
+
+
+
+            // TODO.. 
+            gameObject._targetPos = targetPosition;
+            gameObject.Direction = dir;
+            gameObject.ChangeState(CreatureState.Moving);
+        }
+
+
+
         public void ApplyMove(InGameObject gameObject, PositionInfo posInfo)
         {
             Vector2 originalPosition = gameObject._transform.Position;
             Vector2 targetPosition = new Vector2(posInfo.PosX, posInfo.PosY);
 
-            //Console.WriteLine($"Obj Pos : ({gameObject._transform.Position.X},{gameObject._transform.Position.Y})");
+            // Object의 Position Debugging 코드
+            Console.WriteLine($"Obj Pos : ({gameObject._transform.Position.X},{gameObject._transform.Position.Y})");
 
             // 잠시 테스트
             if (posInfo.MoveDir == MoveDir.MoveNone)
@@ -139,6 +171,14 @@ namespace Server.Game
             {
                 // 목표 위치에서 임시로 경계값을 계산 (Colldier의 실제 값은 변경되지 않는다.)
                 var (tempLeftX, tempRightX, tempUpY, tempDownY) = gameObject._collider.CalculateTempBounds(targetPosition);
+
+
+                // Debugging 용도
+                Console.WriteLine($"LeftX   : {tempLeftX}");
+                Console.WriteLine($"RightX  : {tempRightX}");
+                Console.WriteLine($"TopY    : {tempUpY}");
+                Console.WriteLine($"BottomY : {tempDownY}");
+
 
                 //if (_collisionManager.IsCollidedWithMap(tempLeftX, tempRightX, tempUpY, tempDownY, _caMapManager._tileMapData))
                 CollisionInfo collisionInfo = _collisionManager.IsCollidedWithMapTest(posInfo.MoveDir, tempLeftX, tempRightX, tempUpY, tempDownY, _caMapManager._tileMapData);

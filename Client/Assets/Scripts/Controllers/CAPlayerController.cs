@@ -14,28 +14,25 @@ public class CAPlayerController : CABaseController
 
     public CharacterType _charType { get; set; }
 
+    public CharacterAnimationFSM _characterAnimationFSM { get; set; }
 
-   // bool _moveKeyPressed = false;
 
-    //CACreatureState characterstate;
-
+    
     public virtual void Test()
     {
         Debug.Log("TestFunction Called from PlayerController");
-        //if (_animator == null)
-        //{
-        //    Debug.Log("Animator Not Found!");
-        //}
+        
+    }
 
-        //else
-        //{
-        //    Debug.Log("Animator Found!");
-        //}
+    public CAPlayerController()
+    {
+        _characterAnimationFSM = new CharacterAnimationFSM(this);
     }
 
     protected override void Init()
     {
         base.Init();
+
 
     }
 
@@ -43,52 +40,55 @@ public class CAPlayerController : CABaseController
     {
         base.UpdateAnimation();
 
-        string animation_name = _charType.ToString();
+        _characterAnimationFSM.UpdateAnimator();
 
-        switch (State)
-        {
-            case CreatureState.Idle:
-                animation_name += "_Idle";
-                break;
-            case CreatureState.Moving:
-                animation_name += "_Walk";
-                break;
-        }
 
-        switch (Dir)
-        {
-            case MoveDir.Up:
-                animation_name += "_Back";
-                _spriteRenderer.flipX = false;
-                break;
-            case MoveDir.Down:
-                animation_name += "_Front";
-                _spriteRenderer.flipX = false;
-                break;
-            case MoveDir.Left:
-                animation_name += "_Side";
-                _spriteRenderer.flipX = true;
-                break;
-            case MoveDir.Right:
-                animation_name += "_Side";
-                _spriteRenderer.flipX = false;
-                break;
-            case MoveDir.MoveNone:
-               animation_name += "_Back";
-                break;
-        }
+        //string animation_name = _charType.ToString();
 
-        animation_name += "_InGame";
+        //switch (ObjState)
+        //{
+        //    case CreatureState.Idle:
+        //        animation_name += "_Idle";
+        //        break;
+        //    case CreatureState.Moving:
+        //        animation_name += "_Walk";
+        //        break;
+        //}
 
-        // 수정된 코드
-        AnimatorStateInfo currentAnimationState = _animator.GetCurrentAnimatorStateInfo(0);
+        //switch (Dir)
+        //{
+        //    case MoveDir.Up:
+        //        animation_name += "_Back";
+        //        _spriteRenderer.flipX = false;
+        //        break;
+        //    case MoveDir.Down:
+        //        animation_name += "_Front";
+        //        _spriteRenderer.flipX = false;
+        //        break;
+        //    case MoveDir.Left:
+        //        animation_name += "_Side";
+        //        _spriteRenderer.flipX = true;
+        //        break;
+        //    case MoveDir.Right:
+        //        animation_name += "_Side";
+        //        _spriteRenderer.flipX = false;
+        //        break;
+        //    case MoveDir.MoveNone:
+        //       animation_name += "_Back";
+        //        break;
+        //}
+
+        //animation_name += "_InGame";
+
+        //// 수정된 코드
+        //AnimatorStateInfo currentAnimationState = _animator.GetCurrentAnimatorStateInfo(0);
          
-        // 애니메이션 이름 비교
-        if (!currentAnimationState.IsName(animation_name))
-        {
-            Debug.Log($"Playing new animation: {animation_name} && Current State : {State}");
-            _animator.Play(animation_name);
-        }
+        //// 애니메이션 이름 비교
+        //if (!currentAnimationState.IsName(animation_name))
+        //{
+        //    Debug.Log($"Playing new animation: {animation_name} && Current State : {ObjState}");
+        //    _animator.Play(animation_name);
+        //}
 
         // 기존 코드 
         //_animator.Play(animation_name);

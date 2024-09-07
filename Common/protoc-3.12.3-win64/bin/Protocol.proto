@@ -62,6 +62,7 @@ enum MsgId {
   C_GAME_SCENE_LOAD_FINISHED = 56;
   S_OWN_PLAYER_INFORM = 57;
   S_NOT_OWN_PLAYER_INFORM = 58;
+  C_CA_MOVE = 59;
 }
 
 enum ObjectType  {
@@ -258,6 +259,10 @@ message S_Despawn {
 
 message C_Move {
   PositionInfo posInfo = 1;
+}
+
+message C_CaMove {
+  MoveDir dir  = 1;
 }
 
 message S_Move {

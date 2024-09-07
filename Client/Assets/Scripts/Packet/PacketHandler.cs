@@ -436,6 +436,7 @@ class PacketHandler
 		var controller = obj.UnityObject.AddComponent<CAMyPlayerController>();
 		controller.InGameObj = obj;
 		controller._animator = obj.UnityObject.GetComponentInChildren<Animator>();
+		controller._characterAnimationFSM._animator = obj.UnityObject.GetComponentInChildren<Animator>();
 		controller._spriteRenderer = controller._animator.GetComponent<SpriteRenderer>();
 		controller._charType = pkt.Chartype;
 		controller.Test();
@@ -447,6 +448,7 @@ class PacketHandler
         var controller = obj.UnityObject.AddComponent<CAPlayerController>();
         controller.InGameObj = obj;
 		controller._animator = obj.UnityObject.GetComponentInChildren<Animator>(true);
+        controller._characterAnimationFSM._animator = obj.UnityObject.GetComponentInChildren<Animator>();
         controller._spriteRenderer = controller._animator.GetComponent<SpriteRenderer>();
         controller._charType = pkt.Chartype;
         controller.Test();

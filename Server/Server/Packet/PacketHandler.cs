@@ -12,26 +12,6 @@ using System.Text;
 
 class PacketHandler
 {
-	public static void C_MoveHandler(PacketSession session, IMessage packet)
-	{
-		C_Move movePacket = packet as C_Move;
-		ClientSession clientSession = session as ClientSession;
-
-		//Console.WriteLine($"Move Packet Arrived. To {movePacket.PosInfo.PosX}, {movePacket.PosInfo.PosY}");
-
-		clientSession.BeloingRoom._inGame.ApplyMove(clientSession.CA_MyPlayer, movePacket.PosInfo);
-
-		//Player player = clientSession.MyPlayer;
-		//if (player == null)
-		//	return;
-
-		//GameRoom room = player.Room;
-		//if (room == null)
-		//	return;
-
-		//room.Push(room.HandleMove, player, movePacket);
-	}
-
 	public static void C_SkillHandler(PacketSession session, IMessage packet)
 	{
 		C_Skill skillPacket = packet as C_Skill;
@@ -233,6 +213,35 @@ class PacketHandler
 
 		clientSession.BeloingRoom.Push(clientSession.BeloingRoom.HandleGameLoadFinished, LoadFinishedPkt, clientSession);
     }
+
+
+    public static void C_MoveHandler(PacketSession session, IMessage packet)
+    {
+        C_Move movePacket = packet as C_Move;
+        ClientSession clientSession = session as ClientSession;
+
+        //Console.WriteLine($"Move Packet Arrived. To {movePacket.PosInfo.PosX}, {movePacket.PosInfo.PosY}");
+
+        clientSession.BeloingRoom._inGame.ApplyMove(clientSession.CA_MyPlayer, movePacket.PosInfo);
+
+        //Player player = clientSession.MyPlayer;
+        //if (player == null)
+        //	return;
+
+        //GameRoom room = player.Room;
+        //if (room == null)
+        //	return;
+
+        //room.Push(room.HandleMove, player, movePacket);
+    }
+
+    public static void C_CaMoveHandler(PacketSession session, IMessage packet)
+	{
+		C_CaMove movePkt = packet as C_CaMove;
+		ClientSession clientSession = session as ClientSession;
+
+		clientSession.BeloingRoom._inGame.ApplyMoveTemp(clientSession.CA_MyPlayer, movePkt.Dir);
+	}
 }
 
 
