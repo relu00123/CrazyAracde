@@ -16,7 +16,9 @@ namespace Server.Game.Core
         public bool IsTopCollision;   // 위쪽 충돌 여부
         public bool IsBottomCollision; // 아래쪽 충돌 여부
         public float OverlapPercentage; // 충돌 겹침 정도 (0.0 ~ 1.0)
+        public Vector2 CollidedTile; // 충돌한 타일들의 좌표 리스트
     }
+
 
     public class CollisionManager
     {
@@ -122,6 +124,146 @@ namespace Server.Game.Core
 
             return false;
         }
+
+        public List<Vector2> GetCollisionExemptTiles(float leftX, float rightX, float upY, float downY, TileInfo[,] tileMapData)
+        {
+            List<Vector2> exemptTiles = new List<Vector2>();
+
+            // 충돌 범위 내 타일을 순회
+            for (int x = (int)Math.Floor(leftX); x <= (int)Math.Floor(rightX); x++)
+            {
+                for (int y = (int)Math.Floor(downY); y <= (int)Math.Floor(upY); y++)
+                {
+                    // 타일맵 범위를 벗어나지 않도록 검사
+                    if (x < 0 || y < 0 || x >= tileMapData.GetLength(0) || y >= tileMapData.GetLength(1))
+                        continue;
+
+                    // 예시: 물폭탄이 있는 타일은 면책 대상
+                    if (tileMapData[x, y].isBlocktTemporary)
+                    {
+                        // 면책 타일로 추가
+                        exemptTiles.Add(new Vector2(x, y));
+                    }
+                }
+            }
+
+            Console.Write("Exempt Tiles: ");
+            for (int i = 0; i < exemptTiles.Count; ++i)
+            {
+                Console.Write($"< {exemptTiles[i].X}, {exemptTiles[i].Y} > ");
+            }
+            Console.WriteLine();
+
+            return exemptTiles;
+        }
+
+        public (List<CollisionInfo> collisionInfos, bool isOutOfBoundsCollision) GetCollidedTiles(
+            MoveDir direction, float leftX, float rightX, float upY, float downY, 
+            TileInfo[,] tileMapData, List<Vector2> exemptTiles)
+        {
+            List<CollisionInfo> collisionInfos = new List<CollisionInfo>();
+            bool isOutOfBoundsCollision = false;
+
+            int startX = (int)Math.Floor(leftX);  // 좌측 X 경계
+            int endX = (int)Math.Floor(rightX);   // 우측 X 경계
+
+            int startY = (int)Math.Floor(downY);  // 하단 Y 경계
+            int endY = (int)Math.Floor(upY);      // 상단 Y 경계
+
+            // 타일맵 경계 바깥으로 나가는 경우 감지
+            if (startX < 0 || endX >= tileMapData.GetLength(0) || startY < 0 || endY >= tileMapData.GetLength(1))
+            {
+                isOutOfBoundsCollision = true;
+                return (collisionInfos, isOutOfBoundsCollision);
+            }
+
+            // 충돌 검사 : 이동하려는 위치에 벽이 있는지 확인
+            for (int x= startX; x<= endX; x++)
+            {
+                for (int y = startY; y <= endY; y++)
+                {
+                    // 면책타일이라면 충돌검사를 시행하지 않을 것이다. 
+                    if (exemptTiles.Contains(new Vector2(x, y)))
+                        continue;
+
+                    if (tileMapData[x, y].isBlocktPermanently || tileMapData[x, y].isBlocktTemporary)
+                    {
+                        CollisionInfo collisionInfo = new CollisionInfo();
+
+                        // 왼쪽 충돌 (캐릭터의 오른쪽 경계가 타일의 왼쪽 경계에 닿은 경우)
+                        if (leftX < x + 1 && rightX >= x + 1)
+                            collisionInfo.IsLeftCollision = true;
+                        // 오른쪽 충돌 (캐릭터의 왼쪽 경계가 타일의 오른쪽 경계에 닿은 경우)
+                        if (rightX > x && leftX <= x)
+                            collisionInfo.IsRightCollision = true;
+                        // 위쪽 충돌 (캐릭터의 아래쪽 경계가 타일의 위쪽 경계에 닿은 경우)
+                        if (upY > y && downY <= y)
+                            collisionInfo.IsTopCollision = true;
+                        // 아래쪽 충돌 (캐릭터의 위쪽 경계가 타일의 아래쪽 경계에 닿은 경우)
+                        if (downY < y + 1 && upY >= y + 1)
+                            collisionInfo.IsBottomCollision = true;
+
+                        var overlapPercentage = CalculateOverlapPercentage(direction, x, y, leftX, rightX, downY, upY, collisionInfo);
+                        collisionInfo.OverlapPercentage = overlapPercentage;
+
+                        collisionInfos.Add(collisionInfo);
+                    }
+                }
+            }
+
+            return (collisionInfos, isOutOfBoundsCollision);
+        }
+
+
+        float CalculateOverlapPercentage(MoveDir dir, int x, int y, float leftX, float rightX, float downY, float upY, CollisionInfo collisionInfo)
+        {
+            float overlapPercentage = 1;
+
+            if (dir == MoveDir.Left || dir == MoveDir.Right) // y축 겹침 정도를 계산해야함
+            {
+                Console.WriteLine("y축 겹침 정도를 계산해야함");
+                if (collisionInfo.IsTopCollision == true)
+                {
+                    Console.WriteLine("케릭터의 위에서 충돌 발생");
+                    Console.WriteLine($"y : {y} , downy : {downY} , upy : {upY}");
+                    Console.WriteLine($"y overlap 정도 :  {upY - y}");
+                    collisionInfo.OverlapPercentage = upY - y;
+                }
+
+                else if (collisionInfo.IsBottomCollision == true)
+                {
+                    Console.WriteLine("케릭터의 아래에서 충돌 발생");
+                    Console.WriteLine($"y : {y} , downy : {downY} , upy : {upY}");
+                    Console.WriteLine($"y overlap 정도 : {y + 1 - downY}");
+                    collisionInfo.OverlapPercentage = y + 1 - downY;
+                }
+            }
+
+            else if (dir == MoveDir.Up || dir == MoveDir.Down)  // x축 겹침 정도를 계산해야함 
+            {
+                Console.WriteLine("x축 겹침 정도를 계산해야함");
+                if (collisionInfo.IsLeftCollision == true)
+                {
+                    Console.WriteLine("케릭터의 왼쪽에서 충돌 발생");
+                    Console.WriteLine($"x : {x} , leftx : {leftX} , rightx : {rightX}");
+                    Console.WriteLine($"x overlap 정도 :  {x + 1 - leftX}");
+                    collisionInfo.OverlapPercentage = x + 1 - leftX;
+                }
+
+                else if (collisionInfo.IsRightCollision)
+                {
+                    Console.WriteLine("케릭터의 오른쪽에서 충돌 발생");
+                    Console.WriteLine($"x : {x} , leftx : {leftX} , rightx : {rightX}");
+                    Console.WriteLine($"x overlap 정도 :  {rightX - x}");
+                    collisionInfo.OverlapPercentage = rightX - x;
+                }
+            }
+
+            return overlapPercentage;
+        }
+
+
+
 
         public CollisionInfo IsCollidedWithMapTest(MoveDir dir, float leftX, float rightX, float upY, float downY, TileInfo[,] tileMapData)
         {
@@ -300,7 +442,7 @@ namespace Server.Game.Core
                     // Y축은 타일 중앙으로 보정
                     correctedY = (float)Math.Floor(currentPosition.Y) + 0.5f;
 
-                    if (collisionInfo.OverlapPercentage <= 0.3f)
+                    if (collisionInfo.OverlapPercentage <= 0.4f)
                     {
                         // X축으로 이동 가능 여부 확인 (충돌이 없는 쪽으로 이동)
                         if (collisionInfo.IsRightCollision && CanMoveLeft(correctedX, correctedY, tilemapData))
@@ -314,8 +456,9 @@ namespace Server.Game.Core
                             }
                             Console.WriteLine($"Corrected X : {correctedX}");
                         }
-                        else if (collisionInfo.IsLeftCollision && CanMoveRight(correctedX, correctedY, tilemapData))
+                        else if (collisionInfo.IsLeftCollision && CanMoveRight(correctedX, correctedY, tilemapData, direction))
                         {
+                            Console.WriteLine("Moving Right!!!");
                             Console.WriteLine($"Current X : {correctedX}");
                             correctedX += 0.1f;  // 오른쪽으로 조금씩 이동
 
@@ -338,7 +481,7 @@ namespace Server.Game.Core
                     // X축은 타일 중앙으로 보정
                     correctedX = (float)Math.Floor(currentPosition.X) + 0.5f;
 
-                    if (collisionInfo.OverlapPercentage <= 0.3f)
+                    if (collisionInfo.OverlapPercentage <= 0.4f)
                     {
                         // Y축으로 이동 가능 여부 확인 (충돌이 없는 쪽으로 이동)
                         if (collisionInfo.IsBottomCollision && CanMoveUp(correctedX, correctedY, tilemapData))
@@ -396,26 +539,65 @@ namespace Server.Game.Core
             return isLeftTileEmpty && isLeftTopTileEmpty;
         }
 
-        public bool CanMoveRight(float currentX, float currentY, TileInfo[,] tileMapData)
+        public bool CanMoveRight(float currentX, float currentY, TileInfo[,] tileMapData, MoveDir collisionDir)
         {
-            // 오른쪽 타일의 좌표
+            // 오른쪽 타일의 X 좌표
             int rightTileX = (int)Math.Floor(currentX) + 1;
             int currentTileY = (int)Math.Floor(currentY);
 
-            // 오른쪽 위 타일의 좌표
-            int rightTopTileY = currentTileY + 1;
+            int tileYToCheck;
 
-            // 타일맵 경계를 벗어나면 false
-            if (rightTileX >= tileMapData.GetLength(0) || currentTileY < 0 || rightTopTileY >= tileMapData.GetLength(1))
+            // 충돌 방향에 따른 타일 검사 (위쪽, 아래쪽에서 충돌했는지 여부)
+            switch (collisionDir)
+            {
+                case MoveDir.Up:
+                    // 충돌이 위쪽에서 발생한 경우 -> 위 타일 검사
+                    tileYToCheck = currentTileY  +  1;
+                    break;
+
+                case MoveDir.Down:
+                    // 충돌이 아래쪽에서 발생한 경우 -> 아래 타일 검사
+                    tileYToCheck = currentTileY - 1;
+                    break;
+
+                default:
+                    // 기본적으로 같은 레벨의 타일을 검사
+                    tileYToCheck = currentTileY;
+                    break;
+            }
+
+            // 타일맵 경계를 벗어나면 false 반환
+            if (rightTileX >= tileMapData.GetLength(0) || tileYToCheck < 0 || tileYToCheck >= tileMapData.GetLength(1))
                 return false;
 
-            // 오른쪽 타일과 오른쪽 위 타일이 모두 비어있는지 확인 (벽이 없으면 true)
+            // 오른쪽 타일과 충돌한 위치에 해당하는 타일이 모두 비어있는지 확인
             bool isRightTileEmpty = !(tileMapData[rightTileX, currentTileY].isBlocktPermanently || tileMapData[rightTileX, currentTileY].isBlocktTemporary);
-            bool isRightTopTileEmpty = !(tileMapData[rightTileX, rightTopTileY].isBlocktPermanently || tileMapData[rightTileX, rightTopTileY].isBlocktTemporary);
+            bool isTileToCheckEmpty = !(tileMapData[rightTileX, tileYToCheck].isBlocktPermanently || tileMapData[rightTileX, tileYToCheck].isBlocktTemporary);
 
-            // 둘 다 비어있어야 오른쪽 이동 가능
-            return isRightTileEmpty && isRightTopTileEmpty;
+            // 둘 다 비어있어야 오른쪽으로 이동 가능
+            return isRightTileEmpty && isTileToCheckEmpty;
         }
+
+        //public bool CanMoveRight(float currentX, float currentY, TileInfo[,] tileMapData)
+        //{
+        //    // 오른쪽 타일의 좌표
+        //    int rightTileX = (int)Math.Floor(currentX) + 1;
+        //    int currentTileY = (int)Math.Floor(currentY);
+
+        //    // 오른쪽 위 타일의 좌표
+        //    int rightTopTileY = currentTileY + 1;
+
+        //    // 타일맵 경계를 벗어나면 false
+        //    if (rightTileX >= tileMapData.GetLength(0) || currentTileY < 0 || rightTopTileY >= tileMapData.GetLength(1))
+        //        return false;
+
+        //    // 오른쪽 타일과 오른쪽 위 타일이 모두 비어있는지 확인 (벽이 없으면 true)
+        //    bool isRightTileEmpty = !(tileMapData[rightTileX, currentTileY].isBlocktPermanently || tileMapData[rightTileX, currentTileY].isBlocktTemporary);
+        //    bool isRightTopTileEmpty = !(tileMapData[rightTileX, rightTopTileY].isBlocktPermanently || tileMapData[rightTileX, rightTopTileY].isBlocktTemporary);
+
+        //    // 둘 다 비어있어야 오른쪽 이동 가능
+        //    return isRightTileEmpty && isRightTopTileEmpty;
+        //}
 
         public bool CanMoveUp(float currentX, float currentY, TileInfo[,] tileMapData)
         {

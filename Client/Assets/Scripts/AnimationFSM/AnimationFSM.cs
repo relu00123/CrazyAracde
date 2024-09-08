@@ -10,7 +10,7 @@ public abstract class AnimationFSM<TState, TOwnerController> : MonoBehaviour
     where TOwnerController : CABaseController
 {
     public  Animator _animator { get; set; }
-    protected TState _currentAnimState;
+    public TState _currentAnimState { get; set; }
     public TOwnerController _ownerController { get; set; }
 
     public AnimationFSM(TOwnerController ownerController)

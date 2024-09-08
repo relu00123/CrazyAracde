@@ -121,11 +121,8 @@ namespace Server.Game
 
         public void ApplyMoveTemp(InGameObject gameObject, MoveDir dir)
         {
-            Console.Write("ApplyMoveTemp Called");
-
             Vector2 originalPosition = gameObject._transform.Position;
-
-            Console.WriteLine($"Obj Pos : ({gameObject._transform.Position.X},{gameObject._transform.Position.Y})");
+            Console.WriteLine($"Cur Obj Pos : ({gameObject._transform.Position.X},{gameObject._transform.Position.Y})");
 
             if (dir == MoveDir.MoveNone)
             {
@@ -134,12 +131,32 @@ namespace Server.Game
                 return;
             }
 
-            // TODO
             // 방향키 입력에 따른 캐릭터의 속도를 적용해서 TargetPosition을 구한다. 
-            
             Vector2 targetPosition = gameObject.CalculateTargetPositon(dir);
 
+            // Object에 충돌체가 존재한다면 TileMap에서 갈수없는 곳에 가려하는지 검사해야한다
+            //if (gameObject._collider != null)
+            //{
+            //    // 목표 위치에서 임시로 Collider의 경계값을 계산 (Colldier의 실제 값은 변경되지 않는다.)
+            //    var (tempLeftX, tempRightX, tempUpY, tempDownY) = gameObject._collider.CalculateTempBounds(targetPosition);
 
+            //    // Collision Info에는 충돌한 방향, 어느 정도 충돌했는지에 대한 정보를 담고 있다.
+            //    CollisionInfo collisionInfo = _collisionManager.IsCollidedWithMapTest(dir, tempLeftX, tempRightX, tempUpY, tempDownY, _caMapManager._tileMapData);
+
+            //    // 다음으로 이동하고자 하는 위치에서 충돌이 발생한 경우. 
+            //    if (collisionInfo.IsCollided)
+            //    {
+            //        Console.WriteLine($"Collision Occured. Original Position ({gameObject._transform.Position.X},{gameObject._transform.Position.Y})");
+
+            //        // 충돌 방향에 따른 보정 처리
+            //        Vector2 correctedPosition = _collisionManager.GetCorrectedPositionForCharacter(
+            //            originalPosition, dir, collisionInfo, _caMapManager._tileMapData);
+
+            //        targetPosition = correctedPosition;
+
+            //        Console.WriteLine($"Fixed Position ({targetPosition.X}, {targetPosition.Y})");
+            //    }
+            //}
 
             // TODO.. 
             gameObject._targetPos = targetPosition;

@@ -13,12 +13,9 @@ public class CABaseController : MonoBehaviour
 
     public InGameObject InGameObj { get; set; }
 
-
-
-
     Vector3 _destination;
 
-    public float MoveSpeed = 1f; // 케릭터 이동 속도
+    [SerializeField] public float MoveSpeed = 3f; // 케릭터 이동 속도
 
     protected bool _updated = false;
 
@@ -114,7 +111,8 @@ public class CABaseController : MonoBehaviour
         Vector3 direction = _destination - transform.position;
         float distance = direction.magnitude;
 
-        if (distance > 0.1f)
+
+        if (distance > 0.05f)
         {
             direction.Normalize();
             transform.position += direction * MoveSpeed * Time.deltaTime;

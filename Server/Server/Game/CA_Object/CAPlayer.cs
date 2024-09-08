@@ -38,7 +38,7 @@ public class CAPlayer  : InGameObject
                 
             }
 
-             _job =  _inGame._gameRoom.PushAfter(100, Update);
+             _job =  _inGame._gameRoom.PushAfter(10, Update);
         }
     }
 

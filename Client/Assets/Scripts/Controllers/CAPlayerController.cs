@@ -16,8 +16,20 @@ public class CAPlayerController : CABaseController
 
     public CharacterAnimationFSM _characterAnimationFSM { get; set; }
 
+    public override CreatureState ObjState
+    {
+        get { return PosInfo.State; }
+        set
+        {
+            PosInfo.State = value;
+            _characterAnimationFSM.SetState(PosInfo.State); // 여기 매우 마음에 안듬..
+            UpdateAnimation();
+            _updated = true;
+        }
+    }
 
-    
+
+
     public virtual void Test()
     {
         Debug.Log("TestFunction Called from PlayerController");

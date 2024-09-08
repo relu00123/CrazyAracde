@@ -1,4 +1,5 @@
 ﻿using Google.Protobuf.Protocol;
+using Server.Game.Core;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -24,9 +25,9 @@ namespace Server.Game.CA_Object
             set { if (value == MoveDir.MoveNone) return; _direction = value; } 
 
         }
-           
 
-        public float _moveSpeed { get; set; } = 1f;
+
+        public float _moveSpeed { get; set; } = 0.3f;  //= 0.3f;
 
         public InGame _inGame { get; set; }
 
@@ -151,15 +152,66 @@ namespace Server.Game.CA_Object
 
         public virtual void UpdateMoving()
         {
+            //Console.WriteLine("Update Moving Function Called!");
+            //Console.WriteLine($"Cur Pose ({_transform.Position.X} , {_transform.Position.Y})");
+
+            var (CurColliderLeftX, CurColliderRightX, CurColliderUpY, CurColliderDownY) = _collider.CalculateTempBounds(_transform.Position);
+            var exemptTiles = _inGame._collisionManager.GetCollisionExemptTiles(CurColliderLeftX, CurColliderRightX, CurColliderUpY, CurColliderDownY, _inGame._caMapManager._tileMapData);
+
+
             Vector2 direction = Vector2.Normalize(_targetPos - _transform.Position);
-            Vector2 nextPosition = _transform.Position + direction * _moveSpeed * (float)_inGame._gameRoom._deltaTime;
-            _transform.Position = _targetPos;
+            Vector2 nextPosition = _transform.Position + direction * _moveSpeed * 10 * (float)_inGame._gameRoom._deltaTime;
+
+            if (_collider != null)
+            {
+                var (tempLeftX, tempRightX, tempUpY, tempDownY) = _collider.CalculateTempBounds(nextPosition);
+
+                // 이함수부터 아래의 로직을 싹 고쳐야함. 일단 GetCollidedTiles 라는 이름으로 IsCollidedWithMapTest() 교체하도록 함수작성은 해놨음.
+                CollisionInfo collisionInfo = _inGame._collisionManager.IsCollidedWithMapTest(Direction, tempLeftX, tempRightX, tempUpY, tempDownY, _inGame._caMapManager._tileMapData);
+
+                if (collisionInfo.IsCollided)
+                {
+                    // 충돌이 발생한 경우, 위치를 보정
+                    Console.WriteLine("Collision detected during movement");
+                    nextPosition = _inGame._collisionManager.GetCorrectedPositionForCharacter(_transform.Position, Direction, collisionInfo, _inGame._caMapManager._tileMapData);
+
+                    _targetPos = nextPosition;
+                }
+
+                // 위의 주석 부터 여기까지 수정을 해야함!
+            }
+
+
+            if (direction.Length() > 0.0001f)  // 매우 작은 값을 비교하여 0이 아닌지 확인
+            {
+                direction = Vector2.Normalize(direction);  
+            }
+            else
+            {
+                Console.WriteLine("방향이 0 일때는 움직이지 않도록 설정");
+                direction = new Vector2(0, 0); // 방향이 0일 때는 움직이지 않도록 설정
+            }
+
+            
+            //_transform.Position = _targetPos;
+
+            // _targetPos에 거의 도달했을 때 위치를 정확하게 맞춤
+            if (Vector2.Distance(nextPosition, _targetPos) < 0.01f)
+            {
+                nextPosition = _targetPos;  // 최종 목적지에 도달하면 위치를 정확히 맞춤
+            }
+             
+            _transform.Position = nextPosition;
+
+            //Console.WriteLine($"Next Pose ({nextPosition.X} , {nextPosition.Y})");
 
             S_Move movePkt = new S_Move();
             movePkt.ObjectId = Id;
             movePkt.PosInfo = new PositionInfo();
-            movePkt.PosInfo.PosX = _transform.Position.X;
-            movePkt.PosInfo.PosY = _transform.Position.Y;
+            //movePkt.PosInfo.PosX = _transform.Position.X;
+            //movePkt.PosInfo.PosY = _transform.Position.Y;
+            movePkt.PosInfo.PosX = nextPosition.X;
+            movePkt.PosInfo.PosY = nextPosition.Y;
             movePkt.PosInfo.MoveDir = Direction;
             movePkt.PosInfo.State = CreatureState.Moving;
             _inGame._gameRoom.BroadcastPacket(movePkt);
