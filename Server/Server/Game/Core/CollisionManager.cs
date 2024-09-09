@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Numerics;
 using System.Text;
 using Google.Protobuf.Protocol;
+using Microsoft.EntityFrameworkCore.Internal;
 using Server.Game.CA_Object;
 
 namespace Server.Game.Core
@@ -16,7 +18,7 @@ namespace Server.Game.Core
         public bool IsTopCollision;   // 위쪽 충돌 여부
         public bool IsBottomCollision; // 아래쪽 충돌 여부
         public float OverlapPercentage; // 충돌 겹침 정도 (0.0 ~ 1.0)
-        public Vector2 CollidedTile; // 충돌한 타일들의 좌표 리스트
+        public Vector2 CollidedTile; // 충돌한 타일의 좌표 
     }
 
 
@@ -190,6 +192,8 @@ namespace Server.Game.Core
                     {
                         CollisionInfo collisionInfo = new CollisionInfo();
 
+                        collisionInfo.CollidedTile = new Vector2((int)x, (int)y);
+
                         // 왼쪽 충돌 (캐릭터의 오른쪽 경계가 타일의 왼쪽 경계에 닿은 경우)
                         if (leftX < x + 1 && rightX >= x + 1)
                             collisionInfo.IsLeftCollision = true;
@@ -203,7 +207,7 @@ namespace Server.Game.Core
                         if (downY < y + 1 && upY >= y + 1)
                             collisionInfo.IsBottomCollision = true;
 
-                        var overlapPercentage = CalculateOverlapPercentage(direction, x, y, leftX, rightX, downY, upY, collisionInfo);
+                        float overlapPercentage = CalculateOverlapPercentage(direction, x, y, leftX, rightX, downY, upY, collisionInfo);
                         collisionInfo.OverlapPercentage = overlapPercentage;
 
                         collisionInfos.Add(collisionInfo);
@@ -227,7 +231,7 @@ namespace Server.Game.Core
                     Console.WriteLine("케릭터의 위에서 충돌 발생");
                     Console.WriteLine($"y : {y} , downy : {downY} , upy : {upY}");
                     Console.WriteLine($"y overlap 정도 :  {upY - y}");
-                    collisionInfo.OverlapPercentage = upY - y;
+                    overlapPercentage = upY - y;
                 }
 
                 else if (collisionInfo.IsBottomCollision == true)
@@ -235,7 +239,7 @@ namespace Server.Game.Core
                     Console.WriteLine("케릭터의 아래에서 충돌 발생");
                     Console.WriteLine($"y : {y} , downy : {downY} , upy : {upY}");
                     Console.WriteLine($"y overlap 정도 : {y + 1 - downY}");
-                    collisionInfo.OverlapPercentage = y + 1 - downY;
+                    overlapPercentage = y + 1 - downY;
                 }
             }
 
@@ -247,7 +251,7 @@ namespace Server.Game.Core
                     Console.WriteLine("케릭터의 왼쪽에서 충돌 발생");
                     Console.WriteLine($"x : {x} , leftx : {leftX} , rightx : {rightX}");
                     Console.WriteLine($"x overlap 정도 :  {x + 1 - leftX}");
-                    collisionInfo.OverlapPercentage = x + 1 - leftX;
+                    overlapPercentage = x + 1 - leftX;
                 }
 
                 else if (collisionInfo.IsRightCollision)
@@ -255,14 +259,12 @@ namespace Server.Game.Core
                     Console.WriteLine("케릭터의 오른쪽에서 충돌 발생");
                     Console.WriteLine($"x : {x} , leftx : {leftX} , rightx : {rightX}");
                     Console.WriteLine($"x overlap 정도 :  {rightX - x}");
-                    collisionInfo.OverlapPercentage = rightX - x;
+                    overlapPercentage = rightX - x;
                 }
             }
 
             return overlapPercentage;
         }
-
-
 
 
         public CollisionInfo IsCollidedWithMapTest(MoveDir dir, float leftX, float rightX, float upY, float downY, TileInfo[,] tileMapData)
@@ -425,6 +427,162 @@ namespace Server.Game.Core
             }
 
             return new Vector2(correctedX, correctedY);
+        }
+
+        public Vector2 GetCorrectedPosForObj(Vector2 currentPosition, List<CollisionInfo> collisionInfos, MoveDir moveDir)
+        {
+            float correctedX = currentPosition.X;
+            float correctedY = currentPosition.Y;
+
+            for (int i = 0; i < collisionInfos.Count; i++)
+            {
+                MoveDir slideDir = GetCollisionSlideDir(moveDir, collisionInfos[i]);
+
+                Console.WriteLine($"<{collisionInfos[i].CollidedTile.X},{collisionInfos[i].CollidedTile.Y}> 와의 충돌에서 미끄러질 방향 : {slideDir}");
+
+                if (slideDir == MoveDir.MoveNone)
+                    continue;  // 미끄러질 수 없음. Tile과 너무 정면으로 충돌한 상황  
+                 
+                Vector2 SlideBlockTile = GetSlideBlockTile(moveDir, slideDir, collisionInfos[i].CollidedTile);
+                if (SlideBlockTile == new Vector2(float.NaN, float.NaN)) continue;
+
+                if (collisionInfos.Any(info => info.CollidedTile == SlideBlockTile))
+                {
+                    Console.WriteLine("미끄러짐 불가능!");
+                    continue;
+                }
+
+                else
+                {
+                    // 위치 보정 
+                    Console.WriteLine("미끄러짐 가능!");
+                    Console.WriteLine($"미끄러지기 전 좌표 : <{correctedX} , {correctedY}>");
+                    if (collisionInfos[i].OverlapPercentage > 0.8f) continue; // 벽과 너무 많이 겹친 경우 Slide X
+                    Vector2 SlidedPos = GetSlidedPos(correctedX, correctedY, slideDir, collisionInfos[i].CollidedTile);
+                    correctedX = SlidedPos.X;
+                    correctedY = SlidedPos.Y;
+                    Console.WriteLine($"미꺼러진   후 좌표 : <{correctedX} , {correctedY}>");
+                }
+            }
+
+            return new Vector2(correctedX, correctedY);
+        }
+
+        MoveDir GetCollisionSlideDir (MoveDir moveDir, CollisionInfo collisionInfo)
+        {
+            // 타일 한개와의 관계이기 때문에 MoveDir.Up이 면서 leftCollision, RightCollision 경우는 배제. 
+            // 이경우는 Slide될 수 없는 경우로 판단
+
+            // 일단 테스트는 이렇게 하고 Up이랑 Down 나중에 묶을 수 있을 것 같다. left랑 right만 확인하면 될듯.
+            // 우선은 잘 작동하는지 확인하고 나중에 최적화하자.
+            if (moveDir == MoveDir.Up)
+            {
+                if (collisionInfo.IsTopCollision && collisionInfo.IsLeftCollision && collisionInfo.IsRightCollision) return MoveDir.MoveNone;
+                if (collisionInfo.IsTopCollision && collisionInfo.IsLeftCollision) return MoveDir.Right;
+                if (collisionInfo.IsTopCollision && collisionInfo.IsRightCollision) return MoveDir.Left;
+            }
+
+            else if (moveDir == MoveDir.Down)
+            {
+                if (collisionInfo.IsBottomCollision && collisionInfo.IsLeftCollision && collisionInfo.IsRightCollision) return MoveDir.MoveNone;
+                if (collisionInfo.IsBottomCollision && collisionInfo.IsLeftCollision) return MoveDir.Right;
+                if (collisionInfo.IsBottomCollision && collisionInfo.IsRightCollision) return MoveDir.Left;
+            }
+
+            else if (moveDir == MoveDir.Left)
+            {
+                if (collisionInfo.IsLeftCollision && collisionInfo.IsTopCollision && collisionInfo.IsBottomCollision) return MoveDir.MoveNone;
+                if (collisionInfo.IsLeftCollision && collisionInfo.IsTopCollision) return MoveDir.Down;
+                if (collisionInfo.IsLeftCollision && collisionInfo.IsBottomCollision) return MoveDir.Up;
+            }
+
+            else if (moveDir == MoveDir.Right)
+            {
+                if (collisionInfo.IsRightCollision && collisionInfo.IsTopCollision && collisionInfo.IsBottomCollision) return MoveDir.MoveNone;
+                if (collisionInfo.IsRightCollision && collisionInfo.IsTopCollision) return MoveDir.Down;
+                if (collisionInfo.IsRightCollision && collisionInfo.IsBottomCollision) return MoveDir.Up;
+            }
+
+            return MoveDir.MoveNone;
+        }
+       
+        Vector2 GetSlideBlockTile(MoveDir moveDir, MoveDir slideDir, Vector2 CollidedTile)
+        {
+            if (moveDir == MoveDir.Up || moveDir == MoveDir.Down)
+            {
+                if (slideDir == MoveDir.Right) return new Vector2(CollidedTile.X + 1, CollidedTile.Y);
+                if (slideDir == MoveDir.Left) return new Vector2(CollidedTile.X - 1, CollidedTile.Y);
+            }
+
+            else if (moveDir == MoveDir.Left || moveDir == MoveDir.Right)
+            {
+                if (slideDir == MoveDir.Up) return new Vector2(CollidedTile.X, CollidedTile.Y + 1);
+                if (slideDir == MoveDir.Down) return new Vector2(CollidedTile.X, CollidedTile.Y - 1);
+            }
+
+            return new Vector2(float.NaN, float.NaN);
+        }
+
+        Vector2 GetSlidedPos(float currentPosX , float currentPoxY , MoveDir slideDir, Vector2 CollidedTilePos)
+        {
+            // 일단은 Overlap정도와 상관 없이 무조건 Slide되도록 한다.
+            // 나중에 Overlap 정도를 계산해서 Slide될 것인지 말 것인지 결정하도록 하겠음.
+
+            float slidedPosX = currentPosX;
+            float slidedPosY = currentPoxY; 
+
+            if (slideDir == MoveDir.Left)
+            {
+                slidedPosX -= 0.15f;  // 왼쪽으로 조금씩 이동
+
+                if (Math.Floor(slidedPosX) != CollidedTilePos.X)
+                {
+                    if (slidedPosX <= Math.Floor(slidedPosX) + 0.5f)
+                        slidedPosX = (float)Math.Floor(slidedPosX) + 0.5f;  // n.5로 고정
+                }
+
+                else
+                {
+                    // 작성할 필요 없을듯? 
+                }
+            }
+
+            else if (slideDir == MoveDir.Right)
+            {
+                slidedPosX += 0.15f;  // 오른쪽으로 조금씩 이동
+
+                if (Math.Floor(slidedPosX) != CollidedTilePos.X)
+                {
+                    if (slidedPosX >= Math.Floor(slidedPosX) + 0.5f)
+                        slidedPosX = (float)Math.Floor(slidedPosX) + 0.5f;  // n.5로 고정
+                }
+            }
+
+            else if (slideDir == MoveDir.Up)
+            {
+                slidedPosY += 0.15f;  // 위로 조금씩 이동
+
+                if (Math.Floor(slidedPosY) != CollidedTilePos.Y)
+                {
+                    // 좌표를 n.5로 고정 (위쪽으로 이동 중일 때)
+                    if (slidedPosY >= Math.Floor(slidedPosY) + 0.5f)
+                        slidedPosY = (float)Math.Floor(slidedPosY) + 0.5f;  // n.5로 고정
+                }
+            }
+
+            else if (slideDir == MoveDir.Down)
+            {
+                slidedPosY -= 0.15f;  // 아래로 조금씩 이동
+
+                if (Math.Floor(slidedPosY) != CollidedTilePos.Y)
+                {
+                    // 좌표를 n.5로 고정 (아래쪽으로 이동 중일 때)
+                    if (slidedPosY <= Math.Floor(slidedPosY) + 0.5f)
+                        slidedPosY = (float)Math.Floor(slidedPosY) + 0.5f;  // n.5로 고정
+                }
+            }
+
+            return new Vector2(slidedPosX, slidedPosY);
         }
 
         public Vector2 GetCorrectedPositionForCharacter(Vector2 currentPosition, MoveDir direction, CollisionInfo collisionInfo, TileInfo[,] tilemapData)

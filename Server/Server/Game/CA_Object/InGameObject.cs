@@ -22,7 +22,7 @@ namespace Server.Game.CA_Object
         public MoveDir Direction
         {
             get { return _direction; }
-            set { if (value == MoveDir.MoveNone) return; _direction = value; } 
+            set { if (value == MoveDir.MoveNone) return; _direction = value; }
 
         }
 
@@ -31,7 +31,7 @@ namespace Server.Game.CA_Object
 
         public InGame _inGame { get; set; }
 
-        public CreatureState _state { get;  private set; } = CreatureState.Idle;
+        public CreatureState _state { get; private set; } = CreatureState.Idle;
 
         private const float Tolerance = 1e-5f;
 
@@ -102,7 +102,7 @@ namespace Server.Game.CA_Object
         protected virtual bool IsValidStateTransition(CreatureState newState)
         {
             // 기본 상태 전환 규칙 (필요에 따라 자식에서 재정의 할 것임..)
-            switch(_state)
+            switch (_state)
             {
                 case CreatureState.Idle:
                     return newState == CreatureState.Moving || newState == CreatureState.Dead || newState == CreatureState.Idle;
@@ -153,44 +153,97 @@ namespace Server.Game.CA_Object
         public virtual void UpdateMoving()
         {
             //Console.WriteLine("Update Moving Function Called!");
-            //Console.WriteLine($"Cur Pose ({_transform.Position.X} , {_transform.Position.Y})");
+            Console.WriteLine($"현재 위치 : ({_transform.Position.X} , {_transform.Position.Y})");
 
             var (CurColliderLeftX, CurColliderRightX, CurColliderUpY, CurColliderDownY) = _collider.CalculateTempBounds(_transform.Position);
             var exemptTiles = _inGame._collisionManager.GetCollisionExemptTiles(CurColliderLeftX, CurColliderRightX, CurColliderUpY, CurColliderDownY, _inGame._caMapManager._tileMapData);
 
 
             Vector2 direction = Vector2.Normalize(_targetPos - _transform.Position);
+
+            if (direction.Length() > 0.001f)  // 벡터의 길이가 0이 아닌지 확인
+            {
+                direction = Vector2.Normalize(direction);
+            }
+            else
+            {
+                direction = new Vector2(0, 0);  // 방향 벡터가 0일 경우, 기본 값 설정
+            }
+
             Vector2 nextPosition = _transform.Position + direction * _moveSpeed * 10 * (float)_inGame._gameRoom._deltaTime;
 
             if (_collider != null)
             {
                 var (tempLeftX, tempRightX, tempUpY, tempDownY) = _collider.CalculateTempBounds(nextPosition);
 
-                // 이함수부터 아래의 로직을 싹 고쳐야함. 일단 GetCollidedTiles 라는 이름으로 IsCollidedWithMapTest() 교체하도록 함수작성은 해놨음.
-                CollisionInfo collisionInfo = _inGame._collisionManager.IsCollidedWithMapTest(Direction, tempLeftX, tempRightX, tempUpY, tempDownY, _inGame._caMapManager._tileMapData);
 
-                if (collisionInfo.IsCollided)
+                var (collisionInfos, isOutofBoundsCollision) = _inGame._collisionManager.GetCollidedTiles(Direction, tempLeftX, tempRightX, tempUpY, tempDownY,
+                     _inGame._caMapManager._tileMapData, exemptTiles);
+
+                // Debuggin 해보자.
+                /* {
+                    if (isOutofBoundsCollision)
+                    {
+                        Console.WriteLine("Out of Bounds!");
+                        return;
+                    }
+
+                    for (int i = 0; i < collisionInfos.Count; ++i)
+                    {
+                        Console.WriteLine($"======== 충돌 정보 {i}==============");
+                        Console.WriteLine($"충돌 좌표 <{collisionInfos[i].CollidedTile.X} , {collisionInfos[i].CollidedTile.Y}> ");
+                        Console.WriteLine($"왼쪽   충돌 여부 {collisionInfos[i].IsLeftCollision}");
+                        Console.WriteLine($"오른쪽 충돌 여부 {collisionInfos[i].IsRightCollision}");
+                        Console.WriteLine($"위     충돌 여부 {collisionInfos[i].IsTopCollision}");
+                        Console.WriteLine($"아래   충돌 여부 {collisionInfos[i].IsBottomCollision}");
+                        Console.WriteLine($"겹침   정도      {collisionInfos[i].OverlapPercentage}");
+                        Console.WriteLine($"==================================");
+                    }
+                } */
+                 
+                // 바깥으로 나갔을때 예외처리 한번 해줘야함.
+                if (isOutofBoundsCollision)
                 {
-                    // 충돌이 발생한 경우, 위치를 보정
-                    Console.WriteLine("Collision detected during movement");
-                    nextPosition = _inGame._collisionManager.GetCorrectedPositionForCharacter(_transform.Position, Direction, collisionInfo, _inGame._caMapManager._tileMapData);
-
-                    _targetPos = nextPosition;
+                    Console.WriteLine("Out of Bounds!");
+                    return;
                 }
+
+                if (collisionInfos.Count > 0 )
+                {
+                    // 충돌이 발생한 경우, 위치를 조정 
+
+                    nextPosition =  _inGame._collisionManager.GetCorrectedPosForObj(_transform.Position, collisionInfos, Direction);
+                    _targetPos = nextPosition;
+                    Console.WriteLine($"충돌 발생후 target Pos : <{_targetPos.X},{_targetPos.Y}>");
+                }
+
+
+    
+                // 이함수부터 아래의 로직을 싹 고쳐야함. 일단 GetCollidedTiles 라는 이름으로 IsCollidedWithMapTest() 교체하도록 함수작성은 해놨음.
+                //CollisionInfo collisionInfo = _inGame._collisionManager.IsCollidedWithMapTest(Direction, tempLeftX, tempRightX, tempUpY, tempDownY, _inGame._caMapManager._tileMapData);
+
+                //if (collisionInfo.IsCollided)
+                //{
+                //    // 충돌이 발생한 경우, 위치를 보정
+                //    Console.WriteLine("Collision detected during movement");
+                //    nextPosition = _inGame._collisionManager.GetCorrectedPositionForCharacter(_transform.Position, Direction, collisionInfo, _inGame._caMapManager._tileMapData);
+
+                //    _targetPos = nextPosition;
+                //}
 
                 // 위의 주석 부터 여기까지 수정을 해야함!
             }
 
 
-            if (direction.Length() > 0.0001f)  // 매우 작은 값을 비교하여 0이 아닌지 확인
-            {
-                direction = Vector2.Normalize(direction);  
-            }
-            else
-            {
-                Console.WriteLine("방향이 0 일때는 움직이지 않도록 설정");
-                direction = new Vector2(0, 0); // 방향이 0일 때는 움직이지 않도록 설정
-            }
+            //if (direction.Length() > 0.0001f)  // 매우 작은 값을 비교하여 0이 아닌지 확인
+            //{
+            //    direction = Vector2.Normalize(direction);  
+            //}
+            //else
+            //{
+            //    Console.WriteLine("방향이 0 일때는 움직이지 않도록 설정");
+            //    direction = new Vector2(0, 0); // 방향이 0일 때는 움직이지 않도록 설정
+            //}
 
             
             //_transform.Position = _targetPos;
@@ -198,9 +251,11 @@ namespace Server.Game.CA_Object
             // _targetPos에 거의 도달했을 때 위치를 정확하게 맞춤
             if (Vector2.Distance(nextPosition, _targetPos) < 0.01f)
             {
+                Console.WriteLine("최종 목적지 근처시에 targetPos로 좌표 강제 이동");
                 nextPosition = _targetPos;  // 최종 목적지에 도달하면 위치를 정확히 맞춤
             }
-             
+
+            Console.WriteLine($"위치 설정 :  <{nextPosition.X} , {nextPosition.Y}>");
             _transform.Position = nextPosition;
 
             //Console.WriteLine($"Next Pose ({nextPosition.X} , {nextPosition.Y})");

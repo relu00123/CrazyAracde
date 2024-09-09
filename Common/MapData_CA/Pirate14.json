@@ -3272,6 +3272,111 @@
         },
         {
             "position": {
+                "x": 5,
+                "y": 1,
+                "z": 0
+            },
+            "tileName": "WallColider",
+            "tilemapName": "WallsCollider",
+            "isSlippery": false,
+            "isSpine": false,
+            "isProvidingStealth": false,
+            "isMoveable": false,
+            "childTileName": "",
+            "spawnType": 0
+        },
+        {
+            "position": {
+                "x": 6,
+                "y": 1,
+                "z": 0
+            },
+            "tileName": "WallColider",
+            "tilemapName": "WallsCollider",
+            "isSlippery": false,
+            "isSpine": false,
+            "isProvidingStealth": false,
+            "isMoveable": false,
+            "childTileName": "",
+            "spawnType": 0
+        },
+        {
+            "position": {
+                "x": 7,
+                "y": 1,
+                "z": 0
+            },
+            "tileName": "WallColider",
+            "tilemapName": "WallsCollider",
+            "isSlippery": false,
+            "isSpine": false,
+            "isProvidingStealth": false,
+            "isMoveable": false,
+            "childTileName": "",
+            "spawnType": 0
+        },
+        {
+            "position": {
+                "x": 8,
+                "y": 1,
+                "z": 0
+            },
+            "tileName": "WallColider",
+            "tilemapName": "WallsCollider",
+            "isSlippery": false,
+            "isSpine": false,
+            "isProvidingStealth": false,
+            "isMoveable": false,
+            "childTileName": "",
+            "spawnType": 0
+        },
+        {
+            "position": {
+                "x": 9,
+                "y": 1,
+                "z": 0
+            },
+            "tileName": "WallColider",
+            "tilemapName": "WallsCollider",
+            "isSlippery": false,
+            "isSpine": false,
+            "isProvidingStealth": false,
+            "isMoveable": false,
+            "childTileName": "",
+            "spawnType": 0
+        },
+        {
+            "position": {
+                "x": 4,
+                "y": 5,
+                "z": 0
+            },
+            "tileName": "WallColider",
+            "tilemapName": "WallsCollider",
+            "isSlippery": false,
+            "isSpine": false,
+            "isProvidingStealth": false,
+            "isMoveable": false,
+            "childTileName": "",
+            "spawnType": 0
+        },
+        {
+            "position": {
+                "x": 4,
+                "y": 6,
+                "z": 0
+            },
+            "tileName": "WallColider",
+            "tilemapName": "WallsCollider",
+            "isSlippery": false,
+            "isSpine": false,
+            "isProvidingStealth": false,
+            "isMoveable": false,
+            "childTileName": "",
+            "spawnType": 0
+        },
+        {
+            "position": {
                 "x": 6,
                 "y": 6,
                 "z": 0
@@ -3289,6 +3394,156 @@
             "position": {
                 "x": 7,
                 "y": 6,
+                "z": 0
+            },
+            "tileName": "WallColider",
+            "tilemapName": "WallsCollider",
+            "isSlippery": false,
+            "isSpine": false,
+            "isProvidingStealth": false,
+            "isMoveable": false,
+            "childTileName": "",
+            "spawnType": 0
+        },
+        {
+            "position": {
+                "x": 4,
+                "y": 7,
+                "z": 0
+            },
+            "tileName": "WallColider",
+            "tilemapName": "WallsCollider",
+            "isSlippery": false,
+            "isSpine": false,
+            "isProvidingStealth": false,
+            "isMoveable": false,
+            "childTileName": "",
+            "spawnType": 0
+        },
+        {
+            "position": {
+                "x": 8,
+                "y": 7,
+                "z": 0
+            },
+            "tileName": "WallColider",
+            "tilemapName": "WallsCollider",
+            "isSlippery": false,
+            "isSpine": false,
+            "isProvidingStealth": false,
+            "isMoveable": false,
+            "childTileName": "",
+            "spawnType": 0
+        },
+        {
+            "position": {
+                "x": 10,
+                "y": 7,
+                "z": 0
+            },
+            "tileName": "WallColider",
+            "tilemapName": "WallsCollider",
+            "isSlippery": false,
+            "isSpine": false,
+            "isProvidingStealth": false,
+            "isMoveable": false,
+            "childTileName": "",
+            "spawnType": 0
+        },
+        {
+            "position": {
+                "x": 4,
+                "y": 8,
+                "z": 0
+            },
+            "tileName": "WallColider",
+            "tilemapName": "WallsCollider",
+            "isSlippery": false,
+            "isSpine": false,
+            "isProvidingStealth": false,
+            "isMoveable": false,
+            "childTileName": "",
+            "spawnType": 0
+        },
+        {
+            "position": {
+                "x": 10,
+                "y": 9,
+                "z": 0
+            },
+            "tileName": "WallColider",
+            "tilemapName": "WallsCollider",
+            "isSlippery": false,
+            "isSpine": false,
+            "isProvidingStealth": false,
+            "isMoveable": false,
+            "childTileName": "",
+            "spawnType": 0
+        },
+        {
+            "position": {
+                "x": 3,
+                "y": 10,
+                "z": 0
+            },
+            "tileName": "WallColider",
+            "tilemapName": "WallsCollider",
+            "isSlippery": false,
+            "isSpine": false,
+            "isProvidingStealth": false,
+            "isMoveable": false,
+            "childTileName": "",
+            "spawnType": 0
+        },
+        {
+            "position": {
+                "x": 3,
+                "y": 11,
+                "z": 0
+            },
+            "tileName": "WallColider",
+            "tilemapName": "WallsCollider",
+            "isSlippery": false,
+            "isSpine": false,
+            "isProvidingStealth": false,
+            "isMoveable": false,
+            "childTileName": "",
+            "spawnType": 0
+        },
+        {
+            "position": {
+                "x": 4,
+                "y": 11,
+                "z": 0
+            },
+            "tileName": "WallColider",
+            "tilemapName": "WallsCollider",
+            "isSlippery": false,
+            "isSpine": false,
+            "isProvidingStealth": false,
+            "isMoveable": false,
+            "childTileName": "",
+            "spawnType": 0
+        },
+        {
+            "position": {
+                "x": 8,
+                "y": 11,
+                "z": 0
+            },
+            "tileName": "WallColider",
+            "tilemapName": "WallsCollider",
+            "isSlippery": false,
+            "isSpine": false,
+            "isProvidingStealth": false,
+            "isMoveable": false,
+            "childTileName": "",
+            "spawnType": 0
+        },
+        {
+            "position": {
+                "x": 10,
+                "y": 11,
                 "z": 0
             },
             "tileName": "WallColider",
