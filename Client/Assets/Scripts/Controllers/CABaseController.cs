@@ -13,7 +13,8 @@ public class CABaseController : MonoBehaviour
 
     public InGameObject InGameObj { get; set; }
 
-    Vector3 _destination;
+    // 여기 코드때문에 그런듯? 
+    Vector3 _destination = new Vector3(0f, 0f, 0f);
 
     [SerializeField] public float MoveSpeed = 3f; // 케릭터 이동 속도
 
@@ -66,7 +67,8 @@ public class CABaseController : MonoBehaviour
 
     protected virtual void Init()
     {
-
+        _destination.x = InGameObj.UnityObject.transform.position.x;
+        _destination.y = InGameObj.UnityObject.transform.position.y;
     }
 
     void Update()

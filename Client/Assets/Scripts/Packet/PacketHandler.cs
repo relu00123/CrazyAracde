@@ -453,6 +453,12 @@ class PacketHandler
         controller._charType = pkt.Chartype;
         controller.Test();
     }
+
+	public static void S_InstallBombHandler(PacketSession session, IMessage packet)
+	{
+		S_InstallBomb pkt = (S_InstallBomb)packet;
+
+	}
 }
 
 

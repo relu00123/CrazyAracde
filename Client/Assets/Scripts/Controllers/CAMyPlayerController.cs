@@ -9,8 +9,12 @@ using UnityEngine;
 
 public class CAMyPlayerController : CAPlayerController
 {
-    float move_packet_coolTime = 0.1f;
-    float last_sent_move_packet = 0f;
+    private float move_packet_coolTime = 0.1f;
+    private float last_sent_move_packet = 0f;
+
+    private float bomb_packet_coolTime = 0.1f;
+    private float last_sent_bomb_packet = 0f; 
+
 
     private MoveDir currentInputDir = MoveDir.MoveNone;
     private MoveDir previousInputDir = MoveDir.MoveNone;
@@ -36,9 +40,11 @@ public class CAMyPlayerController : CAPlayerController
         {
             case CreatureState.Idle:
                 HandleMovementInput();
+                HandleBombInput();
                 break;
             case CreatureState.Moving:
                 HandleMovementInput();
+                HandleBombInput();
                 break;
         }
 
@@ -67,6 +73,29 @@ public class CAMyPlayerController : CAPlayerController
             previousInputDir = currentInputDir;
         }
     }
+
+    private void HandleBombInput()
+    {
+        // 서버 부하 방지용 쿨타임. 
+        if (Time.time - last_sent_bomb_packet >= bomb_packet_coolTime)
+        {
+            // 폭탄 설치 키를 입력했는지 확인
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                // 폭탄을 설치해달라고 하는 패킷을 보낸다. 
+                C_InstallBomb installBombPkt = new C_InstallBomb()
+                {
+                    Power = _ballon.power,
+                    BombType = _ballon.bombSkinType,
+                    CharPosX = InGameObj.UnityObject.transform.position.x,
+                    CharPosY = InGameObj.UnityObject.transform.position.y,
+                };
+
+                Managers.Network.Send(installBombPkt);
+            }
+        }
+    }
+
 
     MoveDir GetDirInput()
     {

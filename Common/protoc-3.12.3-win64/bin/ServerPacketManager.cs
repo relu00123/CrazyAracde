@@ -66,7 +66,9 @@ class PacketManager
 		_onRecv.Add((ushort)MsgId.CGameSceneLoadFinished, MakePacket<C_GameSceneLoadFinished>);
 		_handler.Add((ushort)MsgId.CGameSceneLoadFinished, PacketHandler.C_GameSceneLoadFinishedHandler);		
 		_onRecv.Add((ushort)MsgId.CCaMove, MakePacket<C_CaMove>);
-		_handler.Add((ushort)MsgId.CCaMove, PacketHandler.C_CaMoveHandler);
+		_handler.Add((ushort)MsgId.CCaMove, PacketHandler.C_CaMoveHandler);		
+		_onRecv.Add((ushort)MsgId.CInstallBomb, MakePacket<C_InstallBomb>);
+		_handler.Add((ushort)MsgId.CInstallBomb, PacketHandler.C_InstallBombHandler);
 	}
 
 	public void OnRecvPacket(PacketSession session, ArraySegment<byte> buffer)

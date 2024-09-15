@@ -63,6 +63,8 @@ enum MsgId {
   S_OWN_PLAYER_INFORM = 57;
   S_NOT_OWN_PLAYER_INFORM = 58;
   C_CA_MOVE = 59;
+  C_INSTALL_BOMB = 60;
+  S_INSTALL_BOMB = 61;
 }
 
 enum ObjectType  {
@@ -71,6 +73,7 @@ enum ObjectType  {
    OBJECT_MONSTER = 2;
    OBJECT_PROJECTILE = 3;
    OBJECT_BOX = 4;
+   OBJECT_BOMB = 5;
 }
 
 enum CreatureState {
@@ -240,6 +243,13 @@ enum GameRoomCharacterStateType
 enum ObjectSpawnKeyType 
 {
   CHARACTER = 0;
+  BOMB = 1; 
+}
+
+enum BombType 
+{
+  BLACK = 0;
+  COKE = 1; 
 }
 
 message S_EnterGame {
@@ -423,11 +433,19 @@ message KeyValuePairs  {
     int32  int_value = 3;
     float  float_value = 4;
     ObjectSpawnPlayerValue player_info_vlaue = 5;
+    BombInfoValue Bomb_info_value = 6;
   }
 }
 
 message ObjectSpawnPlayerValue {
   CharacterType charactertype_value = 1;
+}
+
+message BombInfoValue 
+{
+  BombType bombType = 1;
+  float bombPosX = 2;
+  float bombPosY = 3; 
 }
 
 message S_SpawnObject {
@@ -521,6 +539,23 @@ message C_ChangeSceneCompleted
 {
   GameSceneType scene = 1;
 }
+
+message C_InstallBomb
+{
+   int32 power = 1; 
+   BombType bombType = 2; 
+   float charPosX = 3;
+   float charPosY = 4;
+
+}
+
+message S_InstallBomb
+{
+  BombType bombType = 1;
+  float bombPosX = 2;
+  float bombPosY = 3; 
+}
+
 
 message S_JoinRoomBroadcast {
   SlotInfo slotInfo = 1;

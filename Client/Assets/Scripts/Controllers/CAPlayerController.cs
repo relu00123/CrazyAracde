@@ -16,6 +16,8 @@ public class CAPlayerController : CABaseController
 
     public CharacterAnimationFSM _characterAnimationFSM { get; set; }
 
+    public CABallon _ballon { get; set; }
+
     public override CreatureState ObjState
     {
         get { return PosInfo.State; }
@@ -45,6 +47,7 @@ public class CAPlayerController : CABaseController
     {
         base.Init();
 
+        _ballon = new CABallon();
 
     }
 

@@ -51,7 +51,6 @@ public class ObjectLayerManager
 
     public void HandleSpawnObject(S_SpawnObject spawnObjectPacket)
     {
-        // Position 정보를 가져옵니다.
         Vector2 position = DeterminePosition(spawnObjectPacket.Positioninfo);
 
         // 객체를 생성하고 Unity에 Instantiate합니다.
@@ -60,29 +59,53 @@ public class ObjectLayerManager
 
         GameObject unityObject = GameObject.Instantiate(prefab, position, Quaternion.identity);
 
-        // Player인 경우
-        if (spawnObjectPacket.Objecttype == ObjectType.ObjectPlayer)
+        switch (spawnObjectPacket.Objecttype)
         {
-            if (unityObject.GetComponentInChildren<Animator>() != null)
-                Debug.Log("Player Animator Found!");
-
-            foreach (var kvp in spawnObjectPacket.AdditionalData)
+            case ObjectType.ObjectPlayer:
             {
-                if (kvp.Key == ObjectSpawnKeyType.Character)
+                if (unityObject.GetComponentInChildren<Animator>() != null)
+                    Debug.Log("Player Animator Found!");
+
+                foreach (var kvp in spawnObjectPacket.AdditionalData)
                 {
-                    var playerInfoValue = kvp.PlayerInfoVlaue;
-                    CharacterType chartype = playerInfoValue.CharactertypeValue;
+                    if (kvp.Key == ObjectSpawnKeyType.Character)
+                    {
+                        ObjectSpawnPlayerValue playerInfoValue = kvp.PlayerInfoVlaue;
+                        CharacterType chartype = playerInfoValue.CharactertypeValue;
 
-                    string chartype_string = chartype.ToString();
-                    string additional_info_temp = "_Walk_Front_InGame";
-                    chartype_string += additional_info_temp;
-                    Debug.Log(chartype_string);
+                        string chartype_string = chartype.ToString();
+                        string additional_info_temp = "_Idle_Front_InGame";
+                        chartype_string += additional_info_temp;
+                        Debug.Log(chartype_string);
 
-                    unityObject.GetComponentInChildren<Animator>().Play(chartype_string, -1, 0f);
+                        unityObject.GetComponentInChildren<Animator>().Play(chartype_string, -1, 0f);
+                    }
                 }
             }
+            break;
 
-             
+            case ObjectType.ObjectBomb:
+            {
+                Debug.Log("Trying to Create Bomb!");
+
+                foreach(var kvp in spawnObjectPacket.AdditionalData)
+                {
+                    if (kvp.Key == ObjectSpawnKeyType.Bomb)
+                    {
+                        var BombInfoValue = kvp.BombInfoValue;
+                        string animationname = BombInfoValue.BombType.ToString();
+                        animationname += "_Idle";
+
+                        unityObject.GetComponent<Animator>().Play(animationname);
+                        unityObject.transform.position = new Vector3(BombInfoValue.BombPosX + 0.5f, BombInfoValue.BombPosY, 0f);
+                    }
+                }
+            }
+            break;
+
+            default:
+                break; 
+
         }
 
         InGameObject newObject = new InGameObject(spawnObjectPacket.Objectid, spawnObjectPacket.Objecttype.ToString());

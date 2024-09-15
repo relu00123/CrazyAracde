@@ -242,6 +242,14 @@ class PacketHandler
 
 		clientSession.BeloingRoom._inGame.ApplyMoveTemp(clientSession.CA_MyPlayer, movePkt.Dir);
 	}
+
+	public static void C_InstallBombHandler(PacketSession session, IMessage packet)
+	{
+		C_InstallBomb installBombPkt = packet as C_InstallBomb;
+		ClientSession clientSession = session as ClientSession;
+
+		clientSession.BeloingRoom._inGame.InstallBomb(installBombPkt);
+	}
 }
 
 

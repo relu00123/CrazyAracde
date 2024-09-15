@@ -96,7 +96,9 @@ class PacketManager
 		_onRecv.Add((ushort)MsgId.SOwnPlayerInform, MakePacket<S_OwnPlayerInform>);
 		_handler.Add((ushort)MsgId.SOwnPlayerInform, PacketHandler.S_OwnPlayerInformHandler);		
 		_onRecv.Add((ushort)MsgId.SNotOwnPlayerInform, MakePacket<S_NotOwnPlayerInform>);
-		_handler.Add((ushort)MsgId.SNotOwnPlayerInform, PacketHandler.S_NotOwnPlayerInformHandler);
+		_handler.Add((ushort)MsgId.SNotOwnPlayerInform, PacketHandler.S_NotOwnPlayerInformHandler);		
+		_onRecv.Add((ushort)MsgId.SInstallBomb, MakePacket<S_InstallBomb>);
+		_handler.Add((ushort)MsgId.SInstallBomb, PacketHandler.S_InstallBombHandler);
 	}
 
 	public void OnRecvPacket(PacketSession session, ArraySegment<byte> buffer)

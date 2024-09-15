@@ -196,8 +196,6 @@ namespace Server.Game
 
                 Console.WriteLine($"Spawning character at tile: {selectedTile.position.x}, {selectedTile.position.y}");
 
-                 
-
 
                 ObjectSpawnPlayerValue playerInfoValue = new ObjectSpawnPlayerValue
                 {

@@ -238,6 +238,57 @@ namespace Server.Game
             gameObject.ChangeState(CreatureState.Moving);
         }
 
+        public void InstallBomb(C_InstallBomb installBombPacket)
+        {
+            // 1. 폭탄이 설치 될 좌표 구하기.
+            // 들어온 Player의 Position은 발바닦이 아닌 몸 정 중앙의 좌표이다. 
+            // 설치해야할 타일 좌표를 구해보자. 
+            int install_tile_x = (int)installBombPacket.CharPosX;
+            int install_tile_y = (int)installBombPacket.CharPosY;
+
+            // 2. 해당 좌표에 폭탄을 설치할 수 있는지 확인하기.
+            TileInfo tileinfo = _caMapManager._tileMapData[install_tile_x, install_tile_y];
+            if (tileinfo.isBlocktTemporary || tileinfo.isBlocktPermanently)
+            {
+                Console.WriteLine($"You can't install Tile on ({install_tile_x},{install_tile_y}). It's Blocked!!");
+            }
+            else
+            {
+                // 3. 폭탄을 설치하기
+                Console.WriteLine($"You can install Tile on ({install_tile_x},{install_tile_y}).");
+                _caMapManager._tileMapData[install_tile_x, install_tile_y].isBlocktTemporary = true;
+
+                // 4. 모든 Client들에게 BroadCast하기 
+                BombInfoValue bombInfoValue = new BombInfoValue()
+                {
+                    BombType = installBombPacket.BombType,
+                    BombPosX = install_tile_x,
+                    BombPosY = install_tile_y,
+                };
+
+                List<KeyValuePairs> BombInfos = new List<KeyValuePairs>
+                {
+                    new KeyValuePairs { Key = ObjectSpawnKeyType.Bomb  ,  BombInfoValue = bombInfoValue },
+                };
+
+
+                CABomb spawnedBombObj = CreateAndBroadcastObject<CABomb>(
+                    LayerType.DefaultLayer,
+                    "Bomb",
+                    PositionType.TileCenterPos,
+                    ObjectType.ObjectBomb,
+                    new Vector2(install_tile_x, install_tile_y),
+                    BombInfos
+                ); 
+
+                // 5. 폭탄이 특정 시간 후에 터질 수 있도록 로직 작성해야함. 
+                // 이것을 여기서 해줘야하는지 아니면 CA_Bomb에 로직을 작성할지는 생각해 봐야함.
+                // 이 작업은 09.16 에 하면 될듯. (물풍선 트뜨리기) 
+                // 또한, 폭탄이 터지면서 TempBlock한 것을 풀어줘야 함으로 CABomb에 Tile의 좌표를 알고 있도록 해야한다. 
+
+            }
+        }
+
 
         public void TestFunction()
         {
