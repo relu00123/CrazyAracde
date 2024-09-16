@@ -74,6 +74,7 @@ enum ObjectType  {
    OBJECT_PROJECTILE = 3;
    OBJECT_BOX = 4;
    OBJECT_BOMB = 5;
+   OBJECT_WATER_STREAM = 6;
 }
 
 enum CreatureState {
@@ -175,6 +176,19 @@ enum ConsumableType {
    CONSUMABLE_TYPE_NONE = 0;
    CONSUMABLE_TYPE_POTION = 1;
 }
+
+enum WaterStreamType {
+  STREAM_CENTER = 0;
+  STREAM_DOWN = 1;
+  STREAM_DOWN_EDGE = 2;
+  STREAM_RIGHT = 3;
+  STREAM_RIGHT_EDGE = 4;
+  STREAM_LEFT = 5;
+  STREAM_LEFT_EDGE = 6;
+  STREAM_UP = 7;
+  STREAM_UP_EDGE = 8;
+}
+
 
 enum MapType {
    DESERT1 = 0;

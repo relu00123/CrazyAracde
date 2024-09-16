@@ -193,26 +193,31 @@ namespace Google.Protobuf.Protocol {
             "T09UUxADKlkKEkNoYXJhY3RlclNwYXduVHlwZRIRCg1TUEFXTl9OT1RISU5H",
             "EAASEAoMU1BBV05fUkFORE9NEAESDwoLU1BBV05fQkFaWkkQAhINCglTUEFX",
             "Tl9EQU8QAypGCg5Db25zdW1hYmxlVHlwZRIYChRDT05TVU1BQkxFX1RZUEVf",
-            "Tk9ORRAAEhoKFkNPTlNVTUFCTEVfVFlQRV9QT1RJT04QASqfAQoHTWFwVHlw",
-            "ZRILCgdERVNFUlQxEAASCQoFTUlORTEQARIJCgVDQU1QOBACEgsKB0ZPUkVT",
-            "VDcQAxIMCghQSVJBVEUxNBAEEgoKBlRPTUIxMhAFEgoKBkdPTEVNNxAGEgwK",
-            "CE9DVE9QVVMxEAcSDAoIUEVOR1VJTjEQCBIKCgZST0JPVDEQCRIJCgVTRUFM",
-            "MRAKEgsKB1RVUlRMRTEQCyoqCgtNYXBUZWFtVHlwZRINCglGT1VSX1RFQU0Q",
-            "ABIMCghUV09fVEVBTRABKj8KDFRlYW1Nb2RlVHlwZRIPCgtNQU5ORVJfTU9E",
-            "RRAAEg0KCUZSRUVfTU9ERRABEg8KC1JBTkRPTV9NT0RFEAIqPwoMR2FtZU1v",
-            "ZGVUeXBlEg8KC05PUk1BTF9NT0RFEAASEAoMTU9OU1RFUl9NT0RFEAESDAoI",
-            "QV9JX01PREUQAiozCg1Sb29tU3RhdGVUeXBlEgsKB1dBSVRJTkcQABIICgRG",
-            "VUxMEAESCwoHUExBWUlORxACKloKDkpvaW5SZXN1bHRUeXBlEgsKB1NVQ0NF",
-            "U1MQABISCg5ST09NX05PVF9FWElTVBABEg0KCVJPT01fRlVMTBACEhgKFEdB",
-            "TUVfQUxSRUFEWV9TVEFSVEVEEAMqLwoNUm9vbUFsdGVyVHlwZRIHCgNBREQQ",
-            "ABIKCgZERUxFVEUQARIJCgVBTFRFUhACKksKGkdhbWVSb29tQ2hhcmFjdGVy",
-            "U3RhdGVUeXBlEggKBEhPU1QQABIJCgVSRUFEWRABEg0KCU5PVF9SRUFEWRAC",
-            "EgkKBVNUT1JFEAMqLQoST2JqZWN0U3Bhd25LZXlUeXBlEg0KCUNIQVJBQ1RF",
-            "UhAAEggKBEJPTUIQASofCghCb21iVHlwZRIJCgVCTEFDSxAAEggKBENPS0UQ",
-            "AUIbqgIYR29vZ2xlLlByb3RvYnVmLlByb3RvY29sYgZwcm90bzM="));
+            "Tk9ORRAAEhoKFkNPTlNVTUFCTEVfVFlQRV9QT1RJT04QASq+AQoPV2F0ZXJT",
+            "dHJlYW1UeXBlEhEKDVNUUkVBTV9DRU5URVIQABIPCgtTVFJFQU1fRE9XThAB",
+            "EhQKEFNUUkVBTV9ET1dOX0VER0UQAhIQCgxTVFJFQU1fUklHSFQQAxIVChFT",
+            "VFJFQU1fUklHSFRfRURHRRAEEg8KC1NUUkVBTV9MRUZUEAUSFAoQU1RSRUFN",
+            "X0xFRlRfRURHRRAGEg0KCVNUUkVBTV9VUBAHEhIKDlNUUkVBTV9VUF9FREdF",
+            "EAgqnwEKB01hcFR5cGUSCwoHREVTRVJUMRAAEgkKBU1JTkUxEAESCQoFQ0FN",
+            "UDgQAhILCgdGT1JFU1Q3EAMSDAoIUElSQVRFMTQQBBIKCgZUT01CMTIQBRIK",
+            "CgZHT0xFTTcQBhIMCghPQ1RPUFVTMRAHEgwKCFBFTkdVSU4xEAgSCgoGUk9C",
+            "T1QxEAkSCQoFU0VBTDEQChILCgdUVVJUTEUxEAsqKgoLTWFwVGVhbVR5cGUS",
+            "DQoJRk9VUl9URUFNEAASDAoIVFdPX1RFQU0QASo/CgxUZWFtTW9kZVR5cGUS",
+            "DwoLTUFOTkVSX01PREUQABINCglGUkVFX01PREUQARIPCgtSQU5ET01fTU9E",
+            "RRACKj8KDEdhbWVNb2RlVHlwZRIPCgtOT1JNQUxfTU9ERRAAEhAKDE1PTlNU",
+            "RVJfTU9ERRABEgwKCEFfSV9NT0RFEAIqMwoNUm9vbVN0YXRlVHlwZRILCgdX",
+            "QUlUSU5HEAASCAoERlVMTBABEgsKB1BMQVlJTkcQAipaCg5Kb2luUmVzdWx0",
+            "VHlwZRILCgdTVUNDRVNTEAASEgoOUk9PTV9OT1RfRVhJU1QQARINCglST09N",
+            "X0ZVTEwQAhIYChRHQU1FX0FMUkVBRFlfU1RBUlRFRBADKi8KDVJvb21BbHRl",
+            "clR5cGUSBwoDQUREEAASCgoGREVMRVRFEAESCQoFQUxURVIQAipLChpHYW1l",
+            "Um9vbUNoYXJhY3RlclN0YXRlVHlwZRIICgRIT1NUEAASCQoFUkVBRFkQARIN",
+            "CglOT1RfUkVBRFkQAhIJCgVTVE9SRRADKi0KEk9iamVjdFNwYXduS2V5VHlw",
+            "ZRINCglDSEFSQUNURVIQABIICgRCT01CEAEqHwoIQm9tYlR5cGUSCQoFQkxB",
+            "Q0sQABIICgRDT0tFEAFCG6oCGEdvb2dsZS5Qcm90b2J1Zi5Qcm90b2NvbGIG",
+            "cHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
-          new pbr::GeneratedClrTypeInfo(new[] {typeof(global::Google.Protobuf.Protocol.MsgId), typeof(global::Google.Protobuf.Protocol.ObjectType), typeof(global::Google.Protobuf.Protocol.CreatureState), typeof(global::Google.Protobuf.Protocol.CACreatureState), typeof(global::Google.Protobuf.Protocol.PositionType), typeof(global::Google.Protobuf.Protocol.LayerType), typeof(global::Google.Protobuf.Protocol.MoveDir), typeof(global::Google.Protobuf.Protocol.GameSceneType), typeof(global::Google.Protobuf.Protocol.GameObjectType), typeof(global::Google.Protobuf.Protocol.CharacterType), typeof(global::Google.Protobuf.Protocol.SkillType), typeof(global::Google.Protobuf.Protocol.PlayerServerState), typeof(global::Google.Protobuf.Protocol.ItemType), typeof(global::Google.Protobuf.Protocol.WeaponType), typeof(global::Google.Protobuf.Protocol.ArmorType), typeof(global::Google.Protobuf.Protocol.CharacterSpawnType), typeof(global::Google.Protobuf.Protocol.ConsumableType), typeof(global::Google.Protobuf.Protocol.MapType), typeof(global::Google.Protobuf.Protocol.MapTeamType), typeof(global::Google.Protobuf.Protocol.TeamModeType), typeof(global::Google.Protobuf.Protocol.GameModeType), typeof(global::Google.Protobuf.Protocol.RoomStateType), typeof(global::Google.Protobuf.Protocol.JoinResultType), typeof(global::Google.Protobuf.Protocol.RoomAlterType), typeof(global::Google.Protobuf.Protocol.GameRoomCharacterStateType), typeof(global::Google.Protobuf.Protocol.ObjectSpawnKeyType), typeof(global::Google.Protobuf.Protocol.BombType), }, null, new pbr::GeneratedClrTypeInfo[] {
+          new pbr::GeneratedClrTypeInfo(new[] {typeof(global::Google.Protobuf.Protocol.MsgId), typeof(global::Google.Protobuf.Protocol.ObjectType), typeof(global::Google.Protobuf.Protocol.CreatureState), typeof(global::Google.Protobuf.Protocol.CACreatureState), typeof(global::Google.Protobuf.Protocol.PositionType), typeof(global::Google.Protobuf.Protocol.LayerType), typeof(global::Google.Protobuf.Protocol.MoveDir), typeof(global::Google.Protobuf.Protocol.GameSceneType), typeof(global::Google.Protobuf.Protocol.GameObjectType), typeof(global::Google.Protobuf.Protocol.CharacterType), typeof(global::Google.Protobuf.Protocol.SkillType), typeof(global::Google.Protobuf.Protocol.PlayerServerState), typeof(global::Google.Protobuf.Protocol.ItemType), typeof(global::Google.Protobuf.Protocol.WeaponType), typeof(global::Google.Protobuf.Protocol.ArmorType), typeof(global::Google.Protobuf.Protocol.CharacterSpawnType), typeof(global::Google.Protobuf.Protocol.ConsumableType), typeof(global::Google.Protobuf.Protocol.WaterStreamType), typeof(global::Google.Protobuf.Protocol.MapType), typeof(global::Google.Protobuf.Protocol.MapTeamType), typeof(global::Google.Protobuf.Protocol.TeamModeType), typeof(global::Google.Protobuf.Protocol.GameModeType), typeof(global::Google.Protobuf.Protocol.RoomStateType), typeof(global::Google.Protobuf.Protocol.JoinResultType), typeof(global::Google.Protobuf.Protocol.RoomAlterType), typeof(global::Google.Protobuf.Protocol.GameRoomCharacterStateType), typeof(global::Google.Protobuf.Protocol.ObjectSpawnKeyType), typeof(global::Google.Protobuf.Protocol.BombType), }, null, new pbr::GeneratedClrTypeInfo[] {
             new pbr::GeneratedClrTypeInfo(typeof(global::Google.Protobuf.Protocol.S_EnterGame), global::Google.Protobuf.Protocol.S_EnterGame.Parser, new[]{ "Player" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Google.Protobuf.Protocol.S_LeaveGame), global::Google.Protobuf.Protocol.S_LeaveGame.Parser, null, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Google.Protobuf.Protocol.S_Spawn), global::Google.Protobuf.Protocol.S_Spawn.Parser, new[]{ "Objects" }, null, null, null, null),
@@ -461,6 +466,18 @@ namespace Google.Protobuf.Protocol {
   public enum ConsumableType {
     [pbr::OriginalName("CONSUMABLE_TYPE_NONE")] None = 0,
     [pbr::OriginalName("CONSUMABLE_TYPE_POTION")] Potion = 1,
+  }
+
+  public enum WaterStreamType {
+    [pbr::OriginalName("STREAM_CENTER")] StreamCenter = 0,
+    [pbr::OriginalName("STREAM_DOWN")] StreamDown = 1,
+    [pbr::OriginalName("STREAM_DOWN_EDGE")] StreamDownEdge = 2,
+    [pbr::OriginalName("STREAM_RIGHT")] StreamRight = 3,
+    [pbr::OriginalName("STREAM_RIGHT_EDGE")] StreamRightEdge = 4,
+    [pbr::OriginalName("STREAM_LEFT")] StreamLeft = 5,
+    [pbr::OriginalName("STREAM_LEFT_EDGE")] StreamLeftEdge = 6,
+    [pbr::OriginalName("STREAM_UP")] StreamUp = 7,
+    [pbr::OriginalName("STREAM_UP_EDGE")] StreamUpEdge = 8,
   }
 
   public enum MapType {

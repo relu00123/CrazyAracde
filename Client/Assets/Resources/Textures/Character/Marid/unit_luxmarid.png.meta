@@ -1,0 +1,918 @@
+fileFormatVersion: 2
+guid: 086ef693aa9e2d84c91330c7cec2c73e
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 40
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: unit_luxmarid_0
+      rect:
+        serializedVersion: 2
+        x: 63
+        y: 726
+        width: 52
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cacbfc05917b3d54b92d638f124e61db
+      internalID: 1970685715
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: unit_luxmarid_1
+      rect:
+        serializedVersion: 2
+        x: 134
+        y: 726
+        width: 52
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d9f71f08a05706f40bfcdc753dd6596a
+      internalID: -50071064
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: unit_luxmarid_2
+      rect:
+        serializedVersion: 2
+        x: 211
+        y: 726
+        width: 47
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c57b304cd949ea347b35b6e33e6056e3
+      internalID: -1061606623
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: unit_luxmarid_3
+      rect:
+        serializedVersion: 2
+        x: 71
+        y: 694
+        width: 36
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4977ff51269c7d3419f2dfc5ec1e5682
+      internalID: -474124675
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: unit_luxmarid_4
+      rect:
+        serializedVersion: 2
+        x: 142
+        y: 694
+        width: 36
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 06ac3947be7c70c41b9f8c9fc24647e5
+      internalID: 1849701770
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: unit_luxmarid_5
+      rect:
+        serializedVersion: 2
+        x: 220
+        y: 694
+        width: 33
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 610fa31f61bcb3c439efa16a60f2ac88
+      internalID: 1037485881
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: unit_luxmarid_6
+      rect:
+        serializedVersion: 2
+        x: 63
+        y: 623
+        width: 51
+        height: 57
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 375074aaa2f677a40a73afe77926c316
+      internalID: 1494708018
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: unit_luxmarid_7
+      rect:
+        serializedVersion: 2
+        x: 134
+        y: 623
+        width: 51
+        height: 56
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 94279f672be5ce5499b9050127f8666f
+      internalID: -598012248
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: unit_luxmarid_8
+      rect:
+        serializedVersion: 2
+        x: 209
+        y: 627
+        width: 52
+        height: 55
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 058a5134edcdda2498db665397b414b2
+      internalID: -1632778742
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: unit_luxmarid_9
+      rect:
+        serializedVersion: 2
+        x: 280
+        y: 627
+        width: 52
+        height: 55
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cbebe50b00387844f8e3ab4d535a6515
+      internalID: -1972018750
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: unit_luxmarid_10
+      rect:
+        serializedVersion: 2
+        x: 357
+        y: 627
+        width: 47
+        height: 55
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6a6f6c123cdcbdd4dba38a98977aa03c
+      internalID: -1362685667
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: unit_luxmarid_11
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 552
+        width: 50
+        height: 59
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 584fdefa028ef1c4ca314a84e126545a
+      internalID: -1301198765
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: unit_luxmarid_12
+      rect:
+        serializedVersion: 2
+        x: 135
+        y: 552
+        width: 50
+        height: 57
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1c4863aa6c5207d41a83395fd0a50961
+      internalID: 1001561691
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: unit_luxmarid_13
+      rect:
+        serializedVersion: 2
+        x: 209
+        y: 552
+        width: 47
+        height: 55
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 88290f90ec8025741b1725819233bc40
+      internalID: 1029293434
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: unit_luxmarid_14
+      rect:
+        serializedVersion: 2
+        x: 280
+        y: 552
+        width: 47
+        height: 55
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c2c911d2e0bc1ac4295993ed415fb1c8
+      internalID: 1132142380
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: unit_luxmarid_15
+      rect:
+        serializedVersion: 2
+        x: 352
+        y: 552
+        width: 46
+        height: 57
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6b0e36a7675712f44b6acaaa26718a62
+      internalID: -1812973554
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: unit_luxmarid_16
+      rect:
+        serializedVersion: 2
+        x: 422
+        y: 552
+        width: 47
+        height: 55
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bdf566bc75232b7478d3e5d4edf171c6
+      internalID: -1007848003
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: unit_luxmarid_17
+      rect:
+        serializedVersion: 2
+        x: 63
+        y: 481
+        width: 51
+        height: 57
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b5f1470d824a5b145a20077a9ba8e5d2
+      internalID: 85887663
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: unit_luxmarid_18
+      rect:
+        serializedVersion: 2
+        x: 134
+        y: 481
+        width: 51
+        height: 56
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5ccfc997b53585c48b58dcf80e63e256
+      internalID: -28678590
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: unit_luxmarid_19
+      rect:
+        serializedVersion: 2
+        x: 214
+        y: 481
+        width: 60
+        height: 60
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b4f1f97bccd1ff848acde896c78db9e8
+      internalID: 978154175
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: unit_luxmarid_20
+      rect:
+        serializedVersion: 2
+        x: 285
+        y: 481
+        width: 60
+        height: 60
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0fef94e963c2b8d4080ad17aa2669f44
+      internalID: -216376228
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: unit_luxmarid_21
+      rect:
+        serializedVersion: 2
+        x: 356
+        y: 481
+        width: 60
+        height: 60
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 72a31667b105f644789f3334295bc136
+      internalID: -83758295
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: unit_luxmarid_22
+      rect:
+        serializedVersion: 2
+        x: 427
+        y: 481
+        width: 60
+        height: 60
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 87438e0684d0ef748b9d27da80578a9b
+      internalID: -850816128
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: unit_luxmarid_23
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 410
+        width: 50
+        height: 59
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a994d04be17fb0d41a4507a5629a3183
+      internalID: 1115055487
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: unit_luxmarid_24
+      rect:
+        serializedVersion: 2
+        x: 135
+        y: 410
+        width: 50
+        height: 57
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d69a71feb0cde4542b071f5ebb0ea027
+      internalID: -1626321613
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: unit_luxmarid_25
+      rect:
+        serializedVersion: 2
+        x: 206
+        y: 393
+        width: 67
+        height: 67
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3706ddc69773532458909ab7a30b482c
+      internalID: -1613315059
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: unit_luxmarid_26
+      rect:
+        serializedVersion: 2
+        x: 291
+        y: 400
+        width: 52
+        height: 52
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 24502b1f2bdad424da659974bc835cbb
+      internalID: -902006934
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: unit_luxmarid_33
+      rect:
+        serializedVersion: 2
+        x: 425
+        y: 405
+        width: 5
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5a0976bff4eeb5d4a8ef7dfbfc813813
+      internalID: 1777343075
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: unit_luxmarid_34
+      rect:
+        serializedVersion: 2
+        x: 469
+        y: 397
+        width: 32
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7d7206e88f7ab3247b730041de768cc4
+      internalID: 140707757
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: unit_luxmarid_35
+      rect:
+        serializedVersion: 2
+        x: 55
+        y: 315
+        width: 66
+        height: 67
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 80e9864b70bfb9f42b4b7bbe02ef7c20
+      internalID: -1678020611
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: unit_luxmarid_36
+      rect:
+        serializedVersion: 2
+        x: 140
+        y: 322
+        width: 52
+        height: 55
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4448a01a5a16316429fdc977586f4396
+      internalID: 839685702
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: unit_luxmarid_40
+      rect:
+        serializedVersion: 2
+        x: 489
+        y: 322
+        width: 52
+        height: 56
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 987b8e36894c59947afea14fe4f375f1
+      internalID: -2031842536
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: unit_luxmarid_42
+      rect:
+        serializedVersion: 2
+        x: 345
+        y: 322
+        width: 52
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c12266106253fd94b9dbc48b34be265b
+      internalID: 1687836230
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: unit_luxmarid_43
+      rect:
+        serializedVersion: 2
+        x: 421
+        y: 322
+        width: 48
+        height: 39
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f8315763083b9604c84e8676750158db
+      internalID: -1355013192
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      unit_luxmarid_0: 1970685715
+      unit_luxmarid_1: -50071064
+      unit_luxmarid_10: -1362685667
+      unit_luxmarid_11: -1301198765
+      unit_luxmarid_12: 1001561691
+      unit_luxmarid_13: 1029293434
+      unit_luxmarid_14: 1132142380
+      unit_luxmarid_15: -1812973554
+      unit_luxmarid_16: -1007848003
+      unit_luxmarid_17: 85887663
+      unit_luxmarid_18: -28678590
+      unit_luxmarid_19: 978154175
+      unit_luxmarid_2: -1061606623
+      unit_luxmarid_20: -216376228
+      unit_luxmarid_21: -83758295
+      unit_luxmarid_22: -850816128
+      unit_luxmarid_23: 1115055487
+      unit_luxmarid_24: -1626321613
+      unit_luxmarid_25: -1613315059
+      unit_luxmarid_26: -902006934
+      unit_luxmarid_27: -1347288676
+      unit_luxmarid_28: 1591719740
+      unit_luxmarid_29: 1102438824
+      unit_luxmarid_3: -474124675
+      unit_luxmarid_30: -726978455
+      unit_luxmarid_31: 1966200287
+      unit_luxmarid_32: -1350430324
+      unit_luxmarid_33: 1777343075
+      unit_luxmarid_34: 140707757
+      unit_luxmarid_35: -1678020611
+      unit_luxmarid_36: 839685702
+      unit_luxmarid_37: 724370502
+      unit_luxmarid_38: -2117613277
+      unit_luxmarid_39: 541743144
+      unit_luxmarid_4: 1849701770
+      unit_luxmarid_40: -2031842536
+      unit_luxmarid_41: -1379032191
+      unit_luxmarid_42: 1687836230
+      unit_luxmarid_43: -1355013192
+      unit_luxmarid_44: -1375956149
+      unit_luxmarid_45: -160090434
+      unit_luxmarid_46: -1033330979
+      unit_luxmarid_47: -298711514
+      unit_luxmarid_48: 260015509
+      unit_luxmarid_49: 403909265
+      unit_luxmarid_5: 1037485881
+      unit_luxmarid_50: -459889558
+      unit_luxmarid_51: 765083165
+      unit_luxmarid_52: -1664396832
+      unit_luxmarid_53: -47424103
+      unit_luxmarid_54: 1923213499
+      unit_luxmarid_55: -980554786
+      unit_luxmarid_56: 1432384833
+      unit_luxmarid_57: -958973339
+      unit_luxmarid_58: -40505610
+      unit_luxmarid_59: 1411212927
+      unit_luxmarid_6: 1494708018
+      unit_luxmarid_60: -27040040
+      unit_luxmarid_61: -108520416
+      unit_luxmarid_62: -416707707
+      unit_luxmarid_63: 939496766
+      unit_luxmarid_64: -412294289
+      unit_luxmarid_65: 985083018
+      unit_luxmarid_66: -408179980
+      unit_luxmarid_67: 457031671
+      unit_luxmarid_68: 1719331277
+      unit_luxmarid_69: 824791493
+      unit_luxmarid_7: -598012248
+      unit_luxmarid_70: 2108765593
+      unit_luxmarid_71: 434383896
+      unit_luxmarid_72: -1148232194
+      unit_luxmarid_73: 850077000
+      unit_luxmarid_74: 1125023982
+      unit_luxmarid_75: -1098337382
+      unit_luxmarid_76: 871870447
+      unit_luxmarid_8: -1632778742
+      unit_luxmarid_9: -1972018750
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

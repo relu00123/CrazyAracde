@@ -1,0 +1,936 @@
+fileFormatVersion: 2
+guid: 046014a070e1dc342a51dcc3439ed98d
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 40
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: unit_bazzi_0
+      rect:
+        serializedVersion: 2
+        x: 81
+        y: 722
+        width: 44
+        height: 37
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d51bcc01bea9ace4f9ff6a4c1eae33b3
+      internalID: -680263728
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: unit_bazzi_1
+      rect:
+        serializedVersion: 2
+        x: 152
+        y: 723
+        width: 44
+        height: 36
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1b14778cef13bb941b51be2f3f393211
+      internalID: 1292492653
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: unit_bazzi_2
+      rect:
+        serializedVersion: 2
+        x: 220
+        y: 723
+        width: 42
+        height: 36
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a4f590c0a5e60b84d8cc323e42e203c0
+      internalID: -1163321835
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: unit_bazzi_3
+      rect:
+        serializedVersion: 2
+        x: 311
+        y: 693
+        width: 44
+        height: 56
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a1ac202da7967434590726ccf2cdc03e
+      internalID: 1514592342
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: unit_bazzi_4
+      rect:
+        serializedVersion: 2
+        x: 382
+        y: 693
+        width: 44
+        height: 56
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c0203bdd607848d4791bfdd0a3e1cf25
+      internalID: -932038341
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: unit_bazzi_5
+      rect:
+        serializedVersion: 2
+        x: 450
+        y: 693
+        width: 42
+        height: 56
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 280028b239f7cce4280f88e7ccd602a5
+      internalID: 1030937159
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: unit_bazzi_6
+      rect:
+        serializedVersion: 2
+        x: 81
+        y: 693
+        width: 44
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b7255c3f7bf67ae4b80d6b502b059de6
+      internalID: -208241739
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: unit_bazzi_7
+      rect:
+        serializedVersion: 2
+        x: 152
+        y: 693
+        width: 44
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 781c041c0b77bc841ae87890bdf89ced
+      internalID: -1917596243
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: unit_bazzi_8
+      rect:
+        serializedVersion: 2
+        x: 222
+        y: 693
+        width: 35
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a7e635167181d424fba833473468e258
+      internalID: 1563882501
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: unit_bazzi_9
+      rect:
+        serializedVersion: 2
+        x: 82
+        y: 622
+        width: 43
+        height: 56
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2679ee6b788b10e4da15e7cf897a5528
+      internalID: -674608516
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: unit_bazzi_10
+      rect:
+        serializedVersion: 2
+        x: 154
+        y: 622
+        width: 42
+        height: 57
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0c63489e51f14ea40b024d25a47c048b
+      internalID: -1878789721
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: unit_bazzi_11
+      rect:
+        serializedVersion: 2
+        x: 81
+        y: 551
+        width: 44
+        height: 55
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3419e2ef42e0be7489732638554208f9
+      internalID: 17760806
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: unit_bazzi_12
+      rect:
+        serializedVersion: 2
+        x: 154
+        y: 551
+        width: 42
+        height: 55
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 091272565bc43634fbaa0cc3a765db33
+      internalID: 1437842556
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: unit_bazzi_13
+      rect:
+        serializedVersion: 2
+        x: 225
+        y: 551
+        width: 42
+        height: 56
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f6331820687c61e4799ff823d6d17b95
+      internalID: -2140084845
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: unit_bazzi_14
+      rect:
+        serializedVersion: 2
+        x: 294
+        y: 551
+        width: 44
+        height: 57
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2e2bd603fc3c14e408e55bac5eac13a3
+      internalID: 1809766936
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: unit_bazzi_15
+      rect:
+        serializedVersion: 2
+        x: 366
+        y: 551
+        width: 43
+        height: 56
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3677a9b2f0e7a0d4daa71aa4ece88665
+      internalID: 1584299983
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: unit_bazzi_16
+      rect:
+        serializedVersion: 2
+        x: 438
+        y: 551
+        width: 41
+        height: 58
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0ac0d482a51ee804da1fcd37de8a4295
+      internalID: -1750965890
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: unit_bazzi_17
+      rect:
+        serializedVersion: 2
+        x: 82
+        y: 480
+        width: 43
+        height: 56
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1cfd2d052ec11834c9dd8129fcba95dc
+      internalID: 662856892
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: unit_bazzi_18
+      rect:
+        serializedVersion: 2
+        x: 154
+        y: 480
+        width: 42
+        height: 57
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 74f9f22f2c9fca1448b605b6fa1d0c27
+      internalID: 1282341154
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: unit_bazzi_19
+      rect:
+        serializedVersion: 2
+        x: 224
+        y: 480
+        width: 60
+        height: 60
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bcc59bf017e55334d9d2244d1ad696a8
+      internalID: 520060894
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: unit_bazzi_20
+      rect:
+        serializedVersion: 2
+        x: 296
+        y: 480
+        width: 60
+        height: 60
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 317cd153f78e59d48a0869e7850ade5c
+      internalID: -912214632
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: unit_bazzi_21
+      rect:
+        serializedVersion: 2
+        x: 366
+        y: 480
+        width: 60
+        height: 60
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d9da085be55e4f3428f2c0d2a619a092
+      internalID: -2002974385
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: unit_bazzi_22
+      rect:
+        serializedVersion: 2
+        x: 437
+        y: 480
+        width: 60
+        height: 60
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7c1b8a91c891bea4db3fc152c71f5aa3
+      internalID: 783641442
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: unit_bazzi_23
+      rect:
+        serializedVersion: 2
+        x: 81
+        y: 409
+        width: 44
+        height: 55
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 76401feec86e45f46b5edefa5d680af8
+      internalID: -1823766132
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: unit_bazzi_24
+      rect:
+        serializedVersion: 2
+        x: 154
+        y: 409
+        width: 42
+        height: 55
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d7142713cda739b42b9565973ed6d4d8
+      internalID: -1575792204
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: unit_bazzi_25
+      rect:
+        serializedVersion: 2
+        x: 217
+        y: 392
+        width: 67
+        height: 67
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9d4bef7db17495142a92615999c22198
+      internalID: 325153741
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: unit_bazzi_26
+      rect:
+        serializedVersion: 2
+        x: 329
+        y: 399
+        width: 44
+        height: 55
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 706b67b8bcb1442488f51bcbfeb2283b
+      internalID: 1138422679
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: unit_bazzi_34
+      rect:
+        serializedVersion: 2
+        x: 77
+        y: 308
+        width: 66
+        height: 71
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d7acc449af20dc64ba242f69951f1915
+      internalID: 1617071013
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: unit_bazzi_35
+      rect:
+        serializedVersion: 2
+        x: 152
+        y: 309
+        width: 44
+        height: 61
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0f68c195caca3194eb3359f0ac6c8ffb
+      internalID: 208856544
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: unit_bazzi_40
+      rect:
+        serializedVersion: 2
+        x: 358
+        y: 321
+        width: 42
+        height: 37
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d9950ed6b6c170c42ae3e43becaa8828
+      internalID: 1287513702
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: unit_bazzi_41
+      rect:
+        serializedVersion: 2
+        x: 454
+        y: 321
+        width: 42
+        height: 38
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 892148ad2fa3aaa4f9415197e3cbfc6c
+      internalID: 1228775687
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: unit_bazzi_47
+      rect:
+        serializedVersion: 2
+        x: 396
+        y: 239
+        width: 32
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3848993771e853b40854e903406315df
+      internalID: -287573964
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: unit_bazzi_48
+      rect:
+        serializedVersion: 2
+        x: 458
+        y: 234
+        width: 44
+        height: 56
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0ab1f659bd4ea83428e4ebc8cd858d51
+      internalID: 919574469
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: unit_bazzi_27
+      rect:
+        serializedVersion: 2
+        x: 415
+        y: 393
+        width: 69
+        height: 69
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e8bab8a3f20cd804683ff2b39a877951
+      internalID: -890122930
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: unit_bazzi_28
+      rect:
+        serializedVersion: 2
+        x: 222
+        y: 308
+        width: 68
+        height: 67
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ea38b57e3e5ba2e4ab55dbde80bbe6cb
+      internalID: 334946951
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      unit_bazzi_0: -680263728
+      unit_bazzi_1: 1292492653
+      unit_bazzi_10: -1878789721
+      unit_bazzi_11: 17760806
+      unit_bazzi_12: 1437842556
+      unit_bazzi_13: -2140084845
+      unit_bazzi_14: 1809766936
+      unit_bazzi_15: 1584299983
+      unit_bazzi_16: -1750965890
+      unit_bazzi_17: 662856892
+      unit_bazzi_18: 1282341154
+      unit_bazzi_19: 520060894
+      unit_bazzi_2: -1163321835
+      unit_bazzi_20: -912214632
+      unit_bazzi_21: -2002974385
+      unit_bazzi_22: 783641442
+      unit_bazzi_23: -1823766132
+      unit_bazzi_24: -1575792204
+      unit_bazzi_25: 325153741
+      unit_bazzi_26: 1138422679
+      unit_bazzi_27: -890122930
+      unit_bazzi_28: 334946951
+      unit_bazzi_29: -1138407304
+      unit_bazzi_3: 1514592342
+      unit_bazzi_30: 318689090
+      unit_bazzi_31: 1707754239
+      unit_bazzi_32: 976807737
+      unit_bazzi_33: 1919243584
+      unit_bazzi_34: 1617071013
+      unit_bazzi_35: 208856544
+      unit_bazzi_36: -1677008849
+      unit_bazzi_37: 1986430520
+      unit_bazzi_38: 487950114
+      unit_bazzi_39: 1930581205
+      unit_bazzi_4: -932038341
+      unit_bazzi_40: 1287513702
+      unit_bazzi_41: 1228775687
+      unit_bazzi_42: 315315300
+      unit_bazzi_43: -1689504361
+      unit_bazzi_44: 1211958679
+      unit_bazzi_45: 272574436
+      unit_bazzi_46: -1064155800
+      unit_bazzi_47: -287573964
+      unit_bazzi_48: 919574469
+      unit_bazzi_49: 2127480866
+      unit_bazzi_5: 1030937159
+      unit_bazzi_50: 29893188
+      unit_bazzi_51: 378066799
+      unit_bazzi_52: -1499251888
+      unit_bazzi_53: -1956582851
+      unit_bazzi_54: 1297761261
+      unit_bazzi_55: -1846356495
+      unit_bazzi_56: -1060800513
+      unit_bazzi_57: -1469259659
+      unit_bazzi_58: 1600205528
+      unit_bazzi_59: 1132033980
+      unit_bazzi_6: -208241739
+      unit_bazzi_60: 658517311
+      unit_bazzi_61: -1265155681
+      unit_bazzi_62: 240307206
+      unit_bazzi_63: -492437806
+      unit_bazzi_64: 1888730121
+      unit_bazzi_65: -810623207
+      unit_bazzi_66: -283675204
+      unit_bazzi_67: -53400762
+      unit_bazzi_68: 1526792924
+      unit_bazzi_69: 1446827121
+      unit_bazzi_7: -1917596243
+      unit_bazzi_70: 2095213469
+      unit_bazzi_71: 1977115296
+      unit_bazzi_72: -227831282
+      unit_bazzi_73: 1686274945
+      unit_bazzi_8: 1563882501
+      unit_bazzi_9: -674608516
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

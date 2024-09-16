@@ -16,6 +16,8 @@ public class CABallon : MonoBehaviour
     void Start()
     {
         animator = GetComponent<Animator>();
+
+        
     }
 
      
