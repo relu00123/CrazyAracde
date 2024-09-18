@@ -12,6 +12,9 @@ public class TileInfo
 {
     public bool isBlocktPermanently = false;
     public bool isBlocktTemporary = false;
+    public InGameObject inGameObject;
+
+    
 }
 
 [System.Serializable]

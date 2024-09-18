@@ -429,7 +429,16 @@ class PacketHandler
 		return;
 	}
 
-	public static void S_OwnPlayerInformHandler(PacketSession session, IMessage packet)
+
+    public static void S_DestroyObjectHandler(PacketSession session, IMessage packet)
+    {
+        Debug.Log("Destroy Object Received!!");
+        Managers.InGame.HandleDestroyObject((S_DestroyObject)packet);
+        return;
+    }
+
+
+    public static void S_OwnPlayerInformHandler(PacketSession session, IMessage packet)
 	{
 		S_OwnPlayerInform pkt = (S_OwnPlayerInform)packet;
 		InGameObject obj =  Managers.InGame._objectLayerManager.FindObjectbyId(pkt.Objid, pkt.Layerinfo);
@@ -459,6 +468,8 @@ class PacketHandler
 		S_InstallBomb pkt = (S_InstallBomb)packet;
 
 	}
+
+	//public static void S_
 }
 
 

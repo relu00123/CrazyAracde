@@ -30,16 +30,39 @@ namespace Server.Game
             }
         }
 
-        public void RemoveObjectFromLayer(int layerIndex, InGameObject obj)
+        public bool RemoveObjectFromLayer(int objectid)
         {
-            if (layerIndex >= 0 && layerIndex < LayerCount)
+            InGameObject obj = FindObjectById(objectid);
+
+            if (obj == null)
+                return false;
+
+            RemoveObjectFromLayer(obj);
+
+            return true;
+        }
+
+        public void RemoveObjectFromLayer(InGameObject obj, int layerIndex = -1)
+        {
+            if (layerIndex == -1)
             {
-                _layerObjects[layerIndex].Remove(obj);
+                for (int i = 0; i < LayerCount; ++i)
+                {
+                    if (_layerObjects[i].Remove(obj))
+                        break;
+                }
             }
+
+
             else
             {
-                throw new IndexOutOfRangeException("Invalid layer index.");
+                if (layerIndex >= 0 && layerIndex < LayerCount)
+                {
+                    _layerObjects[layerIndex].Remove(obj);
+                }
             }
+
+             
         }
 
         public List<InGameObject> GetObjectsInLayer(int layerIndex)
@@ -52,6 +75,20 @@ namespace Server.Game
             {
                 throw new IndexOutOfRangeException("Invalid layer index.");
             }
+        }
+
+        public InGameObject FindObjectById(int objectId)
+        {
+            for (int i = 0; i < LayerCount; ++i)
+            {
+                for (int j = 0; j < _layerObjects[i].Count; ++j)
+                {
+                    if (_layerObjects[i][j].Id == objectId) 
+                        return _layerObjects[i][j];
+                }
+            }
+
+            return null;
         }
     }
 }

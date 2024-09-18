@@ -38,6 +38,14 @@ namespace Server.Game
             return newObject;
         }
 
+        public bool DestroyObjectbyId(int objid)
+        {
+           if ( _objectLayerManager.RemoveObjectFromLayer(objid))
+                return true;
+
+            return false; 
+        }
+
         public T CreateObject<T>(LayerType layerType, string objectName, PositionType posType, Vector2 posValue, Vector2? scale = null, Vector2? colliderSize = null)
             where T : InGameObject
         {

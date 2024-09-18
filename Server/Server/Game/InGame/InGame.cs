@@ -115,7 +115,7 @@ namespace Server.Game
 
         public void EnterGame(InGameObject gameObject)
         {
-            gameObject._inGame = this;
+            gameObject._possessGame = this;
             gameObject.Update();
         }
 
@@ -254,11 +254,7 @@ namespace Server.Game
             }
             else
             {
-                // 3. 폭탄을 설치하기
-                Console.WriteLine($"You can install Tile on ({install_tile_x},{install_tile_y}).");
-                _caMapManager._tileMapData[install_tile_x, install_tile_y].isBlocktTemporary = true;
-
-                // 4. 모든 Client들에게 BroadCast하기 
+                // 3. 폭탄 생성 및 모든 클라이언트에게 이 사실을 Broadcast하기 
                 BombInfoValue bombInfoValue = new BombInfoValue()
                 {
                     BombType = installBombPacket.BombType,
@@ -279,7 +275,20 @@ namespace Server.Game
                     ObjectType.ObjectBomb,
                     new Vector2(install_tile_x, install_tile_y),
                     BombInfos
-                ); 
+                );
+
+
+                // 4. 서버에 폭탄을 설치 및 관리하기 
+                Console.WriteLine($"You can install Tile on ({install_tile_x},{install_tile_y}).");
+                _caMapManager._tileMapData[install_tile_x, install_tile_y].isBlocktTemporary = true;
+
+
+                spawnedBombObj._possessGame = this;
+                spawnedBombObj.position = new Vector2Int(install_tile_x, install_tile_y);
+                spawnedBombObj.power = installBombPacket.Power;
+                _caMapManager._tileMapData[install_tile_x, install_tile_y].inGameObject = spawnedBombObj;
+                ((CABomb)(_caMapManager._tileMapData[install_tile_x, install_tile_y].inGameObject)).Bomb_update();
+                
 
                 // 5. 폭탄이 특정 시간 후에 터질 수 있도록 로직 작성해야함. 
                 // 이것을 여기서 해줘야하는지 아니면 CA_Bomb에 로직을 작성할지는 생각해 봐야함.

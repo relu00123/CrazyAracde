@@ -25,7 +25,7 @@ public class CAPlayer  : InGameObject
     {
         //Console.WriteLine($"Update Function Called! (Object ID : {Id}) (CurPosition : {_transform.Position})");
 
-        if (_inGame != null)
+        if (_possessGame != null)
         {
             switch (_state)
             {
@@ -38,7 +38,7 @@ public class CAPlayer  : InGameObject
                 
             }
 
-             _job =  _inGame._gameRoom.PushAfter(10, Update);
+             _job =  _possessGame._gameRoom.PushAfter(10, Update);
         }
     }
 

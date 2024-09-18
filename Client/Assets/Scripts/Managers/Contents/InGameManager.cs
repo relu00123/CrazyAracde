@@ -42,6 +42,11 @@ public class InGameManager : MonoBehaviour
         _objectLayerManager.HandleSpawnObject(spawnObjectPacket);
     }
 
+    public void HandleDestroyObject(S_DestroyObject destroyObjectPacket)
+    {
+        _objectLayerManager.HandleDestroyObject(destroyObjectPacket);
+    }
+
     public void OnSceneUnloaded(Scene scene)
     {
     }

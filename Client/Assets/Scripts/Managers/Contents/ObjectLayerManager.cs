@@ -32,20 +32,47 @@ public class ObjectLayerManager
         }
     }
 
-    public void RemoveObjectFromLayer(int layerIndex, InGameObject obj)
+    public void RemoveObjectFromLayer(InGameObject obj, int layerIndex = -1)
     {
-        if (layerIndex >= 0 && layerIndex < LayerCount)
+        if (layerIndex == -1)
         {
-            _layerObjects[layerIndex].Remove(obj);
-
-            if (obj.UnityObject != null)
+            for (int i = 0; i < LayerCount; ++i)
             {
-                GameObject.Destroy(obj.UnityObject);
+                if (_layerObjects[i].Remove(obj))
+                {
+                    if (obj.UnityObject != null)
+                    {
+                        GameObject.Destroy(obj.UnityObject);
+                    }
+                }
             }
         }
+
         else
         {
-            throw new IndexOutOfRangeException("Invalid layer index.");
+            if (layerIndex >= 0 && layerIndex < LayerCount)
+            {
+               if (_layerObjects[layerIndex].Remove(obj))
+               {
+                    if (obj.UnityObject != null)
+                    {
+                        GameObject.Destroy(obj.UnityObject);
+                    }
+               }
+            }
+            else
+            {
+                throw new IndexOutOfRangeException("Invalid layer index.");
+            }
+        }
+    }
+
+    public void HandleDestroyObject(S_DestroyObject destroyObjectPacket)
+    {
+       InGameObject obj = FindObjectbyId(destroyObjectPacket.ObjectId);
+        if (obj != null)
+        {
+            RemoveObjectFromLayer(obj);
         }
     }
 

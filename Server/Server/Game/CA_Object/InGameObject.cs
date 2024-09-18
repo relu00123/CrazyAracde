@@ -29,7 +29,7 @@ namespace Server.Game.CA_Object
 
         public float _moveSpeed { get; set; } = 0.3f;  //= 0.3f;
 
-        public InGame _inGame { get; set; }
+        public InGame _possessGame { get; set; }
 
         public CreatureState _state { get; private set; } = CreatureState.Idle;
 
@@ -90,7 +90,7 @@ namespace Server.Game.CA_Object
                 movePkt.PosInfo.PosY = _transform.Position.Y;
                 movePkt.PosInfo.State = _state;
                 movePkt.PosInfo.MoveDir = Direction;
-                _inGame._gameRoom.BroadcastPacket(movePkt);
+                _possessGame._gameRoom.BroadcastPacket(movePkt);
             }
 
             else
@@ -156,7 +156,7 @@ namespace Server.Game.CA_Object
             Console.WriteLine($"현재 위치 : ({_transform.Position.X} , {_transform.Position.Y})");
 
             var (CurColliderLeftX, CurColliderRightX, CurColliderUpY, CurColliderDownY) = _collider.CalculateTempBounds(_transform.Position);
-            var exemptTiles = _inGame._collisionManager.GetCollisionExemptTiles(CurColliderLeftX, CurColliderRightX, CurColliderUpY, CurColliderDownY, _inGame._caMapManager._tileMapData);
+            var exemptTiles = _possessGame._collisionManager.GetCollisionExemptTiles(CurColliderLeftX, CurColliderRightX, CurColliderUpY, CurColliderDownY, _possessGame._caMapManager._tileMapData);
 
 
             Vector2 direction = Vector2.Normalize(_targetPos - _transform.Position);
@@ -170,15 +170,15 @@ namespace Server.Game.CA_Object
                 direction = new Vector2(0, 0);  // 방향 벡터가 0일 경우, 기본 값 설정
             }
 
-            Vector2 nextPosition = _transform.Position + direction * _moveSpeed * 10 * (float)_inGame._gameRoom._deltaTime;
+            Vector2 nextPosition = _transform.Position + direction * _moveSpeed * 10 * (float)_possessGame._gameRoom._deltaTime;
 
             if (_collider != null)
             {
                 var (tempLeftX, tempRightX, tempUpY, tempDownY) = _collider.CalculateTempBounds(nextPosition);
 
 
-                var (collisionInfos, isOutofBoundsCollision) = _inGame._collisionManager.GetCollidedTiles(Direction, tempLeftX, tempRightX, tempUpY, tempDownY,
-                     _inGame._caMapManager._tileMapData, exemptTiles);
+                var (collisionInfos, isOutofBoundsCollision) = _possessGame._collisionManager.GetCollidedTiles(Direction, tempLeftX, tempRightX, tempUpY, tempDownY,
+                     _possessGame._caMapManager._tileMapData, exemptTiles);
 
                 // Debuggin 해보자.
                 /* {
@@ -212,7 +212,7 @@ namespace Server.Game.CA_Object
                 {
                     // 충돌이 발생한 경우, 위치를 조정 
 
-                    nextPosition =  _inGame._collisionManager.GetCorrectedPosForObj(_transform.Position, collisionInfos, Direction);
+                    nextPosition =  _possessGame._collisionManager.GetCorrectedPosForObj(_transform.Position, collisionInfos, Direction);
                     _targetPos = nextPosition;
                     Console.WriteLine($"충돌 발생후 target Pos : <{_targetPos.X},{_targetPos.Y}>");
                 }
@@ -269,7 +269,7 @@ namespace Server.Game.CA_Object
             movePkt.PosInfo.PosY = nextPosition.Y;
             movePkt.PosInfo.MoveDir = Direction;
             movePkt.PosInfo.State = CreatureState.Moving;
-            _inGame._gameRoom.BroadcastPacket(movePkt);
+            _possessGame._gameRoom.BroadcastPacket(movePkt);
 
 
 
