@@ -15,7 +15,7 @@ using System.Text;
     public Vector2Int position { get; set; } = new Vector2Int();
     public int power { get; set; }
 
-    IJob _job;
+    public IJob _job;
 
     public CABomb(int id, string name, Transform transform, int layer)
        : base(id, name, transform, layer)
@@ -50,13 +50,16 @@ using System.Text;
 
     public void Explode()
     {
-        Console.WriteLine("Explode Function Called!");
+        if (_job == null || _job.Cancel == true) return;
 
-        if (_job != null)
-        {
-            _job.Cancel = true;
-            _job = null;
-        }
+        Console.WriteLine("Explode!");
+        
+        _job.Cancel = true;
+        _job = null;
+
+        // 3. 본인과, 연계된 지역의 WaterStream 객체를 생성 및 Client에 Broadcast 
+        // 이 일은 Bomb에서 해주는 것이 아니라 CAMapManager에서 해줘야 한다. 
+        _possessGame._caMapManager.ExplodeBomb(this);  // 테스트중
 
         // 1. 클라이언트에서 이 클래스의 ObjectId를 가지고 있는 객체를 찾아서 Destroty
         S_DestroyObject destroyObject = new S_DestroyObject
@@ -71,11 +74,9 @@ using System.Text;
         InstalledTileData.isBlocktTemporary = false;
         InstalledTileData.inGameObject = null;
 
-        
-        _possessGame._objectsManager.DestroyObjectbyId(this.Id);
+         
 
-        // 3. 본인과, 연계된 지역의 WaterStream 객체를 생성 및 Client에 Broadcast 
-        // 이 일은 Bomb에서 해주는 것이 아니라 TileMapManager에서 해줘야 한다. 
+        _possessGame._objectsManager.DestroyObjectbyId(this.Id);
 
     }
 

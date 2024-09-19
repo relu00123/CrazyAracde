@@ -56,9 +56,12 @@ TagManager:
   - name: Boxes
     uniqueID: 2799844271
     locked: 0
-  - name: Bomb
+  - name: WaterStream
     uniqueID: 3778174115
     locked: 0
-  - name: Character
+  - name: Bomb
     uniqueID: 4051371765
+    locked: 0
+  - name: Character
+    uniqueID: 3073698893
     locked: 0

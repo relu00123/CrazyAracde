@@ -65,19 +65,21 @@ public class TileData   // Enum값도 집어넣을 수 있다는 것 확인하�
 namespace Server.Game
 {
     public class CAMapManager
-    { 
+    {
         public TileInfo[,] _tileMapData { get; private set; }
 
         public InGame _currentGame { get; private set; }
 
-        public  MapType _mapType { get; private set; }
+        public MapType _mapType { get; private set; }
+
+        private List<Vector2Int> curExplodedPositions = new List<Vector2Int>();
 
         public CAMapManager(MapType mapType, InGame currentGame)
         {
             _mapType = mapType;
             _currentGame = currentGame;
             Init();
-             
+
         }
 
         private void Init()
@@ -130,12 +132,12 @@ namespace Server.Game
                     // 지금은 임시로 Wall 에 대해서 LayerIndex 1번을 사용하도록 한다.
                     // 나중에는 layer의 이름으로 index로 찾을 수 있게 하던가 enum Type으로 관리해야할 것임. 
                     // 이부분 코드가나중에도 재사용성이 매우 높기 때문에 함수로 만들어 버릴 것임. 
-                    
+
                     _currentGame.CreateAndBroadcastObject(
-                        LayerType.DefaultLayer, 
-                        "Walls", 
+                        LayerType.DefaultLayer,
+                        "Walls",
                         PositionType.TileCenterPos,
-                        ObjectType.ObjectBox, 
+                        ObjectType.ObjectBox,
                         new Vector2(tileData.position.x, tileData.position.y)
                     );
                 }
@@ -150,11 +152,11 @@ namespace Server.Game
 
 
             // 맵의 상태를 확인해 보자. 
-            for (int y = 0; y < 14 ; y++)
+            for (int y = 0; y < 14; y++)
             {
                 for (int x = 0; x < 15; x++)
                 {
-                    if (_tileMapData[x,y].isBlocktTemporary == true || _tileMapData[x,y].isBlocktPermanently == true)
+                    if (_tileMapData[x, y].isBlocktTemporary == true || _tileMapData[x, y].isBlocktPermanently == true)
                     {
                         Console.Write("1 ");
                     }
@@ -162,7 +164,7 @@ namespace Server.Game
                     {
                         Console.Write("0 ");
                     }
-                    
+
                 }
                 Console.WriteLine(0);
             }
@@ -239,17 +241,17 @@ namespace Server.Game
                     if (_currentGame._gameRoom.Slots[idx].ClientSession == null) continue;
 
                     // 본인이 조작해야하는 플레이어인 경우  경우
-                    if ( idx == i)
+                    if (idx == i)
                     {
                         S_OwnPlayerInform ownPlayerInform = new S_OwnPlayerInform
                         {
                             Objid = spawnobj.Id,
                             Layerinfo = (LayerType)spawnobj._layeridx,
                             Chartype = _currentGame._gameRoom.Slots[i].CharType
-                    };
+                        };
 
                         _currentGame._gameRoom.Slots[idx].ClientSession.Send(ownPlayerInform);
-                           
+
                     }
 
 
@@ -272,7 +274,139 @@ namespace Server.Game
                 _currentGame.EnterGame(spawnobj);
             }
         }
-    }
 
-    
+        public void ExplodeBomb(CABomb bomb)
+        {
+            curExplodedPositions.Clear();
+
+            ExplodeAtPosition(bomb.position, bomb);
+
+        }
+
+        private void ExplodeAtPosition(Vector2Int position, CABomb bomb)
+        {
+            bomb.Explode();
+
+            if (curExplodedPositions.Contains(position))
+                return; // 이미 방문한 위치는 다시 처리하지 않는다.
+
+            curExplodedPositions.Add(position);
+
+            // 현재 위치에 물줄기 생성
+            // Todo.. 테스트중..
+            CAWaterStream SpawnedWaterStream = _currentGame.CreateAndBroadcastObject<CAWaterStream>(
+                   LayerType.DefaultLayer,
+                   "WaterStream",
+                   PositionType.TileCenterPos,
+                   ObjectType.ObjectWaterStream,
+                   new Vector2(position.x, position.y)
+               );
+
+            SpawnedWaterStream._possessGame = _currentGame;
+            SpawnedWaterStream.WaterStreamUpdate();
+
+            // 테스트중..
+
+
+
+            SpreadWater(Vector2Int.up, position, bomb.power);
+            SpreadWater(Vector2Int.down, position, bomb.power);
+            SpreadWater(Vector2Int.left, position, bomb.power);
+            SpreadWater(Vector2Int.right, position, bomb.power);
+
+        }
+
+        private void SpreadWater(Vector2Int direction, Vector2Int startPosition, int power)
+        {
+            for (int i = 1; i <= power; i++)
+            {
+                Vector2Int nextPosition = new Vector2Int(
+                    startPosition.x + direction.x * i,
+                    startPosition.y + direction.y * i
+                );
+
+
+                if (!IsWithInMap(nextPosition))
+                    break;
+
+                TileInfo tile = _tileMapData[nextPosition.x, nextPosition.y];
+
+                // 물풍선이 있으면 즉시 터뜨린다.
+                if (tile.inGameObject is CABomb bomb)
+                {
+                    ExplodeAtPosition(nextPosition, bomb); // 재귀적으로 해당위치에서 폭발 확산 -> 여기 로직 보완 필요 PushAfter막는 것을 이 함수에서?
+                    break;
+                }
+
+                // 이미 방문한 좌표라면 생략
+                if (curExplodedPositions.Contains(nextPosition))
+                    continue;
+
+                var WaterStreamDir = CalculateWaterStreamType(direction, power - i);
+
+                List<KeyValuePairs> StreamInfos = new List<KeyValuePairs>
+                {
+                    new KeyValuePairs { Key = ObjectSpawnKeyType.Waterstream, StreamInfoValue = WaterStreamDir}
+                };
+
+
+                // 물줄기를 퍼뜨리고, 좌표 리스트에 추가
+                curExplodedPositions.Add(nextPosition);
+                // 물줄기 생성
+                // Todo..  테스트중..
+                CAWaterStream SpawnedWaterStream = _currentGame.CreateAndBroadcastObject<CAWaterStream>(
+                   LayerType.DefaultLayer,
+                   "WaterStream",
+                   PositionType.TileCenterPos,
+                   ObjectType.ObjectWaterStream,
+                   new Vector2(nextPosition.x, nextPosition.y),
+                   StreamInfos
+               );
+
+                SpawnedWaterStream._possessGame = _currentGame;
+                SpawnedWaterStream.WaterStreamUpdate();
+
+                // 테스트 중..
+            }
+        }
+
+        private bool IsWithInMap(Vector2Int position)
+        {
+            return position.x >= 0 && position.y >= 0 && position.x < 15 && position.y < 14;
+        }
+
+
+        WaterStreamType CalculateWaterStreamType(Vector2Int dir, int power)
+        {
+            if (dir.Equals(Vector2Int.down))
+            {
+                if (power == 0)
+                    return WaterStreamType.StreamDownEdge;
+                return WaterStreamType.StreamDown;
+            }
+
+            else if (dir.Equals(Vector2Int.up))
+            {
+                if (power == 0)
+                    return WaterStreamType.StreamUpEdge;
+                return WaterStreamType.StreamUp;
+            }
+
+            else if (dir.Equals(Vector2Int.right))
+            {
+                if (power == 0)
+                    return WaterStreamType.StreamRightEdge;
+                return WaterStreamType.StreamRight;
+            }
+
+            else if (dir.Equals(Vector2Int.left))
+            {
+                if (power == 0)
+                    return WaterStreamType.StreamLeftEdge;
+                return WaterStreamType.StreamLeft;
+            }
+
+            return WaterStreamType.StreamCenter;
+        }
+    } 
 }

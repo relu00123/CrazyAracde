@@ -8,7 +8,7 @@ public class CABallon : MonoBehaviour
     // Inventory기능을 만든다면 여기에서 정보를 가져오도록 하자. 
     public BombType bombSkinType { get; set; } = BombType.Black;  
 
-    public int power { get;  set; } = 1;
+    public int power { get;  set; } = 3;
 
     public Animator animator { get; private set; }
 

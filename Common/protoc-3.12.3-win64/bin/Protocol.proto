@@ -247,6 +247,8 @@ enum RoomAlterType
   ALTER = 2;
 }
 
+ 
+
 enum GameRoomCharacterStateType
 {
   HOST = 0;
@@ -259,6 +261,7 @@ enum ObjectSpawnKeyType
 {
   CHARACTER = 0;
   BOMB = 1; 
+  WATERSTREAM = 2;
 }
 
 enum BombType 
@@ -449,6 +452,7 @@ message KeyValuePairs  {
     float  float_value = 4;
     ObjectSpawnPlayerValue player_info_vlaue = 5;
     BombInfoValue Bomb_info_value = 6;
+    WaterStreamType Stream_info_value = 7;
   }
 }
 

@@ -130,6 +130,26 @@ public class ObjectLayerManager
             }
             break;
 
+            case ObjectType.ObjectWaterStream:
+            {
+                Debug.Log("Trying to Create WaterStream!");
+                position.y -= 0.5f;
+                unityObject.transform.position = position;
+
+                foreach(var kvp in spawnObjectPacket.AdditionalData)
+                {
+                    if (kvp.Key == ObjectSpawnKeyType.Waterstream)
+                    {
+                        WaterStreamType StreamInfoValue = kvp.StreamInfoValue;
+                        string animationName = StreamInfoValue.ToString();
+                        unityObject.GetComponent<Animator>().Play(animationName);
+                    }
+                }
+
+            }
+            break;
+
+
             default:
                 break; 
 
