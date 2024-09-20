@@ -82,7 +82,8 @@ enum CreatureState {
   IDLE = 0;
   MOVING = 1;
   SKILL = 2;
-  DEAD = 3;
+  BUBBLE = 3; 
+  DEAD = 4;
 }
 
 enum CACreatureState {
@@ -474,7 +475,8 @@ message S_SpawnObject {
   int32        objectid     = 1;
   ObjectType   objecttype   = 2;
   PositionInfo positioninfo = 3;
-  repeated KeyValuePairs additional_data = 4;
+  LayerType    objectlayer  = 4;
+  repeated KeyValuePairs additional_data = 5;
 }
 
 message S_DestroyObject  {

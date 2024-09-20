@@ -81,4 +81,16 @@ public class CAWaterStream : InGameObject
         // 물줄기 제거 (서버)
         _possessGame._objectsManager.DestroyObjectbyId(this.Id);
     }
+
+    public override void OnBeginOverlap(InGameObject other)
+    {
+        Console.WriteLine("ON BEGIN OVERLAP FUNCTION CALLED FROM WATERSTREAM!!");
+
+        if (other is CAPlayer)
+        {
+            Console.WriteLine("WATERSTREAM COLLIDED WITH CHARACTER");
+            
+            // 이곳에서 캐릭터를 물방울에 갇힘 상태로 만들어 줘야 한다. 
+        }
+    }
 }

@@ -32,11 +32,7 @@ namespace Server.Game
         // Collider의 위치와 크기에 따른 경계 좌표(AABB)를 업에디트
         public void UpdateColliderWorldMat()
         {
-            // 작업 하기전 예측해서 만들어둔 코드 
-            //var position = _owner._transform.Position + OffsetPos;
-            //var scale = _owner._transform.Scale * OffsetScale;
-            //_colliderWorldMat = Matrix3x2.CreateScale(scale) * Matrix3x2.CreateTranslation(position);
-            //UpdateBounds();
+            
 
             // 캐릭터의 중심 좌표 (타일 좌표에서 중앙으로 이동)
             var position = _owner._transform.Position  + OffsetPos;
@@ -81,15 +77,21 @@ namespace Server.Game
 
         public bool IsCollidingWith(Collider other)
         {
-            return !(RightXValue < other.LeftXValue ||    // 오른쪽 경계가 상대의 왼쪽 경계보다 왼쪽에 있으면 충돌 X
-                     LeftXValue > other.RightXValue ||    // 왼쪽 경계가 상대의 오른쪽 경계보다 오른쪽에 있으면 충돌 X
-                     UpYValue > other.DownYValue ||       // 아래쪽 경계가 상대의 위쪽 경계보다 위에 있으면 충돌 X (Y축 반전)
-                     DownYValue < other.UpYValue);        // 위쪽 경계가 상대의 아래 경계보다 아래에 있으면 충돌 X (Y축 반전)
+            if (RightXValue < other.LeftXValue || LeftXValue > other.RightXValue) return false;
+            if (DownYValue > other.UpYValue || UpYValue < other.DownYValue) return false;
+
+            return true;
+
+
+            //return !(RightXValue < other.LeftXValue ||    // 오른쪽 경계가 상대의 왼쪽 경계보다 왼쪽에 있으면 충돌 X
+            //         LeftXValue > other.RightXValue ||    // 왼쪽 경계가 상대의 오른쪽 경계보다 오른쪽에 있으면 충돌 X
+            //         UpYValue > other.DownYValue ||       // 아래쪽 경계가 상대의 위쪽 경계보다 위에 있으면 충돌 X (Y축 반전)
+            //         DownYValue < other.UpYValue);        // 위쪽 경계가 상대의 아래 경계보다 아래에 있으면 충돌 X (Y축 반전)
         }
 
         public void BeginOverlap(Collider other)
         {
-            _owner.OnBeginOverlap(other);
+            //_owner.OnBeginOverlap(other);
         }
 
 

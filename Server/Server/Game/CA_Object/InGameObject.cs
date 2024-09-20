@@ -55,9 +55,10 @@ namespace Server.Game.CA_Object
         }
 
         // 충돌 관련 
-        public virtual void OnBeginOverlap(Collider other)
+        public virtual void OnBeginOverlap(InGameObject other)
         {
             // 충돌 시작 시 동작
+            Console.WriteLine("ON BEGIN OVERLAP FUNCTION CALLED!!");
         }
 
         public virtual void OnOverlap(Collider other)
@@ -105,13 +106,18 @@ namespace Server.Game.CA_Object
             switch (_state)
             {
                 case CreatureState.Idle:
-                    return newState == CreatureState.Moving || newState == CreatureState.Dead || newState == CreatureState.Idle;
+                    return newState == CreatureState.Moving || newState == CreatureState.Dead || newState == CreatureState.Idle
+                        || newState == CreatureState.Bubble;
 
                 case CreatureState.Moving:
-                    return newState == CreatureState.Idle || newState == CreatureState.Moving;
+                    return newState == CreatureState.Idle || newState == CreatureState.Moving
+                        || newState == CreatureState.Bubble; 
+
+                case CreatureState.Bubble: 
 
                 case CreatureState.Dead:
                     return false; // Death 상태에서 다른 상태로 전환 불가
+
 
                 // 추가 상태 전환 규칙을 여기에 정의
                 default:

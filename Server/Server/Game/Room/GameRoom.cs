@@ -153,6 +153,11 @@ namespace Server.Game
 		{
 			Flush();
 
+			if (_inGame != null)
+			{
+				_inGame.Update();
+			}
+
 			if ( IsRoomEmpty() && !_isClosed)
 			{
 				CloseRoom();
@@ -962,10 +967,6 @@ namespace Server.Game
 			//    }
 			//}
 
-			
-
-
-			 
 
 			int isAllLoadedFailCnt = 0;
 

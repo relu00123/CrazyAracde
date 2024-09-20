@@ -159,7 +159,7 @@ public class ObjectLayerManager
         newObject.AttachUnityObject(unityObject);
 
         // 레이어에 추가하여 관리합니다.
-        AddObjectToLayer(0, newObject); // 예시로 0번 레이어에 추가
+        AddObjectToLayer((int)spawnObjectPacket.Objectlayer, newObject); // 예시로 0번 레이어에 추가
 
         // 추가 로직: 필요시 스크립트에 접근하거나 초기화 작업 수행
     }

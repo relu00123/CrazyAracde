@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Numerics;
 using System.Text;
@@ -9,7 +10,6 @@ using Server.Game.CA_Object;
 
 namespace Server.Game.Core
 {
-    // 09.06 작성
     public struct CollisionInfo
     {
         public bool IsCollided;       // 충돌 발생 여부
@@ -27,12 +27,113 @@ namespace Server.Game.Core
         private ObjectLayerManager _objectLayerManager;
         private Dictionary<ulong, bool> _collisionMap;
 
+        public const int LayerCount = 30;
+
+        bool[,] collisionMatrix = new bool[LayerCount, LayerCount];
+
 
         public CollisionManager(ObjectLayerManager objectLayerManager)
         {
             _objectLayerManager = objectLayerManager;
             _collisionMap = new Dictionary<ulong, bool>();
+            InitializeCollisionMatrix();
         }
+
+        private void InitializeCollisionMatrix()
+        {
+            // Character
+            collisionMatrix[(int)LayerType.CharacterLayer, (int)LayerType.WaterstreamLayer] = true;
+            collisionMatrix[(int)LayerType.CharacterLayer, (int)LayerType.ItemLayer] = true;
+            collisionMatrix[(int)LayerType.CharacterLayer, (int)LayerType.CharacterLayer] = true;
+
+            // WaterStream
+            collisionMatrix[(int)LayerType.WaterstreamLayer, (int)LayerType.CharacterLayer] = true;
+            collisionMatrix[(int)LayerType.WaterstreamLayer, (int)LayerType.ItemLayer] = true;
+
+
+            // ItemLayer 
+            collisionMatrix[(int)LayerType.ItemLayer, (int)LayerType.CharacterLayer] = true;
+            collisionMatrix[(int)LayerType.ItemLayer, (int)LayerType.WaterstreamLayer] = true;
+        }
+
+        public void UpdateDynamicCollision()
+        {
+            //Console.WriteLine("Update Dynamic Collision Function Called!");
+
+            for (int i = 0; i < LayerCount; i++) // Layer1
+            {
+                List<InGameObject> ObjectsInLayer1 = _objectLayerManager.GetObjectsInLayer(i);
+
+                for (int j = 0; j < i; j++) // Layer2
+                {
+                    if (collisionMatrix[i, j] == false) continue; // 충돌이 일어나지 않은 Layer들간의 비교
+
+                    List<InGameObject> ObjectInLayer2 = _objectLayerManager.GetObjectsInLayer(j); 
+
+
+                    for (int obj1_idx = 0; obj1_idx < ObjectsInLayer1.Count; obj1_idx++)
+                    {
+                        for (int obj2_idx = 0; obj2_idx < ObjectInLayer2.Count; obj2_idx++)
+                        {
+                            // ObjectsInLayer1[obj1_idx] 와
+                            // ObjectInLayer2[obj2_idx]  가 충돌하는지 확인. 충돌하면 BeginOverlap 수행. 
+                            // 이 함수 가져다 쓰면 될듯?
+                            CollisionBtwObjects(ObjectsInLayer1[obj1_idx], ObjectInLayer2[obj2_idx]);
+                        }
+                    }
+
+                }
+            }
+        }
+
+        private void CollisionBtwObjects(InGameObject leftObj, InGameObject rightObj)
+        {
+            var leftCollider = leftObj._collider;
+            var rightCollider = rightObj._collider;
+
+            if (leftCollider == null || rightCollider == null) return;
+
+            leftObj._collider.UpdateColliderWorldMat();
+            rightObj._collider.UpdateColliderWorldMat();
+            
+            bool isColliding = leftCollider.IsCollidingWith(rightCollider);
+
+            if (isColliding)
+            {
+                leftObj.OnBeginOverlap(rightObj);
+                rightObj.OnBeginOverlap(leftObj);
+            }
+
+            // 이어서 로직작성..
+
+            //ulong collisionID = GenerateCollisionID(leftCollider, rightCollider);
+
+            //bool wasColliding = _collisionMap.ContainsKey(collisionID) && _collisionMap[collisionID];
+            //bool isColliding = leftCollider.IsCollidingWith(rightCollider);
+
+            //if (isColliding)
+            //{
+            //    if (wasColliding)
+            //    {
+            //        leftCollider.OnOverlap(rightCollider);
+            //        rightCollider.OnOverlap(leftCollider);
+            //    }
+            //    else
+            //    {
+            //        leftCollider.BeginOverlap(rightCollider);
+            //        rightCollider.BeginOverlap(leftCollider);
+            //        _collisionMap[collisionID] = true;
+            //    }
+            //}
+            //else if (wasColliding)
+            //{
+            //    leftCollider.EndOverlap(rightCollider);
+            //    rightCollider.EndOverlap(leftCollider);
+            //    _collisionMap[collisionID] = false;
+            //}
+        }
+
+
 
         public void Tick()
         {
@@ -59,44 +160,14 @@ namespace Server.Game.Core
             }
         }
 
-        private void CollisionBtwObjects(InGameObject leftObj, InGameObject rightObj)
-        {
-            var leftCollider = leftObj._collider;
-            var rightCollider = rightObj._collider;
-
-            if (leftCollider == null || rightCollider == null) return;
-
-            ulong collisionID = GenerateCollisionID(leftCollider, rightCollider);
-
-            bool wasColliding = _collisionMap.ContainsKey(collisionID) && _collisionMap[collisionID];
-            bool isColliding = leftCollider.IsCollidingWith(rightCollider);
-
-            if (isColliding)
-            {
-                if (wasColliding)
-                {
-                    leftCollider.OnOverlap(rightCollider);
-                    rightCollider.OnOverlap(leftCollider);
-                }
-                else
-                {
-                    leftCollider.BeginOverlap(rightCollider);
-                    rightCollider.BeginOverlap(leftCollider);
-                    _collisionMap[collisionID] = true;
-                }
-            }
-            else if (wasColliding)
-            {
-                leftCollider.EndOverlap(rightCollider);
-                rightCollider.EndOverlap(leftCollider);
-                _collisionMap[collisionID] = false;
-            }
-        }
-
+         
         private ulong GenerateCollisionID(Collider left, Collider right)
         {
             return ((ulong)left.GetHashCode() << 32) | (uint)right.GetHashCode();
         }
+
+
+        // 동적 충돌 (매틱마다 호출)
 
 
 
@@ -218,7 +289,6 @@ namespace Server.Game.Core
             return (collisionInfos, isOutOfBoundsCollision);
         }
 
-
         float CalculateOverlapPercentage(MoveDir dir, int x, int y, float leftX, float rightX, float downY, float upY, CollisionInfo collisionInfo)
         {
             float overlapPercentage = 1;
@@ -265,7 +335,6 @@ namespace Server.Game.Core
 
             return overlapPercentage;
         }
-
 
         public CollisionInfo IsCollidedWithMapTest(MoveDir dir, float leftX, float rightX, float upY, float downY, TileInfo[,] tileMapData)
         {
@@ -382,10 +451,6 @@ namespace Server.Game.Core
 
             return collisionInfo;
         }
-
-
-
-
 
         public Vector2 GetCorrectedPosition(Vector2 currentPosition, MoveDir direction)
         {

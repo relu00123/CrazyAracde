@@ -225,7 +225,7 @@ namespace Server.Game
                 //);
 
                 CAPlayer spawnobj = _currentGame.CreateAndBroadcastObject<CAPlayer>(
-                    LayerType.DefaultLayer,
+                    LayerType.CharacterLayer,
                     "Character",
                     PositionType.TileCenterPos,
                     ObjectType.ObjectPlayer,
@@ -297,7 +297,7 @@ namespace Server.Game
             // 현재 위치에 물줄기 생성
             // Todo.. 테스트중..
             CAWaterStream SpawnedWaterStream = _currentGame.CreateAndBroadcastObject<CAWaterStream>(
-                   LayerType.DefaultLayer,
+                   LayerType.WaterstreamLayer,
                    "WaterStream",
                    PositionType.TileCenterPos,
                    ObjectType.ObjectWaterStream,
@@ -357,7 +357,7 @@ namespace Server.Game
                 // 물줄기 생성
                 // Todo..  테스트중..
                 CAWaterStream SpawnedWaterStream = _currentGame.CreateAndBroadcastObject<CAWaterStream>(
-                   LayerType.DefaultLayer,
+                   LayerType.WaterstreamLayer,
                    "WaterStream",
                    PositionType.TileCenterPos,
                    ObjectType.ObjectWaterStream,

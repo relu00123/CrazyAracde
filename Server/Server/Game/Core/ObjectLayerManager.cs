@@ -45,9 +45,11 @@ namespace Server.Game
             return true;
         }
 
-        public void RemoveObjectFromLayer(InGameObject obj, int layerIndex = -1)
+        public void RemoveObjectFromLayer(InGameObject obj, LayerType layerType = LayerType.DefaultLayer)
         {
-            if (layerIndex == -1)
+            //int layerIndex = -1;
+
+            if (layerType == LayerType.DefaultLayer)
             {
                 for (int i = 0; i < LayerCount; ++i)
                 {
@@ -63,9 +65,15 @@ namespace Server.Game
 
             else
             {
+                int layerIndex = (int)layerType;
+
                 if (layerIndex >= 0 && layerIndex < LayerCount)
                 {
-                    _layerObjects[layerIndex].Remove(obj);
+                    if ( _layerObjects[layerIndex].Remove(obj))
+                    {
+                        string layerName = Enum.GetName(typeof(LayerType), obj._layeridx);
+                        Console.WriteLine($"Deleting Object in {layerName} (index: {obj._layeridx})");
+                    }
                 }
             }
 

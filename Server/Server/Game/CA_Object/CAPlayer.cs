@@ -51,5 +51,10 @@ public class CAPlayer  : InGameObject
     {
         base.UpdateMoving();
     }
+
+    public override void OnBeginOverlap(InGameObject other)
+    {
+        Console.WriteLine("ON BEGIN OVERLAP FUNCTION CALLED FROM CHARACTER!!");
+    }
 }
 
