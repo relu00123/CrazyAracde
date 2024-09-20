@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using Google.Protobuf.Protocol;
 using Server.Game.CA_Object;
 
 namespace Server.Game
@@ -22,6 +23,8 @@ namespace Server.Game
         {
             if (layerIndex >= 0 && layerIndex < LayerCount)
             {
+                string layerName = Enum.GetName(typeof(LayerType), layerIndex);
+                Console.WriteLine($"Adding Object in {layerName} (index: {layerIndex})");
                 _layerObjects[layerIndex].Add(obj);
             }
             else
@@ -49,7 +52,11 @@ namespace Server.Game
                 for (int i = 0; i < LayerCount; ++i)
                 {
                     if (_layerObjects[i].Remove(obj))
+                    {
+                        string layerName = Enum.GetName(typeof(LayerType), obj._layeridx);
+                        Console.WriteLine($"Deleting Object in {layerName} (index: {obj._layeridx})");
                         break;
+                    }
                 }
             }
 

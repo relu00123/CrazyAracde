@@ -133,6 +133,8 @@ namespace Server.Game
                     // 나중에는 layer의 이름으로 index로 찾을 수 있게 하던가 enum Type으로 관리해야할 것임. 
                     // 이부분 코드가나중에도 재사용성이 매우 높기 때문에 함수로 만들어 버릴 것임. 
 
+                   
+
                     _currentGame.CreateAndBroadcastObject(
                         LayerType.DefaultLayer,
                         "Walls",

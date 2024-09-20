@@ -100,6 +100,9 @@ enum PositionType {
 
 enum LayerType {
   DEFAULT_LAYER = 0;
+  CHARACTER_LAYER = 1;
+  WATERSTREAM_LAYER = 2;
+  ITEM_LAYER = 3;
 }
 
 enum MoveDir {
