@@ -21,8 +21,4 @@
     <ProjectReference Include="..\SharedDB\SharedDB.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Game\CA_ObjectState\Player\" />
-  </ItemGroup>
-
 </Project>

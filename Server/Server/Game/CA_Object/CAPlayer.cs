@@ -15,11 +15,11 @@ public class CAPlayer  : InGameObject
     {
         // Player에 필요한 Collider 생성
         _collider = new Collider(this, Vector2.Zero, new Vector2(0.95f, 0.95f));
+
+        _currentState = new Player_IdleState();
     }
 
     IJob _job;
-
-     
 
     public override void Update()
     {
@@ -34,6 +34,12 @@ public class CAPlayer  : InGameObject
                     break;
                 case CreatureState.Moving:
                     UpdateMoving();
+                    break;
+                case CreatureState.BubbleMoving:
+                    UpdateMoving();
+                    break;
+                case CreatureState.BubbleIdle:
+                    UpdateIdle();
                     break;
                 
             }

@@ -82,8 +82,9 @@ enum CreatureState {
   IDLE = 0;
   MOVING = 1;
   SKILL = 2;
-  BUBBLE = 3; 
-  DEAD = 4;
+  BUBBLE_IDLE = 3; 
+  BUBBLE_MOVING = 4;
+  DEAD = 5;
 }
 
 enum CACreatureState {

@@ -1,8 +1,11 @@
-﻿using Server.Game.CA_Object;
+﻿using Google.Protobuf.Protocol;
+using Server.Game.CA_Object;
 using Server.Game;
 using System;
 using System.Collections.Generic;
 using System.Text;
+
+ 
 
 public interface IInGameObjectFactory<T> where T : InGameObject
 {

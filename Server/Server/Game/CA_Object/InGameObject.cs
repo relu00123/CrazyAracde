@@ -33,6 +33,11 @@ namespace Server.Game.CA_Object
 
         public CreatureState _state { get; private set; } = CreatureState.Idle;
 
+
+        // 지금 새로 작업중인 부분
+        public IObjectState _currentState { get; protected set; }
+
+
         private const float Tolerance = 1e-5f;
 
         public InGameObject(int id, string name, int layer)
@@ -76,28 +81,54 @@ namespace Server.Game.CA_Object
 
         }
 
+        public void ChangeState(IObjectState newState)
+        {
+            _currentState.ExitState(this);  // 기존 상태 종료
+            _currentState = newState;       // 새로운 상태로 전환
+            _currentState.EnterState(this); // 새로운 상태 시작
+
+            // 매핑된 CreatureState로 업데이트 
+            var mappedState = StateManager.GetCreatureStateFromObjectState(newState);
+            ChangeState(mappedState);
+        }
+
         // FSM 관련
         public void ChangeState(CreatureState newState)
         {
-            if (IsValidStateTransition(newState))
-            {
-                _state = newState;
-                Console.WriteLine($"State changed to: {_state}");
+            _state = newState;
+            Console.WriteLine($"State changed to: {_state}");
 
-                S_Move movePkt = new S_Move();
-                movePkt.ObjectId = Id;
-                movePkt.PosInfo = new PositionInfo();
-                movePkt.PosInfo.PosX = _transform.Position.X;
-                movePkt.PosInfo.PosY = _transform.Position.Y;
-                movePkt.PosInfo.State = _state;
-                movePkt.PosInfo.MoveDir = Direction;
-                _possessGame._gameRoom.BroadcastPacket(movePkt);
-            }
+            S_Move movePkt = new S_Move();
+            movePkt.ObjectId = Id;
+            movePkt.PosInfo = new PositionInfo();
+            movePkt.PosInfo.PosX = _transform.Position.X;
+            movePkt.PosInfo.PosY = _transform.Position.Y;
+            movePkt.PosInfo.State = _state;
+            movePkt.PosInfo.MoveDir = Direction;
+            _possessGame._gameRoom.BroadcastPacket(movePkt);
 
-            else
-            {
-                Console.WriteLine($"Invalid state transition: {_state} to {newState}");
-            }
+
+            // 기존에 사용하던 코드
+            //if (IsValidStateTransition(newState))
+            //{
+            //    _state = newState;
+            //    Console.WriteLine($"State changed to: {_state}");
+
+            //    S_Move movePkt = new S_Move();
+            //    movePkt.ObjectId = Id;
+            //    movePkt.PosInfo = new PositionInfo();
+            //    movePkt.PosInfo.PosX = _transform.Position.X;
+            //    movePkt.PosInfo.PosY = _transform.Position.Y;
+            //    movePkt.PosInfo.State = _state;
+            //    movePkt.PosInfo.MoveDir = Direction;
+            //    _possessGame._gameRoom.BroadcastPacket(movePkt);
+            //}
+
+            //else
+            //{
+            //    Console.WriteLine($"Invalid state transition: {_state} to {newState}");
+            //}
+            // 기존에 사용하던 코드 끝
         }
 
         protected virtual bool IsValidStateTransition(CreatureState newState)
@@ -107,13 +138,13 @@ namespace Server.Game.CA_Object
             {
                 case CreatureState.Idle:
                     return newState == CreatureState.Moving || newState == CreatureState.Dead || newState == CreatureState.Idle
-                        || newState == CreatureState.Bubble;
+                        || newState == CreatureState.BubbleIdle || newState == CreatureState.BubbleMoving;
 
                 case CreatureState.Moving:
                     return newState == CreatureState.Idle || newState == CreatureState.Moving
-                        || newState == CreatureState.Bubble; 
+                        || newState == CreatureState.BubbleIdle || newState == CreatureState.BubbleMoving;
 
-                case CreatureState.Bubble: 
+                case CreatureState.BubbleIdle: 
 
                 case CreatureState.Dead:
                     return false; // Death 상태에서 다른 상태로 전환 불가
@@ -127,7 +158,7 @@ namespace Server.Game.CA_Object
 
 
         // 상태별 Update
-        public virtual void UpdateIdle()
+        public virtual void UpdateIdle() 
         {
 
         }
