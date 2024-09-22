@@ -15,7 +15,7 @@ public class Player_MovingState : AbstractPlayerState
             Console.Write("Stop Walking (Move Key detached)");
 
             // Idle상태로 바꿔준다. 
-            gameObject.ChangeState( new Player_IdleState());
+            gameObject.ChangeState(new Player_IdleState());
             return;
         }
 
@@ -25,7 +25,15 @@ public class Player_MovingState : AbstractPlayerState
 
     public override void EnterState(InGameObject obj, IObjectState previousState)
     {
+        // Animation 변경을 위해서 추가한 코드 
+        S_ChangeAnimation changeAnimPkt = new S_ChangeAnimation
+        {
+            ObjectId = obj.Id,
+            PlayerAnim = PlayerAnimState.PlayerAnimMoving,
+        };
 
+        obj._possessGame._gameRoom.BroadcastPacket(changeAnimPkt);
+        // Animation 변경을 위해서 추가한 코드 끝
     }
 
     public override void UpdateState(InGameObject gameObject)

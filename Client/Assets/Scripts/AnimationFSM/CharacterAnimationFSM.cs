@@ -1,12 +1,7 @@
 ﻿using Google.Protobuf.Protocol;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using UnityEngine;
 
-public class CharacterAnimationFSM : AnimationFSM<CreatureState, CAPlayerController>
+public class CharacterAnimationFSM : AnimationFSM<PlayerAnimState, CAPlayerController>
 {
      public CharacterAnimationFSM( CAPlayerController ownerController)
         : base(ownerController) { }
@@ -16,18 +11,69 @@ public class CharacterAnimationFSM : AnimationFSM<CreatureState, CAPlayerControl
     {
         Debug.Log("Update Animatior Called!");
 
+        string animation_name = "";
+
+        if (_currentAnimState == PlayerAnimState.PlayerAnimBubble)
+            animation_name = GetAnimNameForBubbleState();
+        else if (_currentAnimState == PlayerAnimState.PlayerAnimBubbleEmergency)
+            animation_name = GetAnimNameForBubbleState(true);
+        else if (_currentAnimState == PlayerAnimState.PlayerAnimIdle || _currentAnimState == PlayerAnimState.PlayerAnimMoving)
+            animation_name = GetAnimNameForNoneBubbleState();
+        else if (_currentAnimState == PlayerAnimState.PlayerAnimDead)
+            animation_name = GetAnimNameForDeadState();
+        
+        // 수정된 코드
+        AnimatorStateInfo currentAnimationState = _animator.GetCurrentAnimatorStateInfo(0);
+
+        // 애니메이션 이름 비교
+        if (!currentAnimationState.IsName(animation_name))
+        {
+            _animator.Play(animation_name);
+        }
+    }
+
+    private string GetAnimNameForBubbleState(bool isEmergency = false)
+    {
+        CharacterType charType = _ownerController._charType;
+        SpriteRenderer spriteRenderer = _ownerController._spriteRenderer;
+        string animation_name = charType.ToString();
+
+        animation_name += "_Bubble";
+
+        if (isEmergency)
+            animation_name += "_Emergency";
+
+ 
+        return animation_name;
+    }
+
+    private string GetAnimNameForDeadState()
+    {
         CharacterType charType = _ownerController._charType;
         MoveDir dir = _ownerController.Dir;
         SpriteRenderer spriteRenderer = _ownerController._spriteRenderer;
+        string animation_name = charType.ToString();
 
+        animation_name += "_Dead";
+
+        return animation_name;
+    }
+
+
+    private string GetAnimNameForNoneBubbleState()
+    {
+
+        CharacterType charType = _ownerController._charType;
+        MoveDir dir = _ownerController.Dir;
+        SpriteRenderer spriteRenderer = _ownerController._spriteRenderer;
         string animation_name = charType.ToString();
 
         switch (_currentAnimState)
         {
-            case CreatureState.Idle:
+            case PlayerAnimState.PlayerAnimIdle:
                 animation_name += "_Idle";
                 break;
-            case CreatureState.Moving:
+            case PlayerAnimState.PlayerAnimMoving:
                 animation_name += "_Walk";
                 break;
         }
@@ -57,13 +103,8 @@ public class CharacterAnimationFSM : AnimationFSM<CreatureState, CAPlayerControl
 
         animation_name += "_InGame";
 
-        // 수정된 코드
-        AnimatorStateInfo currentAnimationState = _animator.GetCurrentAnimatorStateInfo(0);
 
-        // 애니메이션 이름 비교
-        if (!currentAnimationState.IsName(animation_name))
-        {
-            _animator.Play(animation_name);
-        }
+
+        return animation_name;
     }
 }

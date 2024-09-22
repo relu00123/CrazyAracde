@@ -24,8 +24,8 @@ public class CAPlayerController : CABaseController
         set
         {
             PosInfo.State = value;
-            _characterAnimationFSM.SetState(PosInfo.State); // 여기 매우 마음에 안듬..
-            UpdateAnimation();
+            // _characterAnimationFSM.SetState(PosInfo.State); // 여기 매우 마음에 안듬..
+            // UpdateAnimation();
             _updated = true;
         }
     }
@@ -42,6 +42,15 @@ public class CAPlayerController : CABaseController
     {
         _characterAnimationFSM = new CharacterAnimationFSM(this);
     }
+
+    public override void ChangeAnimation(Enum animState)
+    {
+        if (animState is PlayerAnimState playerAnimState)
+        {
+            _characterAnimationFSM.SetState(playerAnimState);
+        }
+    }
+
 
     protected override void Init()
     {

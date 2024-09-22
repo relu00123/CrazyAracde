@@ -7,11 +7,15 @@ using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.PlayerLoop;
 
-public class CABaseController : MonoBehaviour
+public   class CABaseController : MonoBehaviour
 {
     PositionInfo _positionInfo = new PositionInfo();
 
     public InGameObject InGameObj { get; set; }
+
+    
+
+
 
     // 여기 코드때문에 그런듯? 
     Vector3 _destination = new Vector3(0f, 0f, 0f);
@@ -48,6 +52,8 @@ public class CABaseController : MonoBehaviour
             _updated = true;
         }
     }
+
+    
 
     public virtual CreatureState ObjState
     {
@@ -98,6 +104,11 @@ public class CABaseController : MonoBehaviour
                 UpdateMoving();
                 break;
         }
+    }
+
+    public virtual void ChangeAnimation(Enum animState)
+    {
+
     }
 
     protected virtual void UpdateAnimation()

@@ -469,7 +469,42 @@ class PacketHandler
 
 	}
 
-	//public static void S_
+	public static void S_ChangeAnimationHandler(PacketSession session, IMessage packet)
+	{
+		S_ChangeAnimation pkt = (S_ChangeAnimation)packet;
+		InGameObject obj = Managers.InGame._objectLayerManager.FindObjectbyId(pkt.ObjectId);
+
+		if (obj == null) return;
+
+		var baseController = obj.GetComponentFromUnityObject<CABaseController>();
+		
+		if (baseController != null)
+		{
+            switch (pkt.AnimStateCase)
+            {
+                case S_ChangeAnimation.AnimStateOneofCase.PlayerAnim:
+                    baseController.ChangeAnimation(pkt.PlayerAnim); // PlayerAnimState Enum을 전달
+                    break;
+
+                case S_ChangeAnimation.AnimStateOneofCase.MonsterAnim:
+                    baseController.ChangeAnimation(pkt.MonsterAnim); // Monster1AnimState Enum을 전달
+                    break;
+
+                default:
+                    Console.WriteLine("Unknown animation state.");
+                    break;
+            }
+
+
+            //baseControllelr.ChangeAnimation(pkt.AnimStateCase);
+        }
+
+
+		//pkt.ObjectId
+
+		// 작업중 
+	}
+
 }
 
 

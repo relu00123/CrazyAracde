@@ -66,6 +66,7 @@ enum MsgId {
   C_INSTALL_BOMB = 60;
   S_INSTALL_BOMB = 61;
   S_DESTROY_OBJECT = 62;
+  S_CHANGE_ANIMATION = 63;
 }
 
 enum ObjectType  {
@@ -600,6 +601,14 @@ message S_GameroomCharState {
   GameRoomCharacterStateType charstate = 2;
 }
 
+message S_ChangeAnimation {
+  int32 objectId = 1;
+  oneof anim_state {
+    PlayerAnimState   player_anim = 2; 
+    Monster1AnimState monster_anim = 3;
+  }
+}
+
 message ObjectInfo {
   int32 objectId = 1;
   string name = 2;
@@ -662,3 +671,18 @@ message SlotInfo
   GameRoomCharacterStateType characterState = 5;
 }
  
+enum PlayerAnimState 
+{
+  PLAYER_ANIM_IDLE = 0;
+  PLAYER_ANIM_MOVING = 1;
+  PLAYER_ANIM_BUBBLE = 2;
+  PLAYER_ANIM_BUBBLE_EMERGENCY = 3;
+  PLAYER_ANIM_DEAD = 4; 
+}
+
+enum Monster1AnimState
+{
+  MONSTER1_ANIM_TEST1 = 0;
+  MONSTER1_ANIM_TEST2 = 1;
+  MONSTER1_ANIM_TEST3 = 2;
+}

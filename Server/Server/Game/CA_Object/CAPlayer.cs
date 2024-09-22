@@ -8,7 +8,7 @@ using System.Numerics;
 using System.Text;
 
 
-public class CAPlayer  : InGameObject
+public class CAPlayer : InGameObject
 {
     public CAPlayer(int id, string name, Transform transform, int layer)
         : base(id, name, transform, layer)
@@ -20,6 +20,10 @@ public class CAPlayer  : InGameObject
     }
 
     IJob _job;
+
+    public double _bubbledTime { get; set;}
+    public bool   _bubbleEmergencyAnimChanged { get; set; }
+    
 
     public override void Update()
     {

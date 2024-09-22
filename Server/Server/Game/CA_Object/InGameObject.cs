@@ -76,14 +76,18 @@ namespace Server.Game.CA_Object
 
         }
 
-        public void ChangeState(IObjectState newState)
+         
+
+        public  void ChangeState(IObjectState newState)
         {
             if (_currentState == newState) // 만약 같은 상태로의 전환이라면 굳이 전환할 필요가 없다. 
                 return; 
 
             _currentState.ExitState(this);  // 기존 상태 종료
+            IObjectState lastState = _currentState;
             _currentState = newState;       // 새로운 상태로 전환
-            _currentState.EnterState(this, _currentState); // 새로운 상태 시작
+            _currentState.EnterState(this, lastState); // 새로운 상태 시작
+            
 
             // 매핑된 CreatureState로 업데이트 
             var mappedState = StateManager.GetCreatureStateFromObjectState(newState);
