@@ -26,7 +26,6 @@ namespace Server.Game.CA_Object
 
         }
 
-
         public float _moveSpeed { get; set; } = 0.3f;  //= 0.3f;
 
         public InGame _possessGame { get; set; }
@@ -70,11 +69,7 @@ namespace Server.Game.CA_Object
         {
             // 충돌 중 동작
         }
-
-        public virtual void OnEndOverlap(Collider other)
-        {
-            // 충돌 종료시 동작 
-        }
+ 
 
         public virtual void Update()
         {
@@ -83,9 +78,12 @@ namespace Server.Game.CA_Object
 
         public void ChangeState(IObjectState newState)
         {
+            if (_currentState == newState) // 만약 같은 상태로의 전환이라면 굳이 전환할 필요가 없다. 
+                return; 
+
             _currentState.ExitState(this);  // 기존 상태 종료
             _currentState = newState;       // 새로운 상태로 전환
-            _currentState.EnterState(this); // 새로운 상태 시작
+            _currentState.EnterState(this, _currentState); // 새로운 상태 시작
 
             // 매핑된 CreatureState로 업데이트 
             var mappedState = StateManager.GetCreatureStateFromObjectState(newState);
@@ -109,25 +107,27 @@ namespace Server.Game.CA_Object
 
 
             // 기존에 사용하던 코드
-            //if (IsValidStateTransition(newState))
-            //{
-            //    _state = newState;
-            //    Console.WriteLine($"State changed to: {_state}");
+            {
+                //if (IsValidStateTransition(newState))
+                //{
+                //    _state = newState;
+                //    Console.WriteLine($"State changed to: {_state}");
 
-            //    S_Move movePkt = new S_Move();
-            //    movePkt.ObjectId = Id;
-            //    movePkt.PosInfo = new PositionInfo();
-            //    movePkt.PosInfo.PosX = _transform.Position.X;
-            //    movePkt.PosInfo.PosY = _transform.Position.Y;
-            //    movePkt.PosInfo.State = _state;
-            //    movePkt.PosInfo.MoveDir = Direction;
-            //    _possessGame._gameRoom.BroadcastPacket(movePkt);
-            //}
+                //    S_Move movePkt = new S_Move();
+                //    movePkt.ObjectId = Id;
+                //    movePkt.PosInfo = new PositionInfo();
+                //    movePkt.PosInfo.PosX = _transform.Position.X;
+                //    movePkt.PosInfo.PosY = _transform.Position.Y;
+                //    movePkt.PosInfo.State = _state;
+                //    movePkt.PosInfo.MoveDir = Direction;
+                //    _possessGame._gameRoom.BroadcastPacket(movePkt);
+                //}
 
-            //else
-            //{
-            //    Console.WriteLine($"Invalid state transition: {_state} to {newState}");
-            //}
+                //else
+                //{
+                //    Console.WriteLine($"Invalid state transition: {_state} to {newState}");
+                //}
+            }
             // 기존에 사용하던 코드 끝
         }
 
@@ -305,7 +305,8 @@ namespace Server.Game.CA_Object
             movePkt.PosInfo.PosX = nextPosition.X;
             movePkt.PosInfo.PosY = nextPosition.Y;
             movePkt.PosInfo.MoveDir = Direction;
-            movePkt.PosInfo.State = CreatureState.Moving;
+            //movePkt.PosInfo.State = CreatureState.Moving;
+            movePkt.PosInfo.State = _state;
             _possessGame._gameRoom.BroadcastPacket(movePkt);
 
 

@@ -13,10 +13,16 @@ public class Player_DeadState : AbstractPlayerState
         return;
     }
 
-    public override void EnterState(InGameObject obj)
+    public override void EnterState(InGameObject obj, IObjectState previousState)
     {
         
     }
+
+    public override void UpdateState(InGameObject gameObject)
+    {
+
+    }
+
 
     public override void ExitState(InGameObject obj)
     {

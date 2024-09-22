@@ -101,10 +101,6 @@ namespace Server.Game
             _owner.OnOverlap(other);
         }
 
-        public void EndOverlap(Collider other)
-        {
-            // 충돌 종료 이벤트 처리
-            _owner.OnEndOverlap(other);
-        }
+        
     }
 }

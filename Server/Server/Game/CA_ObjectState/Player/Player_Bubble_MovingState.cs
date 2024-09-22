@@ -21,13 +21,20 @@ public class Player_Bubble_MovingState : AbstractPlayerState
         gameObject.ChangeState(new Player_Bubble_MovingState());
     }
 
-    public override void EnterState(InGameObject obj)
+    public override void EnterState(InGameObject obj, IObjectState previousState)
     {
-
+        obj._moveSpeed = (obj._moveSpeed / 2f);
+    }
+    public override void UpdateState(InGameObject gameObject)
+    {
+        gameObject.UpdateMoving();
     }
 
     public override void ExitState(InGameObject obj)
     {
-
+        obj._moveSpeed = (obj._moveSpeed * 2f);
     }
+    
+
+    
 }

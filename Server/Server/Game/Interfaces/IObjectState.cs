@@ -9,6 +9,7 @@ using System.Text;
 public interface IObjectState
 {
     void ApplyMove(InGameObject gameObject, MoveDir dir);
-    void EnterState(InGameObject gameObject);
+    void EnterState(InGameObject gameObject, IObjectState previousState);
     void ExitState(InGameObject gameObject);
+    void UpdateState(InGameObject gameObject);
 }

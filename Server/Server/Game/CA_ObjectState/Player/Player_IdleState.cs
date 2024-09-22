@@ -21,11 +21,15 @@ public class Player_IdleState : AbstractPlayerState
         gameObject.ChangeState(new Player_MovingState());
     }
 
-    public override void EnterState(InGameObject obj)
+    public override void EnterState(InGameObject obj, IObjectState previousState)
     {
 
     }
 
+    public override void UpdateState(InGameObject gameObject)
+    {
+
+    }
     public override void ExitState(InGameObject obj)
     {
 

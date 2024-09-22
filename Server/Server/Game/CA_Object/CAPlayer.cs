@@ -27,21 +27,29 @@ public class CAPlayer  : InGameObject
 
         if (_possessGame != null)
         {
-            switch (_state)
+            if (_currentState != null)
             {
-                case CreatureState.Idle:
-                    UpdateIdle();
-                    break;
-                case CreatureState.Moving:
-                    UpdateMoving();
-                    break;
-                case CreatureState.BubbleMoving:
-                    UpdateMoving();
-                    break;
-                case CreatureState.BubbleIdle:
-                    UpdateIdle();
-                    break;
-                
+                _currentState.UpdateState(this);
+            }
+
+
+            else
+            {
+                switch (_state)
+                {
+                    case CreatureState.Idle:
+                        UpdateIdle();
+                        break;
+                    case CreatureState.Moving:
+                        UpdateMoving();
+                        break;
+                    case CreatureState.BubbleMoving:
+                        UpdateMoving();
+                        break;
+                    case CreatureState.BubbleIdle:
+                        UpdateIdle();
+                        break;
+                }
             }
 
              _job =  _possessGame._gameRoom.PushAfter(10, Update);

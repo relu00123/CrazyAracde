@@ -23,10 +23,14 @@ public class Player_Bubble_IdleState : AbstractPlayerState
 
     }
 
-    public override void EnterState(InGameObject obj)
+    public override void EnterState(InGameObject obj, IObjectState previousState)
     {
-        // 물방울에 갇히면 기존속도의 반의 속도로 움직여야 한다.
         obj._moveSpeed = (obj._moveSpeed / 2f);
+    }
+
+    public override void UpdateState(InGameObject gameObject)
+    {
+
     }
 
     public override void ExitState(InGameObject obj)

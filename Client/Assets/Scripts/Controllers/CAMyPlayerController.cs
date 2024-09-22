@@ -46,6 +46,12 @@ public class CAMyPlayerController : CAPlayerController
                 HandleMovementInput();
                 HandleBombInput();
                 break;
+            case CreatureState.BubbleIdle:
+                HandleMovementInput();
+                break;
+            case CreatureState.BubbleMoving:
+                HandleMovementInput();
+                break;
         }
 
         base.UpdateController();
@@ -77,7 +83,7 @@ public class CAMyPlayerController : CAPlayerController
     private void HandleBombInput()
     {
         // 서버 부하 방지용 쿨타임. 
-        if (Time.time - last_sent_bomb_packet >= bomb_packet_coolTime)
+         if (Time.time - last_sent_bomb_packet >= bomb_packet_coolTime)
         {
             // 폭탄 설치 키를 입력했는지 확인
             if (Input.GetKeyDown(KeyCode.Space))

@@ -89,6 +89,14 @@ public class CABaseController : MonoBehaviour
                 SmoothMove();
                 UpdateMoving();
                 break;
+            case CreatureState.BubbleIdle:
+                SmoothMove();
+                UpdateIdle();
+                break;
+            case CreatureState.BubbleMoving:
+                SmoothMove();
+                UpdateMoving();
+                break;
         }
     }
 

@@ -19,7 +19,7 @@ public class CAWaterStream : InGameObject
         //this.position = position;
 
         // Collider 생성 (폭발로 인해 물줄기가 플레이어와 충돌할 때 처리)
-        _collider = new Collider(this, Vector2.Zero, new Vector2(0.95f, 0.95f));
+        _collider = new Collider(this, Vector2.Zero, new Vector2(0.8f, 0.8f));
 
         // 현재 시간 저장
         lastUpdateTime = DateTime.Now;
@@ -88,9 +88,13 @@ public class CAWaterStream : InGameObject
 
         if (other is CAPlayer)
         {
-            Console.WriteLine("WATERSTREAM COLLIDED WITH CHARACTER");
-            
+            Console.WriteLine("물줄기랑 캐릭터와의 충돌 발생!!");
+
             // 이곳에서 캐릭터를 물방울에 갇힘 상태로 만들어 줘야 한다. 
+            if (other._currentState is Player_MovingState)
+                other.ChangeState(new Player_Bubble_MovingState());
+            else
+                other.ChangeState(new Player_Bubble_IdleState());
         }
     }
 }
