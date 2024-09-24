@@ -21,6 +21,8 @@ public class CharacterAnimationFSM : AnimationFSM<PlayerAnimState, CAPlayerContr
             animation_name = GetAnimNameForNoneBubbleState();
         else if (_currentAnimState == PlayerAnimState.PlayerAnimDead)
             animation_name = GetAnimNameForDeadState();
+        else if (_currentAnimState == PlayerAnimState.PlayerAnimBubbleEscape)
+            animation_name = GetAnimNameForBubbleEscape();
         
         // 수정된 코드
         AnimatorStateInfo currentAnimationState = _animator.GetCurrentAnimatorStateInfo(0);
@@ -30,6 +32,17 @@ public class CharacterAnimationFSM : AnimationFSM<PlayerAnimState, CAPlayerContr
         {
             _animator.Play(animation_name);
         }
+    }
+
+    private string GetAnimNameForBubbleEscape()
+    {
+        CharacterType charType = _ownerController._charType;
+        SpriteRenderer spriteRenderer = _ownerController._spriteRenderer;
+        string animation_name = charType.ToString();
+
+        animation_name += "_Bubble_Escape";
+
+        return animation_name;
     }
 
     private string GetAnimNameForBubbleState(bool isEmergency = false)

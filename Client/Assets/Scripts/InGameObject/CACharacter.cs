@@ -25,7 +25,12 @@ public class CACharacter : MonoBehaviour
 
     void Update()
     {
-        
+            
+    }                   
+
+    public void Test()
+    {
+
     }
 
     

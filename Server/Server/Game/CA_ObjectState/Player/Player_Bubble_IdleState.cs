@@ -66,7 +66,7 @@ public class Player_Bubble_IdleState : AbstractPlayerState
 
         player._bubbledTime += player._possessGame._gameRoom._deltaTime;
 
-        if (player._bubbledTime > 3f && player._bubbleEmergencyAnimChanged == false)
+        if (player._bubbledTime > 5f && player._bubbleEmergencyAnimChanged == false)
         {
             player._bubbleEmergencyAnimChanged = true;
             Console.WriteLine("ToEmergencyAnim!");
@@ -81,7 +81,7 @@ public class Player_Bubble_IdleState : AbstractPlayerState
         }
 
 
-        if (player._bubbledTime > 4f)
+        if (player._bubbledTime > 6f)
         {
             Console.WriteLine("물방울이 터져야합니다!!!");
             gameObject.ChangeState(new Player_DeadState());

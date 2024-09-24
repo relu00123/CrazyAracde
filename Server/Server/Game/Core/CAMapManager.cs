@@ -133,8 +133,6 @@ namespace Server.Game
                     // 나중에는 layer의 이름으로 index로 찾을 수 있게 하던가 enum Type으로 관리해야할 것임. 
                     // 이부분 코드가나중에도 재사용성이 매우 높기 때문에 함수로 만들어 버릴 것임. 
 
-                   
-
                     _currentGame.CreateAndBroadcastObject(
                         LayerType.DefaultLayer,
                         "Walls",
@@ -143,6 +141,35 @@ namespace Server.Game
                         new Vector2(tileData.position.x, tileData.position.y)
                     );
                 }
+
+                else if (tileData.tilemapName == "Boxes")
+                {
+                    // 부술수 있는 벽 생성
+                    Console.WriteLine($"TileName(Box) : {tileData.tileName}" );
+
+                    string tilename = tileData.tileName;
+
+                    TileInfoValue tileInfoValue = new TileInfoValue()
+                    {
+                        Tilename = tileData.tileName
+                    }; 
+
+                    List<KeyValuePairs> TileInfos = new List<KeyValuePairs>
+                    {
+                        new KeyValuePairs { Key = ObjectSpawnKeyType.Box, TileInfoValue = tileInfoValue }
+                    };
+
+                    _tileMapData[tileData.position.x, tileData.position.y].isBlocktPermanently = true;
+                    _currentGame.CreateAndBroadcastObject(
+                        LayerType.BoxLayer,
+                        tileData.tileName,  // 설마 문제가 되나..?
+                        PositionType.TileCenterPos,
+                        ObjectType.ObjectBox,
+                        new Vector2(tileData.position.x, tileData.position.y),
+                        TileInfos
+                    );
+                }
+
 
                 else if (tileData.tilemapName == "CharacterSpawn")
                 {
@@ -233,6 +260,8 @@ namespace Server.Game
                         testvalues
                 );
 
+                // 자신의 캐릭터 타입을 지정하는 부분 (09.23수정)
+                spawnobj._characterType = _currentGame._gameRoom.Slots[i].CharType;
 
                 // 클라이언트가 자신의 캐릭터를 알 수 있도록 한다.
                 _currentGame._gameRoom.Slots[i].ClientSession.CA_MyPlayer = spawnobj;

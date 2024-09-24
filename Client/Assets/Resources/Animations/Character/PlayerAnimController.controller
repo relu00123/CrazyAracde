@@ -208,6 +208,32 @@ AnimatorState:
   m_MirrorParameter: 
   m_CycleOffsetParameter: 
   m_TimeParameter: 
+--- !u!1102 &-5014479890066674832
+AnimatorState:
+  serializedVersion: 6
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Marid_Bubble_Escape
+  m_Speed: 1
+  m_CycleOffset: 0
+  m_Transitions: []
+  m_StateMachineBehaviours: []
+  m_Position: {x: 50, y: 50, z: 0}
+  m_IKOnFeet: 0
+  m_WriteDefaultValues: 1
+  m_Mirror: 0
+  m_SpeedParameterActive: 0
+  m_MirrorParameterActive: 0
+  m_CycleOffsetParameterActive: 0
+  m_TimeParameterActive: 0
+  m_Motion: {fileID: 7400000, guid: 41a87575489eea3409b2a51f533e4221, type: 2}
+  m_Tag: 
+  m_SpeedParameter: 
+  m_MirrorParameter: 
+  m_CycleOffsetParameter: 
+  m_TimeParameter: 
 --- !u!1102 &-4299354547405797683
 AnimatorState:
   serializedVersion: 6
@@ -460,16 +486,28 @@ AnimatorStateMachine:
     m_Position: {x: 900, y: 1300, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 512172498919370125}
-    m_Position: {x: 1150, y: 1160, z: 0}
+    m_Position: {x: 1360, y: 1160, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 496608283884899551}
-    m_Position: {x: 1150, y: 1090, z: 0}
+    m_Position: {x: 1360, y: 1090, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 5819011644477756226}
-    m_Position: {x: 1150, y: 1230, z: 0}
+    m_Position: {x: 1360, y: 1230, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 2322086405826930076}
-    m_Position: {x: 1150, y: 1300, z: 0}
+    m_Position: {x: 1360, y: 1300, z: 0}
+  - serializedVersion: 1
+    m_State: {fileID: 4359746610524745192}
+    m_Position: {x: 1130, y: 1160, z: 0}
+  - serializedVersion: 1
+    m_State: {fileID: -364520588765555554}
+    m_Position: {x: 1130, y: 1090, z: 0}
+  - serializedVersion: 1
+    m_State: {fileID: -1480469549939033781}
+    m_Position: {x: 1130, y: 1230, z: 0}
+  - serializedVersion: 1
+    m_State: {fileID: -5014479890066674832}
+    m_Position: {x: 1130, y: 1300, z: 0}
   m_ChildStateMachines: []
   m_AnyStateTransitions: []
   m_EntryTransitions: []
@@ -532,6 +570,32 @@ AnimatorState:
   m_MirrorParameter: 
   m_CycleOffsetParameter: 
   m_TimeParameter: 
+--- !u!1102 &-1480469549939033781
+AnimatorState:
+  serializedVersion: 6
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Dao_Bubble_Escape
+  m_Speed: 1
+  m_CycleOffset: 0
+  m_Transitions: []
+  m_StateMachineBehaviours: []
+  m_Position: {x: 50, y: 50, z: 0}
+  m_IKOnFeet: 0
+  m_WriteDefaultValues: 1
+  m_Mirror: 0
+  m_SpeedParameterActive: 0
+  m_MirrorParameterActive: 0
+  m_CycleOffsetParameterActive: 0
+  m_TimeParameterActive: 0
+  m_Motion: {fileID: 7400000, guid: 73bfc007a3ff42b4dbb81f8d92240869, type: 2}
+  m_Tag: 
+  m_SpeedParameter: 
+  m_MirrorParameter: 
+  m_CycleOffsetParameter: 
+  m_TimeParameter: 
 --- !u!1102 &-1186809567780221120
 AnimatorState:
   serializedVersion: 6
@@ -553,6 +617,32 @@ AnimatorState:
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
   m_Motion: {fileID: 7400000, guid: df5a1749d39df7a4f8839e0197bead5c, type: 2}
+  m_Tag: 
+  m_SpeedParameter: 
+  m_MirrorParameter: 
+  m_CycleOffsetParameter: 
+  m_TimeParameter: 
+--- !u!1102 &-364520588765555554
+AnimatorState:
+  serializedVersion: 6
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Kefi_Bubble_Escape
+  m_Speed: 1
+  m_CycleOffset: 0
+  m_Transitions: []
+  m_StateMachineBehaviours: []
+  m_Position: {x: 50, y: 50, z: 0}
+  m_IKOnFeet: 0
+  m_WriteDefaultValues: 1
+  m_Mirror: 0
+  m_SpeedParameterActive: 0
+  m_MirrorParameterActive: 0
+  m_CycleOffsetParameterActive: 0
+  m_TimeParameterActive: 0
+  m_Motion: {fileID: 7400000, guid: 6e913c953302d8e4684721e3254e565f, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -809,6 +899,32 @@ AnimatorState:
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
   m_Motion: {fileID: 7400000, guid: b217345f3f1e53e4ab60c7e9313f5212, type: 2}
+  m_Tag: 
+  m_SpeedParameter: 
+  m_MirrorParameter: 
+  m_CycleOffsetParameter: 
+  m_TimeParameter: 
+--- !u!1102 &4359746610524745192
+AnimatorState:
+  serializedVersion: 6
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Bazzi_Bubble_Escape
+  m_Speed: 1
+  m_CycleOffset: 0
+  m_Transitions: []
+  m_StateMachineBehaviours: []
+  m_Position: {x: 50, y: 50, z: 0}
+  m_IKOnFeet: 0
+  m_WriteDefaultValues: 1
+  m_Mirror: 0
+  m_SpeedParameterActive: 0
+  m_MirrorParameterActive: 0
+  m_CycleOffsetParameterActive: 0
+  m_TimeParameterActive: 0
+  m_Motion: {fileID: 7400000, guid: 22af61637cb9748448a88c0f7a2f19a2, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 

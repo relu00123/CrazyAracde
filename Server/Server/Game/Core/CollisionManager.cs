@@ -64,21 +64,35 @@ namespace Server.Game.Core
             {
                 List<InGameObject> ObjectsInLayer1 = _objectLayerManager.GetObjectsInLayer(i);
 
-                for (int j = 0; j < i; j++) // Layer2
+                for (int j = 0; j <= i; j++) // Layer2
                 {
                     if (collisionMatrix[i, j] == false) continue; // 충돌이 일어나지 않은 Layer들간의 비교
 
-                    List<InGameObject> ObjectInLayer2 = _objectLayerManager.GetObjectsInLayer(j); 
+                    List<InGameObject> ObjectInLayer2 = _objectLayerManager.GetObjectsInLayer(j);
 
-
-                    for (int obj1_idx = 0; obj1_idx < ObjectsInLayer1.Count; obj1_idx++)
+                    if (i == j) // 같은 레이어 끼리의 비교인 경우
                     {
-                        for (int obj2_idx = 0; obj2_idx < ObjectInLayer2.Count; obj2_idx++)
+                        for (int obj1_idx = 0; obj1_idx < ObjectsInLayer1.Count; obj1_idx++)
                         {
-                            // ObjectsInLayer1[obj1_idx] 와
-                            // ObjectInLayer2[obj2_idx]  가 충돌하는지 확인. 충돌하면 BeginOverlap 수행. 
-                            // 이 함수 가져다 쓰면 될듯?
-                            CollisionBtwObjects(ObjectsInLayer1[obj1_idx], ObjectInLayer2[obj2_idx]);
+                            for (int obj2_idx = obj1_idx + 1; obj2_idx < ObjectInLayer2.Count; obj2_idx++)
+                            {
+                                CollisionBtwObjects(ObjectsInLayer1[obj1_idx], ObjectInLayer2[obj2_idx]);
+                            }
+                        }
+                    }
+
+
+                    if (i != j) // 같은 레이어끼리의 비교가 아닌 경우
+                    {
+                        for (int obj1_idx = 0; obj1_idx < ObjectsInLayer1.Count; obj1_idx++)
+                        {
+                            for (int obj2_idx = 0; obj2_idx < ObjectInLayer2.Count; obj2_idx++)
+                            {
+                                // ObjectsInLayer1[obj1_idx] 와
+                                // ObjectInLayer2[obj2_idx]  가 충돌하는지 확인. 충돌하면 BeginOverlap 수행. 
+                                // 이 함수 가져다 쓰면 될듯?
+                                CollisionBtwObjects(ObjectsInLayer1[obj1_idx], ObjectInLayer2[obj2_idx]);
+                            }
                         }
                     }
 

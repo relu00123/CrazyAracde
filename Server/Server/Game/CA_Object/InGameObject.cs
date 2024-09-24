@@ -62,7 +62,7 @@ namespace Server.Game.CA_Object
         public virtual void OnBeginOverlap(InGameObject other)
         {
             // 충돌 시작 시 동작
-            Console.WriteLine("ON BEGIN OVERLAP FUNCTION CALLED!!");
+            //Console.WriteLine("ON BEGIN OVERLAP FUNCTION CALLED!!");
         }
 
         public virtual void OnOverlap(Collider other)

@@ -132,6 +132,7 @@ public class RoomManager : MonoBehaviour
             host = false;
         else if (pkt.Nowidx == clientSlotidx && clientSlotidx != -1) 
             host = true;
+       
 
        curGameRoomScene._sceneUI.GetUIUserGridPanel().SetCharState(pkt.Previousidx, GameRoomCharacterStateType.NotReady);
        curGameRoomScene._sceneUI.GetUIUserGridPanel().SetCharState(pkt.Nowidx, GameRoomCharacterStateType.Host);

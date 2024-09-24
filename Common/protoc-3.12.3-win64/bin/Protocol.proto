@@ -106,6 +106,7 @@ enum LayerType {
   CHARACTER_LAYER = 1;
   WATERSTREAM_LAYER = 2;
   ITEM_LAYER = 3;
+  BOX_LAYER = 4;
 }
 
 enum MoveDir {
@@ -268,6 +269,7 @@ enum ObjectSpawnKeyType
   CHARACTER = 0;
   BOMB = 1; 
   WATERSTREAM = 2;
+  BOX = 3;
 }
 
 enum BombType 
@@ -459,6 +461,7 @@ message KeyValuePairs  {
     ObjectSpawnPlayerValue player_info_vlaue = 5;
     BombInfoValue Bomb_info_value = 6;
     WaterStreamType Stream_info_value = 7;
+    TileInfoValue Tile_info_value = 8;
   }
 }
 
@@ -471,6 +474,11 @@ message BombInfoValue
   BombType bombType = 1;
   float bombPosX = 2;
   float bombPosY = 3; 
+}
+
+message TileInfoValue
+{
+  string tilename = 1;
 }
 
 message S_SpawnObject {
@@ -678,6 +686,7 @@ enum PlayerAnimState
   PLAYER_ANIM_BUBBLE = 2;
   PLAYER_ANIM_BUBBLE_EMERGENCY = 3;
   PLAYER_ANIM_DEAD = 4; 
+  PLAYER_ANIM_BUBBLE_ESCAPE = 5;
 }
 
 enum Monster1AnimState

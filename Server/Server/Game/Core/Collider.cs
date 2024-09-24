@@ -29,6 +29,12 @@ namespace Server.Game
             UpdateColliderWorldMat();
         }
 
+
+        public Vector2 GetColliderCenterPos()
+        {
+            return  _owner._transform.Position + OffsetPos;
+        }
+
         // Collider의 위치와 크기에 따른 경계 좌표(AABB)를 업에디트
         public void UpdateColliderWorldMat()
         {
@@ -54,7 +60,7 @@ namespace Server.Game
             UpYValue = bottomRight.Y;   // 사실 leftBottom
             DownYValue = topLeft.Y; // 사실 RightTop
 
-            Console.WriteLine($"OnwerName : {_owner.Name} , ColliderPos : LB({LeftXValue},{DownYValue}), RT({RightXValue},{UpYValue})");
+            //Console.WriteLine($"OnwerName : {_owner.Name} , ColliderPos : LB({LeftXValue},{DownYValue}), RT({RightXValue},{UpYValue})");
         }
 
         public (float leftX, float rightX, float upY, float downY) CalculateTempBounds(Vector2 targetPosition)

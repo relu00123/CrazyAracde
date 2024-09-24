@@ -143,10 +143,29 @@ public class ObjectLayerManager
                         WaterStreamType StreamInfoValue = kvp.StreamInfoValue;
                         string animationName = StreamInfoValue.ToString();
                         unityObject.GetComponent<Animator>().Play(animationName);
+
                     }
                 }
 
             }
+            break;
+
+            case ObjectType.ObjectBox:
+            {
+                 foreach(var kvp in spawnObjectPacket.AdditionalData)
+                {
+                    if (kvp.Key == ObjectSpawnKeyType.Box)
+                    {
+                        TileInfoValue tileInfoValue = kvp.TileInfoValue;
+                        string tilename = tileInfoValue.Tilename;
+                        Debug.Log($"[BOX] TileName : {tilename}");
+
+                        unityObject.GetComponent<CABox>().SetBaseTexture(tilename);
+                        unityObject.GetComponent<CABox>().SetTopTexture(tilename);
+                    }
+                }
+            }
+
             break;
 
 

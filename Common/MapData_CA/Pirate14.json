@@ -3557,17 +3557,32 @@
         },
         {
             "position": {
-                "x": 4,
-                "y": 3,
+                "x": 1,
+                "y": 1,
                 "z": 0
             },
-            "tileName": "Test1",
+            "tileName": "pirate_blue_box",
             "tilemapName": "Boxes",
             "isSlippery": false,
             "isSpine": false,
             "isProvidingStealth": false,
             "isMoveable": false,
-            "childTileName": "map_pirate_object5_0",
+            "childTileName": "",
+            "spawnType": 0
+        },
+        {
+            "position": {
+                "x": 4,
+                "y": 3,
+                "z": 0
+            },
+            "tileName": "pirate_green_box",
+            "tilemapName": "Boxes",
+            "isSlippery": false,
+            "isSpine": false,
+            "isProvidingStealth": false,
+            "isMoveable": false,
+            "childTileName": "",
             "spawnType": 0
         },
         {
@@ -3576,13 +3591,13 @@
                 "y": 3,
                 "z": 0
             },
-            "tileName": "Test1",
+            "tileName": "pirate_yellow_box",
             "tilemapName": "Boxes",
             "isSlippery": false,
             "isSpine": false,
             "isProvidingStealth": false,
             "isMoveable": false,
-            "childTileName": "map_pirate_object5_0",
+            "childTileName": "",
             "spawnType": 0
         },
         {
@@ -3591,13 +3606,13 @@
                 "y": 3,
                 "z": 0
             },
-            "tileName": "Test1",
+            "tileName": "pirate_orange_box",
             "tilemapName": "Boxes",
             "isSlippery": false,
             "isSpine": false,
             "isProvidingStealth": false,
             "isMoveable": false,
-            "childTileName": "map_pirate_object5_0",
+            "childTileName": "",
             "spawnType": 0
         },
         {

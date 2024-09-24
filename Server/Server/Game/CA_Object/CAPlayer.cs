@@ -23,6 +23,8 @@ public class CAPlayer : InGameObject
 
     public double _bubbledTime { get; set;}
     public bool   _bubbleEmergencyAnimChanged { get; set; }
+
+    public CharacterType _characterType { get; set; }
     
 
     public override void Update()
@@ -72,7 +74,46 @@ public class CAPlayer : InGameObject
 
     public override void OnBeginOverlap(InGameObject other)
     {
-        Console.WriteLine("ON BEGIN OVERLAP FUNCTION CALLED FROM CHARACTER!!");
+        //Console.WriteLine("ON BEGIN OVERLAP FUNCTION CALLED FROM CHARACTER!!");
+
+        if (other is CAPlayer)
+        {
+            //Console.WriteLine("캐릭터와 출돌 발생");
+
+            if (_currentState is Player_Bubble_IdleState || _currentState is Player_Bubble_MovingState )
+            {
+                Vector2 pos1 = _collider.GetColliderCenterPos();
+                Vector2 pos2 = other._collider.GetColliderCenterPos();
+
+                float distance = Vector2.Distance(pos1, pos2);
+
+                if (distance < 0.45f)
+                {
+                    CAPlayer ohterPlayer = other as CAPlayer;
+
+                    if (ohterPlayer._characterType == _characterType)
+                    {
+                        // Console.WriteLine("다른 캐릭터가 자신을 살리는 경우");
+                        // 살아날때 에니메이션도 재생시켜주도록 하자. 
+                        ChangeState(new Player_IdleState());
+
+                        S_ChangeAnimation changeAnimPkt = new S_ChangeAnimation()
+                        {
+                            ObjectId = Id,
+                            PlayerAnim = PlayerAnimState.PlayerAnimBubbleEscape,
+                        };
+
+                        _possessGame._gameRoom.BroadcastPacket(changeAnimPkt);
+                    }
+
+                    else
+                    {
+                        // Console.WriteLine("다른 캐릭터가 자신을 죽이는 경우");
+                        ChangeState(new Player_DeadState());
+                    }
+                }
+            }
+        }
     }
 }
 

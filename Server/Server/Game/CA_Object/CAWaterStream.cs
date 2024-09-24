@@ -84,11 +84,11 @@ public class CAWaterStream : InGameObject
 
     public override void OnBeginOverlap(InGameObject other)
     {
-        Console.WriteLine("ON BEGIN OVERLAP FUNCTION CALLED FROM WATERSTREAM!!");
+        //Console.WriteLine("ON BEGIN OVERLAP FUNCTION CALLED FROM WATERSTREAM!!");
 
-        if (other is CAPlayer)
+        if (other is CAPlayer && !(other._currentState is Player_DeadState))
         {
-            Console.WriteLine("물줄기랑 캐릭터와의 충돌 발생!!");
+            //Console.WriteLine("물줄기랑 캐릭터와의 충돌 발생!!");
 
             // 이곳에서 캐릭터를 물방울에 갇힘 상태로 만들어 줘야 한다. 
             if (other._currentState is Player_MovingState)
