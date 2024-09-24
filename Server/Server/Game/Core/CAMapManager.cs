@@ -60,6 +60,7 @@ public class TileData   // Enum값도 집어넣을 수 있다는 것 확인하�
     public string childTileName;
     //public CharacterType charTypeTest;   // Enum저장되는지 테스트 용도. 사용되는 값은 아님.
     public CharacterSpawnType spawnType = CharacterSpawnType.SpawnNothing;
+    public string AtlasName;
 }
 
 namespace Server.Game
@@ -121,27 +122,35 @@ namespace Server.Game
 
             foreach (var tileData in tileDataList.tiles)
             {
-                // TODO;  일단 테스트용
+                // 벽
                 if (tileData.tilemapName == "WallsCollider")
                 {
-                    Console.WriteLine("WallsCollider Tile Detected!");
+                    string tilename = tileData.tileName;
+
+                    TileInfoValue tileInfoValue = new TileInfoValue()
+                    {
+                        Tilename = tileData.tileName,
+                        Atlasname = tileData.AtlasName,
+                    };
+
+                    List<KeyValuePairs> TileInfos = new List<KeyValuePairs>
+                    {
+                        new KeyValuePairs { Key = ObjectSpawnKeyType.Wall, TileInfoValue = tileInfoValue }
+                    };
+
                     _tileMapData[tileData.position.x, tileData.position.y].isBlocktPermanently = true;
 
-                    // Client에 해당 위치에 벽을 생성하라고 해볼 것이다. 
-                    // 서버에서도 이 Object들을 관리하고 있어야 한다.  
-                    // 지금은 임시로 Wall 에 대해서 LayerIndex 1번을 사용하도록 한다.
-                    // 나중에는 layer의 이름으로 index로 찾을 수 있게 하던가 enum Type으로 관리해야할 것임. 
-                    // 이부분 코드가나중에도 재사용성이 매우 높기 때문에 함수로 만들어 버릴 것임. 
-
                     _currentGame.CreateAndBroadcastObject(
-                        LayerType.DefaultLayer,
-                        "Walls",
+                        LayerType.BoxLayer,
+                        tileData.tileName, // 나중에 문제가 생길수도 있긴한데 확인해보기 
                         PositionType.TileCenterPos,
-                        ObjectType.ObjectBox,
-                        new Vector2(tileData.position.x, tileData.position.y)
+                        ObjectType.ObjectWall,
+                        new Vector2(tileData.position.x, tileData.position.y),
+                        TileInfos
                     );
                 }
 
+                // 부술 수 있는 박스
                 else if (tileData.tilemapName == "Boxes")
                 {
                     // 부술수 있는 벽 생성
@@ -151,7 +160,8 @@ namespace Server.Game
 
                     TileInfoValue tileInfoValue = new TileInfoValue()
                     {
-                        Tilename = tileData.tileName
+                        Tilename = tileData.tileName,
+                        Atlasname = tileData.AtlasName,
                     }; 
 
                     List<KeyValuePairs> TileInfos = new List<KeyValuePairs>
@@ -170,15 +180,13 @@ namespace Server.Game
                     );
                 }
 
-
+                // 캐릭터 스폰지점 
                 else if (tileData.tilemapName == "CharacterSpawn")
                 {
                     spawnTiles.Add(tileData);
                 }
             }
             SpawnCharacterRandomly(spawnTiles);
-
-
 
             // 맵의 상태를 확인해 보자. 
             for (int y = 0; y < 14; y++)

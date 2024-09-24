@@ -35,8 +35,24 @@ public class CAMapEditor : MonoBehaviour
                 foreach (Vector3Int position in tilemap.cellBounds.allPositionsWithin)
                 {
                     TileBase tile = tilemap.GetTile(position);
+
                     if (tile != null)
                     {
+                        // 수정중인 코드
+                        UnityEngine.Tilemaps.TileData tileData = new UnityEngine.Tilemaps.TileData();
+                        tile.GetTileData(position, null, ref tileData);
+
+                        Sprite tileSprite = tileData.sprite;
+                        string atlasName = "";
+                        if (tileSprite != null)
+                        {
+                            // 스프라이트에서 원래 텍스쳐(Atlas)이름을 출력
+                            Texture2D atlasTexture = tileSprite.texture;
+                            Debug.Log($"타일 위치: {position}, Atlas 이름: {atlasTexture.name}");
+                            atlasName = atlasTexture.name;
+                        }
+
+
                         if (tile is CustomTile customTile)
                         {
                             tileDataList.Add(new TileData
@@ -50,6 +66,7 @@ public class CAMapEditor : MonoBehaviour
                                 isMoveable = customTile.isMoveable,
                                 childTileName = customTile.childTileSprite != null ? customTile.childTileSprite.name : null,
                                 spawnType = customTile.spawnType,
+                                AtlasName = atlasName
                                 //charTypeTest = customTile.charactertype,
                             }) ; 
                         }
@@ -59,7 +76,8 @@ public class CAMapEditor : MonoBehaviour
                             {
                                 position = position,
                                 tileName = tile.name,
-                                tilemapName = tilemap.name
+                                tilemapName = tilemap.name,
+                                AtlasName = atlasName
                             });
                         }
                     }

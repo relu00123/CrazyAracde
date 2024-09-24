@@ -177,9 +177,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3372173612085008269}
-  - component: {fileID: 7375919476015290936}
+  - component: {fileID: 2942520499448676992}
   m_Layer: 0
-  m_Name: ObjectBox
+  m_Name: ObjectWall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -202,7 +202,7 @@ Transform:
   - {fileID: 7480192633988471274}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &7375919476015290936
+--- !u!114 &2942520499448676992
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -211,7 +211,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 5557975745826672632}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5b42d2aab0c3d0a408eac92ffd1552cc, type: 3}
+  m_Script: {fileID: 11500000, guid: fa1352c809f9043419d89f67d7e8bfe7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   BaseSpriteRenderer: {fileID: 6119687206761738044}

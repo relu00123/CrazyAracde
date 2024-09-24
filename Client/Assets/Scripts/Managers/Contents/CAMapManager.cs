@@ -39,6 +39,8 @@ public class TileData   // Enum값도 집어넣을 수 있다는 것 확인하�
     public bool isMoveable = false;
     public string childTileName;
     public CharacterSpawnType spawnType = CharacterSpawnType.SpawnNothing;
+    public string AtlasName; 
+    
     //public CharacterType charTypeTest;   // Enum저장되는지 테스트 용도. 사용되는 값은 아님.
 
 }

@@ -150,6 +150,25 @@ public class ObjectLayerManager
             }
             break;
 
+            case ObjectType.ObjectWall:
+            {
+                foreach (var kvp in spawnObjectPacket.AdditionalData)
+                {
+                    if (kvp.Key == ObjectSpawnKeyType.Wall)
+                    {
+                        TileInfoValue tileInfoValue = kvp.TileInfoValue;
+                        string tilename = tileInfoValue.Tilename;
+                        string tileAtlasname = tileInfoValue.Atlasname;
+                        Debug.Log($"[WALL] TileName : {tilename} , AtlasName : {tileAtlasname}");
+
+                        unityObject.GetComponent<CAWall>().SetBaseTexture(tilename, tileAtlasname);
+                        unityObject.GetComponent<CAWall>().SetTopTexture(tilename, tileAtlasname);
+                    }
+                }
+                }
+            break;
+
+
             case ObjectType.ObjectBox:
             {
                  foreach(var kvp in spawnObjectPacket.AdditionalData)
@@ -158,14 +177,14 @@ public class ObjectLayerManager
                     {
                         TileInfoValue tileInfoValue = kvp.TileInfoValue;
                         string tilename = tileInfoValue.Tilename;
-                        Debug.Log($"[BOX] TileName : {tilename}");
-
-                        unityObject.GetComponent<CABox>().SetBaseTexture(tilename);
-                        unityObject.GetComponent<CABox>().SetTopTexture(tilename);
+                        string tileAtlasname = tileInfoValue.Atlasname;
+                        Debug.Log($"[BOX] TileName : {tilename} , AtlasName : {tileAtlasname}");
+                        
+                        unityObject.GetComponent<CABox>().SetBaseTexture(tilename, tileAtlasname);
+                        unityObject.GetComponent<CABox>().SetTopTexture(tilename, tileAtlasname);
                     }
                 }
             }
-
             break;
 
 

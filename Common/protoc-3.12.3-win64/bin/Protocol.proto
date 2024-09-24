@@ -77,6 +77,7 @@ enum ObjectType  {
    OBJECT_BOX = 4;
    OBJECT_BOMB = 5;
    OBJECT_WATER_STREAM = 6;
+   OBJECT_WALL = 7;
 }
 
 enum CreatureState {
@@ -270,6 +271,7 @@ enum ObjectSpawnKeyType
   BOMB = 1; 
   WATERSTREAM = 2;
   BOX = 3;
+  WALL = 4;
 }
 
 enum BombType 
@@ -479,6 +481,7 @@ message BombInfoValue
 message TileInfoValue
 {
   string tilename = 1;
+  string atlasname = 2;
 }
 
 message S_SpawnObject {

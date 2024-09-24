@@ -341,7 +341,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: map_pirate_tile6_11
+      name: pirate_turtle_wall_top
       rect:
         serializedVersion: 2
         x: 520
@@ -635,7 +635,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: map_pirate_tile6_25
+      name: pirate_turtle_wall_base
       rect:
         serializedVersion: 2
         x: 520
@@ -929,7 +929,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: pirate_orange_box_top
+      name: pirate_yellow_box_top
       rect:
         serializedVersion: 2
         x: 520
@@ -950,7 +950,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: pirate_red_box_top
+      name: pirate_orange_box_top
       rect:
         serializedVersion: 2
         x: 560
@@ -1244,7 +1244,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: pirate_orange_box_base
+      name: pirate_yellow_box_base
       rect:
         serializedVersion: 2
         x: 520
@@ -1265,7 +1265,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: pirate_red_box_base
+      name: pirate_orange_box_base
       rect:
         serializedVersion: 2
         x: 560
@@ -1299,7 +1299,6 @@ TextureImporter:
       map_pirate_tile6_0: 1721403404
       map_pirate_tile6_1: -639099881
       map_pirate_tile6_10: -883826297
-      map_pirate_tile6_11: 811672543
       map_pirate_tile6_12: -1425628231
       map_pirate_tile6_13: 1154054151
       map_pirate_tile6_14: 500141522
@@ -1314,7 +1313,6 @@ TextureImporter:
       map_pirate_tile6_22: 686035991
       map_pirate_tile6_23: -948255303
       map_pirate_tile6_24: -1176478698
-      map_pirate_tile6_25: -337741302
       map_pirate_tile6_26: -1285009241
       map_pirate_tile6_27: 982860228
       map_pirate_tile6_28: -1669769870
@@ -1348,10 +1346,12 @@ TextureImporter:
       pirate_blue_box_top: -497064240
       pirate_green_box_base: -1780350833
       pirate_green_box_top: -213546864
-      pirate_orange_box_base: -260718889
-      pirate_orange_box_top: 943435233
-      pirate_red_box_base: -1672878445
-      pirate_red_box_top: 1407097805
+      pirate_orange_box_base: -1672878445
+      pirate_orange_box_top: 1407097805
+      pirate_turtle_wall_base: -337741302
+      pirate_turtle_wall_top: 811672543
+      pirate_yellow_box_base: -260718889
+      pirate_yellow_box_top: 943435233
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

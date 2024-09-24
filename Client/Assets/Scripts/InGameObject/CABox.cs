@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static TreeEditor.TextureAtlas;
 
 public class CABox : MonoBehaviour
 {
@@ -20,32 +21,76 @@ public class CABox : MonoBehaviour
         
     }
 
-    public void SetBaseTexture(string texturename)
+    public void SetBaseTexture(string textureName, string atlasName)
     {
-        string full_name = texturename += "_base";
-        //string full_path = "Tiles/Tiles_Pirate/Original/";
-        //full_path += full_name;
+        string texture_full_name = textureName += "_base";
 
-        string full_path = "Tiles/Tiles_Pirate/Original/map_pirate_tile6/pirate_green_box_top";
+        string foldername = "";
+        int index = atlasName.IndexOf("_Atlas");
 
-        Sprite newSprite = Managers.Resource.Load<Sprite>(full_path);
+        if (index >= 0)
+        {
+            // "_Atlas" 이전까지 문자열을 자름
+            foldername = atlasName.Substring(0, index);
+        }
+
+        string full_path = $"Tiles/{foldername}/Original/{atlasName}";
+
+        Debug.Log($"BaseTexture Full Path : {full_path}");
+
+        Sprite[] sprites = Resources.LoadAll<Sprite>(full_path);
+
+        //// 특정 스프라이트 이름으로 검색
+        Sprite newSprite = System.Array.Find(sprites, item => item.name == texture_full_name);
 
         if (newSprite == null)
         {
-            Debug.Log($"BaseTexture 할당중 문제 발생!, 사용한 경로 : {full_path}");
+            Debug.LogError("BaseTexture 할당 중 문제 발생!");
         }
 
         else
         {
-            Debug.Log($"BaseTexture 할당중 문제 발생 안함!, 사용한 경로 : {full_path}");
-            //BaseSpriteRenderer.sprite = newSprite;
+            BaseSpriteRenderer.sprite = newSprite;
+            Debug.Log("BaseTexture 할당 중 문제 발생 안함!");
         }
 
-        
+
+
     }
 
-    public void SetTopTexture(string texturename)
+    public void SetTopTexture(string textureName, string atlasName)
     {
-        string full_name = texturename += "_top";
+        string texture_full_name = textureName += "_top";
+
+        string foldername = "";
+        int index = atlasName.IndexOf("_Atlas");
+
+        if (index >= 0)
+        {
+            // "_Atlas" 이전까지 문자열을 자름
+            foldername = atlasName.Substring(0, index);
+        }
+
+        string full_path = $"Tiles/{foldername}/Original/{atlasName}";
+
+        Debug.Log($"TopTexture Full Path : {full_path}");
+
+        Sprite[] sprites = Resources.LoadAll<Sprite>(full_path);
+
+        //// 특정 스프라이트 이름으로 검색
+        Sprite newSprite = System.Array.Find(sprites, item => item.name == texture_full_name);
+
+        if (newSprite == null)
+        {
+            Debug.LogError("TopTexture 할당 중 문제 발생!");
+        }
+
+        else
+        {
+            TopSpriteRenderer.sprite = newSprite;
+            Debug.Log("TopTexture 할당 중 문제 발생 안함!");
+        }
+
+
     }
 }
