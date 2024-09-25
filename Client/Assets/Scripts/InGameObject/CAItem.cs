@@ -8,12 +8,20 @@ using UnityEngine;
  
 public class CAItem : MonoBehaviour
 {
+    public Animator _itemAnimator { get; private set; }
+
+    public CAItemRender _caItemRenderScript { get; set; }
+
+    public Sprite _itemImage;
+ 
     void Start()
     {
+        _caItemRenderScript = GetComponentInChildren<CAItemRender>();
+        _itemAnimator = GetComponent<Animator>();
     }
 
-    // Update is called once per frame
-    void Update()
+    
+    public void CAItemTest()
     {
 
     }

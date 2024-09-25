@@ -79,6 +79,7 @@ enum ObjectType  {
    OBJECT_BOMB = 5;
    OBJECT_WATER_STREAM = 6;
    OBJECT_WALL = 7;
+   OBJECT_ITEM = 8;
 }
 
 enum CreatureState {
@@ -153,6 +154,13 @@ enum PlayerServerState {
   SERVER_STATE_STORE = 2;
   SERVER_STATE_ROOM  = 3;
   SERVER_STATE_GAME  = 4;
+}
+
+enum CAItemType {
+  CA_ROLLER_SKATE = 0;
+  CA_STREAM_MAX = 1;
+  CA_STREAM_POTION = 2;
+  CA_WATER_BOMB = 3;
 }
 
 enum ItemType {
