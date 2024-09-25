@@ -188,6 +188,12 @@ public class ObjectLayerManager
             }
             break;
 
+            case ObjectType.ObjectItem:
+            {
+                 Debug.Log("Creating ObjectItem!");
+            }
+            break;
+
 
             default:
                 break; 

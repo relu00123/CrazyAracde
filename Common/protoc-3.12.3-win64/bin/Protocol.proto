@@ -281,6 +281,7 @@ enum ObjectSpawnKeyType
   WATERSTREAM = 2;
   BOX = 3;
   WALL = 4;
+  ITEM = 5;
 }
 
 enum BombType 
@@ -473,6 +474,7 @@ message KeyValuePairs  {
     BombInfoValue Bomb_info_value = 6;
     WaterStreamType Stream_info_value = 7;
     TileInfoValue Tile_info_value = 8;
+    ItemInfoValue Item_info_value = 9;
   }
 }
 
@@ -491,6 +493,11 @@ message TileInfoValue
 {
   string tilename = 1;
   string atlasname = 2;
+}
+
+message ItemInfoValue 
+{
+  CAItemType itemtype = 1;
 }
 
 message S_SpawnObject {
