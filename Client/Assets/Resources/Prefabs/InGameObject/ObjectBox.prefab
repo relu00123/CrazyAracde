@@ -178,6 +178,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3372173612085008269}
   - component: {fileID: 7375919476015290936}
+  - component: {fileID: 282687897260914697}
   m_Layer: 0
   m_Name: ObjectBox
   m_TagString: Untagged
@@ -216,3 +217,25 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   BaseSpriteRenderer: {fileID: 6119687206761738044}
   TopSpriteRenderer: {fileID: 2029137567696042685}
+  MainAnimator: {fileID: 282687897260914697}
+--- !u!95 &282687897260914697
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5557975745826672632}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: be8b0f2ff2ec4cf4a88db8807ce5e2ba, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0

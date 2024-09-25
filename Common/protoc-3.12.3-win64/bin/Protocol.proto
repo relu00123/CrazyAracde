@@ -67,6 +67,7 @@ enum MsgId {
   S_INSTALL_BOMB = 61;
   S_DESTROY_OBJECT = 62;
   S_CHANGE_ANIMATION = 63;
+  S_DESTROY_BOX = 64;
 }
 
 enum ObjectType  {
@@ -493,8 +494,11 @@ message S_SpawnObject {
 }
 
 message S_DestroyObject  {
-  int32       objectId     = 1;
-  
+  int32 objectId     = 1;
+}
+
+message S_DestroyBox {
+  int32 objectId = 1;
 }
 
 message LobbyPlayerInfo {

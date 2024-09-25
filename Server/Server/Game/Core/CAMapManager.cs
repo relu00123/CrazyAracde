@@ -140,14 +140,15 @@ namespace Server.Game
 
                     _tileMapData[tileData.position.x, tileData.position.y].isBlocktPermanently = true;
 
-                    _currentGame.CreateAndBroadcastObject(
+                    CAWall spawnedWallObj = _currentGame.CreateAndBroadcastObject<CAWall>(
                         LayerType.BoxLayer,
-                        tileData.tileName, // 나중에 문제가 생길수도 있긴한데 확인해보기 
+                        tileData.tileName,
                         PositionType.TileCenterPos,
                         ObjectType.ObjectWall,
                         new Vector2(tileData.position.x, tileData.position.y),
                         TileInfos
                     );
+                    _tileMapData[tileData.position.x, tileData.position.y].inGameObject = spawnedWallObj;
                 }
 
                 // 부술 수 있는 박스
@@ -170,14 +171,32 @@ namespace Server.Game
                     };
 
                     _tileMapData[tileData.position.x, tileData.position.y].isBlocktPermanently = true;
-                    _currentGame.CreateAndBroadcastObject(
+
+                    // 수정된 코드
+                    CABox spawnedBoxObj = _currentGame.CreateAndBroadcastObject<CABox>(
                         LayerType.BoxLayer,
-                        tileData.tileName,  // 설마 문제가 되나..?
+                        tileData.tileName,
                         PositionType.TileCenterPos,
                         ObjectType.ObjectBox,
                         new Vector2(tileData.position.x, tileData.position.y),
                         TileInfos
                     );
+                    _tileMapData[tileData.position.x, tileData.position.y].inGameObject = spawnedBoxObj;
+
+                    spawnedBoxObj._possessGame = _currentGame;
+                    spawnedBoxObj.position = new Vector2Int(tileData.position.x, tileData.position.y);
+                    // 수정된 코드 끝
+
+
+                    // 기존코드
+                    //_currentGame.CreateAndBroadcastObject(
+                    //    LayerType.BoxLayer,
+                    //    tileData.tileName,  // 설마 문제가 되나..?
+                    //    PositionType.TileCenterPos,
+                    //    ObjectType.ObjectBox,
+                    //    new Vector2(tileData.position.x, tileData.position.y),
+                    //    TileInfos
+                    //);
                 }
 
                 // 캐릭터 스폰지점 
@@ -344,10 +363,6 @@ namespace Server.Game
             SpawnedWaterStream._possessGame = _currentGame;
             SpawnedWaterStream.WaterStreamUpdate();
 
-            // 테스트중..
-
-
-
             SpreadWater(Vector2Int.up, position, bomb.power);
             SpreadWater(Vector2Int.down, position, bomb.power);
             SpreadWater(Vector2Int.left, position, bomb.power);
@@ -370,7 +385,24 @@ namespace Server.Game
 
                 TileInfo tile = _tileMapData[nextPosition.x, nextPosition.y];
 
-                // 물풍선이 있으면 즉시 터뜨린다.
+                // next 위치에 벽이 있으면 벽전까지만 물줄기를 터뜨린다.
+                if (tile.inGameObject is CAWall wall)
+                {
+                    curExplodedPositions.Add(nextPosition);
+                    break;
+                }
+
+
+                // next 위치에 박스가 있으면 박스전까지만 물줄기를 터뜨린다. (박스는 파괴)
+                if (tile.inGameObject is CABox box)
+                {
+                    curExplodedPositions.Add(nextPosition);
+                    box.DestroyBox();
+                    break;
+                }
+
+
+                // next위치에 물풍선이 있으면 즉시 터뜨린다.
                 if (tile.inGameObject is CABomb bomb)
                 {
                     ExplodeAtPosition(nextPosition, bomb); // 재귀적으로 해당위치에서 폭발 확산 -> 여기 로직 보완 필요 PushAfter막는 것을 이 함수에서?

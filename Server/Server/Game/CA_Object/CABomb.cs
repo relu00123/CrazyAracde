@@ -57,7 +57,7 @@ using System.Text;
         _job.Cancel = true;
         _job = null;
 
-        // 3. 본인과, 연계된 지역의 WaterStream 객체를 생성 및 Client에 Broadcast 
+        // 0. 본인과, 연계된 지역의 WaterStream 객체를 생성 및 Client에 Broadcast 
         // 이 일은 Bomb에서 해주는 것이 아니라 CAMapManager에서 해줘야 한다. 
         _possessGame._caMapManager.ExplodeBomb(this);  // 테스트중
 
@@ -75,7 +75,7 @@ using System.Text;
         InstalledTileData.inGameObject = null;
 
          
-
+        // 3. ObjectLayerManager에서도 이를 삭제
         _possessGame._objectsManager.DestroyObjectbyId(this.Id);
 
     }

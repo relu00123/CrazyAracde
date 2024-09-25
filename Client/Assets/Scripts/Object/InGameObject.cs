@@ -21,6 +21,12 @@ public class InGameObject : Entity
     }
 
 
+    public virtual void OnDestroyObject()
+    {
+        Managers.InGame._objectLayerManager.RemoveObjectFromLayer(this);
+    }
+
+
     //public Vector3? CurrentPos
     //{
     //    get

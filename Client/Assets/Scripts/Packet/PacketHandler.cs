@@ -4,6 +4,7 @@ using ServerCore;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -436,6 +437,26 @@ class PacketHandler
         Managers.InGame.HandleDestroyObject((S_DestroyObject)packet);
         return;
     }
+
+	public static void S_DestroyBoxHandler(PacketSession session, IMessage packet)
+	{
+		int objid = ((S_DestroyBox)packet).ObjectId;
+		InGameObject obj =  Managers.InGame._objectLayerManager.FindObjectbyId(objid);
+
+		CABox caBoxScript = obj.GetComponentFromUnityObject<CABox>();
+
+		if (caBoxScript == null)
+		{
+			Debug.Log("CABoxScript is Null");
+		}
+
+		else
+		{
+			Debug.Log("CABoxScript Exists!");
+			caBoxScript._ingameObject = obj;
+			caBoxScript.PlayDestroyAnim();
+		}
+	}
 
 
     public static void S_OwnPlayerInformHandler(PacketSession session, IMessage packet)

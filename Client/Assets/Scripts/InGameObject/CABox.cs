@@ -9,10 +9,14 @@ public class CABox : MonoBehaviour
 
     [SerializeField] private SpriteRenderer TopSpriteRenderer;
 
+    [SerializeField] private Animator MainAnimator;
+
+    public InGameObject _ingameObject { get; set; }
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        MainAnimator.enabled = false;
     }
 
     // Update is called once per frame
@@ -90,7 +94,20 @@ public class CABox : MonoBehaviour
             TopSpriteRenderer.sprite = newSprite;
             Debug.Log("TopTexture 할당 중 문제 발생 안함!");
         }
+    }
 
+    public void PlayDestroyAnim()
+    {
+        TopSpriteRenderer.sprite = null;
+        MainAnimator.enabled = true;
+    }
+
+    public void DestroyBox()
+    {
+        Debug.Log("Destroy Box Function Called!");
+        _ingameObject.OnDestroyObject();
 
     }
+
+   
 }

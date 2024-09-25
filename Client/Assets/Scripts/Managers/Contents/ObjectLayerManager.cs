@@ -72,7 +72,8 @@ public class ObjectLayerManager
        InGameObject obj = FindObjectbyId(destroyObjectPacket.ObjectId);
         if (obj != null)
         {
-            RemoveObjectFromLayer(obj);
+            obj.OnDestroyObject();
+            //RemoveObjectFromLayer(obj);
         }
     }
 
