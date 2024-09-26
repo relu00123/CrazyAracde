@@ -9,9 +9,6 @@ using Google.Protobuf.Protocol;
 
 public class CABox : InGameObject
 {
-    private float _itemSpawnChance = 0.5f;  // 50%의 확률로 아이템 생성
-    private Random random; 
-
     public Vector2Int position { get; set; } = new Vector2Int();
     public CABox(int id, string name, Transform transform, int layer)
        : base(id, name, transform, layer)
@@ -20,19 +17,8 @@ public class CABox : InGameObject
         // 폭탄이 터질때 Collision System을 어떻게 만들지에 따라서 갈릴듯. 
         //_collider = new Collider(this, Vector2.Zero, new Vector2(0.95f, 0.95f));
         //lastUpdateTime = DateTime.Now;
-        random = new Random();
     }
 
-    private bool ShouldSpawnItem()
-    {
-        float randValue = (float)random.NextDouble();
-        return randValue < _itemSpawnChance;
-    }
-
-    private CAItemType GetRandomItemType()
-    {
-        return CAItemType.CaStreamPotion;
-    }
  
     public void DestroyBox()
     {
@@ -56,17 +42,29 @@ public class CABox : InGameObject
 
 
         // 4. 확률적으로 아이템을 생성한다. (우선은 아이템 종류를 고정으로 함)
-        if (ShouldSpawnItem()) // 아이템을 생성해야하는가? 
+        if (ItemManager.Instance.ShouldSpawnItem()) // 아이템을 생성해야하는가? 
         {
-            // 렌덤아이템 뽑기 부터 09.26에 이어서 작업.. GPT참고하면 됨. 
+            CAItemType decidedItem =  ItemManager.Instance.GetRandomItemType();
+
+            ItemInfoValue itemInfoValue = new ItemInfoValue()
+            {
+                Itemtype = decidedItem
+            };
+
+            List<KeyValuePairs> ItemInfos = new List<KeyValuePairs>
+            {
+                new KeyValuePairs {Key = ObjectSpawnKeyType.Item, ItemInfoValue = itemInfoValue }
+            };
+
+            string itemName = decidedItem.ToString();
 
             CAItem spawnedItemObj = _possessGame.CreateAndBroadcastObject<CAItem>(
                 LayerType.BoxLayer,
-                "Item",
+                itemName,
                 PositionType.TileCenterPos,
                 ObjectType.ObjectItem,
-                new Vector2(position.x, position.y)
-            // 나중에 추가로 Item에 대한 데이터 넣어줄 것임.
+                new Vector2(position.x, position.y),
+                ItemInfos
             );
 
             _possessGame._caMapManager._tileMapData[position.x, position.y].inGameObject = spawnedItemObj;

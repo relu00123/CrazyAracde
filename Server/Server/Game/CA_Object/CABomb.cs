@@ -79,11 +79,4 @@ using System.Text;
         _possessGame._objectsManager.DestroyObjectbyId(this.Id);
 
     }
-
- 
-
-    public void Test()
-    {
-        Console.WriteLine("Test");
-    }
 }

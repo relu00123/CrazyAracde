@@ -392,13 +392,26 @@ namespace Server.Game
                     break;
                 }
 
-
                 // next 위치에 박스가 있으면 박스전까지만 물줄기를 터뜨린다. (박스는 파괴)
                 if (tile.inGameObject is CABox box)
                 {
                     curExplodedPositions.Add(nextPosition);
                     box.DestroyBox();
                     break;
+                }
+
+                if (tile.inGameObject is CAItem item)
+                {
+                    // 물줄기에의해 사라져야한다. 
+                    S_DestroyObject destroyObject = new S_DestroyObject
+                    {
+                        ObjectId = tile.inGameObject.Id
+                    };
+
+                    _currentGame._gameRoom.BroadcastPacket(destroyObject);
+
+                    _currentGame._objectsManager.DestroyObjectbyId(tile.inGameObject.Id);
+                    _tileMapData[nextPosition.x, nextPosition.y].inGameObject = null;
                 }
 
 

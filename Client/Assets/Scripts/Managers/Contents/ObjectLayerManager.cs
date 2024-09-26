@@ -191,6 +191,20 @@ public class ObjectLayerManager
             case ObjectType.ObjectItem:
             {
                  Debug.Log("Creating ObjectItem!");
+
+                 foreach(var kvp in spawnObjectPacket.AdditionalData)
+                {
+                    if (kvp.Key == ObjectSpawnKeyType.Item)
+                        {
+                            ItemInfoValue itemInfoValue = kvp.ItemInfoValue;
+                            CAItemType itemtype = itemInfoValue.Itemtype;
+
+                            // 아이템에 맞는 스프라이트 설전
+                            Sprite itemSprite = CA_ResourceManager.Instance.GetItemSprite(itemtype);
+                            if (itemSprite != null)
+                                unityObject.GetComponent<CAItem>().ItemImage = itemSprite;
+                        }
+                }
             }
             break;
 

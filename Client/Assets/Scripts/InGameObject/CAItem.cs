@@ -12,7 +12,24 @@ public class CAItem : MonoBehaviour
 
     public CAItemRender _caItemRenderScript { get; set; }
 
-    public Sprite _itemImage;
+    private  Sprite _itemImage;
+
+    public Sprite ItemImage
+    {
+        get { return _itemImage; }
+        set
+        {
+            _itemImage = value;
+
+
+            if (_caItemRenderScript != null)
+            {
+               var spriteRenderer =  _caItemRenderScript._itemRenderAnimator.GetComponent<SpriteRenderer>();
+                spriteRenderer.sprite = _itemImage;
+            }
+        }
+    }
+
  
     void Start()
     {
