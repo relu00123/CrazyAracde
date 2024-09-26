@@ -26,6 +26,15 @@ public class CAItem : MonoBehaviour
             {
                var spriteRenderer =  _caItemRenderScript._itemRenderAnimator.GetComponent<SpriteRenderer>();
                 spriteRenderer.sprite = _itemImage;
+
+                // Material 이 OutlineMaterial 이라면 , 쉐이더에서 사용하는 텍스쳐를 설정해줘야 한다
+                Material itemMaterial = spriteRenderer.material;
+
+                // Material의 텍스쳐 설정
+                if (itemMaterial.HasProperty("_MainTex"))
+                {
+                    itemMaterial.SetTexture("_MainTex", _itemImage.texture);
+                }
             }
         }
     }
