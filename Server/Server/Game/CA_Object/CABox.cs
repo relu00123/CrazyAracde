@@ -42,7 +42,7 @@ public class CABox : InGameObject
 
 
         // 4. 확률적으로 아이템을 생성한다. (우선은 아이템 종류를 고정으로 함)
-        if (ItemManager.Instance.ShouldSpawnItem()) // 아이템을 생성해야하는가? 
+        //if (ItemManager.Instance.ShouldSpawnItem()) // 아이템을 생성해야하는가? 
         {
             CAItemType decidedItem =  ItemManager.Instance.GetRandomItemType();
 

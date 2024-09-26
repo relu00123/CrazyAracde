@@ -196,13 +196,25 @@ public class ObjectLayerManager
                 {
                     if (kvp.Key == ObjectSpawnKeyType.Item)
                         {
+                            Debug.Log("Item Spawn 확보");
                             ItemInfoValue itemInfoValue = kvp.ItemInfoValue;
                             CAItemType itemtype = itemInfoValue.Itemtype;
 
                             // 아이템에 맞는 스프라이트 설전
                             Sprite itemSprite = CA_ResourceManager.Instance.GetItemSprite(itemtype);
+                            Debug.Log($"Item Image 확보 : {itemSprite.name}");
                             if (itemSprite != null)
+                            {
+                                Debug.Log("Item Sprite Exists");
+                                CAItem script = unityObject.GetComponent<CAItem>();
+
+                                if (script == null)
+                                {
+                                    Debug.Log("Script Null detected!");
+                                }
+
                                 unityObject.GetComponent<CAItem>().ItemImage = itemSprite;
+                            }
                         }
                 }
             }

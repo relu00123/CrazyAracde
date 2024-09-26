@@ -58,6 +58,7 @@ public class ItemManager
             cumulativeWeight += itemWeights[i];
             if (randomValue < cumulativeWeight)
             {
+                Console.WriteLine($"Spawning Item : {itemTypes[i].ToString()}");
                 return itemTypes[i];
             }
         }

@@ -1,10 +1,10 @@
 Shader "Unlit/OutlineShader"
 {
-    Properties
+      Properties
     {
         _MainTex ("Texture", 2D) = "white" {}  // 스프라이트 텍스처
         _OutlineColor ("Outline Color", Color) = (1, 0, 0, 1)  // 외곽선 색상
-        _OutlineThickness ("Outline Thickness", Range(0.0, 100.0)) = 10.0  // 외곽선 두께
+        _OutlineThickness ("Outline Thickness", Range(0.0, 10.0)) = 1.0  // 외곽선 두께
     }
     SubShader
     {
@@ -54,24 +54,23 @@ Shader "Unlit/OutlineShader"
                 // 알파 값을 기준으로 외곽선을 그릴 픽셀 선택
                 float alpha = color.a;
 
-                // 스프라이트 주변에 외곽선을 추가 (텍스처의 UV 좌표를 확장하는 방식으로 외곽선을 계산)
+                // 주변 픽셀의 오프셋을 계산 (좌우 및 상하로 각각)
                 float2 offset1 = float2(fwidth(i.texcoord.x), 0);
                 float2 offset2 = float2(0, fwidth(i.texcoord.y));
 
-                // 주변 픽셀 중 알파 값이 있는지 확인
-                float surroundingAlpha = tex2D(_MainTex, i.texcoord + offset1).a +
-                                         tex2D(_MainTex, i.texcoord - offset1).a +
-                                         tex2D(_MainTex, i.texcoord + offset2).a +
-                                         tex2D(_MainTex, i.texcoord - offset2).a;
+                // 주변 픽셀의 알파 값 확인
+                float surroundingAlpha = max(tex2D(_MainTex, i.texcoord + offset1).a, tex2D(_MainTex, i.texcoord - offset1).a);
+                surroundingAlpha = max(surroundingAlpha, tex2D(_MainTex, i.texcoord + offset2).a);
+                surroundingAlpha = max(surroundingAlpha, tex2D(_MainTex, i.texcoord - offset2).a);
 
-                // 외곽선을 그리기 위해 스프라이트 경계를 확장
-                float outline = smoothstep(0.0, _OutlineThickness, surroundingAlpha - alpha);
+                // 외곽선 계산: 경계 픽셀에서 외곽선을 두껍게 그리기
+                float outline = 1.0 - smoothstep(0.0, _OutlineThickness * 0.01, surroundingAlpha - alpha);
 
-                // 외곽선 부분과 스프라이트 본체 색상을 혼합
+                // 최종 색상: 외곽선 부분은 외곽선 색상으로, 스프라이트 본체는 원래 색상으로
                 half4 finalColor = lerp(_OutlineColor, color, alpha);
 
-                // 외곽선 알파 값 적용
-                finalColor.a = max(alpha, outline);
+                // 투명도 처리: 외곽선 및 내부 모두 투명도 고려
+                finalColor.a = max(alpha, surroundingAlpha);
 
                 return finalColor;
             }
