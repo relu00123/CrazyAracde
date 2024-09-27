@@ -14,6 +14,7 @@ using System.Text;
     private DateTime lastUpdateTime;
     public Vector2Int position { get; set; } = new Vector2Int();
     public int power { get; set; }
+    public CAPlayer bombOwner { get; set; }
 
     public IJob _job;
 
@@ -56,6 +57,9 @@ using System.Text;
         
         _job.Cancel = true;
         _job = null;
+
+        if (bombOwner != null)
+            bombOwner.Stats.IncreaseCurBombCount();
 
         // 0. 본인과, 연계된 지역의 WaterStream 객체를 생성 및 Client에 Broadcast 
         // 이 일은 Bomb에서 해주는 것이 아니라 CAMapManager에서 해줘야 한다. 

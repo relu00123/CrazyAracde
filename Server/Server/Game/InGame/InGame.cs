@@ -223,8 +223,12 @@ namespace Server.Game
             gameObject.ChangeState(CreatureState.Moving);
         }
 
-        public void InstallBomb(C_InstallBomb installBombPacket)
+        public void InstallBomb(C_InstallBomb installBombPacket, ClientSession clientSession)
         {
+            // 0. 현재 플레이어가 폭탄을 설치할 수 있는 상태인지 확인해야한다. 
+            if (!(clientSession.CA_MyPlayer.Stats.IsBombPlaceable()))
+                return;
+
             // 1. 폭탄이 설치 될 좌표 구하기.
             // 들어온 Player의 Position은 발바닦이 아닌 몸 정 중앙의 좌표이다. 
             // 설치해야할 타일 좌표를 구해보자. 
@@ -239,6 +243,8 @@ namespace Server.Game
             }
             else
             {
+                clientSession.CA_MyPlayer.Stats.DecreaseCurBombCount();
+
                 // 3. 폭탄 생성 및 모든 클라이언트에게 이 사실을 Broadcast하기 
                 BombInfoValue bombInfoValue = new BombInfoValue()
                 {
@@ -270,16 +276,12 @@ namespace Server.Game
 
                 spawnedBombObj._possessGame = this;
                 spawnedBombObj.position = new Vector2Int(install_tile_x, install_tile_y);
-                spawnedBombObj.power = installBombPacket.Power;
+                spawnedBombObj.bombOwner = clientSession.CA_MyPlayer; 
+
+                // 5. 폭탄의 세기 설정하기 
+                spawnedBombObj.power = clientSession.CA_MyPlayer.Stats.WaterPower;
                 _caMapManager._tileMapData[install_tile_x, install_tile_y].inGameObject = spawnedBombObj;
                 ((CABomb)(_caMapManager._tileMapData[install_tile_x, install_tile_y].inGameObject)).Bomb_update();
-                
-
-                // 5. 폭탄이 특정 시간 후에 터질 수 있도록 로직 작성해야함. 
-                // 이것을 여기서 해줘야하는지 아니면 CA_Bomb에 로직을 작성할지는 생각해 봐야함.
-                // 이 작업은 09.16 에 하면 될듯. (물풍선 트뜨리기) 
-                // 또한, 폭탄이 터지면서 TempBlock한 것을 풀어줘야 함으로 CABomb에 Tile의 좌표를 알고 있도록 해야한다. 
-
             }
         }
 

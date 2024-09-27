@@ -6,7 +6,7 @@ using System.Text;
 
  
 
-public class Player_MovingState : AbstractPlayerState
+public class Player_MovingState : AbstractPlayerState, IPlayerEatItem
 {
     public override void ApplyMove(InGameObject gameObject, MoveDir dir)
     {
@@ -44,5 +44,10 @@ public class Player_MovingState : AbstractPlayerState
     public override void ExitState(InGameObject obj)
     {
 
+    }
+
+    public void EatItem(InGameObject eatingObj, CAItemType itemType)
+    {
+        ItemEatHelper.DefaultEatItem(eatingObj, itemType);
     }
 }

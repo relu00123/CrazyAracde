@@ -4,8 +4,9 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-public class Player_IdleState : AbstractPlayerState
+public class Player_IdleState : AbstractPlayerState, IPlayerEatItem
 {
+
     public override void ApplyMove(InGameObject gameObject, MoveDir dir)
     {
         if (dir == MoveDir.MoveNone)
@@ -41,5 +42,10 @@ public class Player_IdleState : AbstractPlayerState
     public override void ExitState(InGameObject obj)
     {
 
+    }
+
+    public void EatItem(InGameObject eatingObj, CAItemType itemType)
+    {
+        ItemEatHelper.DefaultEatItem(eatingObj, itemType);
     }
 }

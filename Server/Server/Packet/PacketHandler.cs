@@ -248,7 +248,7 @@ class PacketHandler
 		C_InstallBomb installBombPkt = packet as C_InstallBomb;
 		ClientSession clientSession = session as ClientSession;
 
-		clientSession.BeloingRoom._inGame.InstallBomb(installBombPkt);
+		clientSession.BeloingRoom._inGame.InstallBomb(installBombPkt, clientSession);
 	}
 }
 

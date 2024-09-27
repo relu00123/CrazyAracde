@@ -44,11 +44,11 @@ public class CABox : InGameObject
         // 4. 확률적으로 아이템을 생성한다. (우선은 아이템 종류를 고정으로 함)
         //if (ItemManager.Instance.ShouldSpawnItem()) // 아이템을 생성해야하는가? 
         {
-            CAItemType decidedItem =  ItemManager.Instance.GetRandomItemType();
+            CAItemType decidedItemType =  ItemManager.Instance.GetRandomItemType();
 
             ItemInfoValue itemInfoValue = new ItemInfoValue()
             {
-                Itemtype = decidedItem
+                Itemtype = decidedItemType
             };
 
             List<KeyValuePairs> ItemInfos = new List<KeyValuePairs>
@@ -56,16 +56,18 @@ public class CABox : InGameObject
                 new KeyValuePairs {Key = ObjectSpawnKeyType.Item, ItemInfoValue = itemInfoValue }
             };
 
-            string itemName = decidedItem.ToString();
+            string itemName = decidedItemType.ToString();
 
             CAItem spawnedItemObj = _possessGame.CreateAndBroadcastObject<CAItem>(
-                LayerType.BoxLayer,
+                LayerType.ItemLayer,
                 itemName,
                 PositionType.TileCenterPos,
                 ObjectType.ObjectItem,
                 new Vector2(position.x, position.y),
                 ItemInfos
             );
+            spawnedItemObj.itemType = decidedItemType;
+            spawnedItemObj._possessGame = _possessGame;
 
             _possessGame._caMapManager._tileMapData[position.x, position.y].inGameObject = spawnedItemObj;
         }

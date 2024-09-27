@@ -48,12 +48,12 @@ namespace Server.Game.Core
 
             // WaterStream
             collisionMatrix[(int)LayerType.WaterstreamLayer, (int)LayerType.CharacterLayer] = true;
-            collisionMatrix[(int)LayerType.WaterstreamLayer, (int)LayerType.ItemLayer] = true;
+            //collisionMatrix[(int)LayerType.WaterstreamLayer, (int)LayerType.ItemLayer] = true;
 
 
             // ItemLayer 
             collisionMatrix[(int)LayerType.ItemLayer, (int)LayerType.CharacterLayer] = true;
-            collisionMatrix[(int)LayerType.ItemLayer, (int)LayerType.WaterstreamLayer] = true;
+            //collisionMatrix[(int)LayerType.ItemLayer, (int)LayerType.WaterstreamLayer] = true;
         }
 
         public void UpdateDynamicCollision()

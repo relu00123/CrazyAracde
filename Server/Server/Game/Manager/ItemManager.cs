@@ -8,7 +8,7 @@ public class ItemManager
     private static ItemManager _instance;
     private static readonly object _lock = new object();
 
-    public float _itemSpawnChance = 0.5f;  // 50%의 확률로 아이템 생성
+    public float _itemSpawnChance = 0.8f;  // 80%의 확률로 아이템 생성
 
     private int[] itemWeights = { 2, 1, 2, 2};
     private CAItemType[] itemTypes =

@@ -607,7 +607,6 @@ message C_InstallBomb
    BombType bombType = 2; 
    float charPosX = 3;
    float charPosY = 4;
-
 }
 
 message S_InstallBomb

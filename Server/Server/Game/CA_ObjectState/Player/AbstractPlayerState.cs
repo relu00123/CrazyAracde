@@ -25,6 +25,9 @@ public abstract class AbstractPlayerState : IObjectState
         //gameObject.ChangeState(CreatureState.Moving);
     }
 
+     
+
+
     public abstract void EnterState(InGameObject gameObject, IObjectState previousState);
     public abstract void ExitState(InGameObject gameObject);
     public abstract void UpdateState(InGameObject gameObject);

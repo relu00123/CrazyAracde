@@ -75,6 +75,7 @@ namespace Server.Game
 
         private List<Vector2Int> curExplodedPositions = new List<Vector2Int>();
 
+ 
         public CAMapManager(MapType mapType, InGame currentGame)
         {
             _mapType = mapType;
@@ -400,8 +401,24 @@ namespace Server.Game
                     break;
                 }
 
+
+                // next위치에 물풍선이 있으면 즉시 터뜨린다.
+                if (tile.inGameObject is CABomb bomb)
+                {
+                    curExplodedPositions.Add(nextPosition);
+                    ExplodeAtPosition(nextPosition, bomb); // 재귀적으로 해당위치에서 폭발 확산 -> 여기 로직 보완 필요 PushAfter막는 것을 이 함수에서?
+                    break;
+                }
+
+                // 이미 방문한 좌표라면 생략
+                if (curExplodedPositions.Contains(nextPosition))
+                    break;
+
+
                 if (tile.inGameObject is CAItem item)
                 {
+                    Console.WriteLine($"물줄기에 의해 아이템이 사라집니다. position : <{nextPosition.x} , {nextPosition.y}>");
+
                     // 물줄기에의해 사라져야한다. 
                     S_DestroyObject destroyObject = new S_DestroyObject
                     {
@@ -414,17 +431,6 @@ namespace Server.Game
                     _tileMapData[nextPosition.x, nextPosition.y].inGameObject = null;
                 }
 
-
-                // next위치에 물풍선이 있으면 즉시 터뜨린다.
-                if (tile.inGameObject is CABomb bomb)
-                {
-                    ExplodeAtPosition(nextPosition, bomb); // 재귀적으로 해당위치에서 폭발 확산 -> 여기 로직 보완 필요 PushAfter막는 것을 이 함수에서?
-                    break;
-                }
-
-                // 이미 방문한 좌표라면 생략
-                if (curExplodedPositions.Contains(nextPosition))
-                    continue;
 
                 var WaterStreamDir = CalculateWaterStreamType(direction, power - i);
 

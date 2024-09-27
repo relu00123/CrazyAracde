@@ -10,6 +10,8 @@ using System.Text;
 
 public class CAPlayer : InGameObject
 {
+    public CAPlayerStats Stats { get; private set; }
+
     public CAPlayer(int id, string name, Transform transform, int layer)
         : base(id, name, transform, layer)
     {
@@ -17,6 +19,8 @@ public class CAPlayer : InGameObject
         _collider = new Collider(this, Vector2.Zero, new Vector2(0.95f, 0.95f));
 
         _currentState = new Player_IdleState();
+
+        Stats = new CAPlayerStats();
     }
 
     IJob _job;
@@ -25,8 +29,8 @@ public class CAPlayer : InGameObject
     public bool   _bubbleEmergencyAnimChanged { get; set; }
 
     public CharacterType _characterType { get; set; }
-    
 
+    
     public override void Update()
     {
         //Console.WriteLine($"Update Function Called! (Object ID : {Id}) (CurPosition : {_transform.Position})");
@@ -37,7 +41,6 @@ public class CAPlayer : InGameObject
             {
                 _currentState.UpdateState(this);
             }
-
 
             else
             {
