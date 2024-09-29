@@ -42,8 +42,6 @@ class PacketHandler
 		return;
 	}
 
-
-
     public static void C_LoginHandler(PacketSession session, IMessage packet)
 	{
 		C_Login loginPacket = packet as C_Login;
@@ -220,19 +218,8 @@ class PacketHandler
         C_Move movePacket = packet as C_Move;
         ClientSession clientSession = session as ClientSession;
 
-        //Console.WriteLine($"Move Packet Arrived. To {movePacket.PosInfo.PosX}, {movePacket.PosInfo.PosY}");
-
-        clientSession.BeloingRoom._inGame.ApplyMove(clientSession.CA_MyPlayer, movePacket.PosInfo);
-
-        //Player player = clientSession.MyPlayer;
-        //if (player == null)
-        //	return;
-
-        //GameRoom room = player.Room;
-        //if (room == null)
-        //	return;
-
-        //room.Push(room.HandleMove, player, movePacket);
+        //clientSession.BeloingRoom._inGame.ApplyMove(clientSession.CA_MyPlayer, movePacket.PosInfo);
+		clientSession.BeloingRoom.Push(clientSession.BeloingRoom._inGame.ApplyMove, clientSession.CA_MyPlayer, movePacket.PosInfo);
     }
 
     public static void C_CaMoveHandler(PacketSession session, IMessage packet)
@@ -240,7 +227,10 @@ class PacketHandler
 		C_CaMove movePkt = packet as C_CaMove;
 		ClientSession clientSession = session as ClientSession;
 
-		clientSession.BeloingRoom._inGame.ApplyMoveTemp(clientSession.CA_MyPlayer, movePkt.Dir);
+		//clientSession.BeloingRoom._inGame.ApplyMoveTemp(clientSession.CA_MyPlayer, movePkt.Dir);
+
+		if (clientSession.BeloingRoom != null && clientSession.BeloingRoom._inGame != null)
+			clientSession.BeloingRoom.Push(clientSession.BeloingRoom._inGame.ApplyMoveTemp, clientSession.CA_MyPlayer, movePkt.Dir);
 	}
 
 	public static void C_InstallBombHandler(PacketSession session, IMessage packet)
@@ -248,7 +238,8 @@ class PacketHandler
 		C_InstallBomb installBombPkt = packet as C_InstallBomb;
 		ClientSession clientSession = session as ClientSession;
 
-		clientSession.BeloingRoom._inGame.InstallBomb(installBombPkt, clientSession);
+		//clientSession.BeloingRoom._inGame.InstallBomb(installBombPkt, clientSession);
+		clientSession.BeloingRoom.Push(clientSession.BeloingRoom._inGame.InstallBomb, installBombPkt, clientSession);
 	}
 }
 

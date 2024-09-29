@@ -40,10 +40,22 @@ namespace Server.Game
 
         public bool DestroyObjectbyId(int objid)
         {
-           if ( _objectLayerManager.RemoveObjectFromLayer(objid))
+            //수정 코드
+            InGameObject obj = _objectLayerManager.FindObjectById(objid);
+            if (obj!= null)
+            {
+                obj.isRemoveResreved = true;
                 return true;
+            }
 
-            return false; 
+            return false;
+
+
+           // 기존 코드
+           //if ( _objectLayerManager.RemoveObjectFromLayer(objid))
+           //     return true;
+
+           // return false; 
         }
 
         public T CreateObject<T>(LayerType layerType, string objectName, PositionType posType, Vector2 posValue, Vector2? scale = null, Vector2? colliderSize = null)

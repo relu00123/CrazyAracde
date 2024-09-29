@@ -33,6 +33,12 @@ public class CAPlayer : InGameObject
     
     public override void Update()
     {
+        if (_possessGame._isGameFinished) 
+            return;
+        
+        // 수정된 코드 
+        if (isRemoveResreved) return;
+
         //Console.WriteLine($"Update Function Called! (Object ID : {Id}) (CurPosition : {_transform.Position})");
 
         if (_possessGame != null)

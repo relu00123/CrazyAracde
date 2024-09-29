@@ -105,5 +105,13 @@ namespace Server.Game
 
             return null;
         }
+
+        public void RemoveReserveObjects()
+        {
+            foreach(var layer in _layerObjects)
+            {
+                layer.RemoveAll(obj => obj.isRemoveResreved);
+            }
+        }
     }
 }

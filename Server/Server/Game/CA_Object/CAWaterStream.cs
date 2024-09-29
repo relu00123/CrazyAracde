@@ -59,6 +59,9 @@ public class CAWaterStream : InGameObject
     // 물줄기 객체 파괴
     public void DestroyWaterStream()
     {
+        // 수정된코드
+        if (isRemoveResreved) return; 
+
         if (_job != null)
         {
             _job.Cancel = true;

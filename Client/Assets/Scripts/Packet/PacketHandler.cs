@@ -45,11 +45,10 @@ class PacketHandler
 	{
 		S_Move movePacket = packet as S_Move;
 
-
 		// 임시 방편 테스트 
 		InGameObject obj =  Managers.InGame._objectLayerManager.FindObjectbyId(movePacket.ObjectId);
 
-		if (obj != null)
+		if (obj != null && obj.UnityObject != null)
 		{
 			CABaseController controller = obj.UnityObject.GetComponent<CABaseController>();
 

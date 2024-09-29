@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using static TreeEditor.TextureAtlas;
+//using static TreeEditor.TextureAtlas;
 
 public class CABox : MonoBehaviour
 {

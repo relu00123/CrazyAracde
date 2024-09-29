@@ -76,7 +76,8 @@ namespace Server.Game.Core
                         {
                             for (int obj2_idx = obj1_idx + 1; obj2_idx < ObjectInLayer2.Count; obj2_idx++)
                             {
-                                CollisionBtwObjects(ObjectsInLayer1[obj1_idx], ObjectInLayer2[obj2_idx]);
+                                if (!ObjectsInLayer1[obj1_idx].isRemoveResreved && !ObjectInLayer2[obj2_idx].isRemoveResreved)
+                                    CollisionBtwObjects(ObjectsInLayer1[obj1_idx], ObjectInLayer2[obj2_idx]);
                             }
                         }
                     }
@@ -91,7 +92,8 @@ namespace Server.Game.Core
                                 // ObjectsInLayer1[obj1_idx] 와
                                 // ObjectInLayer2[obj2_idx]  가 충돌하는지 확인. 충돌하면 BeginOverlap 수행. 
                                 // 이 함수 가져다 쓰면 될듯?
-                                CollisionBtwObjects(ObjectsInLayer1[obj1_idx], ObjectInLayer2[obj2_idx]);
+                                if (!ObjectsInLayer1[obj1_idx].isRemoveResreved && !ObjectInLayer2[obj2_idx].isRemoveResreved)
+                                    CollisionBtwObjects(ObjectsInLayer1[obj1_idx], ObjectInLayer2[obj2_idx]);
                             }
                         }
                     }

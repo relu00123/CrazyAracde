@@ -11,6 +11,7 @@ namespace Server.Game.CA_Object
 {
     public class InGameObject : Entity
     {
+        public bool isRemoveResreved { get; set; } = false;
         public int _layeridx { get; private set; }
         public Collider _collider { get; protected set; }
         public Transform _transform { get; set; }
@@ -73,7 +74,7 @@ namespace Server.Game.CA_Object
 
         public virtual void Update()
         {
-
+             
         }
 
          

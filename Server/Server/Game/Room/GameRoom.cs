@@ -2,11 +2,13 @@
 using Google.Protobuf.Protocol;
 using Microsoft.Extensions.Logging.Abstractions;
 using Server.Data;
+using ServerCore;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Text;
+using static Server.Game.GameRoom;
 
 namespace Server.Game
 {
@@ -119,6 +121,79 @@ namespace Server.Game
         #endregion
 
 
+		public void EndGame()
+		{
+
+			// 0. 기존에 Host였던 사람은 host를 시켜주고 아닌 사람들은 NotReady로 바꿔준다.
+			// 사실 이것은 EndGame()에서 하는 것이 아니라 StartGame에서 해줘야 할 책임이 있다.
+			// 우선은 동작하는지 확인
+			for (int i = 0; i < _slots.Length; ++i)
+			{
+				if (_slots[i] != null & _slots[i].ClientSession != null)
+				{
+					if (_hostIndex == i)
+						_slots[i].CharacterState = GameRoomCharacterStateType.Host;
+					else
+						_slots[i].CharacterState = GameRoomCharacterStateType.NotReady;
+				}
+			}
+
+
+			// 1. Client Session 에서 참조하고 있는 값들중 변경해야할 것들 변경
+			for (int i = 0; i < _slots.Length; ++i)
+			{
+				if (_slots[i] != null && _slots[i].ClientSession != null)
+				{
+					ClientSession clientSession = _slots[i].ClientSession;
+					clientSession.ServerState = PlayerServerState.ServerStateRoom;
+					clientSession.CA_MyPlayer = null;
+
+					ReEnterRoom(clientSession, i);
+				}
+			}
+
+			// 2. GameRoom에서 변경해야 하는 값들 변경
+			_inGame = null;
+
+			//FindNewHost(); --> 다시해야할듯..?
+
+			// 마음에 안듬.. 일단 테스트 만약에 다 찼으면 Waiting이 아니겠지. 
+			_roomInfo.RoomState = RoomStateType.Waiting;
+
+		}
+
+        public void ReEnterRoom(ClientSession clientSession, int slotidx) // 09.29 작성중인 코드 
+        {
+            S_JoinRoom joinRoomPacket = new S_JoinRoom();
+            joinRoomPacket.Joinresult = JoinResultType.Success;
+            joinRoomPacket.HostIdx = _hostIndex;
+            joinRoomPacket.ClientslotIdx = slotidx;
+            joinRoomPacket.Maptype = SelectedMap;
+            joinRoomPacket.Gamemode = _roomInfo.GameMode;
+
+            for (int i = 0; i < _slots.Length; ++i)
+            {
+                SlotInfo slotInfo = new SlotInfo
+                {
+                    SlotIndex = i,
+                    IsAvailable = _slots[i].IsAvailable
+                };
+
+                slotInfo.PlayerId = _slots[i].ClientSession == null ? -1 : _slots[i].ClientSession.AccountDbId;
+
+                if (_slots[i].ClientSession != null)
+                {
+                    slotInfo.Character = _slots[i].ClientSession.Character;
+                }
+
+                slotInfo.CharacterState = _slots[i].CharacterState;
+                slotInfo.Character = _slots[i].CharType;
+
+                joinRoomPacket.SlotInfos.Add(slotInfo);
+            }
+            clientSession.Send(joinRoomPacket);
+        }
+
         public void Init(int mapId, int zoneCells)
 		{
 			Map.LoadMap(mapId);
@@ -153,7 +228,7 @@ namespace Server.Game
 		{
 			Flush();
 
-			if (_inGame != null)
+			if (_inGame != null && _inGame._isGameFinished == false)
 			{
 				_inGame.Update();
 			}
@@ -230,6 +305,9 @@ namespace Server.Game
 			}
 		}
 
+		 
+
+
         public void AddClient(ClientSession session)
 		{
 			int? slotId = GetNextAvailableSlot();
@@ -245,12 +323,6 @@ namespace Server.Game
             // 현재 Room의 인원정보를 수정한다.
             _roomInfo.CurPeopleCnt += 1;
             RoomManager.Instance.BroadCastRoomAlter(_roomId);
-
-
-
-
-            // 기존 2
-          
 
 
             // S_JoinRoomBroadcast Packet을 보내준다. (기존에 있던 클라이언트들)
@@ -278,8 +350,6 @@ namespace Server.Game
             _slots[slotId.Value].ClientSession = session;
             _slots[slotId.Value].IsAvailable = false;
 
-
-             
 
 
             // S_JoinRoom Packet을 보내준다. (접속한 클라이언트)
@@ -996,6 +1066,7 @@ namespace Server.Game
 					if (_slots[i].ClientSession != null)
 					{
 						_slots[i].isGameLoaded = false;
+						_slots[i].ClientSession.ServerState = PlayerServerState.ServerStateGame;
 					}
 				}
 			}

@@ -286,6 +286,15 @@ public class RoomManager : MonoBehaviour
             curGameRoomScene._sceneUI.GetUIUserGridPanel().SetCharState(0, GameRoomCharacterStateType.Host);
         }
 
+        // 테스트중
+        if (currentJoinRoomPakcet.HostIdx == clientSlotidx)
+        {
+            host = true;
+            curGameRoomScene._sceneUI.GetUIUserGridPanel().SetCharState(clientSlotidx, GameRoomCharacterStateType.Host);
+        }
+
+
+
         // 선택된 맵을 보여주도록 한다.
         curGameRoomScene._sceneUI.SelectMap(currentJoinRoomPakcet.Maptype, MapTeamType.FourTeam);
 

@@ -14,29 +14,65 @@ namespace Server.Game
 {
     public class InGame
     {
+        public bool _isGameFinished { get; private set; } = false; 
         public GameRoom _gameRoom { get; private set; }
         public ObjectsManager _objectsManager { get; private set; }
-
         public ObjectLayerManager _objectLayerManager { get; private set; }
-
         public CAMapManager _caMapManager { get; private set; }
-
         public CollisionManager _collisionManager { get; private set; }
-
-
         public InGame(GameRoom gameRoom, MapType mapType)  // 나중에 필요한 정보들 추가해서 구조체로 바꿀 수도 있음. 
         {
-            
             _gameRoom = gameRoom;
             _objectLayerManager = new ObjectLayerManager();
             _objectsManager = new ObjectsManager(_objectLayerManager);
             _caMapManager = new CAMapManager(mapType, this);
             _collisionManager = new CollisionManager(_objectLayerManager);
         }
-
         public void Update()
         {
             _collisionManager.UpdateDynamicCollision();
+            _objectLayerManager.RemoveReserveObjects();
+        }
+        public bool IsGameFinished()
+        {
+            // 캐릭터 타입별 생존인원 저장할 Dictionary
+            Dictionary<CharacterType, int> characterCountMap = new Dictionary<CharacterType, int>();
+
+            // GameRoom에 있는 모든 Client확인 
+            var slots = _gameRoom.Slots;
+            for (int i = 0; i < slots.Length; ++i)
+            {
+                var clientSession =  slots[i].ClientSession;
+
+                // 게임 내에서 생존한 Player들을 파악한다. 
+                if (clientSession != null && !(clientSession.CA_MyPlayer._currentState is Player_DeadState))
+                {
+                    CharacterType characterType = clientSession.CA_MyPlayer._characterType;
+
+                    // 해당 캐릭터 타입이 이미  Dictionary에 존재하는지 확인
+                    if (characterCountMap.ContainsKey(characterType))
+                        characterCountMap[characterType]++;
+                    else
+                        characterCountMap[characterType] = 1;
+                }
+            }
+            // Dictionary에서 Key의 개수(CharacterType) 의 개수가 1개 이하인지 확인하여 게임이 끝났는지 판단.
+            if (characterCountMap.Count <= 1)
+                return true;
+
+            return false; 
+        }
+
+        public void FinishGame()
+        {
+            _isGameFinished = true;
+
+            // 게임이 끝나고 해야할일?
+
+            // 0. GameRoom 에서 변경해야 하는 변수들 변경 
+            _gameRoom.EndGame();
+
+            // 1. 모든 클라이언트들의 Scene을 GameRoom으로 전환 (PushAfter사용) 
         }
 
         public InGameObject CreateAndBroadcastObject(
@@ -74,8 +110,6 @@ namespace Server.Game
    
             return newObject;
         }
-
-
         public T CreateAndBroadcastObject<T>(
             LayerType layerType,
             string objectName,
@@ -149,10 +183,12 @@ namespace Server.Game
             // 기존코드 끝
         }
 
-
-
         public void ApplyMove(InGameObject gameObject, PositionInfo posInfo)
         {
+            // 경기가 끝났으면 더 이상 움직일 수 없다. 
+            if (_isGameFinished)
+                return;
+
             Vector2 originalPosition = gameObject._transform.Position;
             Vector2 targetPosition = new Vector2(posInfo.PosX, posInfo.PosY);
 
@@ -225,6 +261,10 @@ namespace Server.Game
 
         public void InstallBomb(C_InstallBomb installBombPacket, ClientSession clientSession)
         {
+            // 경기가 끝났으면 더 이상 폭탄을 설치할 수 없다.
+            if (_isGameFinished)
+                return; 
+
             // 0. 현재 플레이어가 폭탄을 설치할 수 있는 상태인지 확인해야한다. 
             if (!(clientSession.CA_MyPlayer.Stats.IsBombPlaceable()))
                 return;
@@ -258,7 +298,6 @@ namespace Server.Game
                     new KeyValuePairs { Key = ObjectSpawnKeyType.Bomb  ,  BombInfoValue = bombInfoValue },
                 };
 
-
                 CABomb spawnedBombObj = CreateAndBroadcastObject<CABomb>(
                     LayerType.DefaultLayer,
                     "Bomb",
@@ -268,11 +307,9 @@ namespace Server.Game
                     BombInfos
                 );
 
-
                 // 4. 서버에 폭탄을 설치 및 관리하기 
                 Console.WriteLine($"You can install Tile on ({install_tile_x},{install_tile_y}).");
                 _caMapManager._tileMapData[install_tile_x, install_tile_y].isBlocktTemporary = true;
-
 
                 spawnedBombObj._possessGame = this;
                 spawnedBombObj.position = new Vector2Int(install_tile_x, install_tile_y);
@@ -283,12 +320,6 @@ namespace Server.Game
                 _caMapManager._tileMapData[install_tile_x, install_tile_y].inGameObject = spawnedBombObj;
                 ((CABomb)(_caMapManager._tileMapData[install_tile_x, install_tile_y].inGameObject)).Bomb_update();
             }
-        }
-
-
-        public void TestFunction()
-        {
-            Console.WriteLine("Test Function Called From InGame !!!");
         }
     }
 }

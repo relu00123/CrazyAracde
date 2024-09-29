@@ -2,6 +2,7 @@
 using Server.Game.CA_Object;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Text;
 
  
@@ -15,7 +16,7 @@ public class Player_DeadState : AbstractPlayerState
 
     public override void EnterState(InGameObject obj, IObjectState previousState)
     {
-        // Animation 변경을 위해서 추가한 코드 
+        // 에니메이션 변경.
         S_ChangeAnimation changeAnimPkt = new S_ChangeAnimation
         {
             ObjectId = obj.Id,
@@ -23,7 +24,13 @@ public class Player_DeadState : AbstractPlayerState
         };
 
         obj._possessGame._gameRoom.BroadcastPacket(changeAnimPkt);
-        // Animation 변경을 위해서 추가한 코드 끝
+
+        // 게임이 끝났는지 확인
+        if (obj._possessGame.IsGameFinished())
+        {
+            Console.WriteLine("GAME FINISHED!!");
+            obj._possessGame.FinishGame();
+        }
     }
 
     public override void UpdateState(InGameObject gameObject)

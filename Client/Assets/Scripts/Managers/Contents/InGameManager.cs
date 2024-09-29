@@ -35,6 +35,8 @@ public class InGameManager : MonoBehaviour
 
         C_GameSceneLoadFinished LoadFinishedPkt = new C_GameSceneLoadFinished();
         Managers.Network.Send(LoadFinishedPkt);
+
+        SceneManager.sceneLoaded -= OnSceneLoaded;
     }
 
     public void HandleSpawnObject(S_SpawnObject spawnObjectPacket)
@@ -49,6 +51,7 @@ public class InGameManager : MonoBehaviour
 
     public void OnSceneUnloaded(Scene scene)
     {
+        //SceneManager.sceneLoaded -= OnSceneLoaded;
     }
 
     public void SetCurrentGameRoomScene(CAGameScene gameRoomScene)

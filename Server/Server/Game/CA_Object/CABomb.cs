@@ -30,6 +30,9 @@ using System.Text;
 
     public void Bomb_update()
     {
+        // 수정된 코드
+        if (isRemoveResreved) return;
+
         Console.WriteLine("Bomb Update");
 
         DateTime currentTime = DateTime.Now;
@@ -51,6 +54,9 @@ using System.Text;
 
     public void Explode()
     {
+        // 수정된 코드 
+        if (isRemoveResreved) return;
+
         if (_job == null || _job.Cancel == true) return;
 
         Console.WriteLine("Explode!");
@@ -81,6 +87,5 @@ using System.Text;
          
         // 3. ObjectLayerManager에서도 이를 삭제
         _possessGame._objectsManager.DestroyObjectbyId(this.Id);
-
     }
 }

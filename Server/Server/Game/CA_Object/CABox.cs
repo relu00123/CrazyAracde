@@ -22,6 +22,9 @@ public class CABox : InGameObject
  
     public void DestroyBox()
     {
+        // 수정된 코드
+        if (isRemoveResreved) return;
+
         //Console.WriteLine($"Destroy Box Function Called. Pos : <{_transform.Position.X},{_transform.Position.Y}>");
 
         // 1. 클라이언트에서 이 클래스의 ObjectID를 가지고 있는 객체를 찾아서 destroy
