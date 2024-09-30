@@ -121,8 +121,9 @@ namespace Server.Game
         #endregion
 
 
-		public void EndGame()
+		public void EndGame(CharacterType charType, bool isDraw)
 		{
+			S_EndGame endGamePkt = new S_EndGame();
 
 			// 0. 기존에 Host였던 사람은 host를 시켜주고 아닌 사람들은 NotReady로 바꿔준다.
 			// 사실 이것은 EndGame()에서 하는 것이 아니라 StartGame에서 해줘야 할 책임이 있다.
@@ -135,32 +136,78 @@ namespace Server.Game
 						_slots[i].CharacterState = GameRoomCharacterStateType.Host;
 					else
 						_slots[i].CharacterState = GameRoomCharacterStateType.NotReady;
+
+					if (isDraw == true)
+						endGamePkt.GameResult = GameResultType.GameDraw;
+					else
+					{
+						if (_slots[i].CharType == charType)
+							endGamePkt.GameResult = GameResultType.GameWin;
+						else
+							endGamePkt.GameResult = GameResultType.GameLose;
+					}
+
+					_slots[i].ClientSession.Send(endGamePkt);
+
+
+					// Animation 전환용 
+					CAPlayer focusedPlayer = _slots[i].ClientSession.CA_MyPlayer;
+
+					if (!(focusedPlayer._currentState is Player_DeadState))
+					{
+						S_Move movepkt = new S_Move();
+
+						movepkt.ObjectId = focusedPlayer.Id;
+						movepkt.PosInfo = new PositionInfo();
+						movepkt.PosInfo.PosX = focusedPlayer._transform.Position.X;
+						movepkt.PosInfo.PosY = focusedPlayer._transform.Position.Y;
+						movepkt.PosInfo.MoveDir = MoveDir.Down;
+						movepkt.PosInfo.State = CreatureState.Idle;
+						BroadcastPacket(movepkt);
+
+						S_ChangeAnimation changeAnimation = new S_ChangeAnimation();
+						changeAnimation.ObjectId = focusedPlayer.Id;
+						changeAnimation.PlayerAnim = PlayerAnimState.PlayerAnimIdle;
+						BroadcastPacket(changeAnimation);
+					}
 				}
 			}
 
-
-			// 1. Client Session 에서 참조하고 있는 값들중 변경해야할 것들 변경
-			for (int i = 0; i < _slots.Length; ++i)
-			{
-				if (_slots[i] != null && _slots[i].ClientSession != null)
-				{
-					ClientSession clientSession = _slots[i].ClientSession;
-					clientSession.ServerState = PlayerServerState.ServerStateRoom;
-					clientSession.CA_MyPlayer = null;
-
-					ReEnterRoom(clientSession, i);
-				}
-			}
+            PushAfter(2000, PostEndGame);
 
 			// 2. GameRoom에서 변경해야 하는 값들 변경
 			_inGame = null;
 
 			//FindNewHost(); --> 다시해야할듯..?
 
-			// 마음에 안듬.. 일단 테스트 만약에 다 찼으면 Waiting이 아니겠지. 
-			_roomInfo.RoomState = RoomStateType.Waiting;
-
+			// 마음에 안듬.. 일단 테스트 만약에 다 찼으면 Waiting이 아니겠지.
+			// 
 		}
+
+		public void PostEndGame()
+		{
+			Console.WriteLine("PostEndGame Called!");
+
+            // 1. Client Session 에서 참조하고 있는 값들중 변경해야할 것들 변경
+            for (int i = 0; i < _slots.Length; ++i)
+            {
+                if (_slots[i] != null && _slots[i].ClientSession != null)
+                {
+                    ClientSession clientSession = _slots[i].ClientSession;
+                    clientSession.ServerState = PlayerServerState.ServerStateRoom;
+                    clientSession.CA_MyPlayer = null;
+
+                    ReEnterRoom(clientSession, i);
+                }
+            }
+
+
+            _roomInfo.RoomState = RoomStateType.Waiting;
+
+			S_PostEndGame postEndGamePkt = new S_PostEndGame();
+
+			BroadcastPacket(postEndGamePkt);
+        }
 
         public void ReEnterRoom(ClientSession clientSession, int slotidx) // 09.29 작성중인 코드 
         {

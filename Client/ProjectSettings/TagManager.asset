@@ -65,3 +65,9 @@ TagManager:
   - name: Character
     uniqueID: 3073698893
     locked: 0
+  - name: BoxFront
+    uniqueID: 4047404703
+    locked: 0
+  - name: GameUI
+    uniqueID: 3880905803
+    locked: 0

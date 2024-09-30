@@ -63,14 +63,34 @@ namespace Server.Game
             return false; 
         }
 
-        public void FinishGame()
+
+        public CharacterType CalculateWinnerTeam()
+        {
+            var slots = _gameRoom.Slots;
+            for (int i = 0; i < slots.Length; ++i)
+            {
+                var clientSession = slots[i].ClientSession;
+
+                if (clientSession != null && !(clientSession.CA_MyPlayer._currentState is Player_DeadState))
+                {
+                    CharacterType characterType = clientSession.CA_MyPlayer._characterType;
+
+                    return characterType;
+                }
+            }
+
+            return CharacterType.CharacterNone;
+        }
+
+
+        public void FinishGame(CharacterType WinnerCharacter, bool isDraw)
         {
             _isGameFinished = true;
 
             // 게임이 끝나고 해야할일?
 
             // 0. GameRoom 에서 변경해야 하는 변수들 변경 
-            _gameRoom.EndGame();
+            _gameRoom.EndGame(WinnerCharacter, isDraw);
 
             // 1. 모든 클라이언트들의 Scene을 GameRoom으로 전환 (PushAfter사용) 
         }

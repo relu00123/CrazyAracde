@@ -29,7 +29,17 @@ public class Player_DeadState : AbstractPlayerState
         if (obj._possessGame.IsGameFinished())
         {
             Console.WriteLine("GAME FINISHED!!");
-            obj._possessGame.FinishGame();
+            CharacterType charType = obj._possessGame.CalculateWinnerTeam();
+
+            if (charType == CharacterType.CharacterNone)
+            {
+                obj._possessGame.FinishGame(charType, true);
+            }
+
+            else
+            {
+                obj._possessGame.FinishGame(charType, false);
+            }
         }
     }
 

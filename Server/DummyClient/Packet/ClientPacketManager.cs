@@ -104,7 +104,11 @@ class PacketManager
 		_onRecv.Add((ushort)MsgId.SChangeAnimation, MakePacket<S_ChangeAnimation>);
 		_handler.Add((ushort)MsgId.SChangeAnimation, PacketHandler.S_ChangeAnimationHandler);		
 		_onRecv.Add((ushort)MsgId.SDestroyBox, MakePacket<S_DestroyBox>);
-		_handler.Add((ushort)MsgId.SDestroyBox, PacketHandler.S_DestroyBoxHandler);
+		_handler.Add((ushort)MsgId.SDestroyBox, PacketHandler.S_DestroyBoxHandler);		
+		_onRecv.Add((ushort)MsgId.SEndGame, MakePacket<S_EndGame>);
+		_handler.Add((ushort)MsgId.SEndGame, PacketHandler.S_EndGameHandler);		
+		_onRecv.Add((ushort)MsgId.SPostEndGame, MakePacket<S_PostEndGame>);
+		_handler.Add((ushort)MsgId.SPostEndGame, PacketHandler.S_PostEndGameHandler);
 	}
 
 	public void OnRecvPacket(PacketSession session, ArraySegment<byte> buffer)

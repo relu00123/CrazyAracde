@@ -483,7 +483,50 @@ class PacketHandler
         controller.Test();
     }
 
-	public static void S_InstallBombHandler(PacketSession session, IMessage packet)
+	public static void S_EndGameHandler(PacketSession session, IMessage packet)
+	{
+		S_EndGame pkt = (S_EndGame)packet;
+
+		Debug.Log("EndGame Packet Recevied!!");
+
+		switch (pkt.GameResult)
+		{
+			case GameResultType.GameWin:
+				{
+					GameObject prefab = Resources.Load<GameObject>("Prefabs/GameResult/win");
+					Vector2 pos = new Vector3(8, 11);
+					GameObject.Instantiate(prefab, pos, Quaternion.identity);
+				}
+				break;
+			case GameResultType.GameLose:
+				{
+                    GameObject prefab = Resources.Load<GameObject>("Prefabs/GameResult/lose");
+                    Vector2 pos = new Vector3(8, 11);
+                    GameObject.Instantiate(prefab, pos, Quaternion.identity);
+                }
+				break;
+			case GameResultType.GameDraw:
+				{
+                    GameObject prefab = Resources.Load<GameObject>("Prefabs/GameResult/draw");
+                    Vector2 pos = new Vector3(8, 11);
+                    GameObject.Instantiate(prefab, pos, Quaternion.identity);
+                }
+				break; 
+		}
+
+		 
+	}
+
+	public static void S_PostEndGameHandler(PacketSession session, IMessage packet)
+	{
+		S_PostEndGame pkt = (S_PostEndGame)packet;
+
+        Managers.CaMap.Clear();
+        Managers.CaMap.Init();
+    }
+
+
+    public static void S_InstallBombHandler(PacketSession session, IMessage packet)
 	{
 		S_InstallBomb pkt = (S_InstallBomb)packet;
 

@@ -68,6 +68,8 @@ enum MsgId {
   S_DESTROY_OBJECT = 62;
   S_CHANGE_ANIMATION = 63;
   S_DESTROY_BOX = 64;
+  S_END_GAME = 65;
+  S_POST_END_GAME = 66;
 }
 
 enum ObjectType  {
@@ -193,6 +195,13 @@ enum CharacterSpawnType {
 enum ConsumableType {
    CONSUMABLE_TYPE_NONE = 0;
    CONSUMABLE_TYPE_POTION = 1;
+}
+
+enum GameResultType 
+{
+  GAME_WIN = 0;
+  GAME_LOSE = 1;
+  GAME_DRAW = 2; 
 }
 
 enum WaterStreamType {
@@ -594,6 +603,16 @@ message S_CharacterSelectBroadcast {
 message S_ChangeScene
 {
   GameSceneType scene = 1;
+}
+
+message S_EndGame 
+{
+  GameResultType gameResult = 1;
+}
+
+message S_PostEndGame 
+{
+  
 }
 
 message C_ChangeSceneCompleted

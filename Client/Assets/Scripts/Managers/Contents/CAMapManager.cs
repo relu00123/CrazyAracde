@@ -70,10 +70,19 @@ public class CAMapManager : MonoBehaviour
             }
         }
     }
+
+    public void Clear()
+    {
+        _tileMapData = null;
+        _currentGrid = null;
+        _tileMaps.Clear();
+    }
  
 
     public void LoadMap(MapType maptype)
     {
+        
+
         string prefabName = maptype.ToString();
         string jsonFileName = maptype.ToString();
 
