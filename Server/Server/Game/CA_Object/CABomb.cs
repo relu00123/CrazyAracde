@@ -9,7 +9,7 @@ using System.Text;
 
  public class CABomb : InGameObject
 {
-    private float explode_coolTime = 3.0f;
+    private float explode_coolTime = 2.0f;
     private float cur_Time = 0f;
     private DateTime lastUpdateTime;
     public Vector2Int position { get; set; } = new Vector2Int();

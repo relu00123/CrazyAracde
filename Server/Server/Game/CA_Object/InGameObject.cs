@@ -27,7 +27,7 @@ namespace Server.Game.CA_Object
 
         }
 
-        public float _moveSpeed { get; set; } = 0.3f;  //= 0.3f;
+        public float _moveSpeed { get; set; } = 0.3f; //  * 1.5f;  // 1.8f;  //= 0.3f;
 
         public InGame _possessGame { get; set; }
 
@@ -168,7 +168,7 @@ namespace Server.Game.CA_Object
 
         }
 
-        public Vector2 CalculateTargetPositon(MoveDir dir)
+        public virtual Vector2 CalculateTargetPositon(MoveDir dir)
         {
             Vector2 targetPosition = _transform.Position;
             float moveDistance = _moveSpeed;

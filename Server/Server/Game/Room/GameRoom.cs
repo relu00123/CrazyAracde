@@ -201,12 +201,17 @@ namespace Server.Game
                 }
             }
 
-
-            _roomInfo.RoomState = RoomStateType.Waiting;
+			// 사람이 꽉차있지 않으면 Waiting, 꽉차있으면 Full
+			if (_roomInfo.MaxPeopleCnt == _roomInfo.CurPeopleCnt)
+				_roomInfo.RoomState = RoomStateType.Full;
+			else
+				_roomInfo.RoomState = RoomStateType.Waiting;
 
 			S_PostEndGame postEndGamePkt = new S_PostEndGame();
 
 			BroadcastPacket(postEndGamePkt);
+
+            RoomManager.Instance.BroadCastRoomAlter(_roomId);
         }
 
         public void ReEnterRoom(ClientSession clientSession, int slotidx) // 09.29 작성중인 코드 
@@ -310,11 +315,13 @@ namespace Server.Game
 				}
 			}
 
-			 
+			// 로비에 있는 사람들에게 alterRoom Packet보내야 한다. 
+            RoomManager.Instance.BroadCastRoomAlter(_roomId);
 
-			// 여기 코드를 Ack가 모두 모였을때로 미뤄야 함. 
-			//_inGame = new InGame(this, maptype);
-		}
+
+            // 여기 코드를 Ack가 모두 모였을때로 미뤄야 함. 
+            //_inGame = new InGame(this, maptype);
+        }
 
 		private bool IsRoomEmpty()
 		{
@@ -348,7 +355,6 @@ namespace Server.Game
 				changeScenePakcet.Scene = GameSceneType.CAMainLobby;
 				_slots[kickslotidx].ClientSession.Send(changeScenePakcet);
 				_slots[kickslotidx].ClientSession.ServerState = PlayerServerState.ServerStateLobby;
-			 
 			}
 		}
 
@@ -369,6 +375,9 @@ namespace Server.Game
 
             // 현재 Room의 인원정보를 수정한다.
             _roomInfo.CurPeopleCnt += 1;
+
+			UpdateRoomState(); 
+
             RoomManager.Instance.BroadCastRoomAlter(_roomId);
 
 
@@ -396,7 +405,7 @@ namespace Server.Game
             session.JoinRoom(this);
             _slots[slotId.Value].ClientSession = session;
             _slots[slotId.Value].IsAvailable = false;
-
+			_slots[slotId.Value].CharType = session.Character; // 10.07추가 코드
 
 
             // S_JoinRoom Packet을 보내준다. (접속한 클라이언트)
@@ -404,7 +413,7 @@ namespace Server.Game
 			joinRoomPacket.Joinresult = JoinResultType.Success;
 			joinRoomPacket.HostIdx = _hostIndex;
 			joinRoomPacket.ClientslotIdx = slotId.Value;
-			joinRoomPacket.Maptype = SelectedMap;
+			joinRoomPacket.Maptype = _roomInfo.MapType;
 			joinRoomPacket.Gamemode = _roomInfo.GameMode;
 
 			for (int i = 0; i < _slots.Length; ++i)
@@ -423,7 +432,7 @@ namespace Server.Game
                 }
 
 				slotInfo.CharacterState = _slots[i].CharacterState;
-				slotInfo.Character = _slots[i].CharType;
+				//slotInfo.Character = _slots[i].CharType;
 
 				joinRoomPacket.SlotInfos.Add(slotInfo);				
 			}
@@ -436,11 +445,14 @@ namespace Server.Game
             {
                 FindNewHost();
 
-                // 처음 시작 맵 초기화
-                if (_roomInfo.GameMode == GameModeType.NormalMode)
-                    SelectedMap = MapType.Desert1;
-                else if (_roomInfo.GameMode == GameModeType.MonsterMode)
-                    SelectedMap = MapType.Penguin1;
+				// 처음 시작 맵 초기화
+				if (_roomInfo.GameMode == GameModeType.NormalMode)
+				{
+					SelectedMap = _roomInfo.MapType;
+					//SelectedMap = MapType.Desert1;
+				}
+				else if (_roomInfo.GameMode == GameModeType.MonsterMode)
+					SelectedMap = MapType.Penguin1;
             }
 
 
@@ -478,10 +490,22 @@ namespace Server.Game
             if (slotId == _hostIndex)
 				FindNewHost();
 
-
             // 현재 Room의 인원정보를 수정하고 Lobby에 있는 플레이어들에게 알린다. 
             _roomInfo.CurPeopleCnt -= 1;
+			UpdateRoomState();
+
 			RoomManager.Instance.BroadCastRoomAlter(_roomId);			 
+		}
+
+		public void UpdateRoomState()
+		{
+			if (_roomInfo.RoomState == RoomStateType.Playing)
+				return;
+
+			if (_roomInfo.CurPeopleCnt == _roomInfo.MaxPeopleCnt)
+				_roomInfo.RoomState = RoomStateType.Full;
+			else
+				_roomInfo.RoomState = RoomStateType.Waiting;
 		}
 
 		private void FindNewHost()
@@ -974,6 +998,8 @@ namespace Server.Game
 				_roomInfo.MaxPeopleCnt += 1;
 			else
 				_roomInfo.MaxPeopleCnt -= 1;
+			UpdateRoomState();
+
             RoomManager.Instance.BroadCastRoomAlter(_roomId);
         }
 
@@ -1011,6 +1037,7 @@ namespace Server.Game
 
 				// DB에 CharacterType바뀐 것을 저장해야한다. 
 				// 아직 DB가 없으므로 진행 X.. 나중에 해줘야 한다. 
+				clientSession.Character = pkt.Chartype;
 			}
 
 			else
@@ -1028,7 +1055,6 @@ namespace Server.Game
 			// Server에서의 Map변경. 변경후 모든 Client에게 Map이 바뀌었다고 BroadCast.
 			SelectedMap = pkt.Maptype;
 
-
 			// Camp8 같은 특수 Team A : Team B 로 나눠서하는 맵은 선택을 캐릭터 선택을 2개로 제한해야한다. 
 			// 일단은 야매로 처리.. 
 			if (SelectedMap == MapType.Camp8)
@@ -1036,6 +1062,7 @@ namespace Server.Game
 			else
 				SelectedMapTeamType = MapTeamType.FourTeam;
 
+			_roomInfo.MapType = pkt.Maptype;
 
 			S_MapSelectBroadcast MapSelectBroadcastPkt = new S_MapSelectBroadcast();
 			MapSelectBroadcastPkt.Maptype = SelectedMap;
@@ -1046,6 +1073,8 @@ namespace Server.Game
 				if (_slots[i].ClientSession != null)
 					_slots[i].ClientSession.Send(MapSelectBroadcastPkt);
 			}
+
+            RoomManager.Instance.BroadCastRoomAlter(_roomId);  
 		}
 
 		public void HandleGameLoadFinished(C_GameSceneLoadFinished pkt, ClientSession clientsession)

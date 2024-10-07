@@ -200,7 +200,7 @@ public class UI_GameRoomCreatePopup : UI_Popup
         RoomInfo roominfo = new RoomInfo();
         roominfo.RoomNumber = -1; // 이부분은 Client가 결정하는 것이 아닌 서버에서 결정하는 것임 
         roominfo.RoomName = GetObject((int)GameObjects.RoomName).gameObject.GetComponent<TMP_InputField>().text;
-        roominfo.MapImagePath = ""; // 나중에 RandomMap으로 변경할 것임. DataManager에서 작업해야할듯 
+        roominfo.MapType = MapType.Pirate14; // 나중에 RandomMap으로 변경할 것임. DataManager에서 작업해야할듯 
         roominfo.CurPeopleCnt = 0;
         roominfo.MaxPeopleCnt = -1; // 이거는 Create시 모드마다 Maximum People로서 Server에서 강제 세팅
         roominfo.RoomState = RoomStateType.Waiting;
@@ -211,10 +211,7 @@ public class UI_GameRoomCreatePopup : UI_Popup
         C_CreateRoom createRoomPacket = new C_CreateRoom();
         createRoomPacket.Roominfo = roominfo;
         
-        
-
         CloseCreatePopup(evt);
-
 
         // Scene 전환 GameRoom 으로 일단 Server의 허락을 받지 않고 Scene Change를 해보자. 
         // 이게 정상적으로 된다면 서버에서 Room을 만들고 이후에 Client가 Room에 참여할 수 있는 방식으로 바꾸어야 함 

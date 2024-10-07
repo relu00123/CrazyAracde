@@ -11,6 +11,8 @@ public class UI_RoomItem : UI_Base
 {
     public UI_GameRoomGridPanel ParentGrid { get; set; }
 
+    [SerializeField] private Image RoomState;
+
 
     enum RoomInfoImages
     {
@@ -26,9 +28,9 @@ public class UI_RoomItem : UI_Base
     {
         { RoomInfoImages.EmptyRoom,  "Textures/GameRoom/Info/EmptyRoom" },
         { RoomInfoImages.RoomExist,  "Textures/GameRoom/Info/ExistringRoom"},
-        { RoomInfoImages.Playing,    "Textures/GameRoom/Info/ExistringRoom"},
-        { RoomInfoImages.Full,       "Textures/GameRoom/Info/ExistringRoom"},
-        { RoomInfoImages.Waiting,    "Textures/GameRoom/Info/ExistringRoom"},
+        { RoomInfoImages.Playing,    "Textures/GameRoom/Info/Playing_transparent"},
+        { RoomInfoImages.Full,       "Textures/GameRoom/Info/Full_transparent"},
+        { RoomInfoImages.Waiting,    "Textures/GameRoom/Info/Waiting_transparent"},
     };
 
     enum Images
@@ -128,9 +130,7 @@ public class UI_RoomItem : UI_Base
     {
         isRoomItemActive = true;
         roomInfo = _roominfo;
-
    
-
         UpdateRoomInfoUI();
     }
 
@@ -139,19 +139,36 @@ public class UI_RoomItem : UI_Base
         GetTextMeshPro((int)Texts.RoomNumber).text = roomInfo.RoomNumber.ToString();
         GetTextMeshPro((int)Texts.RoomName).text = roomInfo.RoomName;
 
+        // 고친코드.
+        GetImage((int)Images.GameState).gameObject.SetActive(true);
+        GetImage((int)Images.MapImage).gameObject.SetActive(true);
+
+        // MapImage 고쳐야함.
         // 이부분 나중에 Json 으로 변경할지 고려해 봐야함 
-        var LoadedImage = Resources.Load<Sprite>(roomInfo.MapImagePath);
-        if (LoadedImage != null)
-        {
-            GetImage((int)Images.MapImage).sprite = LoadedImage;
-        }
-             
+        //var LoadedImage = Resources.Load<Sprite>(roomInfo.MapImagePath);
+        //if (LoadedImage != null)
+        //{
+        //    GetImage((int)Images.MapImage).sprite = LoadedImage;
+        //}
+
+        Sprite mapImage = Managers.Data.MapPreviewImageDict[roomInfo.MapType];
+        GetImage((int)Images.MapImage).sprite = mapImage;
+
+
         GetTextMeshPro((int)Texts.RoomCapacity).text = MakeCurPeopleInfo(roomInfo.CurPeopleCnt, roomInfo.MaxPeopleCnt);
 
         // RoomState
         string stateString = roomInfo.RoomState.ToString();
         if (RoomInfoImages.TryParse(stateString, out RoomInfoImages roominfoimage))
         {
+            Sprite roomstatesprite = Resources.Load<Sprite>(SpritePath[roominfoimage]);
+
+            if (roomstatesprite == null)
+            {
+                Debug.LogError("Cannot Find Room State Image!");
+            }
+
+            else 
             GetImage((int)Images.GameState).sprite = Resources.Load<Sprite>(SpritePath[roominfoimage]);
         }
 
@@ -170,6 +187,13 @@ public class UI_RoomItem : UI_Base
         return $"{curppl}/{maxppl}";
     }
 
+    public void SetRoomStateImage(RoomStateType roomstate)
+    {
+        if (RoomInfoImages.TryParse(roomstate.ToString(), out RoomInfoImages roomStateImage))
+        {
+           RoomState.sprite = Resources.Load<Sprite>(SpritePath[roomStateImage]);
+        }
+    }
 
     private void OutlineInitialize()
     {

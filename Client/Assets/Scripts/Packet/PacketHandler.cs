@@ -483,7 +483,21 @@ class PacketHandler
         controller.Test();
     }
 
-	public static void S_EndGameHandler(PacketSession session, IMessage packet)
+	public static void S_AlterSpeedWeightHandler(PacketSession session, IMessage packet)
+	{
+		S_AlterSpeedWeight pkt = (S_AlterSpeedWeight)packet;
+
+		InGameObject obj = Managers.InGame._objectLayerManager.FindObjectbyId(pkt.ObjId);
+
+		if (obj == null) return;
+
+		var controller = obj.GetComponentFromUnityObject<CABaseController>();
+		if (controller == null) return; 
+
+		controller.MoveSpeedWeight = pkt.SpeedWeight;
+    }
+
+    public static void S_EndGameHandler(PacketSession session, IMessage packet)
 	{
 		S_EndGame pkt = (S_EndGame)packet;
 

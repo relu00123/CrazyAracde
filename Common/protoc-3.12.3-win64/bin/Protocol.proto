@@ -70,6 +70,7 @@ enum MsgId {
   S_DESTROY_BOX = 64;
   S_END_GAME = 65;
   S_POST_END_GAME = 66;
+  S_ALTER_SPEED_WEIGHT = 67; 
 }
 
 enum ObjectType  {
@@ -473,6 +474,11 @@ message C_Chatting {
   string chat = 2;
 }
 
+message S_AlterSpeedWeight {
+  int32 obj_id = 1;
+  float speed_weight = 2; 
+}
+
 message KeyValuePairs  {
   ObjectSpawnKeyType key = 1;
   oneof value {
@@ -701,7 +707,7 @@ message RoomInfo
 {
   int32  RoomNumber = 1;
   string RoomName = 2;
-  string MapImagePath = 3;
+  MapType mapType = 3;
   int32  CurPeopleCnt = 4;
   int32  MaxPeopleCnt = 5;
   RoomStateType RoomState = 6;

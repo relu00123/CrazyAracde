@@ -277,6 +277,12 @@ public class RoomManager : MonoBehaviour
                Debug.Log($"SlotIndex : {slotInfo.SlotIndex}");
                 curGameRoomScene._sceneUI.GetUIUserGridPanel().CloseSlot(slotInfo.SlotIndex);
             }
+
+            // 테스트중 10.07
+            if (slotInfo.SlotIndex == clientSlotidx)
+            {
+                curGameRoomScene._sceneUI.CharacterSelect(slotInfo.Character);
+            }
         }
 
         // 자기 자신이 Host일 경우 host의 권한을 줘야 한다.  
@@ -297,6 +303,10 @@ public class RoomManager : MonoBehaviour
 
         // 선택된 맵을 보여주도록 한다.
         curGameRoomScene._sceneUI.SelectMap(currentJoinRoomPakcet.Maptype, MapTeamType.FourTeam);
+
+
+        // 자신의 캐릭터에 체크되어 있는 것을 보여준다.
+        
 
 
          

@@ -85,7 +85,7 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
-  m_PresetInfoIsWorld: 1
+  m_PresetInfoIsWorld: 0
 --- !u!114 &4198237210795965409
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -117,7 +117,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MapImage: {fileID: 7621012294933711906}
   HighlightEffect: {fileID: 1301130338574827267}
-  mapType: 0
+  NormalMapType: 0
+  MonsterMapType: 0
 --- !u!1 &3162564187929614958
 GameObject:
   m_ObjectHideFlags: 0

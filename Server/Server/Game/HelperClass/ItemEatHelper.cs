@@ -17,7 +17,16 @@ public static class ItemEatHelper
                 case CAItemType.CaRollerSkate:
                     {
                         Console.WriteLine($"Applying {itemType.ToString()} Effect");
-                        playerObj.Stats.IncreaseSpeed();
+                        float IncreasedSpeed = playerObj.Stats.IncreaseSpeed();
+
+                        // Client에도 Speed를 Increase해줘야 한다. 
+                        S_AlterSpeedWeight alterSpeedPkt = new S_AlterSpeedWeight()
+                        {
+                            ObjId = playerObj.Id,
+                            SpeedWeight = IncreasedSpeed,
+                        };
+
+                        eatingObj._possessGame._gameRoom.BroadcastPacket(alterSpeedPkt);
                     }
                     break;
                 case CAItemType.CaStreamMax:

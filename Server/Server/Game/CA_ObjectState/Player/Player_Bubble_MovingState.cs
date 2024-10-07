@@ -23,10 +23,10 @@ public class Player_Bubble_MovingState : AbstractPlayerState
 
     public override void EnterState(InGameObject obj, IObjectState previousState)
     {
-        obj._moveSpeed = (obj._moveSpeed / 2f);
-
         // 수정중인 코드
         CAPlayer player = obj as CAPlayer;
+
+        player._moveSpeed = player._moveSpeed * player.Stats.SpeedWeight / 2f;
 
         if (!(previousState is Player_Bubble_MovingState || previousState is Player_Bubble_IdleState))
         {
@@ -87,7 +87,10 @@ public class Player_Bubble_MovingState : AbstractPlayerState
 
     public override void ExitState(InGameObject obj)
     {
-        obj._moveSpeed = (obj._moveSpeed * 2f);
+        CAPlayer player = obj as CAPlayer;
+
+        // 원래 속도로 돌려준다. 
+        player._moveSpeed = player._moveSpeed * player.Stats.SpeedWeight * 2f;
     }
     
 

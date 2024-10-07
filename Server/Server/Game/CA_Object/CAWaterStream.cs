@@ -8,7 +8,7 @@ using System.Text;
 
 public class CAWaterStream : InGameObject
 {
-    private float existenceTime = 1.0f; // 물줄기가 존재할 시간 (초 단위)
+    private float existenceTime = 0.3f; // 물줄기가 존재할 시간 (초 단위)
     private float cur_Time = 0f;
     private DateTime lastUpdateTime;
     private IJob _job;
@@ -42,7 +42,7 @@ public class CAWaterStream : InGameObject
         else
         {
             // 200ms 후 다시 업데이트 (일정 간격으로 업데이트)
-            _job = _possessGame._gameRoom.PushAfter(100, WaterStreamUpdate);
+            _job = _possessGame._gameRoom.PushAfter(50, WaterStreamUpdate);
         }
     }
 
