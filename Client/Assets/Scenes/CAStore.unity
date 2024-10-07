@@ -151,6 +151,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 590e17a5240a2db4d9f25d93865fd454, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _bgmClip: {fileID: 8300000, guid: 350b09c078f045147ad18aafc48a3acb, type: 3}
 --- !u!4 &795648850
 Transform:
   m_ObjectHideFlags: 0

@@ -126,6 +126,20 @@ public class ObjectLayerManager
 
                         unityObject.GetComponent<Animator>().Play(animationname);
                         unityObject.transform.position = new Vector3(BombInfoValue.BombPosX + 0.5f, BombInfoValue.BombPosY, 0f);
+
+                        Debug.Log($"BombInfoValue : Client ID : {BombInfoValue.OnwerClientId}");
+                        Debug.Log($"myPLayerDBID : Client ID : {Managers.UserInfo.myPlayerDBId}");
+
+                        CABallon ballonscript = unityObject.GetComponent<CABallon>();
+
+                        if (ballonscript != null )
+                        {
+                            ballonscript._shouldplayInstallSound = true; 
+                        }
+
+                        
+                        //BombInfoValue.OnwerClientId 
+
                     }
                 }
             }

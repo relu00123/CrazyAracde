@@ -151,6 +151,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f1de9fd3e6989544982bac6bb73d661c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _bgmClip: {fileID: 8300000, guid: 1ac95c698200ade46bde71e89642a0bb, type: 3}
   gameRoomCameraPrefab: {fileID: 5958595005447571532, guid: 84bf8bcc9ef2b274b9dd8dcd6797b7c1,
     type: 3}
 --- !u!4 &1296350526

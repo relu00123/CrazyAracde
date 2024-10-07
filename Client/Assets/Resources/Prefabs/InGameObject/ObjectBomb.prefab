@@ -119,3 +119,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d93f385b505b8694e8cc8d780b363a0f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _bombInstallSound: {fileID: 8300000, guid: 3761cba53598d114388e7fab70964db8, type: 3}
+  _shouldplayInstallSound: 0

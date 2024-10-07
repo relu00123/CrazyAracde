@@ -19,9 +19,6 @@ public class CALoginScene : BaseScene
         _sceneUI = Managers.UI.ShowSceneUI<UI_CALoginScene>();
     }
 
-
-
-
     public override void Clear()
     {
 

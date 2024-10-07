@@ -311,6 +311,7 @@ namespace Server.Game
                     BombType = installBombPacket.BombType,
                     BombPosX = install_tile_x,
                     BombPosY = install_tile_y,
+                    OnwerClientId = clientSession.AccountDbId
                 };
 
                 List<KeyValuePairs> BombInfos = new List<KeyValuePairs>

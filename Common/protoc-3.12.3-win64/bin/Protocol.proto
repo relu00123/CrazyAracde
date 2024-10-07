@@ -502,6 +502,7 @@ message BombInfoValue
   BombType bombType = 1;
   float bombPosX = 2;
   float bombPosY = 3; 
+  int32 onwerClientId = 4;
 }
 
 message TileInfoValue
