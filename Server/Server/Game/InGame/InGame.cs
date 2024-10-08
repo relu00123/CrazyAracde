@@ -173,6 +173,21 @@ namespace Server.Game
             gameObject.Update();
         }
 
+        public ClientSession FindOwnerClient(CAPlayer player)
+        {
+            var slots  = _gameRoom.Slots;
+            for (int i = 0; i < slots.Length; i++)
+            {
+                if (slots[i].ClientSession != null)
+                {
+                    if (slots[i].ClientSession.CA_MyPlayer == player)
+                        return slots[i].ClientSession;
+                }
+            }
+            return null;
+        }
+
+
         public void ApplyMoveTemp(InGameObject gameObject, MoveDir dir)
         {
             // 새로 도입한 코드

@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Numerics;
 using Google.Protobuf.Protocol;
+using Server;
 
 
 
@@ -22,7 +23,7 @@ public class CAItem : InGameObject
 
     public override void OnBeginOverlap(InGameObject other)
     {
-        if (other is CAPlayer && other._currentState is IPlayerEatItem eatableState)
+        if (other is CAPlayer player && other._currentState is IPlayerEatItem eatableState)
         {
             // 0. 충분히 가까울때만 Item을 먹을 수 있도록 하기
             Vector2 pos1 = _collider.GetColliderCenterPos();
@@ -33,6 +34,19 @@ public class CAItem : InGameObject
             if (distance > 0.65f) return;
 
             eatableState.EatItem(other, itemType);
+
+            // 먹었을때 사운드 재생 (다만 해당 플레이어만 Sound재생 하고 싶다.)  - 공용함수 만들어야 할듯? 
+            ClientSession clientSession = player._possessGame.FindOwnerClient(player);
+            if (clientSession != null)
+            {
+                S_PlaySoundEffect soundEffectPacket = new S_PlaySoundEffect
+                {
+                    SoundEffectType = SoundEffectType.EatItemSoundEffect
+                };
+
+                clientSession.Send(soundEffectPacket);
+            }
+
 
             // 1. 클라이언트에서 아이템을 삭제해준다. 
             S_DestroyObject destroyObject = new S_DestroyObject

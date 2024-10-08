@@ -21,6 +21,8 @@ public class DataManager
     public Dictionary<string, Dictionary<string, List<int>>> CAItemCategoryDict { get; private set; } = new Dictionary<string, Dictionary<string, List<int>>>();
 
     public Dictionary<MapType, Sprite> MapPreviewImageDict { get; private set; } = new Dictionary<MapType, Sprite>();
+    public Dictionary<SoundEffectType, AudioClip> SoundEffectDict { get; private set; } = new Dictionary<SoundEffectType, AudioClip>();
+    public Dictionary<MapType, AudioClip> MapBGMDict { get; private set; } = new Dictionary<MapType, AudioClip>();
 
     
     public void Init()
@@ -33,7 +35,9 @@ public class DataManager
         CAItemDict = CA_ItemLoader.MakeDict();
         CAItemCategoryDict = CA_ItemLoader.MakeCategoryDict();
 
-       LoadMapPreviewImage();
+        LoadMapPreviewImage();
+        LoadSoundEffect();
+        LoadMapBGM();
 	}
 
     Loader LoadJson<Loader, Key, Value>(string path) where Loader : ILoader<Key, Value>
@@ -53,6 +57,31 @@ public class DataManager
             if (Enum.TryParse(mapImages[i].name, out MapType mapType))
             {
                 MapPreviewImageDict.Add(mapType, mapImages[i]);
+            }
+        }
+    }
+    private void LoadSoundEffect()
+    {
+       AudioClip[] soundEffectClips =  Resources.LoadAll<AudioClip>("Sounds/SoundEffect");
+
+        for (int i = 0; i < soundEffectClips.Length; ++i)
+        {
+            if (Enum.TryParse(soundEffectClips[i].name, out SoundEffectType soundEffectType))
+            {
+                SoundEffectDict.Add(soundEffectType, soundEffectClips[i]);
+            }
+        }
+    }
+
+    private void LoadMapBGM()
+    {
+        AudioClip[] MapBGM = Resources.LoadAll<AudioClip>("Sounds/BGM");
+
+        for (int i = 0; i < MapBGM.Length; ++i)
+        {
+            if (Enum.TryParse(MapBGM[i].name, out MapType mapType))
+            {
+                MapBGMDict.Add(mapType, MapBGM[i]);
             }
         }
     }

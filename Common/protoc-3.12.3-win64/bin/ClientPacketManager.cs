@@ -110,7 +110,9 @@ class PacketManager
 		_onRecv.Add((ushort)MsgId.SPostEndGame, MakePacket<S_PostEndGame>);
 		_handler.Add((ushort)MsgId.SPostEndGame, PacketHandler.S_PostEndGameHandler);		
 		_onRecv.Add((ushort)MsgId.SAlterSpeedWeight, MakePacket<S_AlterSpeedWeight>);
-		_handler.Add((ushort)MsgId.SAlterSpeedWeight, PacketHandler.S_AlterSpeedWeightHandler);
+		_handler.Add((ushort)MsgId.SAlterSpeedWeight, PacketHandler.S_AlterSpeedWeightHandler);		
+		_onRecv.Add((ushort)MsgId.SPlaySoundEffect, MakePacket<S_PlaySoundEffect>);
+		_handler.Add((ushort)MsgId.SPlaySoundEffect, PacketHandler.S_PlaySoundEffectHandler);
 	}
 
 	public void OnRecvPacket(PacketSession session, ArraySegment<byte> buffer)

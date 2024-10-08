@@ -43,7 +43,7 @@ using System.Text;
 
         if (cur_Time > explode_coolTime)
         {
-            Explode();
+            Explode(false);
         }
 
         else
@@ -52,7 +52,7 @@ using System.Text;
         }
     }
 
-    public void Explode()
+    public void Explode(bool _ischained = true)
     {
         // 수정된 코드 
         if (isRemoveResreved) return;
@@ -60,6 +60,17 @@ using System.Text;
         if (_job == null || _job.Cancel == true) return;
 
         Console.WriteLine("Explode!");
+
+        if (_ischained == false)
+        {
+            Console.WriteLine("Initial Bomb Exploding!");
+
+            S_PlaySoundEffect soundEffectPkt = new S_PlaySoundEffect {
+                SoundEffectType = SoundEffectType.BombExplodeSoundEffect
+            };
+
+            bombOwner._possessGame._gameRoom.BroadcastPacket(soundEffectPkt);
+        }
         
         _job.Cancel = true;
         _job = null;

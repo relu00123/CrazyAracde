@@ -8,7 +8,7 @@ public class CABallon : MonoBehaviour
 {
     [SerializeField] private AudioClip _bombInstallSound;
 
-    private AudioSource _audioSource;
+    private AudioSource audioSource;
 
     // Inventory기능을 만든다면 여기에서 정보를 가져오도록 하자. 
     public BombType bombSkinType { get; set; } = BombType.Black;  
@@ -24,15 +24,10 @@ public class CABallon : MonoBehaviour
     {
         animator = GetComponent<Animator>();
 
-        _audioSource = GetComponent<AudioSource>();
-        if (_audioSource == null)
-        {
-            _audioSource = gameObject.AddComponent<AudioSource>();
-        }
-
+        audioSource = GetComponent<AudioSource>();
+        
         if (_shouldplayInstallSound)
             PlayBombInstallSound();
-
     }
 
      
@@ -41,13 +36,11 @@ public class CABallon : MonoBehaviour
         
     }
 
-    
-
     public void PlayBombInstallSound()
     {
-        if (_bombInstallSound != null && _audioSource != null)
+        if (_bombInstallSound != null && audioSource != null)
         {
-            _audioSource.PlayOneShot(_bombInstallSound);
+            audioSource.PlayOneShot(_bombInstallSound);
         }
         else
         {
@@ -55,9 +48,6 @@ public class CABallon : MonoBehaviour
                 Debug.LogWarning("BombInstallSound가 설정되지 않았습니다.");
             else
                 Debug.LogWarning("_audioSource가 설정되지 않았습니다.");
-
         }
     }
-
-
 }

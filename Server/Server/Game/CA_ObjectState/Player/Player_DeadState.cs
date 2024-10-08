@@ -25,6 +25,15 @@ public class Player_DeadState : AbstractPlayerState
 
         obj._possessGame._gameRoom.BroadcastPacket(changeAnimPkt);
 
+
+        // 캐릭터 사망 사운드 재생.
+        S_PlaySoundEffect deadSoundEffect = new S_PlaySoundEffect
+        {
+            SoundEffectType = SoundEffectType.PlayerDieSoundEffect
+        };
+
+        obj._possessGame._gameRoom.BroadcastPacket(deadSoundEffect);
+
         // 게임이 끝났는지 확인
         if (obj._possessGame.IsGameFinished())
         {

@@ -92,7 +92,7 @@ public class CAPlayer : InGameObject
             direction = new Vector2(0, 0);  // 방향 벡터가 0일 경우, 기본 값 설정
         }
 
-        Vector2 nextPosition = _transform.Position + direction * _moveSpeed * Stats.SpeedWeight * 10 * (float)_possessGame._gameRoom._deltaTime;
+        Vector2 nextPosition = _transform.Position + direction * _moveSpeed  * 10 * (float)_possessGame._gameRoom._deltaTime;
 
         if (_collider != null)
         {
@@ -204,6 +204,14 @@ public class CAPlayer : InGameObject
                         };
 
                         _possessGame._gameRoom.BroadcastPacket(changeAnimPkt);
+
+                        // 살리는 사운드 재생
+                        S_PlaySoundEffect soundEffectPacket = new S_PlaySoundEffect
+                        {
+                            SoundEffectType = SoundEffectType.PlayerReviveSoundEffect
+                        };
+
+                        _possessGame._gameRoom.BroadcastPacket(soundEffectPacket);
                     }
 
                     else

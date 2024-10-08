@@ -89,7 +89,7 @@ public class CAWaterStream : InGameObject
     {
         //Console.WriteLine("ON BEGIN OVERLAP FUNCTION CALLED FROM WATERSTREAM!!");
 
-        if (other is CAPlayer && !(other._currentState is Player_DeadState))
+        if (other is CAPlayer player && !(other._currentState is Player_DeadState))
         {
             //Console.WriteLine("물줄기랑 캐릭터와의 충돌 발생!!");
 
@@ -98,6 +98,15 @@ public class CAWaterStream : InGameObject
                 other.ChangeState(new Player_Bubble_MovingState());
             else
                 other.ChangeState(new Player_Bubble_IdleState());
+
+
+            // Player가 물방울에 갇히는 Sound를 재생하도록 해야한다. 
+            S_PlaySoundEffect soundEffectPacket = new S_PlaySoundEffect
+            {
+                SoundEffectType = SoundEffectType.PlayerBubbleSoundEffect
+            };
+
+            _possessGame._gameRoom.BroadcastPacket(soundEffectPacket);
         }
     }
 }

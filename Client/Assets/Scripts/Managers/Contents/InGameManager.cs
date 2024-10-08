@@ -36,6 +36,14 @@ public class InGameManager : MonoBehaviour
         C_GameSceneLoadFinished LoadFinishedPkt = new C_GameSceneLoadFinished();
         Managers.Network.Send(LoadFinishedPkt);
 
+        // 이부분에서 GameStart SoundEffect를 Play해도 상관없을 것 같다. 확인해보기 (10.08)
+        GameObject prefab = Resources.Load<GameObject>($"Prefabs/Effect/SoundEffect");
+        prefab.GetComponent<SoundEffect>().SetAudioClip(SoundEffectType.GameStartSoundEffect);
+        GameObject.Instantiate(prefab);
+
+        // Game BGM 틀기! 
+        Managers.Scene.CurrentScene.SetMapBGM(currentStartGamePacket.Maptype);
+
         SceneManager.sceneLoaded -= OnSceneLoaded;
     }
 

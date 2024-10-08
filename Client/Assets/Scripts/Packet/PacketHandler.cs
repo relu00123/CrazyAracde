@@ -497,6 +497,16 @@ class PacketHandler
 		controller.MoveSpeedWeight = pkt.SpeedWeight;
     }
 
+	public static void S_PlaySoundEffectHandler(PacketSession session, IMessage packet)
+	{
+		S_PlaySoundEffect pkt = (S_PlaySoundEffect)packet;
+
+        GameObject prefab = Resources.Load<GameObject>($"Prefabs/Effect/SoundEffect");
+		prefab.GetComponent<SoundEffect>().SetAudioClip(pkt.SoundEffectType);
+
+		GameObject.Instantiate(prefab);
+    }
+
     public static void S_EndGameHandler(PacketSession session, IMessage packet)
 	{
 		S_EndGame pkt = (S_EndGame)packet;
@@ -510,13 +520,21 @@ class PacketHandler
 					GameObject prefab = Resources.Load<GameObject>("Prefabs/GameResult/win");
 					Vector2 pos = new Vector3(8, 11);
 					GameObject.Instantiate(prefab, pos, Quaternion.identity);
-				}
+
+                    GameObject soundEffect = Resources.Load<GameObject>($"Prefabs/Effect/SoundEffect");
+                    soundEffect.GetComponent<SoundEffect>().SetAudioClip(SoundEffectType.GameWinSoundEffect);
+                    GameObject.Instantiate(soundEffect);
+                }
 				break;
 			case GameResultType.GameLose:
 				{
                     GameObject prefab = Resources.Load<GameObject>("Prefabs/GameResult/lose");
                     Vector2 pos = new Vector3(8, 11);
                     GameObject.Instantiate(prefab, pos, Quaternion.identity);
+
+                    GameObject soundEffect = Resources.Load<GameObject>($"Prefabs/Effect/SoundEffect");
+                    soundEffect.GetComponent<SoundEffect>().SetAudioClip(SoundEffectType.GameLoseSoundEffect);
+                    GameObject.Instantiate(soundEffect);
                 }
 				break;
 			case GameResultType.GameDraw:
@@ -524,6 +542,10 @@ class PacketHandler
                     GameObject prefab = Resources.Load<GameObject>("Prefabs/GameResult/draw");
                     Vector2 pos = new Vector3(8, 11);
                     GameObject.Instantiate(prefab, pos, Quaternion.identity);
+
+                    GameObject soundEffect = Resources.Load<GameObject>($"Prefabs/Effect/SoundEffect");
+                    soundEffect.GetComponent<SoundEffect>().SetAudioClip(SoundEffectType.GameWinSoundEffect);
+                    GameObject.Instantiate(soundEffect);
                 }
 				break; 
 		}

@@ -38,8 +38,6 @@ namespace Server.Game
         // Collider의 위치와 크기에 따른 경계 좌표(AABB)를 업에디트
         public void UpdateColliderWorldMat()
         {
-            
-
             // 캐릭터의 중심 좌표 (타일 좌표에서 중앙으로 이동)
             var position = _owner._transform.Position  + OffsetPos;
 

@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using Google.Protobuf.Protocol;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -33,7 +34,8 @@ public abstract class BaseScene : MonoBehaviour
     private void InitBgm()
     {
         // AudioSource가 없으면 추가
-        _audioSource = gameObject.AddComponent<AudioSource>();
+        if (_audioSource == null)
+            _audioSource = gameObject.AddComponent<AudioSource>();
 
         // BGM 설정
         if (_bgmClip != null)
@@ -46,6 +48,12 @@ public abstract class BaseScene : MonoBehaviour
         {
             Debug.LogWarning("BGM 클립이 지정되지 않았습니다.");
         }
+    }
+
+    public void SetMapBGM(MapType mapType)
+    {
+        AudioClip bgmClip = Managers.Data.MapBGMDict[mapType];
+        _bgmClip = bgmClip;
     }
 
 

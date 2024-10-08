@@ -3810,6 +3810,54 @@
         },
         {
             "position": {
+                "x": 5,
+                "y": 12,
+                "z": 0
+            },
+            "tileName": "pirate_basic_box",
+            "tilemapName": "Boxes",
+            "isSlippery": false,
+            "isSpine": false,
+            "isProvidingStealth": false,
+            "isMoveable": false,
+            "childTileName": "",
+            "spawnType": 0,
+            "AtlasName": "Tiles_Pirate_Atlas_4"
+        },
+        {
+            "position": {
+                "x": 6,
+                "y": 12,
+                "z": 0
+            },
+            "tileName": "pirate_basic_box",
+            "tilemapName": "Boxes",
+            "isSlippery": false,
+            "isSpine": false,
+            "isProvidingStealth": false,
+            "isMoveable": false,
+            "childTileName": "",
+            "spawnType": 0,
+            "AtlasName": "Tiles_Pirate_Atlas_4"
+        },
+        {
+            "position": {
+                "x": 7,
+                "y": 12,
+                "z": 0
+            },
+            "tileName": "pirate_basic_box",
+            "tilemapName": "Boxes",
+            "isSlippery": false,
+            "isSpine": false,
+            "isProvidingStealth": false,
+            "isMoveable": false,
+            "childTileName": "",
+            "spawnType": 0,
+            "AtlasName": "Tiles_Pirate_Atlas_4"
+        },
+        {
+            "position": {
                 "x": 2,
                 "y": 5,
                 "z": 0
