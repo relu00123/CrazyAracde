@@ -178,6 +178,7 @@ public class ObjectLayerManager
 
                         unityObject.GetComponent<CAWall>().SetBaseTexture(tilename, tileAtlasname);
                         unityObject.GetComponent<CAWall>().SetTopTexture(tilename, tileAtlasname);
+                        unityObject.GetComponent<CAWall>().SetUtmostTexture(tilename, tileAtlasname);
                     }
                 }
                 }

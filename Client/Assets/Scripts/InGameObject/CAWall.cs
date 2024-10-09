@@ -10,6 +10,8 @@ public class CAWall : MonoBehaviour
 
     [SerializeField] private SpriteRenderer TopSpriteRenderer;
 
+    [SerializeField] private SpriteRenderer UtmostSpriteRenderer;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -46,7 +48,7 @@ public class CAWall : MonoBehaviour
 
         if (newSprite == null)
         {
-            Debug.LogError("BaseTexture 할당 중 문제 발생!");
+            //Debug.LogError("BaseTexture 할당 중 문제 발생!");
         }
 
         else
@@ -83,7 +85,7 @@ public class CAWall : MonoBehaviour
 
         if (newSprite == null)
         {
-            Debug.LogError("TopTexture 할당 중 문제 발생!");
+            //Debug.LogError("TopTexture 할당 중 문제 발생!");
         }
 
         else
@@ -91,7 +93,39 @@ public class CAWall : MonoBehaviour
             TopSpriteRenderer.sprite = newSprite;
             Debug.Log("TopTexture 할당 중 문제 발생 안함!");
         }
+    }
 
+    public void SetUtmostTexture(string textureName, string atlasName)
+    {
+        string texture_full_name = textureName += "_utmost";
 
+        string foldername = "";
+        int index = atlasName.IndexOf("_Atlas");
+
+        if (index >= 0)
+        {
+            // "_Atlas" 이전까지 문자열을 자름
+            foldername = atlasName.Substring(0, index);
+        }
+
+        string full_path = $"Tiles/{foldername}/Original/{atlasName}";
+
+        Debug.Log($"TopTexture Full Path : {full_path}");
+
+        Sprite[] sprites = Resources.LoadAll<Sprite>(full_path);
+
+        //// 특정 스프라이트 이름으로 검색
+        Sprite newSprite = System.Array.Find(sprites, item => item.name == texture_full_name);
+
+        if (newSprite == null)
+        {
+            //Debug.LogError("TopTexture 할당 중 문제 발생!");
+        }
+
+        else
+        {
+            UtmostSpriteRenderer.sprite = newSprite;
+            Debug.Log("TopTexture 할당 중 문제 발생 안함!");
+        }
     }
 }

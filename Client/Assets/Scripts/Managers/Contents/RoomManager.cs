@@ -189,7 +189,7 @@ public class RoomManager : MonoBehaviour
         if (pkt.IsSuccess == false)
         {
             UI_NotificationPopup popup = Managers.UI.ShowPopupUI<UI_NotificationPopup>();
-            popup.SetMainText("It's not Fair Team!");
+            popup.SetMainText("All players need to be ready!");
             popup.AddDefaultCloseEventOnConfirmBtn();
         }
     }

@@ -13,6 +13,8 @@ public class CAWaterStream : InGameObject
     private DateTime lastUpdateTime;
     private IJob _job;
 
+    bool isPlayerBubbleSoundPlayed = false;
+
     public CAWaterStream(int id, string name, Transform transform, int layer)
         : base(id, name, transform, layer)
     {
@@ -99,14 +101,17 @@ public class CAWaterStream : InGameObject
             else
                 other.ChangeState(new Player_Bubble_IdleState());
 
-
-            // Player가 물방울에 갇히는 Sound를 재생하도록 해야한다. 
-            S_PlaySoundEffect soundEffectPacket = new S_PlaySoundEffect
+            if (isPlayerBubbleSoundPlayed == false)
             {
-                SoundEffectType = SoundEffectType.PlayerBubbleSoundEffect
-            };
+                isPlayerBubbleSoundPlayed = true;
+                // Player가 물방울에 갇히는 Sound를 재생하도록 해야한다. 
+                S_PlaySoundEffect soundEffectPacket = new S_PlaySoundEffect
+                {
+                    SoundEffectType = SoundEffectType.PlayerBubbleSoundEffect
+                };
 
-            _possessGame._gameRoom.BroadcastPacket(soundEffectPacket);
+                _possessGame._gameRoom.BroadcastPacket(soundEffectPacket);
+            }
         }
     }
 }

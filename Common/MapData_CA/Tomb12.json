@@ -1,0 +1,4804 @@
+{
+    "tiles": [
+        {
+            "position": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+            },
+            "tileName": "Tiles_Tomb_Atlas_3_0",
+            "tilemapName": "Background",
+            "isSlippery": false,
+            "isSpine": false,
+            "isProvidingStealth": false,
+            "isMoveable": false,
+            "childTileName": "",
+            "spawnType": 0,
+            "AtlasName": "Tiles_Tomb_Atlas_3"
+        },
+        {
+            "position": {
+                "x": 1,
+                "y": 0,
+                "z": 0
+            },
+            "tileName": "Tiles_Tomb_Atlas_3_0",
+            "tilemapName": "Background",
+            "isSlippery": false,
+            "isSpine": false,
+            "isProvidingStealth": false,
+            "isMoveable": false,
+            "childTileName": "",
+            "spawnType": 0,
+            "AtlasName": "Tiles_Tomb_Atlas_3"
+        },
+        {
+            "position": {
+                "x": 2,
+                "y": 0,
+                "z": 0
+            },
+            "tileName": "Tiles_Tomb_Atlas_3_0",
+            "tilemapName": "Background",
+            "isSlippery": false,
+            "isSpine": false,
+            "isProvidingStealth": false,
+            "isMoveable": false,
+            "childTileName": "",
+            "spawnType": 0,
+            "AtlasName": "Tiles_Tomb_Atlas_3"
+        },
+        {
+            "position": {
+                "x": 3,
+                "y": 0,
+                "z": 0
+            },
+            "tileName": "Tiles_Tomb_Atlas_3_0",
+            "tilemapName": "Background",
+            "isSlippery": false,
+            "isSpine": false,
+            "isProvidingStealth": false,
+            "isMoveable": false,
+            "childTileName": "",
+            "spawnType": 0,
+            "AtlasName": "Tiles_Tomb_Atlas_3"
+        },
+        {
+            "position": {
+                "x": 4,
+                "y": 0,
+                "z": 0
+            },
+            "tileName": "Tiles_Tomb_Atlas_3_0",
+            "tilemapName": "Background",
+            "isSlippery": false,
+            "isSpine": false,
+            "isProvidingStealth": false,
+            "isMoveable": false,
+            "childTileName": "",
+            "spawnType": 0,
+            "AtlasName": "Tiles_Tomb_Atlas_3"
+        },
+        {
+            "position": {
+                "x": 5,
+                "y": 0,
+                "z": 0
+            },
+            "tileName": "Tiles_Tomb_Atlas_3_0",
+            "tilemapName": "Background",
+            "isSlippery": false,
+            "isSpine": false,
+            "isProvidingStealth": false,
+            "isMoveable": false,
+            "childTileName": "",
+            "spawnType": 0,
+            "AtlasName": "Tiles_Tomb_Atlas_3"
+        },
+        {
+            "position": {
+                "x": 6,
+                "y": 0,
+                "z": 0
+            },
+            "tileName": "Tiles_Tomb_Atlas_3_0",
+            "tilemapName": "Background",
+            "isSlippery": false,
+            "isSpine": false,
+            "isProvidingStealth": false,
+            "isMoveable": false,
+            "childTileName": "",
+            "spawnType": 0,
+            "AtlasName": "Tiles_Tomb_Atlas_3"
+        },
+        {
+            "position": {
+                "x": 7,
+                "y": 0,
+                "z": 0
+            },
+            "tileName": "Tiles_Tomb_Atlas_3_0",
+            "tilemapName": "Background",
+            "isSlippery": false,
+            "isSpine": false,
+            "isProvidingStealth": false,
+            "isMoveable": false,
+            "childTileName": "",
+            "spawnType": 0,
+            "AtlasName": "Tiles_Tomb_Atlas_3"
+        },
+        {
+            "position": {
+                "x": 8,
+                "y": 0,
+                "z": 0
+            },
+            "tileName": "Tiles_Tomb_Atlas_3_0",
+            "tilemapName": "Background",
+            "isSlippery": false,
+            "isSpine": false,
+            "isProvidingStealth": false,
+            "isMoveable": false,
+            "childTileName": "",
+            "spawnType": 0,
+            "AtlasName": "Tiles_Tomb_Atlas_3"
+        },
+        {
+            "position": {
+                "x": 9,
+                "y": 0,
+                "z": 0
+            },
+            "tileName": "Tiles_Tomb_Atlas_3_0",
+            "tilemapName": "Background",
+            "isSlippery": false,
+            "isSpine": false,
+            "isProvidingStealth": false,
+            "isMoveable": false,
+            "childTileName": "",
+            "spawnType": 0,
+            "AtlasName": "Tiles_Tomb_Atlas_3"
+        },
+        {
+            "position": {
+                "x": 10,
+                "y": 0,
+                "z": 0
+            },
+            "tileName": "Tiles_Tomb_Atlas_3_0",
+            "tilemapName": "Background",
+            "isSlippery": false,
+            "isSpine": false,
+            "isProvidingStealth": false,
+            "isMoveable": false,
+            "childTileName": "",
+            "spawnType": 0,
+            "AtlasName": "Tiles_Tomb_Atlas_3"
+        },
+        {
+            "position": {
+                "x": 11,
+                "y": 0,
+                "z": 0
+            },
+            "tileName": "Tiles_Tomb_Atlas_3_0",
+            "tilemapName": "Background",
+            "isSlippery": false,
+            "isSpine": false,
+            "isProvidingStealth": false,
+            "isMoveable": false,
+            "childTileName": "",
+            "spawnType": 0,
+            "AtlasName": "Tiles_Tomb_Atlas_3"
+        },
+        {
+            "position": {
+                "x": 12,
+                "y": 0,
+                "z": 0
+            },
+            "tileName": "Tiles_Tomb_Atlas_3_0",
+            "tilemapName": "Background",
+            "isSlippery": false,
+            "isSpine": false,
+            "isProvidingStealth": false,
+            "isMoveable": false,
+            "childTileName": "",
+            "spawnType": 0,
+            "AtlasName": "Tiles_Tomb_Atlas_3"
+        },
+        {
+            "position": {
+                "x": 13,
+                "y": 0,
+                "z": 0
+            },
+            "tileName": "Tiles_Tomb_Atlas_3_0",
+            "tilemapName": "Background",
+            "isSlippery": false,
+            "isSpine": false,
+            "isProvidingStealth": false,
+            "isMoveable": false,
+            "childTileName": "",
+            "spawnType": 0,
+            "AtlasName": "Tiles_Tomb_Atlas_3"
+        },
+        {
+            "position": {
+                "x": 14,
+                "y": 0,
+                "z": 0
+            },
+            "tileName": "Tiles_Tomb_Atlas_3_0",
+            "tilemapName": "Background",
+            "isSlippery": false,
+            "isSpine": false,
+            "isProvidingStealth": false,
+            "isMoveable": false,
+            "childTileName": "",
+            "spawnType": 0,
+            "AtlasName": "Tiles_Tomb_Atlas_3"
+        },
+        {
+            "position": {
+                "x": 0,
+                "y": 1,
+                "z": 0
+            },
+            "tileName": "Tiles_Tomb_Atlas_3_0",
+            "tilemapName": "Background",
+            "isSlippery": false,
+            "isSpine": false,
+            "isProvidingStealth": false,
+            "isMoveable": false,
+            "childTileName": "",
+            "spawnType": 0,
+            "AtlasName": "Tiles_Tomb_Atlas_3"
+        },
+        {
+            "position": {
+                "x": 1,
+                "y": 1,
+                "z": 0
+            },
+            "tileName": "Tiles_Tomb_Atlas_3_0",
+            "tilemapName": "Background",
+            "isSlippery": false,
+            "isSpine": false,
+            "isProvidingStealth": false,
+            "isMoveable": false,
+            "childTileName": "",
+            "spawnType": 0,
+            "AtlasName": "Tiles_Tomb_Atlas_3"
+        },
+        {
+            "position": {
+                "x": 2,
+                "y": 1,
+                "z": 0
+            },
+            "tileName": "Tiles_Tomb_Atlas_3_0",
+            "tilemapName": "Background",
+            "isSlippery": false,
+            "isSpine": false,
+            "isProvidingStealth": false,
+            "isMoveable": false,
+            "childTileName": "",
+            "spawnType": 0,
+            "AtlasName": "Tiles_Tomb_Atlas_3"
+        },
+        {
+            "position": {
+                "x": 3,
+                "y": 1,
+                "z": 0
+            },
+            "tileName": "Tiles_Tomb_Atlas_3_0",
+            "tilemapName": "Background",
+            "isSlippery": false,
+            "isSpine": false,
+            "isProvidingStealth": false,
+            "isMoveable": false,
+            "childTileName": "",
+            "spawnType": 0,
+            "AtlasName": "Tiles_Tomb_Atlas_3"
+        },
+        {
+            "position": {
+                "x": 4,
+                "y": 1,
+                "z": 0
+            },
+            "tileName": "Tiles_Tomb_Atlas_3_0",
+            "tilemapName": "Background",
+            "isSlippery": false,
+            "isSpine": false,
+            "isProvidingStealth": false,
+            "isMoveable": false,
+            "childTileName": "",
+            "spawnType": 0,
+            "AtlasName": "Tiles_Tomb_Atlas_3"
+        },
+        {
+            "position": {
+                "x": 5,
+                "y": 1,
+                "z": 0
+            },
+            "tileName": "Tiles_Tomb_Atlas_3_0",
+            "tilemapName": "Background",
+            "isSlippery": false,
+            "isSpine": false,
+            "isProvidingStealth": false,
+            "isMoveable": false,
+            "childTileName": "",
+            "spawnType": 0,
+            "AtlasName": "Tiles_Tomb_Atlas_3"
+        },
+        {
+            "position": {
+                "x": 6,
+                "y": 1,
+                "z": 0
+            },
+            "tileName": "Tiles_Tomb_Atlas_3_0",
+            "tilemapName": "Background",
+            "isSlippery": false,
+            "isSpine": false,
+            "isProvidingStealth": false,
+            "isMoveable": false,
+            "childTileName": "",
+            "spawnType": 0,
+            "AtlasName": "Tiles_Tomb_Atlas_3"
+        },
+        {
+            "position": {
+                "x": 7,
+                "y": 1,
+                "z": 0
+            },
+            "tileName": "Tiles_Tomb_Atlas_3_0",
+            "tilemapName": "Background",
+            "isSlippery": false,
+            "isSpine": false,
+            "isProvidingStealth": false,
+            "isMoveable": false,
+            "childTileName": "",
+            "spawnType": 0,
+            "AtlasName": "Tiles_Tomb_Atlas_3"
+        },
+        {
+            "position": {
+                "x": 8,
+                "y": 1,
+                "z": 0
+            },
+            "tileName": "Tiles_Tomb_Atlas_3_0",
+            "tilemapName": "Background",
+            "isSlippery": false,
+            "isSpine": false,
+            "isProvidingStealth": false,
+            "isMoveable": false,
+            "childTileName": "",
+            "spawnType": 0,
+            "AtlasName": "Tiles_Tomb_Atlas_3"
+        },
+        {
+            "position": {
+                "x": 9,
+                "y": 1,
+                "z": 0
+            },
+            "tileName": "Tiles_Tomb_Atlas_3_0",
+            "tilemapName": "Background",
+            "isSlippery": false,
+            "isSpine": false,
+            "isProvidingStealth": false,
+            "isMoveable": false,
+            "childTileName": "",
+            "spawnType": 0,
+            "AtlasName": "Tiles_Tomb_Atlas_3"
+        },
+        {
+            "position": {
+                "x": 10,
+                "y": 1,
+                "z": 0
+            },
+            "tileName": "Tiles_Tomb_Atlas_3_0",
+            "tilemapName": "Background",
+            "isSlippery": false,
+            "isSpine": false,
+            "isProvidingStealth": false,
+            "isMoveable": false,
+            "childTileName": "",
+            "spawnType": 0,
+            "AtlasName": "Tiles_Tomb_Atlas_3"
+        },
+        {
+            "position": {
+                "x": 11,
+                "y": 1,
+                "z": 0
+            },
+            "tileName": "Tiles_Tomb_Atlas_3_0",
+            "tilemapName": "Background",
+            "isSlippery": false,
+            "isSpine": false,
+            "isProvidingStealth": false,
+            "isMoveable": false,
+            "childTileName": "",
+            "spawnType": 0,
+            "AtlasName": "Tiles_Tomb_Atlas_3"
+        },
+        {
+            "position": {
+                "x": 12,
+                "y": 1,
+                "z": 0
+            },
+            "tileName": "Tiles_Tomb_Atlas_3_0",
+            "tilemapName": "Background",
+            "isSlippery": false,
+            "isSpine": false,
+            "isProvidingStealth": false,
+            "isMoveable": false,
+            "childTileName": "",
+            "spawnType": 0,
+            "AtlasName": "Tiles_Tomb_Atlas_3"
+        },
+        {
+            "position": {
+                "x": 13,
+                "y": 1,
+                "z": 0
+            },
+            "tileName": "Tiles_Tomb_Atlas_3_0",
+            "tilemapName": "Background",
+            "isSlippery": false,
+            "isSpine": false,
+            "isProvidingStealth": false,
+            "isMoveable": false,
+            "childTileName": "",
+            "spawnType": 0,
+            "AtlasName": "Tiles_Tomb_Atlas_3"
+        },
+        {
+            "position": {
+                "x": 14,
+                "y": 1,
+                "z": 0
+            },
+            "tileName": "Tiles_Tomb_Atlas_3_0",
+            "tilemapName": "Background",
+            "isSlippery": false,
+            "isSpine": false,
+            "isProvidingStealth": false,
+            "isMoveable": false,
+            "childTileName": "",
+            "spawnType": 0,
+            "AtlasName": "Tiles_Tomb_Atlas_3"
+        },
+        {
+            "position": {
+                "x": 0,
+                "y": 2,
+                "z": 0
+            },
+            "tileName": "Tiles_Tomb_Atlas_3_0",
+            "tilemapName": "Background",
+            "isSlippery": false,
+            "isSpine": false,
+            "isProvidingStealth": false,
+            "isMoveable": false,
+            "childTileName": "",
+            "spawnType": 0,
+            "AtlasName": "Tiles_Tomb_Atlas_3"
+        },
+        {
+            "position": {
+                "x": 1,
+                "y": 2,
+                "z": 0
+            },
+            "tileName": "Tiles_Tomb_Atlas_3_0",
+            "tilemapName": "Background",
+            "isSlippery": false,
+            "isSpine": false,
+            "isProvidingStealth": false,
+            "isMoveable": false,
+            "childTileName": "",
+            "spawnType": 0,
+            "AtlasName": "Tiles_Tomb_Atlas_3"
+        },
+        {
+            "position": {
+                "x": 2,
+                "y": 2,
+                "z": 0
+            },
+            "tileName": "Tiles_Tomb_Atlas_3_0",
+            "tilemapName": "Background",
+            "isSlippery": false,
+            "isSpine": false,
+            "isProvidingStealth": false,
+            "isMoveable": false,
+            "childTileName": "",
+            "spawnType": 0,
+            "AtlasName": "Tiles_Tomb_Atlas_3"
+        },
+        {
+            "position": {
+                "x": 3,
+                "y": 2,
+                "z": 0
+            },
+            "tileName": "Tiles_Tomb_Atlas_3_0",
+            "tilemapName": "Background",
+            "isSlippery": false,
+            "isSpine": false,
+            "isProvidingStealth": false,
+            "isMoveable": false,
+            "childTileName": "",
+            "spawnType": 0,
+            "AtlasName": "Tiles_Tomb_Atlas_3"
+        },
+        {
+            "position": {
+                "x": 4,
+                "y": 2,
+                "z": 0
+            },
+            "tileName": "Tiles_Tomb_Atlas_3_0",
+            "tilemapName": "Background",
+            "isSlippery": false,
+            "isSpine": false,
+            "isProvidingStealth": false,
+            "isMoveable": false,
+            "childTileName": "",
+            "spawnType": 0,
+            "AtlasName": "Tiles_Tomb_Atlas_3"
+        },
+        {
+            "position": {
+                "x": 5,
+                "y": 2,
+                "z": 0
+            },
+            "tileName": "Tiles_Tomb_Atlas_3_0",
+            "tilemapName": "Background",
+            "isSlippery": false,
+            "isSpine": false,
+            "isProvidingStealth": false,
+            "isMoveable": false,
+            "childTileName": "",
+            "spawnType": 0,
+            "AtlasName": "Tiles_Tomb_Atlas_3"
+        },
+        {
+            "position": {
+                "x": 6,
+                "y": 2,
+                "z": 0
+            },
+            "tileName": "Tiles_Tomb_Atlas_3_0",
+            "tilemapName": "Background",
+            "isSlippery": false,
+            "isSpine": false,
+            "isProvidingStealth": false,
+            "isMoveable": false,
+            "childTileName": "",
+            "spawnType": 0,
+            "AtlasName": "Tiles_Tomb_Atlas_3"
+        },
+        {
+            "position": {
+                "x": 7,
+                "y": 2,
+                "z": 0
+            },
+            "tileName": "Tiles_Tomb_Atlas_3_0",
+            "tilemapName": "Background",
+            "isSlippery": false,
+            "isSpine": false,
+            "isProvidingStealth": false,
+            "isMoveable": false,
+            "childTileName": "",
+            "spawnType": 0,
+            "AtlasName": "Tiles_Tomb_Atlas_3"
+        },
+        {
+            "position": {
+                "x": 8,
+                "y": 2,
+                "z": 0
+            },
+            "tileName": "Tiles_Tomb_Atlas_3_0",
+            "tilemapName": "Background",
+            "isSlippery": false,
+            "isSpine": false,
+            "isProvidingStealth": false,
+            "isMoveable": false,
+            "childTileName": "",
+            "spawnType": 0,
+            "AtlasName": "Tiles_Tomb_Atlas_3"
+        },
+        {
+            "position": {
+                "x": 9,
+                "y": 2,
+                "z": 0
+            },
+            "tileName": "Tiles_Tomb_Atlas_3_0",
+            "tilemapName": "Background",
+            "isSlippery": false,
+            "isSpine": false,
+            "isProvidingStealth": false,
+            "isMoveable": false,
+            "childTileName": "",
+            "spawnType": 0,
+            "AtlasName": "Tiles_Tomb_Atlas_3"
+        },
+        {
+            "position": {
+                "x": 10,
+                "y": 2,
+                "z": 0
+            },
+            "tileName": "Tiles_Tomb_Atlas_3_0",
+            "tilemapName": "Background",
+            "isSlippery": false,
+            "isSpine": false,
+            "isProvidingStealth": false,
+            "isMoveable": false,
+            "childTileName": "",
+            "spawnType": 0,
+            "AtlasName": "Tiles_Tomb_Atlas_3"
+        },
+        {
+            "position": {
+                "x": 11,
+                "y": 2,
+                "z": 0
+            },
+            "tileName": "Tiles_Tomb_Atlas_3_0",
+            "tilemapName": "Background",
+            "isSlippery": false,
+            "isSpine": false,
+            "isProvidingStealth": false,
+            "isMoveable": false,
+            "childTileName": "",
+            "spawnType": 0,
+            "AtlasName": "Tiles_Tomb_Atlas_3"
+        },
+        {
+            "position": {
+                "x": 12,
+                "y": 2,
+                "z": 0
+            },
+            "tileName": "Tiles_Tomb_Atlas_3_0",
+            "tilemapName": "Background",
+            "isSlippery": false,
+            "isSpine": false,
+            "isProvidingStealth": false,
+            "isMoveable": false,
+            "childTileName": "",
+            "spawnType": 0,
+            "AtlasName": "Tiles_Tomb_Atlas_3"
+        },
+        {
+            "position": {
+                "x": 13,
+                "y": 2,
+                "z": 0
+            },
+            "tileName": "Tiles_Tomb_Atlas_3_0",
+            "tilemapName": "Background",
+            "isSlippery": false,
+            "isSpine": false,
+            "isProvidingStealth": false,
+            "isMoveable": false,
+            "childTileName": "",
+            "spawnType": 0,
+            "AtlasName": "Tiles_Tomb_Atlas_3"
+        },
+        {
+            "position": {
+                "x": 14,
+                "y": 2,
+                "z": 0
+            },
+            "tileName": "Tiles_Tomb_Atlas_3_0",
+            "tilemapName": "Background",
+            "isSlippery": false,
+            "isSpine": false,
+            "isProvidingStealth": false,
+            "isMoveable": false,
+            "childTileName": "",
+            "spawnType": 0,
+            "AtlasName": "Tiles_Tomb_Atlas_3"
+        },
+        {
+            "position": {
+                "x": 0,
+                "y": 3,
+                "z": 0
+            },
+            "tileName": "Tiles_Tomb_Atlas_3_0",
+            "tilemapName": "Background",
+            "isSlippery": false,
+            "isSpine": false,
+            "isProvidingStealth": false,
+            "isMoveable": false,
+            "childTileName": "",
+            "spawnType": 0,
+            "AtlasName": "Tiles_Tomb_Atlas_3"
+        },
+        {
+            "position": {
+                "x": 1,
+                "y": 3,
+                "z": 0
+            },
+            "tileName": "Tiles_Tomb_Atlas_3_0",
+            "tilemapName": "Background",
+            "isSlippery": false,
+            "isSpine": false,
+            "isProvidingStealth": false,
+            "isMoveable": false,
+            "childTileName": "",
+            "spawnType": 0,
+            "AtlasName": "Tiles_Tomb_Atlas_3"
+        },
+        {
+            "position": {
+                "x": 2,
+                "y": 3,
+                "z": 0
+            },
+            "tileName": "Tiles_Tomb_Atlas_3_0",
+            "tilemapName": "Background",
+            "isSlippery": false,
+            "isSpine": false,
+            "isProvidingStealth": false,
+            "isMoveable": false,
+            "childTileName": "",
+            "spawnType": 0,
+            "AtlasName": "Tiles_Tomb_Atlas_3"
+        },
+        {
+            "position": {
+                "x": 3,
+                "y": 3,
+                "z": 0
+            },
+            "tileName": "Tiles_Tomb_Atlas_3_0",
+            "tilemapName": "Background",
+            "isSlippery": false,
+            "isSpine": false,
+            "isProvidingStealth": false,
+            "isMoveable": false,
+            "childTileName": "",
+            "spawnType": 0,
+            "AtlasName": "Tiles_Tomb_Atlas_3"
+        },
+        {
+            "position": {
+                "x": 4,
+                "y": 3,
+                "z": 0
+            },
+            "tileName": "Tiles_Tomb_Atlas_3_0",
+            "tilemapName": "Background",
+            "isSlippery": false,
+            "isSpine": false,
+            "isProvidingStealth": false,
+            "isMoveable": false,
+            "childTileName": "",
+            "spawnType": 0,
+            "AtlasName": "Tiles_Tomb_Atlas_3"
+        },
+        {
+            "position": {
+                "x": 5,
+                "y": 3,
+                "z": 0
+            },
+            "tileName": "Tiles_Tomb_Atlas_3_0",
+            "tilemapName": "Background",
+            "isSlippery": false,
+            "isSpine": false,
+            "isProvidingStealth": false,
+            "isMoveable": false,
+            "childTileName": "",
+            "spawnType": 0,
+            "AtlasName": "Tiles_Tomb_Atlas_3"
+        },
+        {
+            "position": {
+                "x": 6,
+                "y": 3,
+                "z": 0
+            },
+            "tileName": "Tiles_Tomb_Atlas_3_0",
+            "tilemapName": "Background",
+            "isSlippery": false,
+            "isSpine": false,
+            "isProvidingStealth": false,
+            "isMoveable": false,
+            "childTileName": "",
+            "spawnType": 0,
+            "AtlasName": "Tiles_Tomb_Atlas_3"
+        },
+        {
+            "position": {
+                "x": 7,
+                "y": 3,
+                "z": 0
+            },
+            "tileName": "Tiles_Tomb_Atlas_3_0",
+            "tilemapName": "Background",
+            "isSlippery": false,
+            "isSpine": false,
+            "isProvidingStealth": false,
+            "isMoveable": false,
+            "childTileName": "",
+            "spawnType": 0,
+            "AtlasName": "Tiles_Tomb_Atlas_3"
+        },
+        {
+            "position": {
+                "x": 8,
+                "y": 3,
+                "z": 0
+            },
+            "tileName": "Tiles_Tomb_Atlas_3_0",
+            "tilemapName": "Background",
+            "isSlippery": false,
+            "isSpine": false,
+            "isProvidingStealth": false,
+            "isMoveable": false,
+            "childTileName": "",
+            "spawnType": 0,
+            "AtlasName": "Tiles_Tomb_Atlas_3"
+        },
+        {
+            "position": {
+                "x": 9,
+                "y": 3,
+                "z": 0
+            },
+            "tileName": "Tiles_Tomb_Atlas_3_0",
+            "tilemapName": "Background",
+            "isSlippery": false,
+            "isSpine": false,
+            "isProvidingStealth": false,
+            "isMoveable": false,
+            "childTileName": "",
+            "spawnType": 0,
+            "AtlasName": "Tiles_Tomb_Atlas_3"
+        },
+        {
+            "position": {
+                "x": 10,
+                "y": 3,
+                "z": 0
+            },
+            "tileName": "Tiles_Tomb_Atlas_3_0",
+            "tilemapName": "Background",
+            "isSlippery": false,
+            "isSpine": false,
+            "isProvidingStealth": false,
+            "isMoveable": false,
+            "childTileName": "",
+            "spawnType": 0,
+            "AtlasName": "Tiles_Tomb_Atlas_3"
+        },
+        {
+            "position": {
+                "x": 11,
+                "y": 3,
+                "z": 0
+            },
+            "tileName": "Tiles_Tomb_Atlas_3_0",
+            "tilemapName": "Background",
+            "isSlippery": false,
+            "isSpine": false,
+            "isProvidingStealth": false,
+            "isMoveable": false,
+            "childTileName": "",
+            "spawnType": 0,
+            "AtlasName": "Tiles_Tomb_Atlas_3"
+        },
+        {
+            "position": {
+                "x": 12,
+                "y": 3,
+                "z": 0
+            },
+            "tileName": "Tiles_Tomb_Atlas_3_0",
+            "tilemapName": "Background",
+            "isSlippery": false,
+            "isSpine": false,
+            "isProvidingStealth": false,
+            "isMoveable": false,
+            "childTileName": "",
+            "spawnType": 0,
+            "AtlasName": "Tiles_Tomb_Atlas_3"
+        },
+        {
+            "position": {
+                "x": 13,
+                "y": 3,
+                "z": 0
+            },
+            "tileName": "Tiles_Tomb_Atlas_3_0",
+            "tilemapName": "Background",
+            "isSlippery": false,
+            "isSpine": false,
+            "isProvidingStealth": false,
+            "isMoveable": false,
+            "childTileName": "",
+            "spawnType": 0,
+            "AtlasName": "Tiles_Tomb_Atlas_3"
+        },
+        {
+            "position": {
+                "x": 14,
+                "y": 3,
+                "z": 0
+            },
+            "tileName": "Tiles_Tomb_Atlas_3_0",
+            "tilemapName": "Background",
+            "isSlippery": false,
+            "isSpine": false,
+            "isProvidingStealth": false,
+            "isMoveable": false,
+            "childTileName": "",
+            "spawnType": 0,
+            "AtlasName": "Tiles_Tomb_Atlas_3"
+        },
+        {
+            "position": {
+                "x": 0,
+                "y": 4,
+                "z": 0
+            },
+            "tileName": "Tiles_Tomb_Atlas_3_0",
+            "tilemapName": "Background",
+            "isSlippery": false,
+            "isSpine": false,
+            "isProvidingStealth": false,
+            "isMoveable": false,
+            "childTileName": "",
+            "spawnType": 0,
+            "AtlasName": "Tiles_Tomb_Atlas_3"
+        },
+        {
+            "position": {
+                "x": 1,
+                "y": 4,
+                "z": 0
+            },
+            "tileName": "Tiles_Tomb_Atlas_3_0",
+            "tilemapName": "Background",
+            "isSlippery": false,
+            "isSpine": false,
+            "isProvidingStealth": false,
+            "isMoveable": false,
+            "childTileName": "",
+            "spawnType": 0,
+            "AtlasName": "Tiles_Tomb_Atlas_3"
+        },
+        {
+            "position": {
+                "x": 2,
+                "y": 4,
+                "z": 0
+            },
+            "tileName": "Tiles_Tomb_Atlas_3_0",
+            "tilemapName": "Background",
+            "isSlippery": false,
+            "isSpine": false,
+            "isProvidingStealth": false,
+            "isMoveable": false,
+            "childTileName": "",
+            "spawnType": 0,
+            "AtlasName": "Tiles_Tomb_Atlas_3"
+        },
+        {
+            "position": {
+                "x": 3,
+                "y": 4,
+                "z": 0
+            },
+            "tileName": "Tiles_Tomb_Atlas_3_0",
+            "tilemapName": "Background",
+            "isSlippery": false,
+            "isSpine": false,
+            "isProvidingStealth": false,
+            "isMoveable": false,
+            "childTileName": "",
+            "spawnType": 0,
+            "AtlasName": "Tiles_Tomb_Atlas_3"
+        },
+        {
+            "position": {
+                "x": 4,
+                "y": 4,
+                "z": 0
+            },
+            "tileName": "Tiles_Tomb_Atlas_3_0",
+            "tilemapName": "Background",
+            "isSlippery": false,
+            "isSpine": false,
+            "isProvidingStealth": false,
+            "isMoveable": false,
+            "childTileName": "",
+            "spawnType": 0,
+            "AtlasName": "Tiles_Tomb_Atlas_3"
+        },
+        {
+            "position": {
+                "x": 5,
+                "y": 4,
+                "z": 0
+            },
+            "tileName": "Tiles_Tomb_Atlas_3_0",
+            "tilemapName": "Background",
+            "isSlippery": false,
+            "isSpine": false,
+            "isProvidingStealth": false,
+            "isMoveable": false,
+            "childTileName": "",
+            "spawnType": 0,
+            "AtlasName": "Tiles_Tomb_Atlas_3"
+        },
+        {
+            "position": {
+                "x": 6,
+                "y": 4,
+                "z": 0
+            },
+            "tileName": "Tiles_Tomb_Atlas_3_0",
+            "tilemapName": "Background",
+            "isSlippery": false,
+            "isSpine": false,
+            "isProvidingStealth": false,
+            "isMoveable": false,
+            "childTileName": "",
+            "spawnType": 0,
+            "AtlasName": "Tiles_Tomb_Atlas_3"
+        },
+        {
+            "position": {
+                "x": 7,
+                "y": 4,
+                "z": 0
+            },
+            "tileName": "Tiles_Tomb_Atlas_3_0",
+            "tilemapName": "Background",
+            "isSlippery": false,
+            "isSpine": false,
+            "isProvidingStealth": false,
+            "isMoveable": false,
+            "childTileName": "",
+            "spawnType": 0,
+            "AtlasName": "Tiles_Tomb_Atlas_3"
+        },
+        {
+            "position": {
+                "x": 8,
+                "y": 4,
+                "z": 0
+            },
+            "tileName": "Tiles_Tomb_Atlas_3_0",
+            "tilemapName": "Background",
+            "isSlippery": false,
+            "isSpine": false,
+            "isProvidingStealth": false,
+            "isMoveable": false,
+            "childTileName": "",
+            "spawnType": 0,
+            "AtlasName": "Tiles_Tomb_Atlas_3"
+        },
+        {
+            "position": {
+                "x": 9,
+                "y": 4,
+                "z": 0
+            },
+            "tileName": "Tiles_Tomb_Atlas_3_0",
+            "tilemapName": "Background",
+            "isSlippery": false,
+            "isSpine": false,
+            "isProvidingStealth": false,
+            "isMoveable": false,
+            "childTileName": "",
+            "spawnType": 0,
+            "AtlasName": "Tiles_Tomb_Atlas_3"
+        },
+        {
+            "position": {
+                "x": 10,
+                "y": 4,
+                "z": 0
+            },
+            "tileName": "Tiles_Tomb_Atlas_3_0",
+            "tilemapName": "Background",
+            "isSlippery": false,
+            "isSpine": false,
+            "isProvidingStealth": false,
+            "isMoveable": false,
+            "childTileName": "",
+            "spawnType": 0,
+            "AtlasName": "Tiles_Tomb_Atlas_3"
+        },
+        {
+            "position": {
+                "x": 11,
+                "y": 4,
+                "z": 0
+            },
+            "tileName": "Tiles_Tomb_Atlas_3_0",
+            "tilemapName": "Background",
+            "isSlippery": false,
+            "isSpine": false,
+            "isProvidingStealth": false,
+            "isMoveable": false,
+            "childTileName": "",
+            "spawnType": 0,
+            "AtlasName": "Tiles_Tomb_Atlas_3"
+        },
+        {
+            "position": {
+                "x": 12,
+                "y": 4,
+                "z": 0
+            },
+            "tileName": "Tiles_Tomb_Atlas_3_0",
+            "tilemapName": "Background",
+            "isSlippery": false,
+            "isSpine": false,
+            "isProvidingStealth": false,
+            "isMoveable": false,
+            "childTileName": "",
+            "spawnType": 0,
+            "AtlasName": "Tiles_Tomb_Atlas_3"
+        },
+        {
+            "position": {
+                "x": 13,
+                "y": 4,
+                "z": 0
+            },
+            "tileName": "Tiles_Tomb_Atlas_3_0",
+            "tilemapName": "Background",
+            "isSlippery": false,
+            "isSpine": false,
+            "isProvidingStealth": false,
+            "isMoveable": false,
+            "childTileName": "",
+            "spawnType": 0,
+            "AtlasName": "Tiles_Tomb_Atlas_3"
+        },
+        {
+            "position": {
+                "x": 14,
+                "y": 4,
+                "z": 0
+            },
+            "tileName": "Tiles_Tomb_Atlas_3_0",
+            "tilemapName": "Background",
+            "isSlippery": false,
+            "isSpine": false,
+            "isProvidingStealth": false,
+            "isMoveable": false,
+            "childTileName": "",
+            "spawnType": 0,
+            "AtlasName": "Tiles_Tomb_Atlas_3"
+        },
+        {
+            "position": {
+                "x": 0,
+                "y": 5,
+                "z": 0
+            },
+            "tileName": "Tiles_Tomb_Atlas_3_0",
+            "tilemapName": "Background",
+            "isSlippery": false,
+            "isSpine": false,
+            "isProvidingStealth": false,
+            "isMoveable": false,
+            "childTileName": "",
+            "spawnType": 0,
+            "AtlasName": "Tiles_Tomb_Atlas_3"
+        },
+        {
+            "position": {
+                "x": 1,
+                "y": 5,
+                "z": 0
+            },
+            "tileName": "Tiles_Tomb_Atlas_3_0",
+            "tilemapName": "Background",
+            "isSlippery": false,
+            "isSpine": false,
+            "isProvidingStealth": false,
+            "isMoveable": false,
+            "childTileName": "",
+            "spawnType": 0,
+            "AtlasName": "Tiles_Tomb_Atlas_3"
+        },
+        {
+            "position": {
+                "x": 2,
+                "y": 5,
+                "z": 0
+            },
+            "tileName": "Tiles_Tomb_Atlas_3_0",
+            "tilemapName": "Background",
+            "isSlippery": false,
+            "isSpine": false,
+            "isProvidingStealth": false,
+            "isMoveable": false,
+            "childTileName": "",
+            "spawnType": 0,
+            "AtlasName": "Tiles_Tomb_Atlas_3"
+        },
+        {
+            "position": {
+                "x": 3,
+                "y": 5,
+                "z": 0
+            },
+            "tileName": "Tiles_Tomb_Atlas_3_0",
+            "tilemapName": "Background",
+            "isSlippery": false,
+            "isSpine": false,
+            "isProvidingStealth": false,
+            "isMoveable": false,
+            "childTileName": "",
+            "spawnType": 0,
+            "AtlasName": "Tiles_Tomb_Atlas_3"
+        },
+        {
+            "position": {
+                "x": 4,
+                "y": 5,
+                "z": 0
+            },
+            "tileName": "Tiles_Tomb_Atlas_3_0",
+            "tilemapName": "Background",
+            "isSlippery": false,
+            "isSpine": false,
+            "isProvidingStealth": false,
+            "isMoveable": false,
+            "childTileName": "",
+            "spawnType": 0,
+            "AtlasName": "Tiles_Tomb_Atlas_3"
+        },
+        {
+            "position": {
+                "x": 5,
+                "y": 5,
+                "z": 0
+            },
+            "tileName": "Tiles_Tomb_Atlas_3_0",
+            "tilemapName": "Background",
+            "isSlippery": false,
+            "isSpine": false,
+            "isProvidingStealth": false,
+            "isMoveable": false,
+            "childTileName": "",
+            "spawnType": 0,
+            "AtlasName": "Tiles_Tomb_Atlas_3"
+        },
+        {
+            "position": {
+                "x": 6,
+                "y": 5,
+                "z": 0
+            },
+            "tileName": "Tiles_Tomb_Atlas_3_0",
+            "tilemapName": "Background",
+            "isSlippery": false,
+            "isSpine": false,
+            "isProvidingStealth": false,
+            "isMoveable": false,
+            "childTileName": "",
+            "spawnType": 0,
+            "AtlasName": "Tiles_Tomb_Atlas_3"
+        },
+        {
+            "position": {
+                "x": 7,
+                "y": 5,
+                "z": 0
+            },
+            "tileName": "Tiles_Tomb_Atlas_3_0",
+            "tilemapName": "Background",
+            "isSlippery": false,
+            "isSpine": false,
+            "isProvidingStealth": false,
+            "isMoveable": false,
+            "childTileName": "",
+            "spawnType": 0,
+            "AtlasName": "Tiles_Tomb_Atlas_3"
+        },
+        {
+            "position": {
+                "x": 8,
+                "y": 5,
+                "z": 0
+            },
+            "tileName": "Tiles_Tomb_Atlas_3_0",
+            "tilemapName": "Background",
+            "isSlippery": false,
+            "isSpine": false,
+            "isProvidingStealth": false,
+            "isMoveable": false,
+            "childTileName": "",
+            "spawnType": 0,
+            "AtlasName": "Tiles_Tomb_Atlas_3"
+        },
+        {
+            "position": {
+                "x": 9,
+                "y": 5,
+                "z": 0
+            },
+            "tileName": "Tiles_Tomb_Atlas_3_0",
+            "tilemapName": "Background",
+            "isSlippery": false,
+            "isSpine": false,
+            "isProvidingStealth": false,
+            "isMoveable": false,
+            "childTileName": "",
+            "spawnType": 0,
+            "AtlasName": "Tiles_Tomb_Atlas_3"
+        },
+        {
+            "position": {
+                "x": 10,
+                "y": 5,
+                "z": 0
+            },
+            "tileName": "Tiles_Tomb_Atlas_3_0",
+            "tilemapName": "Background",
+            "isSlippery": false,
+            "isSpine": false,
+            "isProvidingStealth": false,
+            "isMoveable": false,
+            "childTileName": "",
+            "spawnType": 0,
+            "AtlasName": "Tiles_Tomb_Atlas_3"
+        },
+        {
+            "position": {
+                "x": 11,
+                "y": 5,
+                "z": 0
+            },
+            "tileName": "Tiles_Tomb_Atlas_3_0",
+            "tilemapName": "Background",
+            "isSlippery": false,
+            "isSpine": false,
+            "isProvidingStealth": false,
+            "isMoveable": false,
+            "childTileName": "",
+            "spawnType": 0,
+            "AtlasName": "Tiles_Tomb_Atlas_3"
+        },
+        {
+            "position": {
+                "x": 12,
+                "y": 5,
+                "z": 0
+            },
+            "tileName": "Tiles_Tomb_Atlas_3_0",
+            "tilemapName": "Background",
+            "isSlippery": false,
+            "isSpine": false,
+            "isProvidingStealth": false,
+            "isMoveable": false,
+            "childTileName": "",
+            "spawnType": 0,
+            "AtlasName": "Tiles_Tomb_Atlas_3"
+        },
+        {
+            "position": {
+                "x": 13,
+                "y": 5,
+                "z": 0
+            },
+            "tileName": "Tiles_Tomb_Atlas_3_0",
+            "tilemapName": "Background",
+            "isSlippery": false,
+            "isSpine": false,
+            "isProvidingStealth": false,
+            "isMoveable": false,
+            "childTileName": "",
+            "spawnType": 0,
+            "AtlasName": "Tiles_Tomb_Atlas_3"
+        },
+        {
+            "position": {
+                "x": 14,
+                "y": 5,
+                "z": 0
+            },
+            "tileName": "Tiles_Tomb_Atlas_3_0",
+            "tilemapName": "Background",
+            "isSlippery": false,
+            "isSpine": false,
+            "isProvidingStealth": false,
+            "isMoveable": false,
+            "childTileName": "",
+            "spawnType": 0,
+            "AtlasName": "Tiles_Tomb_Atlas_3"
+        },
+        {
+            "position": {
+                "x": 0,
+                "y": 6,
+                "z": 0
+            },
+            "tileName": "Tiles_Tomb_Atlas_3_0",
+            "tilemapName": "Background",
+            "isSlippery": false,
+            "isSpine": false,
+            "isProvidingStealth": false,
+            "isMoveable": false,
+            "childTileName": "",
+            "spawnType": 0,
+            "AtlasName": "Tiles_Tomb_Atlas_3"
+        },
+        {
+            "position": {
+                "x": 1,
+                "y": 6,
+                "z": 0
+            },
+            "tileName": "Tiles_Tomb_Atlas_3_0",
+            "tilemapName": "Background",
+            "isSlippery": false,
+            "isSpine": false,
+            "isProvidingStealth": false,
+            "isMoveable": false,
+            "childTileName": "",
+            "spawnType": 0,
+            "AtlasName": "Tiles_Tomb_Atlas_3"
+        },
+        {
+            "position": {
+                "x": 2,
+                "y": 6,
+                "z": 0
+            },
+            "tileName": "Tiles_Tomb_Atlas_3_0",
+            "tilemapName": "Background",
+            "isSlippery": false,
+            "isSpine": false,
+            "isProvidingStealth": false,
+            "isMoveable": false,
+            "childTileName": "",
+            "spawnType": 0,
+            "AtlasName": "Tiles_Tomb_Atlas_3"
+        },
+        {
+            "position": {
+                "x": 3,
+                "y": 6,
+                "z": 0
+            },
+            "tileName": "Tiles_Tomb_Atlas_3_0",
+            "tilemapName": "Background",
+            "isSlippery": false,
+            "isSpine": false,
+            "isProvidingStealth": false,
+            "isMoveable": false,
+            "childTileName": "",
+            "spawnType": 0,
+            "AtlasName": "Tiles_Tomb_Atlas_3"
+        },
+        {
+            "position": {
+                "x": 4,
+                "y": 6,
+                "z": 0
+            },
+            "tileName": "Tiles_Tomb_Atlas_3_0",
+            "tilemapName": "Background",
+            "isSlippery": false,
+            "isSpine": false,
+            "isProvidingStealth": false,
+            "isMoveable": false,
+            "childTileName": "",
+            "spawnType": 0,
+            "AtlasName": "Tiles_Tomb_Atlas_3"
+        },
+        {
+            "position": {
+                "x": 5,
+                "y": 6,
+                "z": 0
+            },
+            "tileName": "Tiles_Tomb_Atlas_3_0",
+            "tilemapName": "Background",
+            "isSlippery": false,
+            "isSpine": false,
+            "isProvidingStealth": false,
+            "isMoveable": false,
+            "childTileName": "",
+            "spawnType": 0,
+            "AtlasName": "Tiles_Tomb_Atlas_3"
+        },
+        {
+            "position": {
+                "x": 6,
+                "y": 6,
+                "z": 0
+            },
+            "tileName": "Tiles_Tomb_Atlas_3_0",
+            "tilemapName": "Background",
+            "isSlippery": false,
+            "isSpine": false,
+            "isProvidingStealth": false,
+            "isMoveable": false,
+            "childTileName": "",
+            "spawnType": 0,
+            "AtlasName": "Tiles_Tomb_Atlas_3"
+        },
+        {
+            "position": {
+                "x": 7,
+                "y": 6,
+                "z": 0
+            },
+            "tileName": "Tiles_Tomb_Atlas_3_0",
+            "tilemapName": "Background",
+            "isSlippery": false,
+            "isSpine": false,
+            "isProvidingStealth": false,
+            "isMoveable": false,
+            "childTileName": "",
+            "spawnType": 0,
+            "AtlasName": "Tiles_Tomb_Atlas_3"
+        },
+        {
+            "position": {
+                "x": 8,
+                "y": 6,
+                "z": 0
+            },
+            "tileName": "Tiles_Tomb_Atlas_3_0",
+            "tilemapName": "Background",
+            "isSlippery": false,
+            "isSpine": false,
+            "isProvidingStealth": false,
+            "isMoveable": false,
+            "childTileName": "",
+            "spawnType": 0,
+            "AtlasName": "Tiles_Tomb_Atlas_3"
+        },
+        {
+            "position": {
+                "x": 9,
+                "y": 6,
+                "z": 0
+            },
+            "tileName": "Tiles_Tomb_Atlas_3_0",
+            "tilemapName": "Background",
+            "isSlippery": false,
+            "isSpine": false,
+            "isProvidingStealth": false,
+            "isMoveable": false,
+            "childTileName": "",
+            "spawnType": 0,
+            "AtlasName": "Tiles_Tomb_Atlas_3"
+        },
+        {
+            "position": {
+                "x": 10,
+                "y": 6,
+                "z": 0
+            },
+            "tileName": "Tiles_Tomb_Atlas_3_0",
+            "tilemapName": "Background",
+            "isSlippery": false,
+            "isSpine": false,
+            "isProvidingStealth": false,
+            "isMoveable": false,
+            "childTileName": "",
+            "spawnType": 0,
+            "AtlasName": "Tiles_Tomb_Atlas_3"
+        },
+        {
+            "position": {
+                "x": 11,
+                "y": 6,
+                "z": 0
+            },
+            "tileName": "Tiles_Tomb_Atlas_3_0",
+            "tilemapName": "Background",
+            "isSlippery": false,
+            "isSpine": false,
+            "isProvidingStealth": false,
+            "isMoveable": false,
+            "childTileName": "",
+            "spawnType": 0,
+            "AtlasName": "Tiles_Tomb_Atlas_3"
+        },
+        {
+            "position": {
+                "x": 12,
+                "y": 6,
+                "z": 0
+            },
+            "tileName": "Tiles_Tomb_Atlas_3_0",
+            "tilemapName": "Background",
+            "isSlippery": false,
+            "isSpine": false,
+            "isProvidingStealth": false,
+            "isMoveable": false,
+            "childTileName": "",
+            "spawnType": 0,
+            "AtlasName": "Tiles_Tomb_Atlas_3"
+        },
+        {
+            "position": {
+                "x": 13,
+                "y": 6,
+                "z": 0
+            },
+            "tileName": "Tiles_Tomb_Atlas_3_0",
+            "tilemapName": "Background",
+            "isSlippery": false,
+            "isSpine": false,
+            "isProvidingStealth": false,
+            "isMoveable": false,
+            "childTileName": "",
+            "spawnType": 0,
+            "AtlasName": "Tiles_Tomb_Atlas_3"
+        },
+        {
+            "position": {
+                "x": 14,
+                "y": 6,
+                "z": 0
+            },
+            "tileName": "Tiles_Tomb_Atlas_3_0",
+            "tilemapName": "Background",
+            "isSlippery": false,
+            "isSpine": false,
+            "isProvidingStealth": false,
+            "isMoveable": false,
+            "childTileName": "",
+            "spawnType": 0,
+            "AtlasName": "Tiles_Tomb_Atlas_3"
+        },
+        {
+            "position": {
+                "x": 0,
+                "y": 7,
+                "z": 0
+            },
+            "tileName": "Tiles_Tomb_Atlas_3_0",
+            "tilemapName": "Background",
+            "isSlippery": false,
+            "isSpine": false,
+            "isProvidingStealth": false,
+            "isMoveable": false,
+            "childTileName": "",
+            "spawnType": 0,
+            "AtlasName": "Tiles_Tomb_Atlas_3"
+        },
+        {
+            "position": {
+                "x": 1,
+                "y": 7,
+                "z": 0
+            },
+            "tileName": "Tiles_Tomb_Atlas_3_0",
+            "tilemapName": "Background",
+            "isSlippery": false,
+            "isSpine": false,
+            "isProvidingStealth": false,
+            "isMoveable": false,
+            "childTileName": "",
+            "spawnType": 0,
+            "AtlasName": "Tiles_Tomb_Atlas_3"
+        },
+        {
+            "position": {
+                "x": 2,
+                "y": 7,
+                "z": 0
+            },
+            "tileName": "Tiles_Tomb_Atlas_3_0",
+            "tilemapName": "Background",
+            "isSlippery": false,
+            "isSpine": false,
+            "isProvidingStealth": false,
+            "isMoveable": false,
+            "childTileName": "",
+            "spawnType": 0,
+            "AtlasName": "Tiles_Tomb_Atlas_3"
+        },
+        {
+            "position": {
+                "x": 3,
+                "y": 7,
+                "z": 0
+            },
+            "tileName": "Tiles_Tomb_Atlas_3_0",
+            "tilemapName": "Background",
+            "isSlippery": false,
+            "isSpine": false,
+            "isProvidingStealth": false,
+            "isMoveable": false,
+            "childTileName": "",
+            "spawnType": 0,
+            "AtlasName": "Tiles_Tomb_Atlas_3"
+        },
+        {
+            "position": {
+                "x": 4,
+                "y": 7,
+                "z": 0
+            },
+            "tileName": "Tiles_Tomb_Atlas_3_0",
+            "tilemapName": "Background",
+            "isSlippery": false,
+            "isSpine": false,
+            "isProvidingStealth": false,
+            "isMoveable": false,
+            "childTileName": "",
+            "spawnType": 0,
+            "AtlasName": "Tiles_Tomb_Atlas_3"
+        },
+        {
+            "position": {
+                "x": 5,
+                "y": 7,
+                "z": 0
+            },
+            "tileName": "Tiles_Tomb_Atlas_3_0",
+            "tilemapName": "Background",
+            "isSlippery": false,
+            "isSpine": false,
+            "isProvidingStealth": false,
+            "isMoveable": false,
+            "childTileName": "",
+            "spawnType": 0,
+            "AtlasName": "Tiles_Tomb_Atlas_3"
+        },
+        {
+            "position": {
+                "x": 6,
+                "y": 7,
+                "z": 0
+            },
+            "tileName": "Tiles_Tomb_Atlas_3_0",
+            "tilemapName": "Background",
+            "isSlippery": false,
+            "isSpine": false,
+            "isProvidingStealth": false,
+            "isMoveable": false,
+            "childTileName": "",
+            "spawnType": 0,
+            "AtlasName": "Tiles_Tomb_Atlas_3"
+        },
+        {
+            "position": {
+                "x": 7,
+                "y": 7,
+                "z": 0
+            },
+            "tileName": "Tiles_Tomb_Atlas_3_0",
+            "tilemapName": "Background",
+            "isSlippery": false,
+            "isSpine": false,
+            "isProvidingStealth": false,
+            "isMoveable": false,
+            "childTileName": "",
+            "spawnType": 0,
+            "AtlasName": "Tiles_Tomb_Atlas_3"
+        },
+        {
+            "position": {
+                "x": 8,
+                "y": 7,
+                "z": 0
+            },
+            "tileName": "Tiles_Tomb_Atlas_3_0",
+            "tilemapName": "Background",
+            "isSlippery": false,
+            "isSpine": false,
+            "isProvidingStealth": false,
+            "isMoveable": false,
+            "childTileName": "",
+            "spawnType": 0,
+            "AtlasName": "Tiles_Tomb_Atlas_3"
+        },
+        {
+            "position": {
+                "x": 9,
+                "y": 7,
+                "z": 0
+            },
+            "tileName": "Tiles_Tomb_Atlas_3_0",
+            "tilemapName": "Background",
+            "isSlippery": false,
+            "isSpine": false,
+            "isProvidingStealth": false,
+            "isMoveable": false,
+            "childTileName": "",
+            "spawnType": 0,
+            "AtlasName": "Tiles_Tomb_Atlas_3"
+        },
+        {
+            "position": {
+                "x": 10,
+                "y": 7,
+                "z": 0
+            },
+            "tileName": "Tiles_Tomb_Atlas_3_0",
+            "tilemapName": "Background",
+            "isSlippery": false,
+            "isSpine": false,
+            "isProvidingStealth": false,
+            "isMoveable": false,
+            "childTileName": "",
+            "spawnType": 0,
+            "AtlasName": "Tiles_Tomb_Atlas_3"
+        },
+        {
+            "position": {
+                "x": 11,
+                "y": 7,
+                "z": 0
+            },
+            "tileName": "Tiles_Tomb_Atlas_3_0",
+            "tilemapName": "Background",
+            "isSlippery": false,
+            "isSpine": false,
+            "isProvidingStealth": false,
+            "isMoveable": false,
+            "childTileName": "",
+            "spawnType": 0,
+            "AtlasName": "Tiles_Tomb_Atlas_3"
+        },
+        {
+            "position": {
+                "x": 12,
+                "y": 7,
+                "z": 0
+            },
+            "tileName": "Tiles_Tomb_Atlas_3_0",
+            "tilemapName": "Background",
+            "isSlippery": false,
+            "isSpine": false,
+            "isProvidingStealth": false,
+            "isMoveable": false,
+            "childTileName": "",
+            "spawnType": 0,
+            "AtlasName": "Tiles_Tomb_Atlas_3"
+        },
+        {
+            "position": {
+                "x": 13,
+                "y": 7,
+                "z": 0
+            },
+            "tileName": "Tiles_Tomb_Atlas_3_0",
+            "tilemapName": "Background",
+            "isSlippery": false,
+            "isSpine": false,
+            "isProvidingStealth": false,
+            "isMoveable": false,
+            "childTileName": "",
+            "spawnType": 0,
+            "AtlasName": "Tiles_Tomb_Atlas_3"
+        },
+        {
+            "position": {
+                "x": 14,
+                "y": 7,
+                "z": 0
+            },
+            "tileName": "Tiles_Tomb_Atlas_3_0",
+            "tilemapName": "Background",
+            "isSlippery": false,
+            "isSpine": false,
+            "isProvidingStealth": false,
+            "isMoveable": false,
+            "childTileName": "",
+            "spawnType": 0,
+            "AtlasName": "Tiles_Tomb_Atlas_3"
+        },
+        {
+            "position": {
+                "x": 0,
+                "y": 8,
+                "z": 0
+            },
+            "tileName": "Tiles_Tomb_Atlas_3_0",
+            "tilemapName": "Background",
+            "isSlippery": false,
+            "isSpine": false,
+            "isProvidingStealth": false,
+            "isMoveable": false,
+            "childTileName": "",
+            "spawnType": 0,
+            "AtlasName": "Tiles_Tomb_Atlas_3"
+        },
+        {
+            "position": {
+                "x": 1,
+                "y": 8,
+                "z": 0
+            },
+            "tileName": "Tiles_Tomb_Atlas_3_0",
+            "tilemapName": "Background",
+            "isSlippery": false,
+            "isSpine": false,
+            "isProvidingStealth": false,
+            "isMoveable": false,
+            "childTileName": "",
+            "spawnType": 0,
+            "AtlasName": "Tiles_Tomb_Atlas_3"
+        },
+        {
+            "position": {
+                "x": 2,
+                "y": 8,
+                "z": 0
+            },
+            "tileName": "Tiles_Tomb_Atlas_3_0",
+            "tilemapName": "Background",
+            "isSlippery": false,
+            "isSpine": false,
+            "isProvidingStealth": false,
+            "isMoveable": false,
+            "childTileName": "",
+            "spawnType": 0,
+            "AtlasName": "Tiles_Tomb_Atlas_3"
+        },
+        {
+            "position": {
+                "x": 3,
+                "y": 8,
+                "z": 0
+            },
+            "tileName": "Tiles_Tomb_Atlas_3_0",
+            "tilemapName": "Background",
+            "isSlippery": false,
+            "isSpine": false,
+            "isProvidingStealth": false,
+            "isMoveable": false,
+            "childTileName": "",
+            "spawnType": 0,
+            "AtlasName": "Tiles_Tomb_Atlas_3"
+        },
+        {
+            "position": {
+                "x": 4,
+                "y": 8,
+                "z": 0
+            },
+            "tileName": "Tiles_Tomb_Atlas_3_0",
+            "tilemapName": "Background",
+            "isSlippery": false,
+            "isSpine": false,
+            "isProvidingStealth": false,
+            "isMoveable": false,
+            "childTileName": "",
+            "spawnType": 0,
+            "AtlasName": "Tiles_Tomb_Atlas_3"
+        },
+        {
+            "position": {
+                "x": 5,
+                "y": 8,
+                "z": 0
+            },
+            "tileName": "Tiles_Tomb_Atlas_3_0",
+            "tilemapName": "Background",
+            "isSlippery": false,
+            "isSpine": false,
+            "isProvidingStealth": false,
+            "isMoveable": false,
+            "childTileName": "",
+            "spawnType": 0,
+            "AtlasName": "Tiles_Tomb_Atlas_3"
+        },
+        {
+            "position": {
+                "x": 6,
+                "y": 8,
+                "z": 0
+            },
+            "tileName": "Tiles_Tomb_Atlas_3_0",
+            "tilemapName": "Background",
+            "isSlippery": false,
+            "isSpine": false,
+            "isProvidingStealth": false,
+            "isMoveable": false,
+            "childTileName": "",
+            "spawnType": 0,
+            "AtlasName": "Tiles_Tomb_Atlas_3"
+        },
+        {
+            "position": {
+                "x": 7,
+                "y": 8,
+                "z": 0
+            },
+            "tileName": "Tiles_Tomb_Atlas_3_0",
+            "tilemapName": "Background",
+            "isSlippery": false,
+            "isSpine": false,
+            "isProvidingStealth": false,
+            "isMoveable": false,
+            "childTileName": "",
+            "spawnType": 0,
+            "AtlasName": "Tiles_Tomb_Atlas_3"
+        },
+        {
+            "position": {
+                "x": 8,
+                "y": 8,
+                "z": 0
+            },
+            "tileName": "Tiles_Tomb_Atlas_3_0",
+            "tilemapName": "Background",
+            "isSlippery": false,
+            "isSpine": false,
+            "isProvidingStealth": false,
+            "isMoveable": false,
+            "childTileName": "",
+            "spawnType": 0,
+            "AtlasName": "Tiles_Tomb_Atlas_3"
+        },
+        {
+            "position": {
+                "x": 9,
+                "y": 8,
+                "z": 0
+            },
+            "tileName": "Tiles_Tomb_Atlas_3_0",
+            "tilemapName": "Background",
+            "isSlippery": false,
+            "isSpine": false,
+            "isProvidingStealth": false,
+            "isMoveable": false,
+            "childTileName": "",
+            "spawnType": 0,
+            "AtlasName": "Tiles_Tomb_Atlas_3"
+        },
+        {
+            "position": {
+                "x": 10,
+                "y": 8,
+                "z": 0
+            },
+            "tileName": "Tiles_Tomb_Atlas_3_0",
+            "tilemapName": "Background",
+            "isSlippery": false,
+            "isSpine": false,
+            "isProvidingStealth": false,
+            "isMoveable": false,
+            "childTileName": "",
+            "spawnType": 0,
+            "AtlasName": "Tiles_Tomb_Atlas_3"
+        },
+        {
+            "position": {
+                "x": 11,
+                "y": 8,
+                "z": 0
+            },
+            "tileName": "Tiles_Tomb_Atlas_3_0",
+            "tilemapName": "Background",
+            "isSlippery": false,
+            "isSpine": false,
+            "isProvidingStealth": false,
+            "isMoveable": false,
+            "childTileName": "",
+            "spawnType": 0,
+            "AtlasName": "Tiles_Tomb_Atlas_3"
+        },
+        {
+            "position": {
+                "x": 12,
+                "y": 8,
+                "z": 0
+            },
+            "tileName": "Tiles_Tomb_Atlas_3_0",
+            "tilemapName": "Background",
+            "isSlippery": false,
+            "isSpine": false,
+            "isProvidingStealth": false,
+            "isMoveable": false,
+            "childTileName": "",
+            "spawnType": 0,
+            "AtlasName": "Tiles_Tomb_Atlas_3"
+        },
+        {
+            "position": {
+                "x": 13,
+                "y": 8,
+                "z": 0
+            },
+            "tileName": "Tiles_Tomb_Atlas_3_0",
+            "tilemapName": "Background",
+            "isSlippery": false,
+            "isSpine": false,
+            "isProvidingStealth": false,
+            "isMoveable": false,
+            "childTileName": "",
+            "spawnType": 0,
+            "AtlasName": "Tiles_Tomb_Atlas_3"
+        },
+        {
+            "position": {
+                "x": 14,
+                "y": 8,
+                "z": 0
+            },
+            "tileName": "Tiles_Tomb_Atlas_3_0",
+            "tilemapName": "Background",
+            "isSlippery": false,
+            "isSpine": false,
+            "isProvidingStealth": false,
+            "isMoveable": false,
+            "childTileName": "",
+            "spawnType": 0,
+            "AtlasName": "Tiles_Tomb_Atlas_3"
+        },
+        {
+            "position": {
+                "x": 0,
+                "y": 9,
+                "z": 0
+            },
+            "tileName": "Tiles_Tomb_Atlas_3_0",
+            "tilemapName": "Background",
+            "isSlippery": false,
+            "isSpine": false,
+            "isProvidingStealth": false,
+            "isMoveable": false,
+            "childTileName": "",
+            "spawnType": 0,
+            "AtlasName": "Tiles_Tomb_Atlas_3"
+        },
+        {
+            "position": {
+                "x": 1,
+                "y": 9,
+                "z": 0
+            },
+            "tileName": "Tiles_Tomb_Atlas_3_0",
+            "tilemapName": "Background",
+            "isSlippery": false,
+            "isSpine": false,
+            "isProvidingStealth": false,
+            "isMoveable": false,
+            "childTileName": "",
+            "spawnType": 0,
+            "AtlasName": "Tiles_Tomb_Atlas_3"
+        },
+        {
+            "position": {
+                "x": 2,
+                "y": 9,
+                "z": 0
+            },
+            "tileName": "Tiles_Tomb_Atlas_3_0",
+            "tilemapName": "Background",
+            "isSlippery": false,
+            "isSpine": false,
+            "isProvidingStealth": false,
+            "isMoveable": false,
+            "childTileName": "",
+            "spawnType": 0,
+            "AtlasName": "Tiles_Tomb_Atlas_3"
+        },
+        {
+            "position": {
+                "x": 3,
+                "y": 9,
+                "z": 0
+            },
+            "tileName": "Tiles_Tomb_Atlas_3_0",
+            "tilemapName": "Background",
+            "isSlippery": false,
+            "isSpine": false,
+            "isProvidingStealth": false,
+            "isMoveable": false,
+            "childTileName": "",
+            "spawnType": 0,
+            "AtlasName": "Tiles_Tomb_Atlas_3"
+        },
+        {
+            "position": {
+                "x": 4,
+                "y": 9,
+                "z": 0
+            },
+            "tileName": "Tiles_Tomb_Atlas_3_0",
+            "tilemapName": "Background",
+            "isSlippery": false,
+            "isSpine": false,
+            "isProvidingStealth": false,
+            "isMoveable": false,
+            "childTileName": "",
+            "spawnType": 0,
+            "AtlasName": "Tiles_Tomb_Atlas_3"
+        },
+        {
+            "position": {
+                "x": 5,
+                "y": 9,
+                "z": 0
+            },
+            "tileName": "Tiles_Tomb_Atlas_3_0",
+            "tilemapName": "Background",
+            "isSlippery": false,
+            "isSpine": false,
+            "isProvidingStealth": false,
+            "isMoveable": false,
+            "childTileName": "",
+            "spawnType": 0,
+            "AtlasName": "Tiles_Tomb_Atlas_3"
+        },
+        {
+            "position": {
+                "x": 6,
+                "y": 9,
+                "z": 0
+            },
+            "tileName": "Tiles_Tomb_Atlas_3_0",
+            "tilemapName": "Background",
+            "isSlippery": false,
+            "isSpine": false,
+            "isProvidingStealth": false,
+            "isMoveable": false,
+            "childTileName": "",
+            "spawnType": 0,
+            "AtlasName": "Tiles_Tomb_Atlas_3"
+        },
+        {
+            "position": {
+                "x": 7,
+                "y": 9,
+                "z": 0
+            },
+            "tileName": "Tiles_Tomb_Atlas_3_0",
+            "tilemapName": "Background",
+            "isSlippery": false,
+            "isSpine": false,
+            "isProvidingStealth": false,
+            "isMoveable": false,
+            "childTileName": "",
+            "spawnType": 0,
+            "AtlasName": "Tiles_Tomb_Atlas_3"
+        },
+        {
+            "position": {
+                "x": 8,
+                "y": 9,
+                "z": 0
+            },
+            "tileName": "Tiles_Tomb_Atlas_3_0",
+            "tilemapName": "Background",
+            "isSlippery": false,
+            "isSpine": false,
+            "isProvidingStealth": false,
+            "isMoveable": false,
+            "childTileName": "",
+            "spawnType": 0,
+            "AtlasName": "Tiles_Tomb_Atlas_3"
+        },
+        {
+            "position": {
+                "x": 9,
+                "y": 9,
+                "z": 0
+            },
+            "tileName": "Tiles_Tomb_Atlas_3_0",
+            "tilemapName": "Background",
+            "isSlippery": false,
+            "isSpine": false,
+            "isProvidingStealth": false,
+            "isMoveable": false,
+            "childTileName": "",
+            "spawnType": 0,
+            "AtlasName": "Tiles_Tomb_Atlas_3"
+        },
+        {
+            "position": {
+                "x": 10,
+                "y": 9,
+                "z": 0
+            },
+            "tileName": "Tiles_Tomb_Atlas_3_0",
+            "tilemapName": "Background",
+            "isSlippery": false,
+            "isSpine": false,
+            "isProvidingStealth": false,
+            "isMoveable": false,
+            "childTileName": "",
+            "spawnType": 0,
+            "AtlasName": "Tiles_Tomb_Atlas_3"
+        },
+        {
+            "position": {
+                "x": 11,
+                "y": 9,
+                "z": 0
+            },
+            "tileName": "Tiles_Tomb_Atlas_3_0",
+            "tilemapName": "Background",
+            "isSlippery": false,
+            "isSpine": false,
+            "isProvidingStealth": false,
+            "isMoveable": false,
+            "childTileName": "",
+            "spawnType": 0,
+            "AtlasName": "Tiles_Tomb_Atlas_3"
+        },
+        {
+            "position": {
+                "x": 12,
+                "y": 9,
+                "z": 0
+            },
+            "tileName": "Tiles_Tomb_Atlas_3_0",
+            "tilemapName": "Background",
+            "isSlippery": false,
+            "isSpine": false,
+            "isProvidingStealth": false,
+            "isMoveable": false,
+            "childTileName": "",
+            "spawnType": 0,
+            "AtlasName": "Tiles_Tomb_Atlas_3"
+        },
+        {
+            "position": {
+                "x": 13,
+                "y": 9,
+                "z": 0
+            },
+            "tileName": "Tiles_Tomb_Atlas_3_0",
+            "tilemapName": "Background",
+            "isSlippery": false,
+            "isSpine": false,
+            "isProvidingStealth": false,
+            "isMoveable": false,
+            "childTileName": "",
+            "spawnType": 0,
+            "AtlasName": "Tiles_Tomb_Atlas_3"
+        },
+        {
+            "position": {
+                "x": 14,
+                "y": 9,
+                "z": 0
+            },
+            "tileName": "Tiles_Tomb_Atlas_3_0",
+            "tilemapName": "Background",
+            "isSlippery": false,
+            "isSpine": false,
+            "isProvidingStealth": false,
+            "isMoveable": false,
+            "childTileName": "",
+            "spawnType": 0,
+            "AtlasName": "Tiles_Tomb_Atlas_3"
+        },
+        {
+            "position": {
+                "x": 0,
+                "y": 10,
+                "z": 0
+            },
+            "tileName": "Tiles_Tomb_Atlas_3_0",
+            "tilemapName": "Background",
+            "isSlippery": false,
+            "isSpine": false,
+            "isProvidingStealth": false,
+            "isMoveable": false,
+            "childTileName": "",
+            "spawnType": 0,
+            "AtlasName": "Tiles_Tomb_Atlas_3"
+        },
+        {
+            "position": {
+                "x": 1,
+                "y": 10,
+                "z": 0
+            },
+            "tileName": "Tiles_Tomb_Atlas_3_0",
+            "tilemapName": "Background",
+            "isSlippery": false,
+            "isSpine": false,
+            "isProvidingStealth": false,
+            "isMoveable": false,
+            "childTileName": "",
+            "spawnType": 0,
+            "AtlasName": "Tiles_Tomb_Atlas_3"
+        },
+        {
+            "position": {
+                "x": 2,
+                "y": 10,
+                "z": 0
+            },
+            "tileName": "Tiles_Tomb_Atlas_3_0",
+            "tilemapName": "Background",
+            "isSlippery": false,
+            "isSpine": false,
+            "isProvidingStealth": false,
+            "isMoveable": false,
+            "childTileName": "",
+            "spawnType": 0,
+            "AtlasName": "Tiles_Tomb_Atlas_3"
+        },
+        {
+            "position": {
+                "x": 3,
+                "y": 10,
+                "z": 0
+            },
+            "tileName": "Tiles_Tomb_Atlas_3_0",
+            "tilemapName": "Background",
+            "isSlippery": false,
+            "isSpine": false,
+            "isProvidingStealth": false,
+            "isMoveable": false,
+            "childTileName": "",
+            "spawnType": 0,
+            "AtlasName": "Tiles_Tomb_Atlas_3"
+        },
+        {
+            "position": {
+                "x": 4,
+                "y": 10,
+                "z": 0
+            },
+            "tileName": "Tiles_Tomb_Atlas_3_0",
+            "tilemapName": "Background",
+            "isSlippery": false,
+            "isSpine": false,
+            "isProvidingStealth": false,
+            "isMoveable": false,
+            "childTileName": "",
+            "spawnType": 0,
+            "AtlasName": "Tiles_Tomb_Atlas_3"
+        },
+        {
+            "position": {
+                "x": 5,
+                "y": 10,
+                "z": 0
+            },
+            "tileName": "Tiles_Tomb_Atlas_4_62",
+            "tilemapName": "Background",
+            "isSlippery": false,
+            "isSpine": false,
+            "isProvidingStealth": false,
+            "isMoveable": false,
+            "childTileName": "",
+            "spawnType": 0,
+            "AtlasName": "Tiles_Tomb_Atlas_4"
+        },
+        {
+            "position": {
+                "x": 6,
+                "y": 10,
+                "z": 0
+            },
+            "tileName": "Tiles_Tomb_Atlas_4_63",
+            "tilemapName": "Background",
+            "isSlippery": false,
+            "isSpine": false,
+            "isProvidingStealth": false,
+            "isMoveable": false,
+            "childTileName": "",
+            "spawnType": 0,
+            "AtlasName": "Tiles_Tomb_Atlas_4"
+        },
+        {
+            "position": {
+                "x": 7,
+                "y": 10,
+                "z": 0
+            },
+            "tileName": "Tiles_Tomb_Atlas_3_0",
+            "tilemapName": "Background",
+            "isSlippery": false,
+            "isSpine": false,
+            "isProvidingStealth": false,
+            "isMoveable": false,
+            "childTileName": "",
+            "spawnType": 0,
+            "AtlasName": "Tiles_Tomb_Atlas_3"
+        },
+        {
+            "position": {
+                "x": 8,
+                "y": 10,
+                "z": 0
+            },
+            "tileName": "Tiles_Tomb_Atlas_4_62",
+            "tilemapName": "Background",
+            "isSlippery": false,
+            "isSpine": false,
+            "isProvidingStealth": false,
+            "isMoveable": false,
+            "childTileName": "",
+            "spawnType": 0,
+            "AtlasName": "Tiles_Tomb_Atlas_4"
+        },
+        {
+            "position": {
+                "x": 9,
+                "y": 10,
+                "z": 0
+            },
+            "tileName": "Tiles_Tomb_Atlas_4_63",
+            "tilemapName": "Background",
+            "isSlippery": false,
+            "isSpine": false,
+            "isProvidingStealth": false,
+            "isMoveable": false,
+            "childTileName": "",
+            "spawnType": 0,
+            "AtlasName": "Tiles_Tomb_Atlas_4"
+        },
+        {
+            "position": {
+                "x": 10,
+                "y": 10,
+                "z": 0
+            },
+            "tileName": "Tiles_Tomb_Atlas_3_0",
+            "tilemapName": "Background",
+            "isSlippery": false,
+            "isSpine": false,
+            "isProvidingStealth": false,
+            "isMoveable": false,
+            "childTileName": "",
+            "spawnType": 0,
+            "AtlasName": "Tiles_Tomb_Atlas_3"
+        },
+        {
+            "position": {
+                "x": 11,
+                "y": 10,
+                "z": 0
+            },
+            "tileName": "Tiles_Tomb_Atlas_3_0",
+            "tilemapName": "Background",
+            "isSlippery": false,
+            "isSpine": false,
+            "isProvidingStealth": false,
+            "isMoveable": false,
+            "childTileName": "",
+            "spawnType": 0,
+            "AtlasName": "Tiles_Tomb_Atlas_3"
+        },
+        {
+            "position": {
+                "x": 12,
+                "y": 10,
+                "z": 0
+            },
+            "tileName": "Tiles_Tomb_Atlas_3_0",
+            "tilemapName": "Background",
+            "isSlippery": false,
+            "isSpine": false,
+            "isProvidingStealth": false,
+            "isMoveable": false,
+            "childTileName": "",
+            "spawnType": 0,
+            "AtlasName": "Tiles_Tomb_Atlas_3"
+        },
+        {
+            "position": {
+                "x": 13,
+                "y": 10,
+                "z": 0
+            },
+            "tileName": "Tiles_Tomb_Atlas_3_0",
+            "tilemapName": "Background",
+            "isSlippery": false,
+            "isSpine": false,
+            "isProvidingStealth": false,
+            "isMoveable": false,
+            "childTileName": "",
+            "spawnType": 0,
+            "AtlasName": "Tiles_Tomb_Atlas_3"
+        },
+        {
+            "position": {
+                "x": 14,
+                "y": 10,
+                "z": 0
+            },
+            "tileName": "Tiles_Tomb_Atlas_3_0",
+            "tilemapName": "Background",
+            "isSlippery": false,
+            "isSpine": false,
+            "isProvidingStealth": false,
+            "isMoveable": false,
+            "childTileName": "",
+            "spawnType": 0,
+            "AtlasName": "Tiles_Tomb_Atlas_3"
+        },
+        {
+            "position": {
+                "x": 0,
+                "y": 11,
+                "z": 0
+            },
+            "tileName": "Tiles_Tomb_Atlas_3_0",
+            "tilemapName": "Background",
+            "isSlippery": false,
+            "isSpine": false,
+            "isProvidingStealth": false,
+            "isMoveable": false,
+            "childTileName": "",
+            "spawnType": 0,
+            "AtlasName": "Tiles_Tomb_Atlas_3"
+        },
+        {
+            "position": {
+                "x": 1,
+                "y": 11,
+                "z": 0
+            },
+            "tileName": "Tiles_Tomb_Atlas_3_0",
+            "tilemapName": "Background",
+            "isSlippery": false,
+            "isSpine": false,
+            "isProvidingStealth": false,
+            "isMoveable": false,
+            "childTileName": "",
+            "spawnType": 0,
+            "AtlasName": "Tiles_Tomb_Atlas_3"
+        },
+        {
+            "position": {
+                "x": 2,
+                "y": 11,
+                "z": 0
+            },
+            "tileName": "Tiles_Tomb_Atlas_3_0",
+            "tilemapName": "Background",
+            "isSlippery": false,
+            "isSpine": false,
+            "isProvidingStealth": false,
+            "isMoveable": false,
+            "childTileName": "",
+            "spawnType": 0,
+            "AtlasName": "Tiles_Tomb_Atlas_3"
+        },
+        {
+            "position": {
+                "x": 3,
+                "y": 11,
+                "z": 0
+            },
+            "tileName": "Tiles_Tomb_Atlas_3_0",
+            "tilemapName": "Background",
+            "isSlippery": false,
+            "isSpine": false,
+            "isProvidingStealth": false,
+            "isMoveable": false,
+            "childTileName": "",
+            "spawnType": 0,
+            "AtlasName": "Tiles_Tomb_Atlas_3"
+        },
+        {
+            "position": {
+                "x": 4,
+                "y": 11,
+                "z": 0
+            },
+            "tileName": "Tiles_Tomb_Atlas_3_0",
+            "tilemapName": "Background",
+            "isSlippery": false,
+            "isSpine": false,
+            "isProvidingStealth": false,
+            "isMoveable": false,
+            "childTileName": "",
+            "spawnType": 0,
+            "AtlasName": "Tiles_Tomb_Atlas_3"
+        },
+        {
+            "position": {
+                "x": 5,
+                "y": 11,
+                "z": 0
+            },
+            "tileName": "Tiles_Tomb_Atlas_4_47",
+            "tilemapName": "Background",
+            "isSlippery": false,
+            "isSpine": false,
+            "isProvidingStealth": false,
+            "isMoveable": false,
+            "childTileName": "",
+            "spawnType": 0,
+            "AtlasName": "Tiles_Tomb_Atlas_4"
+        },
+        {
+            "position": {
+                "x": 6,
+                "y": 11,
+                "z": 0
+            },
+            "tileName": "Tiles_Tomb_Atlas_4_48",
+            "tilemapName": "Background",
+            "isSlippery": false,
+            "isSpine": false,
+            "isProvidingStealth": false,
+            "isMoveable": false,
+            "childTileName": "",
+            "spawnType": 0,
+            "AtlasName": "Tiles_Tomb_Atlas_4"
+        },
+        {
+            "position": {
+                "x": 7,
+                "y": 11,
+                "z": 0
+            },
+            "tileName": "Tiles_Tomb_Atlas_3_0",
+            "tilemapName": "Background",
+            "isSlippery": false,
+            "isSpine": false,
+            "isProvidingStealth": false,
+            "isMoveable": false,
+            "childTileName": "",
+            "spawnType": 0,
+            "AtlasName": "Tiles_Tomb_Atlas_3"
+        },
+        {
+            "position": {
+                "x": 8,
+                "y": 11,
+                "z": 0
+            },
+            "tileName": "Tiles_Tomb_Atlas_4_47",
+            "tilemapName": "Background",
+            "isSlippery": false,
+            "isSpine": false,
+            "isProvidingStealth": false,
+            "isMoveable": false,
+            "childTileName": "",
+            "spawnType": 0,
+            "AtlasName": "Tiles_Tomb_Atlas_4"
+        },
+        {
+            "position": {
+                "x": 9,
+                "y": 11,
+                "z": 0
+            },
+            "tileName": "Tiles_Tomb_Atlas_4_48",
+            "tilemapName": "Background",
+            "isSlippery": false,
+            "isSpine": false,
+            "isProvidingStealth": false,
+            "isMoveable": false,
+            "childTileName": "",
+            "spawnType": 0,
+            "AtlasName": "Tiles_Tomb_Atlas_4"
+        },
+        {
+            "position": {
+                "x": 10,
+                "y": 11,
+                "z": 0
+            },
+            "tileName": "Tiles_Tomb_Atlas_3_0",
+            "tilemapName": "Background",
+            "isSlippery": false,
+            "isSpine": false,
+            "isProvidingStealth": false,
+            "isMoveable": false,
+            "childTileName": "",
+            "spawnType": 0,
+            "AtlasName": "Tiles_Tomb_Atlas_3"
+        },
+        {
+            "position": {
+                "x": 11,
+                "y": 11,
+                "z": 0
+            },
+            "tileName": "Tiles_Tomb_Atlas_3_0",
+            "tilemapName": "Background",
+            "isSlippery": false,
+            "isSpine": false,
+            "isProvidingStealth": false,
+            "isMoveable": false,
+            "childTileName": "",
+            "spawnType": 0,
+            "AtlasName": "Tiles_Tomb_Atlas_3"
+        },
+        {
+            "position": {
+                "x": 12,
+                "y": 11,
+                "z": 0
+            },
+            "tileName": "Tiles_Tomb_Atlas_3_0",
+            "tilemapName": "Background",
+            "isSlippery": false,
+            "isSpine": false,
+            "isProvidingStealth": false,
+            "isMoveable": false,
+            "childTileName": "",
+            "spawnType": 0,
+            "AtlasName": "Tiles_Tomb_Atlas_3"
+        },
+        {
+            "position": {
+                "x": 13,
+                "y": 11,
+                "z": 0
+            },
+            "tileName": "Tiles_Tomb_Atlas_3_0",
+            "tilemapName": "Background",
+            "isSlippery": false,
+            "isSpine": false,
+            "isProvidingStealth": false,
+            "isMoveable": false,
+            "childTileName": "",
+            "spawnType": 0,
+            "AtlasName": "Tiles_Tomb_Atlas_3"
+        },
+        {
+            "position": {
+                "x": 14,
+                "y": 11,
+                "z": 0
+            },
+            "tileName": "Tiles_Tomb_Atlas_3_0",
+            "tilemapName": "Background",
+            "isSlippery": false,
+            "isSpine": false,
+            "isProvidingStealth": false,
+            "isMoveable": false,
+            "childTileName": "",
+            "spawnType": 0,
+            "AtlasName": "Tiles_Tomb_Atlas_3"
+        },
+        {
+            "position": {
+                "x": 0,
+                "y": 12,
+                "z": 0
+            },
+            "tileName": "Tiles_Tomb_Atlas_3_0",
+            "tilemapName": "Background",
+            "isSlippery": false,
+            "isSpine": false,
+            "isProvidingStealth": false,
+            "isMoveable": false,
+            "childTileName": "",
+            "spawnType": 0,
+            "AtlasName": "Tiles_Tomb_Atlas_3"
+        },
+        {
+            "position": {
+                "x": 1,
+                "y": 12,
+                "z": 0
+            },
+            "tileName": "Tiles_Tomb_Atlas_3_0",
+            "tilemapName": "Background",
+            "isSlippery": false,
+            "isSpine": false,
+            "isProvidingStealth": false,
+            "isMoveable": false,
+            "childTileName": "",
+            "spawnType": 0,
+            "AtlasName": "Tiles_Tomb_Atlas_3"
+        },
+        {
+            "position": {
+                "x": 2,
+                "y": 12,
+                "z": 0
+            },
+            "tileName": "Tiles_Tomb_Atlas_3_0",
+            "tilemapName": "Background",
+            "isSlippery": false,
+            "isSpine": false,
+            "isProvidingStealth": false,
+            "isMoveable": false,
+            "childTileName": "",
+            "spawnType": 0,
+            "AtlasName": "Tiles_Tomb_Atlas_3"
+        },
+        {
+            "position": {
+                "x": 3,
+                "y": 12,
+                "z": 0
+            },
+            "tileName": "Tiles_Tomb_Atlas_3_0",
+            "tilemapName": "Background",
+            "isSlippery": false,
+            "isSpine": false,
+            "isProvidingStealth": false,
+            "isMoveable": false,
+            "childTileName": "",
+            "spawnType": 0,
+            "AtlasName": "Tiles_Tomb_Atlas_3"
+        },
+        {
+            "position": {
+                "x": 4,
+                "y": 12,
+                "z": 0
+            },
+            "tileName": "Tiles_Tomb_Atlas_3_0",
+            "tilemapName": "Background",
+            "isSlippery": false,
+            "isSpine": false,
+            "isProvidingStealth": false,
+            "isMoveable": false,
+            "childTileName": "",
+            "spawnType": 0,
+            "AtlasName": "Tiles_Tomb_Atlas_3"
+        },
+        {
+            "position": {
+                "x": 5,
+                "y": 12,
+                "z": 0
+            },
+            "tileName": "Tiles_Tomb_Atlas_4_32",
+            "tilemapName": "Background",
+            "isSlippery": false,
+            "isSpine": false,
+            "isProvidingStealth": false,
+            "isMoveable": false,
+            "childTileName": "",
+            "spawnType": 0,
+            "AtlasName": "Tiles_Tomb_Atlas_4"
+        },
+        {
+            "position": {
+                "x": 6,
+                "y": 12,
+                "z": 0
+            },
+            "tileName": "Tiles_Tomb_Atlas_4_33",
+            "tilemapName": "Background",
+            "isSlippery": false,
+            "isSpine": false,
+            "isProvidingStealth": false,
+            "isMoveable": false,
+            "childTileName": "",
+            "spawnType": 0,
+            "AtlasName": "Tiles_Tomb_Atlas_4"
+        },
+        {
+            "position": {
+                "x": 7,
+                "y": 12,
+                "z": 0
+            },
+            "tileName": "Tiles_Tomb_Atlas_3_0",
+            "tilemapName": "Background",
+            "isSlippery": false,
+            "isSpine": false,
+            "isProvidingStealth": false,
+            "isMoveable": false,
+            "childTileName": "",
+            "spawnType": 0,
+            "AtlasName": "Tiles_Tomb_Atlas_3"
+        },
+        {
+            "position": {
+                "x": 8,
+                "y": 12,
+                "z": 0
+            },
+            "tileName": "Tiles_Tomb_Atlas_4_32",
+            "tilemapName": "Background",
+            "isSlippery": false,
+            "isSpine": false,
+            "isProvidingStealth": false,
+            "isMoveable": false,
+            "childTileName": "",
+            "spawnType": 0,
+            "AtlasName": "Tiles_Tomb_Atlas_4"
+        },
+        {
+            "position": {
+                "x": 9,
+                "y": 12,
+                "z": 0
+            },
+            "tileName": "Tiles_Tomb_Atlas_4_33",
+            "tilemapName": "Background",
+            "isSlippery": false,
+            "isSpine": false,
+            "isProvidingStealth": false,
+            "isMoveable": false,
+            "childTileName": "",
+            "spawnType": 0,
+            "AtlasName": "Tiles_Tomb_Atlas_4"
+        },
+        {
+            "position": {
+                "x": 10,
+                "y": 12,
+                "z": 0
+            },
+            "tileName": "Tiles_Tomb_Atlas_3_0",
+            "tilemapName": "Background",
+            "isSlippery": false,
+            "isSpine": false,
+            "isProvidingStealth": false,
+            "isMoveable": false,
+            "childTileName": "",
+            "spawnType": 0,
+            "AtlasName": "Tiles_Tomb_Atlas_3"
+        },
+        {
+            "position": {
+                "x": 11,
+                "y": 12,
+                "z": 0
+            },
+            "tileName": "Tiles_Tomb_Atlas_3_0",
+            "tilemapName": "Background",
+            "isSlippery": false,
+            "isSpine": false,
+            "isProvidingStealth": false,
+            "isMoveable": false,
+            "childTileName": "",
+            "spawnType": 0,
+            "AtlasName": "Tiles_Tomb_Atlas_3"
+        },
+        {
+            "position": {
+                "x": 12,
+                "y": 12,
+                "z": 0
+            },
+            "tileName": "Tiles_Tomb_Atlas_3_0",
+            "tilemapName": "Background",
+            "isSlippery": false,
+            "isSpine": false,
+            "isProvidingStealth": false,
+            "isMoveable": false,
+            "childTileName": "",
+            "spawnType": 0,
+            "AtlasName": "Tiles_Tomb_Atlas_3"
+        },
+        {
+            "position": {
+                "x": 13,
+                "y": 12,
+                "z": 0
+            },
+            "tileName": "Tiles_Tomb_Atlas_3_0",
+            "tilemapName": "Background",
+            "isSlippery": false,
+            "isSpine": false,
+            "isProvidingStealth": false,
+            "isMoveable": false,
+            "childTileName": "",
+            "spawnType": 0,
+            "AtlasName": "Tiles_Tomb_Atlas_3"
+        },
+        {
+            "position": {
+                "x": 14,
+                "y": 12,
+                "z": 0
+            },
+            "tileName": "Tiles_Tomb_Atlas_3_0",
+            "tilemapName": "Background",
+            "isSlippery": false,
+            "isSpine": false,
+            "isProvidingStealth": false,
+            "isMoveable": false,
+            "childTileName": "",
+            "spawnType": 0,
+            "AtlasName": "Tiles_Tomb_Atlas_3"
+        },
+        {
+            "position": {
+                "x": 4,
+                "y": 0,
+                "z": 0
+            },
+            "tileName": "tomb_base_column_wall",
+            "tilemapName": "WallsCollider",
+            "isSlippery": false,
+            "isSpine": false,
+            "isProvidingStealth": false,
+            "isMoveable": false,
+            "childTileName": "",
+            "spawnType": 0,
+            "AtlasName": "Tiles_Tomb_Atlas_4"
+        },
+        {
+            "position": {
+                "x": 10,
+                "y": 0,
+                "z": 0
+            },
+            "tileName": "tomb_base_column_wall",
+            "tilemapName": "WallsCollider",
+            "isSlippery": false,
+            "isSpine": false,
+            "isProvidingStealth": false,
+            "isMoveable": false,
+            "childTileName": "",
+            "spawnType": 0,
+            "AtlasName": "Tiles_Tomb_Atlas_4"
+        },
+        {
+            "position": {
+                "x": 4,
+                "y": 1,
+                "z": 0
+            },
+            "tileName": "tomb_column_wall",
+            "tilemapName": "WallsCollider",
+            "isSlippery": false,
+            "isSpine": false,
+            "isProvidingStealth": false,
+            "isMoveable": false,
+            "childTileName": "",
+            "spawnType": 0,
+            "AtlasName": "Tiles_Tomb_Atlas_4"
+        },
+        {
+            "position": {
+                "x": 6,
+                "y": 1,
+                "z": 0
+            },
+            "tileName": "tomb_new_written_wall",
+            "tilemapName": "WallsCollider",
+            "isSlippery": false,
+            "isSpine": false,
+            "isProvidingStealth": false,
+            "isMoveable": false,
+            "childTileName": "",
+            "spawnType": 0,
+            "AtlasName": "Tiles_Tomb_Atlas_4"
+        },
+        {
+            "position": {
+                "x": 8,
+                "y": 1,
+                "z": 0
+            },
+            "tileName": "tomb_old_written_wall",
+            "tilemapName": "WallsCollider",
+            "isSlippery": false,
+            "isSpine": false,
+            "isProvidingStealth": false,
+            "isMoveable": false,
+            "childTileName": "",
+            "spawnType": 0,
+            "AtlasName": "Tiles_Tomb_Atlas_4"
+        },
+        {
+            "position": {
+                "x": 10,
+                "y": 1,
+                "z": 0
+            },
+            "tileName": "tomb_column_wall",
+            "tilemapName": "WallsCollider",
+            "isSlippery": false,
+            "isSpine": false,
+            "isProvidingStealth": false,
+            "isMoveable": false,
+            "childTileName": "",
+            "spawnType": 0,
+            "AtlasName": "Tiles_Tomb_Atlas_4"
+        },
+        {
+            "position": {
+                "x": 4,
+                "y": 3,
+                "z": 0
+            },
+            "tileName": "tomb_old_catholic_wall",
+            "tilemapName": "WallsCollider",
+            "isSlippery": false,
+            "isSpine": false,
+            "isProvidingStealth": false,
+            "isMoveable": false,
+            "childTileName": "",
+            "spawnType": 0,
+            "AtlasName": "Tiles_Tomb_Atlas_4"
+        },
+        {
+            "position": {
+                "x": 5,
+                "y": 3,
+                "z": 0
+            },
+            "tileName": "tomb_old_catholic_wall",
+            "tilemapName": "WallsCollider",
+            "isSlippery": false,
+            "isSpine": false,
+            "isProvidingStealth": false,
+            "isMoveable": false,
+            "childTileName": "",
+            "spawnType": 0,
+            "AtlasName": "Tiles_Tomb_Atlas_4"
+        },
+        {
+            "position": {
+                "x": 6,
+                "y": 3,
+                "z": 0
+            },
+            "tileName": "tomb_old_written_wall",
+            "tilemapName": "WallsCollider",
+            "isSlippery": false,
+            "isSpine": false,
+            "isProvidingStealth": false,
+            "isMoveable": false,
+            "childTileName": "",
+            "spawnType": 0,
+            "AtlasName": "Tiles_Tomb_Atlas_4"
+        },
+        {
+            "position": {
+                "x": 8,
+                "y": 3,
+                "z": 0
+            },
+            "tileName": "tomb_new_written_wall",
+            "tilemapName": "WallsCollider",
+            "isSlippery": false,
+            "isSpine": false,
+            "isProvidingStealth": false,
+            "isMoveable": false,
+            "childTileName": "",
+            "spawnType": 0,
+            "AtlasName": "Tiles_Tomb_Atlas_4"
+        },
+        {
+            "position": {
+                "x": 10,
+                "y": 3,
+                "z": 0
+            },
+            "tileName": "tomb_new_catholic_wall",
+            "tilemapName": "WallsCollider",
+            "isSlippery": false,
+            "isSpine": false,
+            "isProvidingStealth": false,
+            "isMoveable": false,
+            "childTileName": "",
+            "spawnType": 0,
+            "AtlasName": "Tiles_Tomb_Atlas_4"
+        },
+        {
+            "position": {
+                "x": 0,
+                "y": 4,
+                "z": 0
+            },
+            "tileName": "tomb_broken_spike_wall",
+            "tilemapName": "WallsCollider",
+            "isSlippery": false,
+            "isSpine": false,
+            "isProvidingStealth": false,
+            "isMoveable": false,
+            "childTileName": "",
+            "spawnType": 0,
+            "AtlasName": "Tiles_Tomb_Atlas_4"
+        },
+        {
+            "position": {
+                "x": 1,
+                "y": 4,
+                "z": 0
+            },
+            "tileName": "tomb_spike_wall",
+            "tilemapName": "WallsCollider",
+            "isSlippery": false,
+            "isSpine": false,
+            "isProvidingStealth": false,
+            "isMoveable": false,
+            "childTileName": "",
+            "spawnType": 0,
+            "AtlasName": "Tiles_Tomb_Atlas_4"
+        },
+        {
+            "position": {
+                "x": 3,
+                "y": 4,
+                "z": 0
+            },
+            "tileName": "tomb_broken_spike_wall",
+            "tilemapName": "WallsCollider",
+            "isSlippery": false,
+            "isSpine": false,
+            "isProvidingStealth": false,
+            "isMoveable": false,
+            "childTileName": "",
+            "spawnType": 0,
+            "AtlasName": "Tiles_Tomb_Atlas_4"
+        },
+        {
+            "position": {
+                "x": 4,
+                "y": 4,
+                "z": 0
+            },
+            "tileName": "tomb_spike_wall",
+            "tilemapName": "WallsCollider",
+            "isSlippery": false,
+            "isSpine": false,
+            "isProvidingStealth": false,
+            "isMoveable": false,
+            "childTileName": "",
+            "spawnType": 0,
+            "AtlasName": "Tiles_Tomb_Atlas_4"
+        },
+        {
+            "position": {
+                "x": 10,
+                "y": 4,
+                "z": 0
+            },
+            "tileName": "tomb_broken_spike_wall",
+            "tilemapName": "WallsCollider",
+            "isSlippery": false,
+            "isSpine": false,
+            "isProvidingStealth": false,
+            "isMoveable": false,
+            "childTileName": "",
+            "spawnType": 0,
+            "AtlasName": "Tiles_Tomb_Atlas_4"
+        },
+        {
+            "position": {
+                "x": 11,
+                "y": 4,
+                "z": 0
+            },
+            "tileName": "tomb_spike_wall",
+            "tilemapName": "WallsCollider",
+            "isSlippery": false,
+            "isSpine": false,
+            "isProvidingStealth": false,
+            "isMoveable": false,
+            "childTileName": "",
+            "spawnType": 0,
+            "AtlasName": "Tiles_Tomb_Atlas_4"
+        },
+        {
+            "position": {
+                "x": 13,
+                "y": 4,
+                "z": 0
+            },
+            "tileName": "tomb_broken_spike_wall",
+            "tilemapName": "WallsCollider",
+            "isSlippery": false,
+            "isSpine": false,
+            "isProvidingStealth": false,
+            "isMoveable": false,
+            "childTileName": "",
+            "spawnType": 0,
+            "AtlasName": "Tiles_Tomb_Atlas_4"
+        },
+        {
+            "position": {
+                "x": 14,
+                "y": 4,
+                "z": 0
+            },
+            "tileName": "tomb_spike_wall",
+            "tilemapName": "WallsCollider",
+            "isSlippery": false,
+            "isSpine": false,
+            "isProvidingStealth": false,
+            "isMoveable": false,
+            "childTileName": "",
+            "spawnType": 0,
+            "AtlasName": "Tiles_Tomb_Atlas_4"
+        },
+        {
+            "position": {
+                "x": 1,
+                "y": 6,
+                "z": 0
+            },
+            "tileName": "tomb_skull_wall",
+            "tilemapName": "WallsCollider",
+            "isSlippery": false,
+            "isSpine": false,
+            "isProvidingStealth": false,
+            "isMoveable": false,
+            "childTileName": "",
+            "spawnType": 0,
+            "AtlasName": "Tiles_Tomb_Atlas_4"
+        },
+        {
+            "position": {
+                "x": 2,
+                "y": 6,
+                "z": 0
+            },
+            "tileName": "tomb_high_wall",
+            "tilemapName": "WallsCollider",
+            "isSlippery": false,
+            "isSpine": false,
+            "isProvidingStealth": false,
+            "isMoveable": false,
+            "childTileName": "",
+            "spawnType": 0,
+            "AtlasName": "Tiles_Tomb_Atlas_4"
+        },
+        {
+            "position": {
+                "x": 3,
+                "y": 6,
+                "z": 0
+            },
+            "tileName": "tomb_skull_wall",
+            "tilemapName": "WallsCollider",
+            "isSlippery": false,
+            "isSpine": false,
+            "isProvidingStealth": false,
+            "isMoveable": false,
+            "childTileName": "",
+            "spawnType": 0,
+            "AtlasName": "Tiles_Tomb_Atlas_4"
+        },
+        {
+            "position": {
+                "x": 7,
+                "y": 6,
+                "z": 0
+            },
+            "tileName": "tomb_new_catholic_wall",
+            "tilemapName": "WallsCollider",
+            "isSlippery": false,
+            "isSpine": false,
+            "isProvidingStealth": false,
+            "isMoveable": false,
+            "childTileName": "",
+            "spawnType": 0,
+            "AtlasName": "Tiles_Tomb_Atlas_4"
+        },
+        {
+            "position": {
+                "x": 11,
+                "y": 6,
+                "z": 0
+            },
+            "tileName": "tomb_skull_wall",
+            "tilemapName": "WallsCollider",
+            "isSlippery": false,
+            "isSpine": false,
+            "isProvidingStealth": false,
+            "isMoveable": false,
+            "childTileName": "",
+            "spawnType": 0,
+            "AtlasName": "Tiles_Tomb_Atlas_4"
+        },
+        {
+            "position": {
+                "x": 12,
+                "y": 6,
+                "z": 0
+            },
+            "tileName": "tomb_high_wall",
+            "tilemapName": "WallsCollider",
+            "isSlippery": false,
+            "isSpine": false,
+            "isProvidingStealth": false,
+            "isMoveable": false,
+            "childTileName": "",
+            "spawnType": 0,
+            "AtlasName": "Tiles_Tomb_Atlas_4"
+        },
+        {
+            "position": {
+                "x": 13,
+                "y": 6,
+                "z": 0
+            },
+            "tileName": "tomb_skull_wall",
+            "tilemapName": "WallsCollider",
+            "isSlippery": false,
+            "isSpine": false,
+            "isProvidingStealth": false,
+            "isMoveable": false,
+            "childTileName": "",
+            "spawnType": 0,
+            "AtlasName": "Tiles_Tomb_Atlas_4"
+        },
+        {
+            "position": {
+                "x": 5,
+                "y": 7,
+                "z": 0
+            },
+            "tileName": "tomb_basic_wall",
+            "tilemapName": "WallsCollider",
+            "isSlippery": false,
+            "isSpine": false,
+            "isProvidingStealth": false,
+            "isMoveable": false,
+            "childTileName": "",
+            "spawnType": 0,
+            "AtlasName": "Tiles_Tomb_Atlas_4"
+        },
+        {
+            "position": {
+                "x": 9,
+                "y": 7,
+                "z": 0
+            },
+            "tileName": "tomb_basic_wall",
+            "tilemapName": "WallsCollider",
+            "isSlippery": false,
+            "isSpine": false,
+            "isProvidingStealth": false,
+            "isMoveable": false,
+            "childTileName": "",
+            "spawnType": 0,
+            "AtlasName": "Tiles_Tomb_Atlas_4"
+        },
+        {
+            "position": {
+                "x": 0,
+                "y": 8,
+                "z": 0
+            },
+            "tileName": "tomb_broken_spike_wall",
+            "tilemapName": "WallsCollider",
+            "isSlippery": false,
+            "isSpine": false,
+            "isProvidingStealth": false,
+            "isMoveable": false,
+            "childTileName": "",
+            "spawnType": 0,
+            "AtlasName": "Tiles_Tomb_Atlas_4"
+        },
+        {
+            "position": {
+                "x": 1,
+                "y": 8,
+                "z": 0
+            },
+            "tileName": "tomb_spike_wall",
+            "tilemapName": "WallsCollider",
+            "isSlippery": false,
+            "isSpine": false,
+            "isProvidingStealth": false,
+            "isMoveable": false,
+            "childTileName": "",
+            "spawnType": 0,
+            "AtlasName": "Tiles_Tomb_Atlas_4"
+        },
+        {
+            "position": {
+                "x": 4,
+                "y": 8,
+                "z": 0
+            },
+            "tileName": "tomb_broken_spike_wall",
+            "tilemapName": "WallsCollider",
+            "isSlippery": false,
+            "isSpine": false,
+            "isProvidingStealth": false,
+            "isMoveable": false,
+            "childTileName": "",
+            "spawnType": 0,
+            "AtlasName": "Tiles_Tomb_Atlas_4"
+        },
+        {
+            "position": {
+                "x": 5,
+                "y": 8,
+                "z": 0
+            },
+            "tileName": "tomb_spike_wall",
+            "tilemapName": "WallsCollider",
+            "isSlippery": false,
+            "isSpine": false,
+            "isProvidingStealth": false,
+            "isMoveable": false,
+            "childTileName": "",
+            "spawnType": 0,
+            "AtlasName": "Tiles_Tomb_Atlas_4"
+        },
+        {
+            "position": {
+                "x": 9,
+                "y": 8,
+                "z": 0
+            },
+            "tileName": "tomb_broken_spike_wall",
+            "tilemapName": "WallsCollider",
+            "isSlippery": false,
+            "isSpine": false,
+            "isProvidingStealth": false,
+            "isMoveable": false,
+            "childTileName": "",
+            "spawnType": 0,
+            "AtlasName": "Tiles_Tomb_Atlas_4"
+        },
+        {
+            "position": {
+                "x": 10,
+                "y": 8,
+                "z": 0
+            },
+            "tileName": "tomb_spike_wall",
+            "tilemapName": "WallsCollider",
+            "isSlippery": false,
+            "isSpine": false,
+            "isProvidingStealth": false,
+            "isMoveable": false,
+            "childTileName": "",
+            "spawnType": 0,
+            "AtlasName": "Tiles_Tomb_Atlas_4"
+        },
+        {
+            "position": {
+                "x": 13,
+                "y": 8,
+                "z": 0
+            },
+            "tileName": "tomb_broken_spike_wall",
+            "tilemapName": "WallsCollider",
+            "isSlippery": false,
+            "isSpine": false,
+            "isProvidingStealth": false,
+            "isMoveable": false,
+            "childTileName": "",
+            "spawnType": 0,
+            "AtlasName": "Tiles_Tomb_Atlas_4"
+        },
+        {
+            "position": {
+                "x": 14,
+                "y": 8,
+                "z": 0
+            },
+            "tileName": "tomb_spike_wall",
+            "tilemapName": "WallsCollider",
+            "isSlippery": false,
+            "isSpine": false,
+            "isProvidingStealth": false,
+            "isMoveable": false,
+            "childTileName": "",
+            "spawnType": 0,
+            "AtlasName": "Tiles_Tomb_Atlas_4"
+        },
+        {
+            "position": {
+                "x": 5,
+                "y": 10,
+                "z": 0
+            },
+            "tileName": "TransparentTile",
+            "tilemapName": "WallsCollider",
+            "isSlippery": false,
+            "isSpine": false,
+            "isProvidingStealth": false,
+            "isMoveable": false,
+            "childTileName": "",
+            "spawnType": 0,
+            "AtlasName": "TransparentTile"
+        },
+        {
+            "position": {
+                "x": 6,
+                "y": 10,
+                "z": 0
+            },
+            "tileName": "TransparentTile",
+            "tilemapName": "WallsCollider",
+            "isSlippery": false,
+            "isSpine": false,
+            "isProvidingStealth": false,
+            "isMoveable": false,
+            "childTileName": "",
+            "spawnType": 0,
+            "AtlasName": "TransparentTile"
+        },
+        {
+            "position": {
+                "x": 8,
+                "y": 10,
+                "z": 0
+            },
+            "tileName": "TransparentTile",
+            "tilemapName": "WallsCollider",
+            "isSlippery": false,
+            "isSpine": false,
+            "isProvidingStealth": false,
+            "isMoveable": false,
+            "childTileName": "",
+            "spawnType": 0,
+            "AtlasName": "TransparentTile"
+        },
+        {
+            "position": {
+                "x": 9,
+                "y": 10,
+                "z": 0
+            },
+            "tileName": "TransparentTile",
+            "tilemapName": "WallsCollider",
+            "isSlippery": false,
+            "isSpine": false,
+            "isProvidingStealth": false,
+            "isMoveable": false,
+            "childTileName": "",
+            "spawnType": 0,
+            "AtlasName": "TransparentTile"
+        },
+        {
+            "position": {
+                "x": 2,
+                "y": 11,
+                "z": 0
+            },
+            "tileName": "tomb_sculpture_wall",
+            "tilemapName": "WallsCollider",
+            "isSlippery": false,
+            "isSpine": false,
+            "isProvidingStealth": false,
+            "isMoveable": false,
+            "childTileName": "",
+            "spawnType": 0,
+            "AtlasName": "Tiles_Tomb_Atlas_4"
+        },
+        {
+            "position": {
+                "x": 5,
+                "y": 11,
+                "z": 0
+            },
+            "tileName": "TransparentTile",
+            "tilemapName": "WallsCollider",
+            "isSlippery": false,
+            "isSpine": false,
+            "isProvidingStealth": false,
+            "isMoveable": false,
+            "childTileName": "",
+            "spawnType": 0,
+            "AtlasName": "TransparentTile"
+        },
+        {
+            "position": {
+                "x": 6,
+                "y": 11,
+                "z": 0
+            },
+            "tileName": "TransparentTile",
+            "tilemapName": "WallsCollider",
+            "isSlippery": false,
+            "isSpine": false,
+            "isProvidingStealth": false,
+            "isMoveable": false,
+            "childTileName": "",
+            "spawnType": 0,
+            "AtlasName": "TransparentTile"
+        },
+        {
+            "position": {
+                "x": 8,
+                "y": 11,
+                "z": 0
+            },
+            "tileName": "TransparentTile",
+            "tilemapName": "WallsCollider",
+            "isSlippery": false,
+            "isSpine": false,
+            "isProvidingStealth": false,
+            "isMoveable": false,
+            "childTileName": "",
+            "spawnType": 0,
+            "AtlasName": "TransparentTile"
+        },
+        {
+            "position": {
+                "x": 9,
+                "y": 11,
+                "z": 0
+            },
+            "tileName": "TransparentTile",
+            "tilemapName": "WallsCollider",
+            "isSlippery": false,
+            "isSpine": false,
+            "isProvidingStealth": false,
+            "isMoveable": false,
+            "childTileName": "",
+            "spawnType": 0,
+            "AtlasName": "TransparentTile"
+        },
+        {
+            "position": {
+                "x": 12,
+                "y": 11,
+                "z": 0
+            },
+            "tileName": "tomb_sculpture_wall",
+            "tilemapName": "WallsCollider",
+            "isSlippery": false,
+            "isSpine": false,
+            "isProvidingStealth": false,
+            "isMoveable": false,
+            "childTileName": "",
+            "spawnType": 0,
+            "AtlasName": "Tiles_Tomb_Atlas_4"
+        },
+        {
+            "position": {
+                "x": 5,
+                "y": 12,
+                "z": 0
+            },
+            "tileName": "TransparentTile",
+            "tilemapName": "WallsCollider",
+            "isSlippery": false,
+            "isSpine": false,
+            "isProvidingStealth": false,
+            "isMoveable": false,
+            "childTileName": "",
+            "spawnType": 0,
+            "AtlasName": "TransparentTile"
+        },
+        {
+            "position": {
+                "x": 6,
+                "y": 12,
+                "z": 0
+            },
+            "tileName": "TransparentTile",
+            "tilemapName": "WallsCollider",
+            "isSlippery": false,
+            "isSpine": false,
+            "isProvidingStealth": false,
+            "isMoveable": false,
+            "childTileName": "",
+            "spawnType": 0,
+            "AtlasName": "TransparentTile"
+        },
+        {
+            "position": {
+                "x": 8,
+                "y": 12,
+                "z": 0
+            },
+            "tileName": "TransparentTile",
+            "tilemapName": "WallsCollider",
+            "isSlippery": false,
+            "isSpine": false,
+            "isProvidingStealth": false,
+            "isMoveable": false,
+            "childTileName": "",
+            "spawnType": 0,
+            "AtlasName": "TransparentTile"
+        },
+        {
+            "position": {
+                "x": 9,
+                "y": 12,
+                "z": 0
+            },
+            "tileName": "TransparentTile",
+            "tilemapName": "WallsCollider",
+            "isSlippery": false,
+            "isSpine": false,
+            "isProvidingStealth": false,
+            "isMoveable": false,
+            "childTileName": "",
+            "spawnType": 0,
+            "AtlasName": "TransparentTile"
+        },
+        {
+            "position": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+            },
+            "tileName": "tomb_bucket_box",
+            "tilemapName": "Boxes",
+            "isSlippery": false,
+            "isSpine": false,
+            "isProvidingStealth": false,
+            "isMoveable": false,
+            "childTileName": "",
+            "spawnType": 0,
+            "AtlasName": "Tiles_Tomb_Atlas_2"
+        },
+        {
+            "position": {
+                "x": 1,
+                "y": 0,
+                "z": 0
+            },
+            "tileName": "tomb_empty_skull_box",
+            "tilemapName": "Boxes",
+            "isSlippery": false,
+            "isSpine": false,
+            "isProvidingStealth": false,
+            "isMoveable": false,
+            "childTileName": "",
+            "spawnType": 0,
+            "AtlasName": "Tiles_Tomb_Atlas_2"
+        },
+        {
+            "position": {
+                "x": 2,
+                "y": 0,
+                "z": 0
+            },
+            "tileName": "tomb_empty_gray_box",
+            "tilemapName": "Boxes",
+            "isSlippery": false,
+            "isSpine": false,
+            "isProvidingStealth": false,
+            "isMoveable": false,
+            "childTileName": "",
+            "spawnType": 0,
+            "AtlasName": "Tiles_Tomb_Atlas_2"
+        },
+        {
+            "position": {
+                "x": 3,
+                "y": 0,
+                "z": 0
+            },
+            "tileName": "tomb_empty_brown_box",
+            "tilemapName": "Boxes",
+            "isSlippery": false,
+            "isSpine": false,
+            "isProvidingStealth": false,
+            "isMoveable": false,
+            "childTileName": "",
+            "spawnType": 0,
+            "AtlasName": "Tiles_Tomb_Atlas_2"
+        },
+        {
+            "position": {
+                "x": 11,
+                "y": 0,
+                "z": 0
+            },
+            "tileName": "tomb_empty_brown_box",
+            "tilemapName": "Boxes",
+            "isSlippery": false,
+            "isSpine": false,
+            "isProvidingStealth": false,
+            "isMoveable": false,
+            "childTileName": "",
+            "spawnType": 0,
+            "AtlasName": "Tiles_Tomb_Atlas_2"
+        },
+        {
+            "position": {
+                "x": 12,
+                "y": 0,
+                "z": 0
+            },
+            "tileName": "tomb_empty_skull_box",
+            "tilemapName": "Boxes",
+            "isSlippery": false,
+            "isSpine": false,
+            "isProvidingStealth": false,
+            "isMoveable": false,
+            "childTileName": "",
+            "spawnType": 0,
+            "AtlasName": "Tiles_Tomb_Atlas_2"
+        },
+        {
+            "position": {
+                "x": 13,
+                "y": 0,
+                "z": 0
+            },
+            "tileName": "tomb_empty_skull_box",
+            "tilemapName": "Boxes",
+            "isSlippery": false,
+            "isSpine": false,
+            "isProvidingStealth": false,
+            "isMoveable": false,
+            "childTileName": "",
+            "spawnType": 0,
+            "AtlasName": "Tiles_Tomb_Atlas_2"
+        },
+        {
+            "position": {
+                "x": 14,
+                "y": 0,
+                "z": 0
+            },
+            "tileName": "tomb_bucket_box",
+            "tilemapName": "Boxes",
+            "isSlippery": false,
+            "isSpine": false,
+            "isProvidingStealth": false,
+            "isMoveable": false,
+            "childTileName": "",
+            "spawnType": 0,
+            "AtlasName": "Tiles_Tomb_Atlas_2"
+        },
+        {
+            "position": {
+                "x": 0,
+                "y": 1,
+                "z": 0
+            },
+            "tileName": "tomb_empty_gray_box",
+            "tilemapName": "Boxes",
+            "isSlippery": false,
+            "isSpine": false,
+            "isProvidingStealth": false,
+            "isMoveable": false,
+            "childTileName": "",
+            "spawnType": 0,
+            "AtlasName": "Tiles_Tomb_Atlas_2"
+        },
+        {
+            "position": {
+                "x": 1,
+                "y": 1,
+                "z": 0
+            },
+            "tileName": "tomb_empty_brown_box",
+            "tilemapName": "Boxes",
+            "isSlippery": false,
+            "isSpine": false,
+            "isProvidingStealth": false,
+            "isMoveable": false,
+            "childTileName": "",
+            "spawnType": 0,
+            "AtlasName": "Tiles_Tomb_Atlas_2"
+        },
+        {
+            "position": {
+                "x": 3,
+                "y": 1,
+                "z": 0
+            },
+            "tileName": "tomb_empty_brown_box",
+            "tilemapName": "Boxes",
+            "isSlippery": false,
+            "isSpine": false,
+            "isProvidingStealth": false,
+            "isMoveable": false,
+            "childTileName": "",
+            "spawnType": 0,
+            "AtlasName": "Tiles_Tomb_Atlas_2"
+        },
+        {
+            "position": {
+                "x": 11,
+                "y": 1,
+                "z": 0
+            },
+            "tileName": "tomb_empty_brown_box",
+            "tilemapName": "Boxes",
+            "isSlippery": false,
+            "isSpine": false,
+            "isProvidingStealth": false,
+            "isMoveable": false,
+            "childTileName": "",
+            "spawnType": 0,
+            "AtlasName": "Tiles_Tomb_Atlas_2"
+        },
+        {
+            "position": {
+                "x": 13,
+                "y": 1,
+                "z": 0
+            },
+            "tileName": "tomb_empty_brown_box",
+            "tilemapName": "Boxes",
+            "isSlippery": false,
+            "isSpine": false,
+            "isProvidingStealth": false,
+            "isMoveable": false,
+            "childTileName": "",
+            "spawnType": 0,
+            "AtlasName": "Tiles_Tomb_Atlas_2"
+        },
+        {
+            "position": {
+                "x": 14,
+                "y": 1,
+                "z": 0
+            },
+            "tileName": "tomb_empty_skull_box",
+            "tilemapName": "Boxes",
+            "isSlippery": false,
+            "isSpine": false,
+            "isProvidingStealth": false,
+            "isMoveable": false,
+            "childTileName": "",
+            "spawnType": 0,
+            "AtlasName": "Tiles_Tomb_Atlas_2"
+        },
+        {
+            "position": {
+                "x": 0,
+                "y": 2,
+                "z": 0
+            },
+            "tileName": "tomb_empty_skull_box",
+            "tilemapName": "Boxes",
+            "isSlippery": false,
+            "isSpine": false,
+            "isProvidingStealth": false,
+            "isMoveable": false,
+            "childTileName": "",
+            "spawnType": 0,
+            "AtlasName": "Tiles_Tomb_Atlas_2"
+        },
+        {
+            "position": {
+                "x": 14,
+                "y": 2,
+                "z": 0
+            },
+            "tileName": "tomb_empty_skull_box",
+            "tilemapName": "Boxes",
+            "isSlippery": false,
+            "isSpine": false,
+            "isProvidingStealth": false,
+            "isMoveable": false,
+            "childTileName": "",
+            "spawnType": 0,
+            "AtlasName": "Tiles_Tomb_Atlas_2"
+        },
+        {
+            "position": {
+                "x": 0,
+                "y": 3,
+                "z": 0
+            },
+            "tileName": "tomb_empty_skull_box",
+            "tilemapName": "Boxes",
+            "isSlippery": false,
+            "isSpine": false,
+            "isProvidingStealth": false,
+            "isMoveable": false,
+            "childTileName": "",
+            "spawnType": 0,
+            "AtlasName": "Tiles_Tomb_Atlas_2"
+        },
+        {
+            "position": {
+                "x": 1,
+                "y": 3,
+                "z": 0
+            },
+            "tileName": "tomb_empty_gray_box",
+            "tilemapName": "Boxes",
+            "isSlippery": false,
+            "isSpine": false,
+            "isProvidingStealth": false,
+            "isMoveable": false,
+            "childTileName": "",
+            "spawnType": 0,
+            "AtlasName": "Tiles_Tomb_Atlas_2"
+        },
+        {
+            "position": {
+                "x": 3,
+                "y": 3,
+                "z": 0
+            },
+            "tileName": "tomb_empty_skull_box",
+            "tilemapName": "Boxes",
+            "isSlippery": false,
+            "isSpine": false,
+            "isProvidingStealth": false,
+            "isMoveable": false,
+            "childTileName": "",
+            "spawnType": 0,
+            "AtlasName": "Tiles_Tomb_Atlas_2"
+        },
+        {
+            "position": {
+                "x": 11,
+                "y": 3,
+                "z": 0
+            },
+            "tileName": "tomb_empty_brown_box",
+            "tilemapName": "Boxes",
+            "isSlippery": false,
+            "isSpine": false,
+            "isProvidingStealth": false,
+            "isMoveable": false,
+            "childTileName": "",
+            "spawnType": 0,
+            "AtlasName": "Tiles_Tomb_Atlas_2"
+        },
+        {
+            "position": {
+                "x": 13,
+                "y": 3,
+                "z": 0
+            },
+            "tileName": "tomb_empty_skull_box",
+            "tilemapName": "Boxes",
+            "isSlippery": false,
+            "isSpine": false,
+            "isProvidingStealth": false,
+            "isMoveable": false,
+            "childTileName": "",
+            "spawnType": 0,
+            "AtlasName": "Tiles_Tomb_Atlas_2"
+        },
+        {
+            "position": {
+                "x": 14,
+                "y": 3,
+                "z": 0
+            },
+            "tileName": "tomb_empty_gray_box",
+            "tilemapName": "Boxes",
+            "isSlippery": false,
+            "isSpine": false,
+            "isProvidingStealth": false,
+            "isMoveable": false,
+            "childTileName": "",
+            "spawnType": 0,
+            "AtlasName": "Tiles_Tomb_Atlas_2"
+        },
+        {
+            "position": {
+                "x": 6,
+                "y": 7,
+                "z": 0
+            },
+            "tileName": "tomb_light_mud_box",
+            "tilemapName": "Boxes",
+            "isSlippery": false,
+            "isSpine": false,
+            "isProvidingStealth": false,
+            "isMoveable": false,
+            "childTileName": "",
+            "spawnType": 0,
+            "AtlasName": "Tiles_Tomb_Atlas_1"
+        },
+        {
+            "position": {
+                "x": 8,
+                "y": 7,
+                "z": 0
+            },
+            "tileName": "tomb_mud_box",
+            "tilemapName": "Boxes",
+            "isSlippery": false,
+            "isSpine": false,
+            "isProvidingStealth": false,
+            "isMoveable": false,
+            "childTileName": "",
+            "spawnType": 0,
+            "AtlasName": "Tiles_Tomb_Atlas_1"
+        },
+        {
+            "position": {
+                "x": 2,
+                "y": 8,
+                "z": 0
+            },
+            "tileName": "tomb_pumpkin_box",
+            "tilemapName": "Boxes",
+            "isSlippery": false,
+            "isSpine": false,
+            "isProvidingStealth": false,
+            "isMoveable": false,
+            "childTileName": "",
+            "spawnType": 0,
+            "AtlasName": "Tiles_Tomb_Atlas_2"
+        },
+        {
+            "position": {
+                "x": 3,
+                "y": 8,
+                "z": 0
+            },
+            "tileName": "tomb_pumpkin_box",
+            "tilemapName": "Boxes",
+            "isSlippery": false,
+            "isSpine": false,
+            "isProvidingStealth": false,
+            "isMoveable": false,
+            "childTileName": "",
+            "spawnType": 0,
+            "AtlasName": "Tiles_Tomb_Atlas_2"
+        },
+        {
+            "position": {
+                "x": 6,
+                "y": 8,
+                "z": 0
+            },
+            "tileName": "tomb_bucket_box",
+            "tilemapName": "Boxes",
+            "isSlippery": false,
+            "isSpine": false,
+            "isProvidingStealth": false,
+            "isMoveable": false,
+            "childTileName": "",
+            "spawnType": 0,
+            "AtlasName": "Tiles_Tomb_Atlas_2"
+        },
+        {
+            "position": {
+                "x": 7,
+                "y": 8,
+                "z": 0
+            },
+            "tileName": "tomb_bucket_box",
+            "tilemapName": "Boxes",
+            "isSlippery": false,
+            "isSpine": false,
+            "isProvidingStealth": false,
+            "isMoveable": false,
+            "childTileName": "",
+            "spawnType": 0,
+            "AtlasName": "Tiles_Tomb_Atlas_2"
+        },
+        {
+            "position": {
+                "x": 8,
+                "y": 8,
+                "z": 0
+            },
+            "tileName": "tomb_bucket_box",
+            "tilemapName": "Boxes",
+            "isSlippery": false,
+            "isSpine": false,
+            "isProvidingStealth": false,
+            "isMoveable": false,
+            "childTileName": "",
+            "spawnType": 0,
+            "AtlasName": "Tiles_Tomb_Atlas_2"
+        },
+        {
+            "position": {
+                "x": 11,
+                "y": 8,
+                "z": 0
+            },
+            "tileName": "tomb_pumpkin_box",
+            "tilemapName": "Boxes",
+            "isSlippery": false,
+            "isSpine": false,
+            "isProvidingStealth": false,
+            "isMoveable": false,
+            "childTileName": "",
+            "spawnType": 0,
+            "AtlasName": "Tiles_Tomb_Atlas_2"
+        },
+        {
+            "position": {
+                "x": 12,
+                "y": 8,
+                "z": 0
+            },
+            "tileName": "tomb_pumpkin_box",
+            "tilemapName": "Boxes",
+            "isSlippery": false,
+            "isSpine": false,
+            "isProvidingStealth": false,
+            "isMoveable": false,
+            "childTileName": "",
+            "spawnType": 0,
+            "AtlasName": "Tiles_Tomb_Atlas_2"
+        },
+        {
+            "position": {
+                "x": 0,
+                "y": 9,
+                "z": 0
+            },
+            "tileName": "tomb_mud_box",
+            "tilemapName": "Boxes",
+            "isSlippery": false,
+            "isSpine": false,
+            "isProvidingStealth": false,
+            "isMoveable": false,
+            "childTileName": "",
+            "spawnType": 0,
+            "AtlasName": "Tiles_Tomb_Atlas_1"
+        },
+        {
+            "position": {
+                "x": 1,
+                "y": 9,
+                "z": 0
+            },
+            "tileName": "tomb_mud_box",
+            "tilemapName": "Boxes",
+            "isSlippery": false,
+            "isSpine": false,
+            "isProvidingStealth": false,
+            "isMoveable": false,
+            "childTileName": "",
+            "spawnType": 0,
+            "AtlasName": "Tiles_Tomb_Atlas_1"
+        },
+        {
+            "position": {
+                "x": 2,
+                "y": 9,
+                "z": 0
+            },
+            "tileName": "tomb_mud_box",
+            "tilemapName": "Boxes",
+            "isSlippery": false,
+            "isSpine": false,
+            "isProvidingStealth": false,
+            "isMoveable": false,
+            "childTileName": "",
+            "spawnType": 0,
+            "AtlasName": "Tiles_Tomb_Atlas_1"
+        },
+        {
+            "position": {
+                "x": 3,
+                "y": 9,
+                "z": 0
+            },
+            "tileName": "tomb_mud_box",
+            "tilemapName": "Boxes",
+            "isSlippery": false,
+            "isSpine": false,
+            "isProvidingStealth": false,
+            "isMoveable": false,
+            "childTileName": "",
+            "spawnType": 0,
+            "AtlasName": "Tiles_Tomb_Atlas_1"
+        },
+        {
+            "position": {
+                "x": 4,
+                "y": 9,
+                "z": 0
+            },
+            "tileName": "tomb_mud_box",
+            "tilemapName": "Boxes",
+            "isSlippery": false,
+            "isSpine": false,
+            "isProvidingStealth": false,
+            "isMoveable": false,
+            "childTileName": "",
+            "spawnType": 0,
+            "AtlasName": "Tiles_Tomb_Atlas_1"
+        },
+        {
+            "position": {
+                "x": 5,
+                "y": 9,
+                "z": 0
+            },
+            "tileName": "tomb_bucket_box",
+            "tilemapName": "Boxes",
+            "isSlippery": false,
+            "isSpine": false,
+            "isProvidingStealth": false,
+            "isMoveable": false,
+            "childTileName": "",
+            "spawnType": 0,
+            "AtlasName": "Tiles_Tomb_Atlas_2"
+        },
+        {
+            "position": {
+                "x": 9,
+                "y": 9,
+                "z": 0
+            },
+            "tileName": "tomb_bucket_box",
+            "tilemapName": "Boxes",
+            "isSlippery": false,
+            "isSpine": false,
+            "isProvidingStealth": false,
+            "isMoveable": false,
+            "childTileName": "",
+            "spawnType": 0,
+            "AtlasName": "Tiles_Tomb_Atlas_2"
+        },
+        {
+            "position": {
+                "x": 10,
+                "y": 9,
+                "z": 0
+            },
+            "tileName": "tomb_light_mud_box",
+            "tilemapName": "Boxes",
+            "isSlippery": false,
+            "isSpine": false,
+            "isProvidingStealth": false,
+            "isMoveable": false,
+            "childTileName": "",
+            "spawnType": 0,
+            "AtlasName": "Tiles_Tomb_Atlas_1"
+        },
+        {
+            "position": {
+                "x": 11,
+                "y": 9,
+                "z": 0
+            },
+            "tileName": "tomb_light_mud_box",
+            "tilemapName": "Boxes",
+            "isSlippery": false,
+            "isSpine": false,
+            "isProvidingStealth": false,
+            "isMoveable": false,
+            "childTileName": "",
+            "spawnType": 0,
+            "AtlasName": "Tiles_Tomb_Atlas_1"
+        },
+        {
+            "position": {
+                "x": 12,
+                "y": 9,
+                "z": 0
+            },
+            "tileName": "tomb_light_mud_box",
+            "tilemapName": "Boxes",
+            "isSlippery": false,
+            "isSpine": false,
+            "isProvidingStealth": false,
+            "isMoveable": false,
+            "childTileName": "",
+            "spawnType": 0,
+            "AtlasName": "Tiles_Tomb_Atlas_1"
+        },
+        {
+            "position": {
+                "x": 13,
+                "y": 9,
+                "z": 0
+            },
+            "tileName": "tomb_light_mud_box",
+            "tilemapName": "Boxes",
+            "isSlippery": false,
+            "isSpine": false,
+            "isProvidingStealth": false,
+            "isMoveable": false,
+            "childTileName": "",
+            "spawnType": 0,
+            "AtlasName": "Tiles_Tomb_Atlas_1"
+        },
+        {
+            "position": {
+                "x": 14,
+                "y": 9,
+                "z": 0
+            },
+            "tileName": "tomb_light_mud_box",
+            "tilemapName": "Boxes",
+            "isSlippery": false,
+            "isSpine": false,
+            "isProvidingStealth": false,
+            "isMoveable": false,
+            "childTileName": "",
+            "spawnType": 0,
+            "AtlasName": "Tiles_Tomb_Atlas_1"
+        },
+        {
+            "position": {
+                "x": 2,
+                "y": 10,
+                "z": 0
+            },
+            "tileName": "tomb_bucket_box",
+            "tilemapName": "Boxes",
+            "isSlippery": false,
+            "isSpine": false,
+            "isProvidingStealth": false,
+            "isMoveable": false,
+            "childTileName": "",
+            "spawnType": 0,
+            "AtlasName": "Tiles_Tomb_Atlas_2"
+        },
+        {
+            "position": {
+                "x": 7,
+                "y": 10,
+                "z": 0
+            },
+            "tileName": "tomb_mud_box",
+            "tilemapName": "Boxes",
+            "isSlippery": false,
+            "isSpine": false,
+            "isProvidingStealth": false,
+            "isMoveable": false,
+            "childTileName": "",
+            "spawnType": 0,
+            "AtlasName": "Tiles_Tomb_Atlas_1"
+        },
+        {
+            "position": {
+                "x": 12,
+                "y": 10,
+                "z": 0
+            },
+            "tileName": "tomb_empty_skull_box",
+            "tilemapName": "Boxes",
+            "isSlippery": false,
+            "isSpine": false,
+            "isProvidingStealth": false,
+            "isMoveable": false,
+            "childTileName": "",
+            "spawnType": 0,
+            "AtlasName": "Tiles_Tomb_Atlas_2"
+        },
+        {
+            "position": {
+                "x": 3,
+                "y": 11,
+                "z": 0
+            },
+            "tileName": "tomb_bucket_box",
+            "tilemapName": "Boxes",
+            "isSlippery": false,
+            "isSpine": false,
+            "isProvidingStealth": false,
+            "isMoveable": false,
+            "childTileName": "",
+            "spawnType": 0,
+            "AtlasName": "Tiles_Tomb_Atlas_2"
+        },
+        {
+            "position": {
+                "x": 7,
+                "y": 11,
+                "z": 0
+            },
+            "tileName": "tomb_mud_box",
+            "tilemapName": "Boxes",
+            "isSlippery": false,
+            "isSpine": false,
+            "isProvidingStealth": false,
+            "isMoveable": false,
+            "childTileName": "",
+            "spawnType": 0,
+            "AtlasName": "Tiles_Tomb_Atlas_1"
+        },
+        {
+            "position": {
+                "x": 11,
+                "y": 11,
+                "z": 0
+            },
+            "tileName": "tomb_empty_skull_box",
+            "tilemapName": "Boxes",
+            "isSlippery": false,
+            "isSpine": false,
+            "isProvidingStealth": false,
+            "isMoveable": false,
+            "childTileName": "",
+            "spawnType": 0,
+            "AtlasName": "Tiles_Tomb_Atlas_2"
+        },
+        {
+            "position": {
+                "x": 2,
+                "y": 12,
+                "z": 0
+            },
+            "tileName": "tomb_bucket_box",
+            "tilemapName": "Boxes",
+            "isSlippery": false,
+            "isSpine": false,
+            "isProvidingStealth": false,
+            "isMoveable": false,
+            "childTileName": "",
+            "spawnType": 0,
+            "AtlasName": "Tiles_Tomb_Atlas_2"
+        },
+        {
+            "position": {
+                "x": 12,
+                "y": 12,
+                "z": 0
+            },
+            "tileName": "tomb_empty_skull_box",
+            "tilemapName": "Boxes",
+            "isSlippery": false,
+            "isSpine": false,
+            "isProvidingStealth": false,
+            "isMoveable": false,
+            "childTileName": "",
+            "spawnType": 0,
+            "AtlasName": "Tiles_Tomb_Atlas_2"
+        },
+        {
+            "position": {
+                "x": 2,
+                "y": 2,
+                "z": 0
+            },
+            "tileName": "Spawn_Random",
+            "tilemapName": "CharacterSpawn",
+            "isSlippery": false,
+            "isSpine": false,
+            "isProvidingStealth": false,
+            "isMoveable": false,
+            "childTileName": "",
+            "spawnType": 1,
+            "AtlasName": "Random_Spawn"
+        },
+        {
+            "position": {
+                "x": 12,
+                "y": 2,
+                "z": 0
+            },
+            "tileName": "Spawn_Random",
+            "tilemapName": "CharacterSpawn",
+            "isSlippery": false,
+            "isSpine": false,
+            "isProvidingStealth": false,
+            "isMoveable": false,
+            "childTileName": "",
+            "spawnType": 1,
+            "AtlasName": "Random_Spawn"
+        },
+        {
+            "position": {
+                "x": 1,
+                "y": 11,
+                "z": 0
+            },
+            "tileName": "Spawn_Random",
+            "tilemapName": "CharacterSpawn",
+            "isSlippery": false,
+            "isSpine": false,
+            "isProvidingStealth": false,
+            "isMoveable": false,
+            "childTileName": "",
+            "spawnType": 1,
+            "AtlasName": "Random_Spawn"
+        },
+        {
+            "position": {
+                "x": 13,
+                "y": 11,
+                "z": 0
+            },
+            "tileName": "Spawn_Random",
+            "tilemapName": "CharacterSpawn",
+            "isSlippery": false,
+            "isSpine": false,
+            "isProvidingStealth": false,
+            "isMoveable": false,
+            "childTileName": "",
+            "spawnType": 1,
+            "AtlasName": "Random_Spawn"
+        }
+    ]
+}

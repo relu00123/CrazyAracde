@@ -64,7 +64,7 @@ public class CAMapManager : MonoBehaviour
         // 타일맵 초기화 ( 세로의 가장 마지막줄은 갈수 없는 곳임
         for (int x = 0; x < width; x++)
         {
-            for (int y = 0; y < height - 1; y++)
+            for (int y = 0; y < height ; y++)
             {
                 _tileMapData[x, y] = new TileInfo { isBlocktPermanently = false, isBlocktTemporary = false };
             }

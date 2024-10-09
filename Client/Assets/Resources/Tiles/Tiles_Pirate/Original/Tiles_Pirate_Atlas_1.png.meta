@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: b9446ba0d24b9754c8ec8a0d2d57f914
+guid: f67b5b2a32f859f4ab4434369223b24c
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -110,91 +110,91 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: map_pirate_object5_0
+      name: pirate_stripe_box_top
       rect:
         serializedVersion: 2
         x: 1
         y: 42
         width: 40
-        height: 7
+        height: 40
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1f7a6b6677718794a8b97b037b08c31d
-      internalID: 1295178143
+      spriteID: 000b4ea8e22ab7843a26f0f8f58d8ea6
+      internalID: 1069492910
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: map_pirate_object5_1
+      name: pirate_x_box_top
       rect:
         serializedVersion: 2
         x: 42
         y: 42
         width: 40
-        height: 7
+        height: 40
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e80124cacaec79246a838589ffb565fe
-      internalID: 678500379
+      spriteID: d91f9b7ab8a83de49833e9407f884f29
+      internalID: -441366384
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: map_pirate_object5_2
+      name: Tiles_Pirate_Atlas_1_2
       rect:
         serializedVersion: 2
         x: 83
         y: 42
         width: 40
-        height: 7
+        height: 40
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 42c5b24ae2697414d8ecfb7dac0db7c2
-      internalID: 1329496953
+      spriteID: 83d4d3096ddb96d47be742b6e0c9dfd4
+      internalID: -765197693
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: map_pirate_object5_3
+      name: Tiles_Pirate_Atlas_1_3
       rect:
         serializedVersion: 2
         x: 124
         y: 42
         width: 40
-        height: 7
+        height: 40
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 49d9a022cce71434db33989abc159383
-      internalID: 972586330
+      spriteID: c13ebd352ac3ce746999a98dd1c3d997
+      internalID: 684649341
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: map_pirate_object5_4
+      name: pirate_stripe_box_base
       rect:
         serializedVersion: 2
         x: 1
@@ -202,20 +202,20 @@ TextureImporter:
         width: 40
         height: 40
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2777a98a16d4c984d84740417005aef9
-      internalID: -1736179139
+      spriteID: 21b2a605696084a43b363847745041c8
+      internalID: -1037272268
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: map_pirate_object5_5
+      name: pirate_x_box_base
       rect:
         serializedVersion: 2
         x: 42
@@ -223,20 +223,20 @@ TextureImporter:
         width: 40
         height: 40
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: bbd379d1cad43124faf5a951c18a585d
-      internalID: 478888228
+      spriteID: 424a3c832d8872141ab1c44cf9448914
+      internalID: -848501444
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: map_pirate_object5_6
+      name: Tiles_Pirate_Atlas_1_6
       rect:
         serializedVersion: 2
         x: 83
@@ -244,20 +244,20 @@ TextureImporter:
         width: 40
         height: 40
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5a6122d8ec08feb4c9dacfdef875ccb7
-      internalID: 779687804
+      spriteID: f93a5115b919ef54ca89453a9f836a33
+      internalID: 1338345229
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: map_pirate_object5_7
+      name: Tiles_Pirate_Atlas_1_7
       rect:
         serializedVersion: 2
         x: 124
@@ -265,14 +265,14 @@ TextureImporter:
         width: 40
         height: 40
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 57a6fd4b2ba7dc14f9828c0e819df0ad
-      internalID: -98088320
+      spriteID: e546534b9c501e64bad8ab41382fd42a
+      internalID: 1538075467
       vertices: []
       indices: 
       edges: []
@@ -288,14 +288,14 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      map_pirate_object5_0: 1295178143
-      map_pirate_object5_1: 678500379
-      map_pirate_object5_2: 1329496953
-      map_pirate_object5_3: 972586330
-      map_pirate_object5_4: -1736179139
-      map_pirate_object5_5: 478888228
-      map_pirate_object5_6: 779687804
-      map_pirate_object5_7: -98088320
+      Tiles_Pirate_Atlas_1_2: -765197693
+      Tiles_Pirate_Atlas_1_3: 684649341
+      Tiles_Pirate_Atlas_1_6: 1338345229
+      Tiles_Pirate_Atlas_1_7: 1538075467
+      pirate_stripe_box_base: -1037272268
+      pirate_stripe_box_top: 1069492910
+      pirate_x_box_base: -848501444
+      pirate_x_box_top: -441366384
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

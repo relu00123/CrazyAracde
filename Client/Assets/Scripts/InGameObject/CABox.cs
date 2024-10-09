@@ -86,7 +86,7 @@ public class CABox : MonoBehaviour
 
         if (newSprite == null)
         {
-            Debug.LogError("TopTexture 할당 중 문제 발생!");
+            //Debug.LogError("TopTexture 할당 중 문제 발생!");
         }
 
         else

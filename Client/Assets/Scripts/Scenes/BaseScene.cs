@@ -54,6 +54,8 @@ public abstract class BaseScene : MonoBehaviour
     {
         AudioClip bgmClip = Managers.Data.MapBGMDict[mapType];
         _bgmClip = bgmClip;
+
+       
     }
 
 

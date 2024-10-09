@@ -806,13 +806,20 @@ namespace Server.Game
 
 		public void HandleStartGame(ClientSession clientSession)
 		{
-            ///////////////////////////////////
-            // 일단은 무조건 시작되게 함. 안그러면 2개 Client 뛰어야 하기 때문에 귀찮음.
-            // 나중에 실제 게임에서는 이 코드 삭제 하면된다. 
+            bool isAllReady = IsAllPlayerReady(clientSession.SlotId);
+
+            if (!isAllReady)
+            {
+                S_StartGameRes startGameResPkt = new S_StartGameRes();
+                startGameResPkt.IsSuccess = false;
+                clientSession.Send(startGameResPkt);
+                return;
+            }
+
 
             S_StartGameBroadcast StartGameBroadcastPkt = new S_StartGameBroadcast();
 			StartGameBroadcastPkt.Maptype = SelectedMap;
-
+			
             for (int i = 0; i < _slots.Length; i++)
             {
                 if (_slots[i].ClientSession != null)
@@ -831,7 +838,7 @@ namespace Server.Game
 
             // 모든 플레이어가 Ready상태가 아니면 return
             // S_StartGameRes에서 FairGame인지 AllPlayerNotReady등의 Type을 건내줘야 좋을듯
-            bool isAllReady =  IsAllPlayerReady(clientSession.SlotId);
+            //bool isAllReady =  IsAllPlayerReady(clientSession.SlotId);
 
 			if (!isAllReady)
 			{
