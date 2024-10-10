@@ -37,7 +37,10 @@ namespace AccountServer
 				.ConfigureWebHostDefaults(webBuilder =>
 				{
 					webBuilder.UseStartup<Startup>();
-				});
+
+                    // 10.10 추가한코드 
+                    webBuilder.UseUrls("https://0.0.0.0:5001", "http://0.0.0.0:5000"); // 모든 IP에서 수신하도록 설정
+                });
 
         public static void RemoveAllDataTemp(string connectionString)
         {

@@ -17,7 +17,8 @@ namespace DummyClient
 			// DNS (Domain Name System)
 			string host = Dns.GetHostName();
 			IPHostEntry ipHost = Dns.GetHostEntry(host);
-			IPAddress ipAddr = ipHost.AddressList[1];
+			//IPAddress ipAddr = ipHost.AddressList[1]; (수업코드)
+			IPAddress ipAddr = IPAddress.Parse("192.168.219.109");
 			IPEndPoint endPoint = new IPEndPoint(ipAddr, 7777);
 
 			Connector connector = new Connector();
