@@ -132,6 +132,10 @@ public class RoomManager : MonoBehaviour
             host = false;
         else if (pkt.Nowidx == clientSlotidx && clientSlotidx != -1) 
             host = true;
+
+        // 일단 임시로 
+        if (curGameRoomScene == null || curGameRoomScene._sceneUI ==  null || curGameRoomScene._sceneUI.GetUIUserGridPanel() == null)
+            return;
        
 
        curGameRoomScene._sceneUI.GetUIUserGridPanel().SetCharState(pkt.Previousidx, GameRoomCharacterStateType.NotReady);
