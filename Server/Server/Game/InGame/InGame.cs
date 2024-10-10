@@ -300,9 +300,12 @@ namespace Server.Game
             if (_isGameFinished)
                 return; 
 
-            // 0. 현재 플레이어가 폭탄을 설치할 수 있는 상태인지 확인해야한다. 
+            // 0. 현재 플레이어가 폭탄을 설치할 수 있는 상태인지 확인해야한다. (개수)
             if (!(clientSession.CA_MyPlayer.Stats.IsBombPlaceable()))
                 return;
+
+            
+
 
             // 1. 폭탄이 설치 될 좌표 구하기.
             // 들어온 Player의 Position은 발바닦이 아닌 몸 정 중앙의 좌표이다. 

@@ -180,7 +180,7 @@ public class CAPlayer : InGameObject
         {
             //Console.WriteLine("캐릭터와 출돌 발생");
 
-            if (_currentState is Player_Bubble_IdleState || _currentState is Player_Bubble_MovingState )
+            if (_currentState is Player_Bubble_IdleState || _currentState is Player_Bubble_MovingState)
             {
                 Vector2 pos1 = _collider.GetColliderCenterPos();
                 Vector2 pos2 = other._collider.GetColliderCenterPos();
@@ -190,6 +190,13 @@ public class CAPlayer : InGameObject
                 if (distance < 0.45f)
                 {
                     CAPlayer ohterPlayer = other as CAPlayer;
+
+                    // 상대방도 buble에 갇힌 상태라면 아군 적군 구별 없이 할 수 있는 것이 없다. 
+                    if (ohterPlayer._currentState is Player_Bubble_IdleState
+                        || ohterPlayer._currentState is Player_Bubble_MovingState
+                        || ohterPlayer._currentState is Player_DeadState)
+                        return; 
+
 
                     if (ohterPlayer._characterType == _characterType)
                     {
