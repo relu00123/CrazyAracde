@@ -27,7 +27,7 @@ namespace Server.Game.CA_Object
 
         }
 
-        public float _moveSpeed { get; set; } = 0.3f; //  * 1.5f;  // 1.8f;  //= 0.3f;
+        public float _moveSpeed { get; set; } = 0.5f; //  * 1.5f;  // 1.8f;  //= 0.3f;
 
         public InGame _possessGame { get; set; }
 

@@ -612,9 +612,11 @@ namespace Server.Game.Core
             float slidedPosX = currentPosX;
             float slidedPosY = currentPoxY; 
 
+            // 기존 slide의 값  = 0.15였음 
+
             if (slideDir == MoveDir.Left)
             {
-                slidedPosX -= 0.15f;  // 왼쪽으로 조금씩 이동
+                slidedPosX -= 0.3f;  // 왼쪽으로 조금씩 이동
 
                 if (Math.Floor(slidedPosX) != CollidedTilePos.X)
                 {
@@ -630,7 +632,7 @@ namespace Server.Game.Core
 
             else if (slideDir == MoveDir.Right)
             {
-                slidedPosX += 0.15f;  // 오른쪽으로 조금씩 이동
+                slidedPosX += 0.3f;  // 오른쪽으로 조금씩 이동
 
                 if (Math.Floor(slidedPosX) != CollidedTilePos.X)
                 {
@@ -641,7 +643,7 @@ namespace Server.Game.Core
 
             else if (slideDir == MoveDir.Up)
             {
-                slidedPosY += 0.15f;  // 위로 조금씩 이동
+                slidedPosY += 0.3f;  // 위로 조금씩 이동
 
                 if (Math.Floor(slidedPosY) != CollidedTilePos.Y)
                 {
@@ -653,7 +655,7 @@ namespace Server.Game.Core
 
             else if (slideDir == MoveDir.Down)
             {
-                slidedPosY -= 0.15f;  // 아래로 조금씩 이동
+                slidedPosY -= 0.3f;  // 아래로 조금씩 이동
 
                 if (Math.Floor(slidedPosY) != CollidedTilePos.Y)
                 {
