@@ -333,6 +333,8 @@ message C_Move {
 
 message C_CaMove {
   MoveDir dir  = 1;
+  float   clientposx = 2;
+  float   clientposy = 3;
 }
 
 message S_Move {

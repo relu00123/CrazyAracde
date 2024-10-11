@@ -8,7 +8,7 @@ using System.Text;
  
 public class Player_DeadState : AbstractPlayerState
 {
-    public override void ApplyMove(InGameObject gameObject, MoveDir dir)
+    public override void ApplyMove(InGameObject gameObject, C_CaMove movePkt, MoveDir dir)
     {
         // 죽은 상태에서는 움직일 수 없다. 
         return;

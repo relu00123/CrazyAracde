@@ -10,7 +10,7 @@ using UnityEngine.Networking;
 
 public class WebManager
 {
-    public string BaseUrl { get; set; } = "http://192.168.123.103:5000/api";
+    public string BaseUrl { get; set; } = "http://192.168.123.107:5000/api";
     // "http://192.168.219.109:5000/api"; //"https://localhost:5001/api";
 
 

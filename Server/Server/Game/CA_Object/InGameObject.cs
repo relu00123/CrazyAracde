@@ -168,8 +168,20 @@ namespace Server.Game.CA_Object
 
         }
 
-        public virtual Vector2 CalculateTargetPositon(MoveDir dir)
+        public virtual Vector2 CalculateTargetPositon(MoveDir dir, float clientPosx, float clientPosy)
         {
+            // 10.11 수정중인 코드
+            //if (dir != Direction)
+            //{
+            //    Console.WriteLine($"Direction Changed!");
+
+            //    if (dir == MoveDir.Right && Direction == MoveDir.Up)
+            //    {
+            //        _transform.Position = new Vector2(_transform.Position.X, clientPosy);
+            //    }
+
+            //}
+
             Vector2 targetPosition = _transform.Position;
             float moveDistance = _moveSpeed;
 

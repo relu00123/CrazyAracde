@@ -6,7 +6,7 @@ using System.Text;
 
 public class Player_Bubble_MovingState : AbstractPlayerState
 {
-    public override void ApplyMove(InGameObject gameObject, MoveDir dir)
+    public override void ApplyMove(InGameObject gameObject, C_CaMove movePkt, MoveDir dir)
     {
         if (dir == MoveDir.MoveNone)
         {
@@ -17,7 +17,7 @@ public class Player_Bubble_MovingState : AbstractPlayerState
             return;
         }
 
-        base.ApplyMove(gameObject, dir);
+        base.ApplyMove(gameObject, movePkt, dir);
         gameObject.ChangeState(new Player_Bubble_MovingState());
     }
 
@@ -26,7 +26,7 @@ public class Player_Bubble_MovingState : AbstractPlayerState
         // 수정중인 코드
         CAPlayer player = obj as CAPlayer;
 
-        player._moveSpeed = player._moveSpeed * player.Stats.SpeedWeight / 2f;
+        //player._moveSpeed = player._moveSpeed * player.Stats.SpeedWeight / 2f;
 
         if (!(previousState is Player_Bubble_MovingState || previousState is Player_Bubble_IdleState))
         {
@@ -90,7 +90,7 @@ public class Player_Bubble_MovingState : AbstractPlayerState
         CAPlayer player = obj as CAPlayer;
 
         // 원래 속도로 돌려준다. 
-        player._moveSpeed = player._moveSpeed * player.Stats.SpeedWeight * 2f;
+        //player._moveSpeed = player._moveSpeed * player.Stats.SpeedWeight * 2f;
     }
     
 

@@ -188,34 +188,35 @@ namespace Server.Game
         }
 
 
-        public void ApplyMoveTemp(InGameObject gameObject, MoveDir dir)
+        public void ApplyMoveTemp(InGameObject gameObject, C_CaMove movepkt, MoveDir dir)
         {
             // 새로 도입한 코드
-            gameObject._currentState.ApplyMove(gameObject, dir);
+            gameObject._currentState.ApplyMove(gameObject, movepkt, dir);
+
+            {
+                // 기존코드 이분을 새로 도입한 코드에서 전부 처리하도록 할 것이다. 
+                //Vector2 originalPosition = gameObject._transform.Position;
+                //Console.WriteLine($"Cur Obj Pos : ({gameObject._transform.Position.X},{gameObject._transform.Position.Y})");
+
+                //if (dir == MoveDir.MoveNone)
+                //{
+                //    Console.Write("Stop Walking (Move Key detached)");
+
+                //    // Bubble Idle 이 될수도 있고 Idle이 될 수도 있다.
+                //    // 만약에 Dead 상태였으면 해당 Move를 처리하고 싶지 않은데 어떻게 하면 좋을까?
+                //    gameObject.ChangeState(CreatureState.Idle);
+                //    return;
+                //}
+
+                //// 방향키 입력에 따른 캐릭터의 속도를 적용해서 TargetPosition을 구한다. 
+                //Vector2 targetPosition = gameObject.CalculateTargetPositon(dir);
 
 
-            // 기존코드 이분을 새로 도입한 코드에서 전부 처리하도록 할 것이다. 
-            //Vector2 originalPosition = gameObject._transform.Position;
-            //Console.WriteLine($"Cur Obj Pos : ({gameObject._transform.Position.X},{gameObject._transform.Position.Y})");
-
-            //if (dir == MoveDir.MoveNone)
-            //{
-            //    Console.Write("Stop Walking (Move Key detached)");
-
-            //    // Bubble Idle 이 될수도 있고 Idle이 될 수도 있다.
-            //    // 만약에 Dead 상태였으면 해당 Move를 처리하고 싶지 않은데 어떻게 하면 좋을까?
-            //    gameObject.ChangeState(CreatureState.Idle);
-            //    return;
-            //}
-
-            //// 방향키 입력에 따른 캐릭터의 속도를 적용해서 TargetPosition을 구한다. 
-            //Vector2 targetPosition = gameObject.CalculateTargetPositon(dir);
- 
-
-            //gameObject._targetPos = targetPosition;
-            //gameObject.Direction = dir;
-            //gameObject.ChangeState(CreatureState.Moving);
-            // 기존코드 끝
+                //gameObject._targetPos = targetPosition;
+                //gameObject.Direction = dir;
+                //gameObject.ChangeState(CreatureState.Moving);
+                // 기존코드 끝
+            }
         }
 
         public void ApplyMove(InGameObject gameObject, PositionInfo posInfo)

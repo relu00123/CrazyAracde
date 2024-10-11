@@ -230,7 +230,7 @@ class PacketHandler
 		//clientSession.BeloingRoom._inGame.ApplyMoveTemp(clientSession.CA_MyPlayer, movePkt.Dir);
 
 		if (clientSession.BeloingRoom != null && clientSession.BeloingRoom._inGame != null)
-			clientSession.BeloingRoom.Push(clientSession.BeloingRoom._inGame.ApplyMoveTemp, clientSession.CA_MyPlayer, movePkt.Dir);
+			clientSession.BeloingRoom.Push(clientSession.BeloingRoom._inGame.ApplyMoveTemp, clientSession.CA_MyPlayer, movePkt ,movePkt.Dir);
 	}
 
 	public static void C_InstallBombHandler(PacketSession session, IMessage packet)

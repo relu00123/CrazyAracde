@@ -122,6 +122,9 @@ public class CAMyPlayerController : CAPlayerController
         C_CaMove movepkt = new C_CaMove();
 
         movepkt.Dir = dir;
+        movepkt.Clientposx = InGameObj.UnityObject.transform.position.x;
+        movepkt.Clientposy = InGameObj.UnityObject.transform.position.y;
+
         //var pos = InGameObj.UnityObject.GetComponent<Transform>().position;
         //float temp = pos.x;
 

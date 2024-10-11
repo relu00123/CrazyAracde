@@ -129,27 +129,27 @@ public   class CABaseController : MonoBehaviour
     protected virtual void SmoothMove()
     {
         //// 현재 위치에서 목적지로 이동
-        //Vector3 direction = _destination - transform.position;
-        //float distance = direction.magnitude;
+        Vector3 direction = _destination - transform.position;
+        float distance = direction.magnitude;
 
 
-        //////if (distance > 0.05f) 기존
-        //if (distance > 0.05f)
-        //{
-        //    direction.Normalize();
+        ////if (distance > 0.05f) 기존
+        if (distance > 0.05f)
+        {
+            direction.Normalize();
 
-        //    // 수정 코드
-        //    //float speedFactor = Mathf.Min(distance / 0.05f, 1.0f); // 0.1f는 속도를 조정하는 임계값
-        //    float speedFactor = Mathf.Pow(Mathf.Min(distance / 0.05f, 1.0f), 2); // 제곱 적용
-        //    transform.position += direction * MoveSpeed * speedFactor * Time.deltaTime;
-        //    // 수정코드 끝
+            // 수정 코드
+            //float speedFactor = Mathf.Min(distance / 0.05f, 1.0f); // 0.1f는 속도를 조정하는 임계값
+            //float speedFactor = Mathf.Pow(Mathf.Min(distance / 0.05f, 1.0f), 2); // 제곱 적용
+            transform.position += direction * MoveSpeed * Time.deltaTime;
+            // 수정코드 끝
 
-        //    //transform.position += direction * MoveSpeed * Time.deltaTime; --> 기존 코드
-        //}
-        //else
-        //{
-        //    transform.position = _destination;
-        //}
+            //transform.position += direction * MoveSpeed * Time.deltaTime; --> 기존 코드
+        }
+        else
+        {
+            transform.position = _destination;
+        }
 
 
 
@@ -171,24 +171,24 @@ public   class CABaseController : MonoBehaviour
 
 
 
-        Vector3 direction = _destination - transform.position;
-        float distance = direction.magnitude;
+        //Vector3 direction = _destination - transform.position;
+        //float distance = direction.magnitude;
 
-        if (distance > 0.3f)
-        {
-            // 거리가 멀 때는 Slerp로 부드럽게 이동
-            transform.position = Vector3.Lerp(transform.position, _destination, Time.deltaTime * MoveSpeed);
-        }
-        else if (distance > 0.05f)
-        {
-            // 가까워지면 Lerp로 빠르게 이동
-            transform.position = Vector3.Lerp(transform.position, _destination, Time.deltaTime * MoveSpeed * 5.0f);
-        }
-        else
-        {
-            // 아주 가까워지면 바로 도착
-            transform.position = _destination;
-        }
+        //if (distance > 0.3f)
+        //{
+        //    // 거리가 멀 때는 Slerp로 부드럽게 이동
+        //    transform.position = Vector3.Lerp(transform.position, _destination, Time.deltaTime * MoveSpeed);
+        //}
+        //else if (distance > 0.05f)
+        //{
+        //    // 가까워지면 Lerp로 빠르게 이동
+        //    transform.position = Vector3.Lerp(transform.position, _destination, Time.deltaTime * MoveSpeed * 5.0f);
+        //}
+        //else
+        //{
+        //    // 아주 가까워지면 바로 도착
+        //    transform.position = _destination;
+        //}
     }
 }
 

@@ -8,18 +8,20 @@ using System.Text;
 
 public class Player_MovingState : AbstractPlayerState, IPlayerEatItem
 {
-    public override void ApplyMove(InGameObject gameObject, MoveDir dir)
+    public override void ApplyMove(InGameObject gameObject, C_CaMove movePkt, MoveDir dir)
     {
         if (dir == MoveDir.MoveNone)
         {
             Console.Write("Stop Walking (Move Key detached)");
+
+            base.ApplyMove(gameObject, movePkt, dir);
 
             // Idle상태로 바꿔준다. 
             gameObject.ChangeState(new Player_IdleState());
             return;
         }
 
-        base.ApplyMove(gameObject, dir);
+        base.ApplyMove(gameObject, movePkt, dir);
         gameObject.ChangeState(new Player_MovingState());
     }
 
