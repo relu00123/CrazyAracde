@@ -160,7 +160,7 @@ public class CAPlayer : InGameObject
         //_transform.Position = new Vector2(clientPosx, clientPosy);
 
         Vector2 targetPosition = _transform.Position;
-        float moveDistance = _moveSpeed * Stats.SpeedWeight;
+        float moveDistance = (_moveSpeed + Stats.SpeedWeight);
 
 
         switch (dir)

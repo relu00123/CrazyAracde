@@ -15,7 +15,7 @@ public   class CABaseController : MonoBehaviour
     // 여기 코드때문에 그런듯? 
     Vector3 _destination = new Vector3(0f, 0f, 0f);
 
-    [SerializeField] public float MoveSpeed = 5f; //  * 1.5f; // * 1.8f; // 케릭터 이동 속도
+    [SerializeField] public float MoveSpeed = 3f; //  * 1.5f; // * 1.8f; // 케릭터 이동 속도
     public float MoveSpeedWeight { get; set; } = 1f;
 
     protected bool _updated = false;

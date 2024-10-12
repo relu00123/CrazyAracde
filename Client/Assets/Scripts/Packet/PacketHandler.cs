@@ -494,7 +494,11 @@ class PacketHandler
 		var controller = obj.GetComponentFromUnityObject<CABaseController>();
 		if (controller == null) return; 
 
-		controller.MoveSpeedWeight = pkt.SpeedWeight;
+		//controller.MoveSpeedWeight = pkt.SpeedWeight;
+
+		float speed = 3f + (pkt.SpeedWeight) * 10;
+		controller.MoveSpeed = speed; 
+
     }
 
 	public static void S_PlaySoundEffectHandler(PacketSession session, IMessage packet)
